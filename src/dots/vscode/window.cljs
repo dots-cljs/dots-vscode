@@ -39,22 +39,22 @@
   "Show an information message to users. Optionally provide an array of items which will be presented as
    clickable buttons.
    Show an information message."
-  {:arglists '([message items]
-               [message options items])}
+  {:arglists '([message & items]
+               [message options & items])}
   ^js [a & more]
   (.. vscode/window -showInformationMessage (apply vscode/window (to-array (cons a more)))))
 
 (defn show-warning-message
   "Show a warning message."
-  {:arglists '([message items]
-               [message options items])}
+  {:arglists '([message & items]
+               [message options & items])}
   ^js [a & more]
   (.. vscode/window -showWarningMessage (apply vscode/window (to-array (cons a more)))))
 
 (defn show-error-message
   "Show an error message."
-  {:arglists '([message items]
-               [message options items])}
+  {:arglists '([message & items]
+               [message options & items])}
   ^js [a & more]
   (.. vscode/window -showErrorMessage (apply vscode/window (to-array (cons a more)))))
 
