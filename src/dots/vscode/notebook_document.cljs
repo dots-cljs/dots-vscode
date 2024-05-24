@@ -48,19 +48,32 @@
   (.-cellCount ^js notebook-document))
 
 (defn cell-at
-  "Return the cell at the specified index. The index will be adjusted to the notebook."
+  "Return the cell at the specified index. The index will be adjusted to the notebook.
+   
+   **Parameters:**
+   - `index`: `number` - - The index of the cell to retrieve.
+   
+   **Returns:** `NotebookCell` - A {@link NotebookCellcell}."
   ^js [notebook-document index]
   (.cellAt ^js notebook-document index))
 
 (defn cells
   "Get the cells of this notebook. A subset can be retrieved by providing
-   a range. The range will be adjusted to the notebook."
+   a range. The range will be adjusted to the notebook.
+   
+   **Parameters:**
+   - `range`: `NotebookRange | undefined` - A notebook range.
+   
+   **Returns:** `NotebookCell[]` - The cells contained by the range or all cells."
   (^js [notebook-document]
    (.getCells ^js notebook-document))
   (^js [notebook-document range]
    (.getCells ^js notebook-document range)))
 
 (defn save
-  "Save the document. The saving will be handled by the corresponding {@link NotebookSerializer serializer}."
+  "Save the document. The saving will be handled by the corresponding {@link NotebookSerializer serializer}.
+   
+   **Returns:** `Thenable<boolean>` - A promise that will resolve to true when the document
+   has been saved. Will return false if the file was not dirty or when save failed."
   ^js [notebook-document]
   (.save ^js notebook-document))

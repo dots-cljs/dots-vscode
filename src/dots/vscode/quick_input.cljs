@@ -95,13 +95,17 @@
 
 (defn show
   "Makes the input UI visible in its current configuration. Any other input
-   UI will first fire an {@link QuickInput.onDidHide } event."
+   UI will first fire an {@link QuickInput.onDidHide } event.
+   
+   **Returns:** `void`"
   ^js [quick-input]
   (.show ^js quick-input))
 
 (defn hide
   "Hides this input UI. This will also fire an {@link QuickInput.onDidHide }
-   event."
+   event.
+   
+   **Returns:** `void`"
   ^js [quick-input]
   (.hide ^js quick-input))
 
@@ -111,7 +115,14 @@
    There are several reasons why this UI might have to be hidden and
    the extension will be notified through {@link QuickInput.onDidHide }.
    (Examples include: an explicit call to {@link QuickInput.hide },
-   the user pressing Esc, some other input UI opening, etc.)"
+   the user pressing Esc, some other input UI opening, etc.)
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js [quick-input]
    (.-onDidHide ^js quick-input))
   (^js [quick-input listener]
@@ -135,6 +146,8 @@
   "Dispose of this input UI and any associated resources. If it is still
    visible, it is first hidden. After this call the input UI is no longer
    functional and no additional methods or properties on it should be
-   accessed. Instead a new input UI should be created."
+   accessed. Instead a new input UI should be created.
+   
+   **Returns:** `void`"
   ^js [quick-input]
   (.dispose ^js quick-input))

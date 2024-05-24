@@ -19,7 +19,9 @@
 (defn enable-command-uris?
   "Controls whether command uris are enabled in webview content or not.
    
-   Defaults to false."
+   Defaults to `false` (command uris are disabled).
+   
+   If you pass in an array, only the commands in the array are allowed."
   ^js [webview-options]
   (.-enableCommandUris ^js webview-options))
 

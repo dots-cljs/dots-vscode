@@ -24,7 +24,14 @@
   (.-ignoreDeleteEvents ^js file-system-watcher))
 
 (defn on-did-create
-  "An event which fires on file/folder creation."
+  "An event which fires on file/folder creation.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js [file-system-watcher]
    (.-onDidCreate ^js file-system-watcher))
   (^js [file-system-watcher listener]
@@ -35,7 +42,14 @@
    (.onDidCreate ^js file-system-watcher listener this-args disposables)))
 
 (defn on-did-change
-  "An event which fires on file/folder change."
+  "An event which fires on file/folder change.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js [file-system-watcher]
    (.-onDidChange ^js file-system-watcher))
   (^js [file-system-watcher listener]
@@ -46,7 +60,14 @@
    (.onDidChange ^js file-system-watcher listener this-args disposables)))
 
 (defn on-did-delete
-  "An event which fires on file/folder deletion."
+  "An event which fires on file/folder deletion.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js [file-system-watcher]
    (.-onDidDelete ^js file-system-watcher))
   (^js [file-system-watcher listener]
@@ -57,6 +78,8 @@
    (.onDidDelete ^js file-system-watcher listener this-args disposables)))
 
 (defn dispose
-  "Dispose this object."
+  "Dispose this object.
+   
+   **Returns:** `any`"
   ^js [file-system-watcher]
   (.dispose ^js file-system-watcher))

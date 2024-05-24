@@ -1,4 +1,5 @@
-(ns dots.vscode.debug-adapter-descriptor-factory)
+(ns dots.vscode.debug-adapter-descriptor-factory
+  "A debug adaper factory that creates {@link DebugAdapterDescriptor debug adapter descriptors}.")
 
 (defn create-debug-adapter-descriptor
   "'createDebugAdapterDescriptor' is called at the start of a debug session to provide details about the debug adapter to use.
@@ -12,7 +13,13 @@
            return new DebugAdapterServer(session.configuration.debugServer);
         }
         return executable;
-     }"
+     }
+   
+   **Parameters:**
+   - `session`: `DebugSession` - The {@link DebugSession debug session} for which the debug adapter will be used.
+   - `executable`: `DebugAdapterExecutable | undefined` - The debug adapter's executable information as specified in the package.json (or undefined if no such information exists).
+   
+   **Returns:** `ProviderResult<DebugAdapterDescriptor>` - a {@link DebugAdapterDescriptordebug adapter descriptor} or undefined."
   (^js [debug-adapter-descriptor-factory session]
    (.createDebugAdapterDescriptor ^js debug-adapter-descriptor-factory session))
   (^js [debug-adapter-descriptor-factory session executable]

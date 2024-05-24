@@ -1,4 +1,5 @@
-(ns dots.vscode.decoration-instance-render-options)
+(ns dots.vscode.decoration-instance-render-options
+  "Represents render options for decoration instances. See {@link DecorationOptions.renderOptions }.")
 
 (defn light
   "Overwrite options for light themes."

@@ -1,9 +1,15 @@
 (ns dots.vscode.input-box-validation-severity
-  "Impacts the behavior and appearance of the validation message."
+  "The severity level for input box validation."
   (:require ["vscode" :as vscode]))
 
-(def info (.-Info vscode/InputBoxValidationSeverity))
+(def info
+  "Informational severity level."
+  (.-Info vscode/InputBoxValidationSeverity))
 
-(def warning (.-Warning vscode/InputBoxValidationSeverity))
+(def warning
+  "Warning severity level."
+  (.-Warning vscode/InputBoxValidationSeverity))
 
-(def error (.-Error vscode/InputBoxValidationSeverity))
+(def error
+  "Error severity level."
+  (.-Error vscode/InputBoxValidationSeverity))

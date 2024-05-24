@@ -12,11 +12,15 @@
   (set! (.-token ^js cancellation-token-source) value))
 
 (defn cancel
-  "Signal cancellation on the token."
+  "Signal cancellation on the token.
+   
+   **Returns:** `void`"
   ^js [cancellation-token-source]
   (.cancel ^js cancellation-token-source))
 
 (defn dispose
-  "Dispose object and free resources."
+  "Dispose object and free resources.
+   
+   **Returns:** `void`"
   ^js [cancellation-token-source]
   (.dispose ^js cancellation-token-source))

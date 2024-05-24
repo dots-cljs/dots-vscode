@@ -66,3 +66,43 @@
    If compact is true, debug sessions with a single child are hidden in the CALL STACK view to make the tree more compact."
   ^js [debug-session-options value]
   (set! (.-compact ^js debug-session-options) value))
+
+(defn suppress-save-before-start?
+  "When true, a save will not be triggered for open editors when starting a debug session, regardless of the value of the `debug.saveBeforeStart` setting."
+  ^js [debug-session-options]
+  (.-suppressSaveBeforeStart ^js debug-session-options))
+
+(defn set-suppress-save-before-start!
+  "When true, a save will not be triggered for open editors when starting a debug session, regardless of the value of the `debug.saveBeforeStart` setting."
+  ^js [debug-session-options value]
+  (set! (.-suppressSaveBeforeStart ^js debug-session-options) value))
+
+(defn suppress-debug-toolbar?
+  "When true, the debug toolbar will not be shown for this session."
+  ^js [debug-session-options]
+  (.-suppressDebugToolbar ^js debug-session-options))
+
+(defn set-suppress-debug-toolbar!
+  "When true, the debug toolbar will not be shown for this session."
+  ^js [debug-session-options value]
+  (set! (.-suppressDebugToolbar ^js debug-session-options) value))
+
+(defn suppress-debug-statusbar?
+  "When true, the window statusbar color will not be changed for this session."
+  ^js [debug-session-options]
+  (.-suppressDebugStatusbar ^js debug-session-options))
+
+(defn set-suppress-debug-statusbar!
+  "When true, the window statusbar color will not be changed for this session."
+  ^js [debug-session-options value]
+  (set! (.-suppressDebugStatusbar ^js debug-session-options) value))
+
+(defn suppress-debug-view?
+  "When true, the debug viewlet will not be automatically revealed for this session."
+  ^js [debug-session-options]
+  (.-suppressDebugView ^js debug-session-options))
+
+(defn set-suppress-debug-view!
+  "When true, the debug viewlet will not be automatically revealed for this session."
+  ^js [debug-session-options value]
+  (set! (.-suppressDebugView ^js debug-session-options) value))

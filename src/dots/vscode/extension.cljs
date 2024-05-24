@@ -54,6 +54,8 @@
   (.-exports ^js extension))
 
 (defn activate
-  "Activates this extension and returns its public API."
+  "Activates this extension and returns its public API.
+   
+   **Returns:** `Thenable<T>` - A promise that will resolve when this extension has been activated."
   ^js [extension]
   (.activate ^js extension))

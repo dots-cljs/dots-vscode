@@ -6,6 +6,12 @@
   (:require ["vscode" :as vscode]))
 
 (defn create-test-controller
-  "Creates a new test controller."
+  "Creates a new test controller.
+   
+   **Parameters:**
+   - `id`: `string` - Identifier for the controller, must be globally unique.
+   - `label`: `string` - A human-readable label for the controller.
+   
+   **Returns:** `TestController` - An instance of the {@link TestController}."
   ^js [id label]
   (.createTestController vscode/tests id label))

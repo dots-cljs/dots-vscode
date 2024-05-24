@@ -1,5 +1,7 @@
 (ns dots.vscode.data-transfer-file
-  "A file associated with a {@linkcode DataTransferItem }."
+  "A file associated with a {@linkcode DataTransferItem }.
+   
+   Instances of this type can only be created by the editor and not by extensions."
   (:refer-clojure :exclude [name]))
 
 (defn name
@@ -15,6 +17,8 @@
   (.-uri ^js data-transfer-file))
 
 (defn data
-  "The full file contents of the file."
+  "The full file contents of the file.
+   
+   **Returns:** `Thenable<Uint8Array>`"
   ^js [data-transfer-file]
   (.data ^js data-transfer-file))

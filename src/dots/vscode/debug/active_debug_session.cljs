@@ -46,7 +46,13 @@
   (.. vscode/debug -activeDebugSession -configuration))
 
 (defn custom-request
-  "Send a custom request to the debug adapter."
+  "Send a custom request to the debug adapter.
+   
+   **Parameters:**
+   - `command`: `string`
+   - `args`: `any`
+   
+   **Returns:** `Thenable<any>`"
   (^js [command]
    (.. vscode/debug -activeDebugSession (customRequest command)))
   (^js [command args]
@@ -54,6 +60,11 @@
 
 (defn debug-protocol-breakpoint
   "Maps a breakpoint in the editor to the corresponding Debug Adapter Protocol (DAP) breakpoint that is managed by the debug adapter of the debug session.
-   If no DAP breakpoint exists (either because the editor breakpoint was not yet registered or because the debug adapter is not interested in the breakpoint), the value `undefined` is returned."
+   If no DAP breakpoint exists (either because the editor breakpoint was not yet registered or because the debug adapter is not interested in the breakpoint), the value `undefined` is returned.
+   
+   **Parameters:**
+   - `breakpoint`: `Breakpoint` - A {@link Breakpoint } in the editor.
+   
+   **Returns:** `Thenable<DebugProtocolBreakpoint | undefined>` - A promise that resolves to the Debug Adapter Protocol breakpoint or `undefined`."
   ^js [breakpoint]
   (.. vscode/debug -activeDebugSession (getDebugProtocolBreakpoint breakpoint)))

@@ -74,7 +74,7 @@
    ```ts
    const u = URI.parse('file://server/c$/folder/file.txt')
    u.authority === 'server'
-   u.path === '/shares/c$/file.txt'
+   u.path === '/c$/folder/file.txt'
    u.fsPath === '\\\\server\\c$\\folder\\file.txt'
    ```"
   ^js []
@@ -87,7 +87,14 @@
    let file = Uri.parse('before:some/file/path');
    let other = file.with({ scheme: 'after' });
    assert.ok(other.toString() === 'after:some/file/path');
-   ```"
+   ```
+   
+   **Parameters:**
+   - `change`: `{ scheme?: string | undefined; authority?: string | undefined; path?: string | undefined; query?: string | undefined; fragment?: string | undefined; }` - An object that describes a change to this Uri. To unset components use `null` or
+   the empty string.
+   
+   **Returns:** `Uri` - A new Uri that reflects the given change. Will return `this` Uri if the change
+   is not changing anything."
   ^js [change]
   (.. vscode/workspace -workspaceFile (with change)))
 
@@ -102,13 +109,21 @@
    but not incorrect, results. For instance, colons are encoded to `%3A` which might be unexpected
    in file-uri. Also `&` and `=` will be encoded which might be unexpected for http-uris. For stability
    reasons this cannot be changed anymore. If you suffer from too aggressive encoding you should use
-   the `skipEncoding`-argument: `uri.toString(true)`."
+   the `skipEncoding`-argument: `uri.toString(true)`.
+   
+   **Parameters:**
+   - `skip-encoding?`: `boolean | undefined` - Do not percentage-encode the result, defaults to `false`. Note that
+   the `#` and `?` characters occurring in the path will always be encoded.
+   
+   **Returns:** `string` - A string representation of this Uri."
   (^js []
    (.. vscode/workspace -workspaceFile (toString)))
   (^js [skip-encoding?]
    (.. vscode/workspace -workspaceFile (toString skip-encoding?))))
 
 (defn to-json
-  "Returns a JSON representation of this Uri."
+  "Returns a JSON representation of this Uri.
+   
+   **Returns:** `any` - An object."
   ^js []
   (.. vscode/workspace -workspaceFile (toJSON)))

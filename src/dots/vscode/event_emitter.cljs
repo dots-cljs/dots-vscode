@@ -7,7 +7,14 @@
    API to other extensions.")
 
 (defn event
-  "The event listeners can subscribe to."
+  "The event listeners can subscribe to.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js [event-emitter]
    (.-event ^js event-emitter))
   (^js [event-emitter listener]
@@ -24,11 +31,18 @@
 
 (defn fire
   "Notify all subscribers of the {@link EventEmitter.event event}. Failure
-   of one or more listener will not fail this function call."
+   of one or more listener will not fail this function call.
+   
+   **Parameters:**
+   - `data`: `T` - The event object.
+   
+   **Returns:** `void`"
   ^js [event-emitter data]
   (.fire ^js event-emitter data))
 
 (defn dispose
-  "Dispose this object and free resources."
+  "Dispose this object and free resources.
+   
+   **Returns:** `void`"
   ^js [event-emitter]
   (.dispose ^js event-emitter))

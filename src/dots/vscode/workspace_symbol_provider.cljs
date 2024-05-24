@@ -12,7 +12,14 @@
    
    To improve performance implementors can implement `resolveWorkspaceSymbol` and then provide symbols with partial
    {@link SymbolInformation.location location}-objects, without a `range` defined. The editor will then call
-   `resolveWorkspaceSymbol` for selected symbols only, e.g. when opening a workspace symbol."
+   `resolveWorkspaceSymbol` for selected symbols only, e.g. when opening a workspace symbol.
+   
+   **Parameters:**
+   - `query`: `string` - A query string, can be the empty string in which case all symbols should be returned.
+   - `token`: `CancellationToken` - A cancellation token.
+   
+   **Returns:** `ProviderResult<T[]>` - An array of document highlights or a thenable that resolves to such. The lack of a result can be
+   signaled by returning `undefined`, `null`, or an empty array."
   ^js [workspace-symbol-provider query token]
   (.provideWorkspaceSymbols ^js workspace-symbol-provider query token))
 
@@ -20,6 +27,14 @@
   "Given a symbol fill in its {@link SymbolInformation.location location}. This method is called whenever a symbol
    is selected in the UI. Providers can implement this method and return incomplete symbols from
    {@linkcode WorkspaceSymbolProvider.provideWorkspaceSymbols provideWorkspaceSymbols} which often helps to improve
-   performance."
+   performance.
+   
+   **Parameters:**
+   - `symbol`: `T` - The symbol that is to be resolved. Guaranteed to be an instance of an object returned from an
+   earlier call to `provideWorkspaceSymbols`.
+   - `token`: `CancellationToken` - A cancellation token.
+   
+   **Returns:** `ProviderResult<T>` - The resolved symbol or a thenable that resolves to that. When no result is returned,
+   the given `symbol` is used."
   ^js [workspace-symbol-provider symbol token]
   (.resolveWorkspaceSymbol ^js workspace-symbol-provider symbol token))

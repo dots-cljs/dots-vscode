@@ -1,8 +1,8 @@
 (ns dots.vscode.test-run-request
   "A TestRunRequest is a precursor to a {@link TestRun }, which in turn is
-   created by passing a request to {@link tests.runTests }. The TestRunRequest
-   contains information about which tests should be run, which should not be
-   run, and how they are run (via the {@link TestRunRequest.profile profile}).
+   created by passing a request to {@link TestController.createTestRun }. The
+   TestRunRequest contains information about which tests should be run, which
+   should not be run, and how they are run (via the {@link TestRunRequest.profile profile}).
    
    In general, TestRunRequests are created by the editor and pass to
    {@link TestRunProfile.runHandler }, however you can also create test
@@ -34,3 +34,9 @@
    programmatically create requests not associated with any profile."
   ^js [test-run-request]
   (.-profile ^js test-run-request))
+
+(defn continuous?
+  "Whether the profile should run continuously as source code changes. Only
+   relevant for profiles that set {@link TestRunProfile.supportsContinuousRun }."
+  ^js [test-run-request]
+  (.-continuous ^js test-run-request))

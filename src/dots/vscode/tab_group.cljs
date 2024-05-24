@@ -5,7 +5,7 @@
   "Whether or not the group is currently active.
    
    *Note* that only one tab group is active at a time, but that multiple tab
-   groups can have an {@link TabGroup.aciveTab active tab}."
+   groups can have an {@link activeTab active tab}."
   ^js [tab-group]
   (.-isActive ^js tab-group))
 

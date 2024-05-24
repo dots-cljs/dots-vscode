@@ -1,4 +1,5 @@
 (ns dots.vscode.file-permission
+  "Permissions of a file."
   (:require ["vscode" :as vscode]))
 
 (def readonly

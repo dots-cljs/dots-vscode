@@ -34,6 +34,11 @@
    ```
    Allows to pause the event loop until the provided thenable resolved.
    
-   *Note:* This function can only be called during event dispatch."
+   *Note:* This function can only be called during event dispatch.
+   
+   **Parameters:**
+   - `thenable`: `Thenable<any>` - A thenable that delays saving.
+   
+   **Returns:** `void`"
   ^js [text-document-will-save-event thenable]
   (.waitUntil ^js text-document-will-save-event thenable))

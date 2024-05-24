@@ -7,7 +7,7 @@
   (.-OpenOpen vscode/DecorationRangeBehavior))
 
 (def closed-closed
-  "The decoration's range will not widen when edits occur at the start of end."
+  "The decoration's range will not widen when edits occur at the start or end."
   (.-ClosedClosed vscode/DecorationRangeBehavior))
 
 (def open-closed

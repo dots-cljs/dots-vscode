@@ -17,7 +17,14 @@
   (set! (.-isCancellationRequested ^js cancellation-token) value))
 
 (defn on-cancellation-requested
-  "An {@link Event } which fires upon cancellation."
+  "An {@link Event } which fires upon cancellation.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js [cancellation-token]
    (.-onCancellationRequested ^js cancellation-token))
   (^js [cancellation-token listener]

@@ -103,9 +103,21 @@
   ^js [comment-thread value]
   (set! (.-label ^js comment-thread) value))
 
+(defn state
+  "The optional state of a comment thread, which may affect how the comment is displayed."
+  ^js [comment-thread]
+  (.-state ^js comment-thread))
+
+(defn set-state!
+  "The optional state of a comment thread, which may affect how the comment is displayed."
+  ^js [comment-thread value]
+  (set! (.-state ^js comment-thread) value))
+
 (defn dispose
   "Dispose this comment thread.
    
-   Once disposed, this comment thread will be removed from visible editors and Comment Panel when appropriate."
+   Once disposed, this comment thread will be removed from visible editors and Comment Panel when appropriate.
+   
+   **Returns:** `void`"
   ^js [comment-thread]
   (.dispose ^js comment-thread))

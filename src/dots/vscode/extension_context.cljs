@@ -43,8 +43,8 @@
   (.-extensionPath ^js extension-context))
 
 (defn environment-variable-collection
-  "Gets the extension's environment variable collection for this workspace, enabling changes
-   to be applied to terminal environment variables."
+  "Gets the extension's global environment variable collection for this workspace, enabling changes to be
+   applied to terminal environment variables."
   ^js [extension-context]
   (.-environmentVariableCollection ^js extension-context))
 
@@ -52,7 +52,12 @@
   "Get the absolute path of a resource contained in the extension.
    
    *Note* that an absolute uri can be constructed via {@linkcode Uri.joinPath } and
-   {@linkcode ExtensionContext.extensionUri extensionUri}, e.g. `vscode.Uri.joinPath(context.extensionUri, relativePath);`"
+   {@linkcode ExtensionContext.extensionUri extensionUri}, e.g. `vscode.Uri.joinPath(context.extensionUri, relativePath);`
+   
+   **Parameters:**
+   - `relative-path`: `string` - A relative path to a resource contained in the extension.
+   
+   **Returns:** `string` - The absolute path of the resource."
   ^js [extension-context relative-path]
   (.asAbsolutePath ^js extension-context relative-path))
 
@@ -110,9 +115,8 @@
   (.-logPath ^js extension-context))
 
 (defn extension-mode
-  "The mode the extension is running in. This is specific to the current
-   extension. One extension may be in `ExtensionMode.Development` while
-   other extensions in the host run in `ExtensionMode.Release`."
+  "The mode the extension is running in. See {@link ExtensionMode }
+   for possible values and scenarios."
   ^js [extension-context]
   (.-extensionMode ^js extension-context))
 

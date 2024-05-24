@@ -2,9 +2,8 @@
   "An event that is fired when files are going to be deleted.
    
    To make modifications to the workspace before the files are deleted,
-   call the {@link FileWillCreateEvent.waitUntil `waitUntil}-function with a
-        * thenable that resolves to a {@link WorkspaceEdit workspace edit}.
-        }")
+   call the {@link FileWillCreateEvent.waitUntil `waitUntil`}-function with a
+   thenable that resolves to a {@link WorkspaceEdit workspace edit}.")
 
 (defn token
   "A cancellation token."
@@ -33,6 +32,11 @@
    ```
    Allows to pause the event until the provided thenable resolves.
    
-   *Note:* This function can only be called during event dispatch."
+   *Note:* This function can only be called during event dispatch.
+   
+   **Parameters:**
+   - `thenable`: `Thenable<any>` - A thenable that delays saving.
+   
+   **Returns:** `void`"
   ^js [file-will-delete-event thenable]
   (.waitUntil ^js file-will-delete-event thenable))

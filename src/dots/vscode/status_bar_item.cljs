@@ -135,17 +135,23 @@
   (set! (.-accessibilityInformation ^js status-bar-item) value))
 
 (defn show
-  "Shows the entry in the status bar."
+  "Shows the entry in the status bar.
+   
+   **Returns:** `void`"
   ^js [status-bar-item]
   (.show ^js status-bar-item))
 
 (defn hide
-  "Hide the entry in the status bar."
+  "Hide the entry in the status bar.
+   
+   **Returns:** `void`"
   ^js [status-bar-item]
   (.hide ^js status-bar-item))
 
 (defn dispose
   "Dispose and free associated resources. Call
-   {@link StatusBarItem.hide hide}."
+   {@link StatusBarItem.hide hide}.
+   
+   **Returns:** `void`"
   ^js [status-bar-item]
   (.dispose ^js status-bar-item))

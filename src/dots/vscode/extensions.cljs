@@ -32,7 +32,12 @@
   (:require ["vscode" :as vscode]))
 
 (defn extension
-  "Get an extension by its full identifier in the form of: `publisher.name`."
+  "Get an extension by its full identifier in the form of: `publisher.name`.
+   
+   **Parameters:**
+   - `extension-id`: `string` - An extension identifier.
+   
+   **Returns:** `Extension<T> | undefined` - An extension or `undefined`."
   ^js [extension-id]
   (.getExtension vscode/extensions extension-id))
 
@@ -43,7 +48,14 @@
 
 (defn on-did-change
   "An event which fires when `extensions.all` changes. This can happen when extensions are
-   installed, uninstalled, enabled or disabled."
+   installed, uninstalled, enabled or disabled.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js []
    (.-onDidChange vscode/extensions))
   (^js [listener]

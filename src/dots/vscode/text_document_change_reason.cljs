@@ -1,4 +1,5 @@
 (ns dots.vscode.text-document-change-reason
+  "Reasons for why a text document has changed."
   (:require ["vscode" :as vscode]))
 
 (def undo

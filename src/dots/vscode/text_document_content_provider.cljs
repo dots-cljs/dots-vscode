@@ -8,7 +8,14 @@
    asked.")
 
 (defn on-did-change
-  "An event to signal a resource has changed."
+  "An event to signal a resource has changed.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js [text-document-content-provider]
    (.-onDidChange ^js text-document-content-provider))
   (^js [text-document-content-provider listener]
@@ -31,6 +38,12 @@
    the corresponding document has been {@link workspace.onDidCloseTextDocument closed}.
    
    **Note**: The contents of the created {@link TextDocument document} might not be
-   identical to the provided text due to end-of-line-sequence normalization."
+   identical to the provided text due to end-of-line-sequence normalization.
+   
+   **Parameters:**
+   - `uri`: `Uri` - An uri which scheme matches the scheme this provider was {@link workspace.registerTextDocumentContentProvider registered} for.
+   - `token`: `CancellationToken` - A cancellation token.
+   
+   **Returns:** `ProviderResult<string>` - A string or a thenable that resolves to such."
   ^js [text-document-content-provider uri token]
   (.provideTextDocumentContent ^js text-document-content-provider uri token))

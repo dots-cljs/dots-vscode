@@ -100,11 +100,19 @@
   (set! (.-statusBarCommands ^js source-control) value))
 
 (defn create-resource-group
-  "Create a new {@link SourceControlResourceGroup resource group}."
+  "Create a new {@link SourceControlResourceGroup resource group}.
+   
+   **Parameters:**
+   - `id`: `string`
+   - `label`: `string`
+   
+   **Returns:** `SourceControlResourceGroup`"
   ^js [source-control id label]
   (.createResourceGroup ^js source-control id label))
 
 (defn dispose
-  "Dispose this source control."
+  "Dispose this source control.
+   
+   **Returns:** `void`"
   ^js [source-control]
   (.dispose ^js source-control))

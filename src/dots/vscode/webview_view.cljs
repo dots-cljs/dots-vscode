@@ -53,7 +53,14 @@
    Views are disposed when they are explicitly hidden by a user (this happens when a user
    right clicks in a view and unchecks the webview view).
    
-   Trying to use the view after it has been disposed throws an exception."
+   Trying to use the view after it has been disposed throws an exception.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js [webview-view]
    (.-onDidDispose ^js webview-view))
   (^js [webview-view listener]
@@ -78,7 +85,14 @@
    - The view is collapsed or expanded.
    - The user switches to a different view group in the sidebar or panel.
    
-   Note that hiding a view using the context menu instead disposes of the view and fires `onDidDispose`."
+   Note that hiding a view using the context menu instead disposes of the view and fires `onDidDispose`.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js [webview-view]
    (.-onDidChangeVisibility ^js webview-view))
   (^js [webview-view listener]
@@ -91,7 +105,12 @@
 (defn show
   "Reveal the view in the UI.
    
-   If the view is collapsed, this will expand it."
+   If the view is collapsed, this will expand it.
+   
+   **Parameters:**
+   - `preserve-focus?`: `boolean | undefined` - When `true` the view will not take focus.
+   
+   **Returns:** `void`"
   (^js [webview-view]
    (.show ^js webview-view))
   (^js [webview-view preserve-focus?]

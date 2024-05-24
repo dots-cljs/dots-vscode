@@ -3,7 +3,14 @@
    the inlay hints feature.")
 
 (defn on-did-change-inlay-hints
-  "An optional event to signal that inlay hints from this provider have changed."
+  "An optional event to signal that inlay hints from this provider have changed.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js [inlay-hints-provider]
    (.-onDidChangeInlayHints ^js inlay-hints-provider))
   (^js [inlay-hints-provider listener]
@@ -21,7 +28,14 @@
 (defn provide-inlay-hints
   "Provide inlay hints for the given range and document.
    
-   *Note* that inlay hints that are not {@link Range.contains contained} by the given range are ignored."
+   *Note* that inlay hints that are not {@link Range.contains contained} by the given range are ignored.
+   
+   **Parameters:**
+   - `document`: `TextDocument` - The document in which the command was invoked.
+   - `range`: `Range` - The range for which inlay hints should be computed.
+   - `token`: `CancellationToken` - A cancellation token.
+   
+   **Returns:** `ProviderResult<T[]>` - An array of inlay hints or a thenable that resolves to such."
   ^js [inlay-hints-provider document range token]
   (.provideInlayHints ^js inlay-hints-provider document range token))
 
@@ -29,6 +43,12 @@
   "Given an inlay hint fill in {@link InlayHint.tooltip tooltip}, {@link InlayHint.textEdits text edits},
    or complete label {@link InlayHintLabelPart parts}.
    
-   *Note* that the editor will resolve an inlay hint at most once."
+   *Note* that the editor will resolve an inlay hint at most once.
+   
+   **Parameters:**
+   - `hint`: `T` - An inlay hint.
+   - `token`: `CancellationToken` - A cancellation token.
+   
+   **Returns:** `ProviderResult<T>` - The resolved inlay hint or a thenable that resolves to such. It is OK to return the given `item`. When no result is returned, the given `item` will be used."
   ^js [inlay-hints-provider hint token]
   (.resolveInlayHint ^js inlay-hints-provider hint token))

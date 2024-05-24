@@ -33,7 +33,13 @@
 (defn text
   "Factory function to create a `NotebookCellOutputItem` from a string.
    
-   *Note* that an UTF-8 encoder is used to create bytes for the string."
+   *Note* that an UTF-8 encoder is used to create bytes for the string.
+   
+   **Parameters:**
+   - `value`: `string` - A string.
+   - `mime`: `string | undefined` - Optional MIME type, defaults to `text/plain`.
+   
+   **Returns:** `NotebookCellOutputItem` - A new output item object."
   (^js [value]
    (.text vscode/NotebookCellOutputItem value))
   (^js [value mime]
@@ -45,7 +51,13 @@
    
    *Note* that this function is not expecting \"stringified JSON\" but
    an object that can be stringified. This function will throw an error
-   when the passed value cannot be JSON-stringified."
+   when the passed value cannot be JSON-stringified.
+   
+   **Parameters:**
+   - `value`: `any` - A JSON-stringifyable value.
+   - `mime`: `string | undefined` - Optional MIME type, defaults to `application/json`
+   
+   **Returns:** `NotebookCellOutputItem` - A new output item object."
   (^js [value]
    (.json vscode/NotebookCellOutputItem value))
   (^js [value mime]
@@ -53,18 +65,33 @@
 
 (defn stdout
   "Factory function to create a `NotebookCellOutputItem` that uses
-   uses the `application/vnd.code.notebook.stdout` mime type."
+   uses the `application/vnd.code.notebook.stdout` mime type.
+   
+   **Parameters:**
+   - `value`: `string` - A string.
+   
+   **Returns:** `NotebookCellOutputItem` - A new output item object."
   ^js [value]
   (.stdout vscode/NotebookCellOutputItem value))
 
 (defn stderr
   "Factory function to create a `NotebookCellOutputItem` that uses
-   uses the `application/vnd.code.notebook.stderr` mime type."
+   uses the `application/vnd.code.notebook.stderr` mime type.
+   
+   **Parameters:**
+   - `value`: `string` - A string.
+   
+   **Returns:** `NotebookCellOutputItem` - A new output item object."
   ^js [value]
   (.stderr vscode/NotebookCellOutputItem value))
 
 (defn error
   "Factory function to create a `NotebookCellOutputItem` that uses
-   uses the `application/vnd.code.notebook.error` mime type."
+   uses the `application/vnd.code.notebook.error` mime type.
+   
+   **Parameters:**
+   - `value`: `Error` - An error object.
+   
+   **Returns:** `NotebookCellOutputItem` - A new output item object."
   ^js [value]
   (.error vscode/NotebookCellOutputItem value))

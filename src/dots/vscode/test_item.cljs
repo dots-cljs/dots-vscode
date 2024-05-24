@@ -33,13 +33,13 @@
 
 (defn tags
   "Tags associated with this test item. May be used in combination with
-   {@link TestRunProfile.tags }, or simply as an organizational feature."
+   {@link TestRunProfile.tag tags}, or simply as an organizational feature."
   ^js [test-item]
   (.-tags ^js test-item))
 
 (defn set-tags!
   "Tags associated with this test item. May be used in combination with
-   {@link TestRunProfile.tags }, or simply as an organizational feature."
+   {@link TestRunProfile.tag tags}, or simply as an organizational feature."
   ^js [test-item value]
   (set! (.-tags ^js test-item) value))
 

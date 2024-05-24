@@ -42,6 +42,8 @@
   (set! (.-resourceStates ^js source-control-resource-group) value))
 
 (defn dispose
-  "Dispose this source control resource group."
+  "Dispose this source control resource group.
+   
+   **Returns:** `void`"
   ^js [source-control-resource-group]
   (.dispose ^js source-control-resource-group))

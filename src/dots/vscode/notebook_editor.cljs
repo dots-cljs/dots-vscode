@@ -43,7 +43,13 @@
   (.-viewColumn ^js notebook-editor))
 
 (defn reveal-range
-  "Scroll as indicated by `revealType` in order to reveal the given range."
+  "Scroll as indicated by `revealType` in order to reveal the given range.
+   
+   **Parameters:**
+   - `range`: `NotebookRange` - A range.
+   - `reveal-type`: `NotebookEditorRevealType | undefined` - The scrolling strategy for revealing `range`.
+   
+   **Returns:** `void`"
   (^js [notebook-editor range]
    (.revealRange ^js notebook-editor range))
   (^js [notebook-editor range reveal-type]

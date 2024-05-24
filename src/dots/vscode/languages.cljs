@@ -28,7 +28,9 @@
   (:require ["vscode" :as vscode]))
 
 (defn languages
-  "Return the identifiers of all known languages."
+  "Return the identifiers of all known languages.
+   
+   **Returns:** `Thenable<string[]>` - Promise resolving to an array of identifier strings."
   ^js []
   (.getLanguages vscode/languages))
 
@@ -37,7 +39,13 @@
    with the given document.
    
    *Note* that calling this function will trigger the {@linkcode workspace.onDidCloseTextDocument onDidCloseTextDocument} event
-   followed by the {@linkcode workspace.onDidOpenTextDocument onDidOpenTextDocument} event."
+   followed by the {@linkcode workspace.onDidOpenTextDocument onDidOpenTextDocument} event.
+   
+   **Parameters:**
+   - `document`: `TextDocument` - The document which language is to be changed
+   - `language-id`: `string` - The new language identifier.
+   
+   **Returns:** `Thenable<TextDocument>` - A thenable that resolves with the updated document."
   ^js [document language-id]
   (.setTextDocumentLanguage vscode/languages document language-id))
 
@@ -80,27 +88,49 @@
    match({ notebookType: 'fooNotebook', language: 'python' }, doc) // 0
    match({ language: 'python' }, doc) // 10
    match({ notebookType: '*' }, doc) // 5
-   ```"
+   ```
+   
+   **Parameters:**
+   - `selector`: `DocumentSelector` - A document selector.
+   - `document`: `TextDocument` - A text document.
+   
+   **Returns:** `number` - A number `>0` when the selector matches and `0` when the selector does not match."
   ^js [selector document]
   (.match vscode/languages selector document))
 
 (defn diagnostics
   "Get all diagnostics for a given resource.
-   Get all diagnostics."
+   Get all diagnostics.
+   
+   **Parameters:**
+   - `resource`: `Uri` - A resource
+   
+   **Returns:** `[Uri, Diagnostic[]][]` - An array of uri-diagnostics tuples or an empty array."
   (^js []
    (.getDiagnostics vscode/languages))
   (^js [resource]
    (.getDiagnostics vscode/languages resource)))
 
 (defn create-diagnostic-collection
-  "Create a diagnostics collection."
+  "Create a diagnostics collection.
+   
+   **Parameters:**
+   - `name`: `string | undefined` - The {@link DiagnosticCollection.name name} of the collection.
+   
+   **Returns:** `DiagnosticCollection` - A new diagnostic collection."
   (^js []
    (.createDiagnosticCollection vscode/languages))
   (^js [name]
    (.createDiagnosticCollection vscode/languages name)))
 
 (defn create-language-status-item
-  "Creates a new {@link LanguageStatusItem language status item}."
+  "Creates a new {@link LanguageStatusItem language status item}.
+   
+   **Parameters:**
+   - `id`: `string` - The identifier of the item.
+   - `selector`: `DocumentSelector` - The document selector that defines for what editors the item shows.
+   
+   **Returns:** `LanguageStatusItem` - A new language status item."
   ^js [id selector]
   (.createLanguageStatusItem vscode/languages id selector))
 
@@ -116,7 +146,14 @@
    A completion item provider can be associated with a set of `triggerCharacters`. When trigger
    characters are being typed, completions are requested but only from providers that registered
    the typed character. Because of that trigger characters should be different than {@link LanguageConfiguration.wordPattern word characters},
-   a common trigger character is `.` to trigger member completions."
+   a common trigger character is `.` to trigger member completions.
+   
+   **Parameters:**
+   - `selector`: `DocumentSelector` - A selector that defines the documents this provider is applicable to.
+   - `provider`: `CompletionItemProvider<CompletionItem>` - A completion provider.
+   - `trigger-characters`: `string[]` - Trigger completion when the user types one of the characters.
+   
+   **Returns:** `Disposable` - A {@link Disposable} that unregisters this provider when being disposed."
   ^js [selector provider & trigger-characters]
   (.. vscode/languages -registerCompletionItemProvider (apply vscode/languages (to-array (list* selector provider trigger-characters)))))
 
@@ -125,7 +162,13 @@
    
    Multiple providers can be registered for a language. In that case providers are asked in
    parallel and the results are merged. A failing provider (rejected promise or exception) will
-   not cause a failure of the whole operation."
+   not cause a failure of the whole operation.
+   
+   **Parameters:**
+   - `selector`: `DocumentSelector` - A selector that defines the documents this provider is applicable to.
+   - `provider`: `InlineCompletionItemProvider` - An inline completion provider.
+   
+   **Returns:** `Disposable` - A {@link Disposable} that unregisters this provider when being disposed."
   ^js [selector provider]
   (.registerInlineCompletionItemProvider vscode/languages selector provider))
 
@@ -134,7 +177,14 @@
    
    Multiple providers can be registered for a language. In that case providers are asked in
    parallel and the results are merged. A failing provider (rejected promise or exception) will
-   not cause a failure of the whole operation."
+   not cause a failure of the whole operation.
+   
+   **Parameters:**
+   - `selector`: `DocumentSelector` - A selector that defines the documents this provider is applicable to.
+   - `provider`: `CodeActionProvider<CodeAction>` - A code action provider.
+   - `metadata`: `CodeActionProviderMetadata | undefined` - Metadata about the kind of code actions the provider provides.
+   
+   **Returns:** `Disposable` - A {@link Disposable} that unregisters this provider when being disposed."
   (^js [selector provider]
    (.registerCodeActionsProvider vscode/languages selector provider))
   (^js [selector provider metadata]
@@ -145,7 +195,13 @@
    
    Multiple providers can be registered for a language. In that case providers are asked in
    parallel and the results are merged. A failing provider (rejected promise or exception) will
-   not cause a failure of the whole operation."
+   not cause a failure of the whole operation.
+   
+   **Parameters:**
+   - `selector`: `DocumentSelector` - A selector that defines the documents this provider is applicable to.
+   - `provider`: `CodeLensProvider<CodeLens>` - A code lens provider.
+   
+   **Returns:** `Disposable` - A {@link Disposable} that unregisters this provider when being disposed."
   ^js [selector provider]
   (.registerCodeLensProvider vscode/languages selector provider))
 
@@ -154,7 +210,13 @@
    
    Multiple providers can be registered for a language. In that case providers are asked in
    parallel and the results are merged. A failing provider (rejected promise or exception) will
-   not cause a failure of the whole operation."
+   not cause a failure of the whole operation.
+   
+   **Parameters:**
+   - `selector`: `DocumentSelector` - A selector that defines the documents this provider is applicable to.
+   - `provider`: `DefinitionProvider` - A definition provider.
+   
+   **Returns:** `Disposable` - A {@link Disposable} that unregisters this provider when being disposed."
   ^js [selector provider]
   (.registerDefinitionProvider vscode/languages selector provider))
 
@@ -163,7 +225,13 @@
    
    Multiple providers can be registered for a language. In that case providers are asked in
    parallel and the results are merged. A failing provider (rejected promise or exception) will
-   not cause a failure of the whole operation."
+   not cause a failure of the whole operation.
+   
+   **Parameters:**
+   - `selector`: `DocumentSelector` - A selector that defines the documents this provider is applicable to.
+   - `provider`: `ImplementationProvider` - An implementation provider.
+   
+   **Returns:** `Disposable` - A {@link Disposable} that unregisters this provider when being disposed."
   ^js [selector provider]
   (.registerImplementationProvider vscode/languages selector provider))
 
@@ -172,7 +240,13 @@
    
    Multiple providers can be registered for a language. In that case providers are asked in
    parallel and the results are merged. A failing provider (rejected promise or exception) will
-   not cause a failure of the whole operation."
+   not cause a failure of the whole operation.
+   
+   **Parameters:**
+   - `selector`: `DocumentSelector` - A selector that defines the documents this provider is applicable to.
+   - `provider`: `TypeDefinitionProvider` - A type definition provider.
+   
+   **Returns:** `Disposable` - A {@link Disposable} that unregisters this provider when being disposed."
   ^js [selector provider]
   (.registerTypeDefinitionProvider vscode/languages selector provider))
 
@@ -181,7 +255,13 @@
    
    Multiple providers can be registered for a language. In that case providers are asked in
    parallel and the results are merged. A failing provider (rejected promise or exception) will
-   not cause a failure of the whole operation."
+   not cause a failure of the whole operation.
+   
+   **Parameters:**
+   - `selector`: `DocumentSelector` - A selector that defines the documents this provider is applicable to.
+   - `provider`: `DeclarationProvider` - A declaration provider.
+   
+   **Returns:** `Disposable` - A {@link Disposable} that unregisters this provider when being disposed."
   ^js [selector provider]
   (.registerDeclarationProvider vscode/languages selector provider))
 
@@ -190,7 +270,13 @@
    
    Multiple providers can be registered for a language. In that case providers are asked in
    parallel and the results are merged. A failing provider (rejected promise or exception) will
-   not cause a failure of the whole operation."
+   not cause a failure of the whole operation.
+   
+   **Parameters:**
+   - `selector`: `DocumentSelector` - A selector that defines the documents this provider is applicable to.
+   - `provider`: `HoverProvider` - A hover provider.
+   
+   **Returns:** `Disposable` - A {@link Disposable} that unregisters this provider when being disposed."
   ^js [selector provider]
   (.registerHoverProvider vscode/languages selector provider))
 
@@ -198,7 +284,13 @@
   "Register a provider that locates evaluatable expressions in text documents.
    The editor will evaluate the expression in the active debug session and will show the result in the debug hover.
    
-   If multiple providers are registered for a language an arbitrary provider will be used."
+   If multiple providers are registered for a language an arbitrary provider will be used.
+   
+   **Parameters:**
+   - `selector`: `DocumentSelector` - A selector that defines the documents this provider is applicable to.
+   - `provider`: `EvaluatableExpressionProvider` - An evaluatable expression provider.
+   
+   **Returns:** `Disposable` - A {@link Disposable} that unregisters this provider when being disposed."
   ^js [selector provider]
   (.registerEvaluatableExpressionProvider vscode/languages selector provider))
 
@@ -209,7 +301,13 @@
    
    Multiple providers can be registered for a language. In that case providers are asked in
    parallel and the results are merged. A failing provider (rejected promise or exception) will
-   not cause a failure of the whole operation."
+   not cause a failure of the whole operation.
+   
+   **Parameters:**
+   - `selector`: `DocumentSelector` - A selector that defines the documents this provider is applicable to.
+   - `provider`: `InlineValuesProvider` - An inline values provider.
+   
+   **Returns:** `Disposable` - A {@link Disposable} that unregisters this provider when being disposed."
   ^js [selector provider]
   (.registerInlineValuesProvider vscode/languages selector provider))
 
@@ -218,7 +316,13 @@
    
    Multiple providers can be registered for a language. In that case providers are sorted
    by their {@link languages.match score} and groups sequentially asked for document highlights.
-   The process stops when a provider returns a `non-falsy` or `non-failure` result."
+   The process stops when a provider returns a `non-falsy` or `non-failure` result.
+   
+   **Parameters:**
+   - `selector`: `DocumentSelector` - A selector that defines the documents this provider is applicable to.
+   - `provider`: `DocumentHighlightProvider` - A document highlight provider.
+   
+   **Returns:** `Disposable` - A {@link Disposable} that unregisters this provider when being disposed."
   ^js [selector provider]
   (.registerDocumentHighlightProvider vscode/languages selector provider))
 
@@ -227,7 +331,14 @@
    
    Multiple providers can be registered for a language. In that case providers are asked in
    parallel and the results are merged. A failing provider (rejected promise or exception) will
-   not cause a failure of the whole operation."
+   not cause a failure of the whole operation.
+   
+   **Parameters:**
+   - `selector`: `DocumentSelector` - A selector that defines the documents this provider is applicable to.
+   - `provider`: `DocumentSymbolProvider` - A document symbol provider.
+   - `meta-data`: `DocumentSymbolProviderMetadata | undefined` - metadata about the provider
+   
+   **Returns:** `Disposable` - A {@link Disposable} that unregisters this provider when being disposed."
   (^js [selector provider]
    (.registerDocumentSymbolProvider vscode/languages selector provider))
   (^js [selector provider meta-data]
@@ -238,7 +349,12 @@
    
    Multiple providers can be registered. In that case providers are asked in parallel and
    the results are merged. A failing provider (rejected promise or exception) will not cause
-   a failure of the whole operation."
+   a failure of the whole operation.
+   
+   **Parameters:**
+   - `provider`: `WorkspaceSymbolProvider<SymbolInformation>` - A workspace symbol provider.
+   
+   **Returns:** `Disposable` - A {@link Disposable} that unregisters this provider when being disposed."
   ^js [provider]
   (.registerWorkspaceSymbolProvider vscode/languages provider))
 
@@ -247,7 +363,13 @@
    
    Multiple providers can be registered for a language. In that case providers are asked in
    parallel and the results are merged. A failing provider (rejected promise or exception) will
-   not cause a failure of the whole operation."
+   not cause a failure of the whole operation.
+   
+   **Parameters:**
+   - `selector`: `DocumentSelector` - A selector that defines the documents this provider is applicable to.
+   - `provider`: `ReferenceProvider` - A reference provider.
+   
+   **Returns:** `Disposable` - A {@link Disposable} that unregisters this provider when being disposed."
   ^js [selector provider]
   (.registerReferenceProvider vscode/languages selector provider))
 
@@ -256,7 +378,13 @@
    
    Multiple providers can be registered for a language. In that case providers are sorted
    by their {@link languages.match score} and asked in sequence. The first provider producing a result
-   defines the result of the whole operation."
+   defines the result of the whole operation.
+   
+   **Parameters:**
+   - `selector`: `DocumentSelector` - A selector that defines the documents this provider is applicable to.
+   - `provider`: `RenameProvider` - A rename provider.
+   
+   **Returns:** `Disposable` - A {@link Disposable} that unregisters this provider when being disposed."
   ^js [selector provider]
   (.registerRenameProvider vscode/languages selector provider))
 
@@ -265,7 +393,14 @@
    
    Multiple providers can be registered for a language. In that case providers are sorted
    by their {@link languages.match score} and the best-matching provider is used. Failure
-   of the selected provider will cause a failure of the whole operation."
+   of the selected provider will cause a failure of the whole operation.
+   
+   **Parameters:**
+   - `selector`: `DocumentSelector` - A selector that defines the documents this provider is applicable to.
+   - `provider`: `DocumentSemanticTokensProvider` - A document semantic tokens provider.
+   - `legend`: `SemanticTokensLegend`
+   
+   **Returns:** `Disposable` - A {@link Disposable} that unregisters this provider when being disposed."
   ^js [selector provider legend]
   (.registerDocumentSemanticTokensProvider vscode/languages selector provider legend))
 
@@ -280,7 +415,14 @@
    
    Multiple providers can be registered for a language. In that case providers are sorted
    by their {@link languages.match score} and the best-matching provider is used. Failure
-   of the selected provider will cause a failure of the whole operation."
+   of the selected provider will cause a failure of the whole operation.
+   
+   **Parameters:**
+   - `selector`: `DocumentSelector` - A selector that defines the documents this provider is applicable to.
+   - `provider`: `DocumentRangeSemanticTokensProvider` - A document range semantic tokens provider.
+   - `legend`: `SemanticTokensLegend`
+   
+   **Returns:** `Disposable` - A {@link Disposable} that unregisters this provider when being disposed."
   ^js [selector provider legend]
   (.registerDocumentRangeSemanticTokensProvider vscode/languages selector provider legend))
 
@@ -289,7 +431,13 @@
    
    Multiple providers can be registered for a language. In that case providers are sorted
    by their {@link languages.match score} and the best-matching provider is used. Failure
-   of the selected provider will cause a failure of the whole operation."
+   of the selected provider will cause a failure of the whole operation.
+   
+   **Parameters:**
+   - `selector`: `DocumentSelector` - A selector that defines the documents this provider is applicable to.
+   - `provider`: `DocumentFormattingEditProvider` - A document formatting edit provider.
+   
+   **Returns:** `Disposable` - A {@link Disposable} that unregisters this provider when being disposed."
   ^js [selector provider]
   (.registerDocumentFormattingEditProvider vscode/languages selector provider))
 
@@ -302,7 +450,13 @@
    
    Multiple providers can be registered for a language. In that case providers are sorted
    by their {@link languages.match score} and the best-matching provider is used. Failure
-   of the selected provider will cause a failure of the whole operation."
+   of the selected provider will cause a failure of the whole operation.
+   
+   **Parameters:**
+   - `selector`: `DocumentSelector` - A selector that defines the documents this provider is applicable to.
+   - `provider`: `DocumentRangeFormattingEditProvider` - A document range formatting edit provider.
+   
+   **Returns:** `Disposable` - A {@link Disposable} that unregisters this provider when being disposed."
   ^js [selector provider]
   (.registerDocumentRangeFormattingEditProvider vscode/languages selector provider))
 
@@ -311,7 +465,15 @@
    
    Multiple providers can be registered for a language. In that case providers are sorted
    by their {@link languages.match score} and the best-matching provider is used. Failure
-   of the selected provider will cause a failure of the whole operation."
+   of the selected provider will cause a failure of the whole operation.
+   
+   **Parameters:**
+   - `selector`: `DocumentSelector` - A selector that defines the documents this provider is applicable to.
+   - `provider`: `OnTypeFormattingEditProvider` - An on type formatting edit provider.
+   - `first-trigger-character`: `string` - A character on which formatting should be triggered, like `}`.
+   - `more-trigger-character`: `string[]` - More trigger characters.
+   
+   **Returns:** `Disposable` - A {@link Disposable} that unregisters this provider when being disposed."
   ^js [selector provider first-trigger-character & more-trigger-character]
   (.. vscode/languages -registerOnTypeFormattingEditProvider (apply vscode/languages (to-array (list* selector provider first-trigger-character more-trigger-character)))))
 
@@ -320,7 +482,15 @@
    
    Multiple providers can be registered for a language. In that case providers are sorted
    by their {@link languages.match score} and called sequentially until a provider returns a
-   valid result."
+   valid result.
+   
+   **Parameters:**
+   - `selector`: `DocumentSelector` - A selector that defines the documents this provider is applicable to.
+   - `provider`: `SignatureHelpProvider` - A signature help provider.
+   - `metadata`: `SignatureHelpProviderMetadata` - Information about the provider.
+   - `trigger-characters`: `string[]` - Trigger signature help when the user types one of the characters, like `,` or `(`.
+   
+   **Returns:** `Disposable` - A {@link Disposable} that unregisters this provider when being disposed."
   (^js [selector provider & trigger-characters]
    (.. vscode/languages -registerSignatureHelpProvider (apply vscode/languages (to-array (list* selector provider trigger-characters)))))
   (^js [selector provider metadata]
@@ -331,7 +501,13 @@
    
    Multiple providers can be registered for a language. In that case providers are asked in
    parallel and the results are merged. A failing provider (rejected promise or exception) will
-   not cause a failure of the whole operation."
+   not cause a failure of the whole operation.
+   
+   **Parameters:**
+   - `selector`: `DocumentSelector` - A selector that defines the documents this provider is applicable to.
+   - `provider`: `DocumentLinkProvider<DocumentLink>` - A document link provider.
+   
+   **Returns:** `Disposable` - A {@link Disposable} that unregisters this provider when being disposed."
   ^js [selector provider]
   (.registerDocumentLinkProvider vscode/languages selector provider))
 
@@ -340,7 +516,13 @@
    
    Multiple providers can be registered for a language. In that case providers are asked in
    parallel and the results are merged. A failing provider (rejected promise or exception) will
-   not cause a failure of the whole operation."
+   not cause a failure of the whole operation.
+   
+   **Parameters:**
+   - `selector`: `DocumentSelector` - A selector that defines the documents this provider is applicable to.
+   - `provider`: `DocumentColorProvider` - A color provider.
+   
+   **Returns:** `Disposable` - A {@link Disposable} that unregisters this provider when being disposed."
   ^js [selector provider]
   (.registerColorProvider vscode/languages selector provider))
 
@@ -349,7 +531,13 @@
    
    Multiple providers can be registered for a language. In that case providers are asked in
    parallel and the results are merged. A failing provider (rejected promise or exception) will
-   not cause a failure of the whole operation."
+   not cause a failure of the whole operation.
+   
+   **Parameters:**
+   - `selector`: `DocumentSelector` - A selector that defines the documents this provider is applicable to.
+   - `provider`: `InlayHintsProvider<InlayHint>` - An inlay hints provider.
+   
+   **Returns:** `Disposable` - A {@link Disposable} that unregisters this provider when being disposed."
   ^js [selector provider]
   (.registerInlayHintsProvider vscode/languages selector provider))
 
@@ -362,7 +550,13 @@
    If a folding range overlaps with an other range that has a smaller position, it is also ignored.
    
    A failing provider (rejected promise or exception) will
-   not cause a failure of the whole operation."
+   not cause a failure of the whole operation.
+   
+   **Parameters:**
+   - `selector`: `DocumentSelector` - A selector that defines the documents this provider is applicable to.
+   - `provider`: `FoldingRangeProvider` - A folding range provider.
+   
+   **Returns:** `Disposable` - A {@link Disposable} that unregisters this provider when being disposed."
   ^js [selector provider]
   (.registerFoldingRangeProvider vscode/languages selector provider))
 
@@ -371,17 +565,35 @@
    
    Multiple providers can be registered for a language. In that case providers are asked in
    parallel and the results are merged. A failing provider (rejected promise or exception) will
-   not cause a failure of the whole operation."
+   not cause a failure of the whole operation.
+   
+   **Parameters:**
+   - `selector`: `DocumentSelector` - A selector that defines the documents this provider is applicable to.
+   - `provider`: `SelectionRangeProvider` - A selection range provider.
+   
+   **Returns:** `Disposable` - A {@link Disposable} that unregisters this provider when being disposed."
   ^js [selector provider]
   (.registerSelectionRangeProvider vscode/languages selector provider))
 
 (defn register-call-hierarchy-provider
-  "Register a call hierarchy provider."
+  "Register a call hierarchy provider.
+   
+   **Parameters:**
+   - `selector`: `DocumentSelector` - A selector that defines the documents this provider is applicable to.
+   - `provider`: `CallHierarchyProvider` - A call hierarchy provider.
+   
+   **Returns:** `Disposable` - A {@link Disposable} that unregisters this provider when being disposed."
   ^js [selector provider]
   (.registerCallHierarchyProvider vscode/languages selector provider))
 
 (defn register-type-hierarchy-provider
-  "Register a type hierarchy provider."
+  "Register a type hierarchy provider.
+   
+   **Parameters:**
+   - `selector`: `DocumentSelector` - A selector that defines the documents this provider is applicable to.
+   - `provider`: `TypeHierarchyProvider` - A type hierarchy provider.
+   
+   **Returns:** `Disposable` - A {@link Disposable} that unregisters this provider when being disposed."
   ^js [selector provider]
   (.registerTypeHierarchyProvider vscode/languages selector provider))
 
@@ -390,23 +602,48 @@
    
    Multiple providers can be registered for a language. In that case providers are sorted
    by their {@link languages.match score} and the best-matching provider that has a result is used. Failure
-   of the selected provider will cause a failure of the whole operation."
+   of the selected provider will cause a failure of the whole operation.
+   
+   **Parameters:**
+   - `selector`: `DocumentSelector` - A selector that defines the documents this provider is applicable to.
+   - `provider`: `LinkedEditingRangeProvider` - A linked editing range provider.
+   
+   **Returns:** `Disposable` - A {@link Disposable} that unregisters this provider when being disposed."
   ^js [selector provider]
   (.registerLinkedEditingRangeProvider vscode/languages selector provider))
 
 (defn register-document-drop-edit-provider
-  "Registers a new {@link DocumentDropEditProvider }."
+  "Registers a new {@link DocumentDropEditProvider }.
+   
+   **Parameters:**
+   - `selector`: `DocumentSelector` - A selector that defines the documents this provider applies to.
+   - `provider`: `DocumentDropEditProvider` - A drop provider.
+   
+   **Returns:** `Disposable` - A {@link Disposable} that unregisters this provider when disposed of."
   ^js [selector provider]
   (.registerDocumentDropEditProvider vscode/languages selector provider))
 
 (defn set-language-configuration
-  "Set a {@link LanguageConfiguration language configuration} for a language."
+  "Set a {@link LanguageConfiguration language configuration} for a language.
+   
+   **Parameters:**
+   - `language`: `string` - A language identifier like `typescript`.
+   - `configuration`: `LanguageConfiguration` - Language configuration.
+   
+   **Returns:** `Disposable` - A {@link Disposable} that unsets this configuration."
   ^js [language configuration]
   (.setLanguageConfiguration vscode/languages language configuration))
 
 (defn on-did-change-diagnostics
   "An {@link Event } which fires when the global set of diagnostics changes. This is
-   newly added and removed diagnostics."
+   newly added and removed diagnostics.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js []
    (.-onDidChangeDiagnostics vscode/languages))
   (^js [listener]

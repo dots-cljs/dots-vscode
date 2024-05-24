@@ -12,7 +12,16 @@
    implicitly when typing words or trigger characters.")
 
 (defn provide-completion-items
-  "Provide completion items for the given position and document."
+  "Provide completion items for the given position and document.
+   
+   **Parameters:**
+   - `document`: `TextDocument` - The document in which the command was invoked.
+   - `position`: `Position` - The position at which the command was invoked.
+   - `token`: `CancellationToken` - A cancellation token.
+   - `context`: `CompletionContext` - How the completion was triggered.
+   
+   **Returns:** `ProviderResult<T[] | CompletionList<T>>` - An array of completions, a {@link CompletionListcompletion list}, or a thenable that resolves to either.
+   The lack of a result can be signaled by returning `undefined`, `null`, or an empty array."
   ^js [completion-item-provider document position token context]
   (.provideCompletionItems ^js completion-item-provider document position token context))
 
@@ -28,6 +37,13 @@
    
    This function may fill in {@link CompletionItem.additionalTextEdits additionalTextEdits}. However, that means an item might be
    inserted *before* resolving is done and in that case the editor will do a best effort to still apply those additional
-   text edits."
+   text edits.
+   
+   **Parameters:**
+   - `item`: `T` - A completion item currently active in the UI.
+   - `token`: `CancellationToken` - A cancellation token.
+   
+   **Returns:** `ProviderResult<T>` - The resolved completion item or a thenable that resolves to of such. It is OK to return the given
+   `item`. When no result is returned, the given `item` will be used."
   ^js [completion-item-provider item token]
   (.resolveCompletionItem ^js completion-item-provider item token))

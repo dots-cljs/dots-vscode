@@ -12,6 +12,8 @@
   "Delete the current backup.
    
    This is called by the editor when it is clear the current backup is no longer needed, such as when a new backup
-   is made or when the file is saved."
+   is made or when the file is saved.
+   
+   **Returns:** `void`"
   ^js [custom-document-backup]
   (.delete ^js custom-document-backup))

@@ -37,15 +37,29 @@
    tree objects in a data transfer. See the documentation for `DataTransferItem` for how best to take advantage of this.
    
    To add a data transfer item that can be dragged into the editor, use the application specific mime type \"text/uri-list\".
-   The data for \"text/uri-list\" should be a string with `toString()`ed Uris separated by newlines. To specify a cursor position in the file,
-   set the Uri's fragment to `L3,5`, where 3 is the line number and 5 is the column number."
+   The data for \"text/uri-list\" should be a string with `toString()`ed Uris separated by `\\r\\n`. To specify a cursor position in the file,
+   set the Uri's fragment to `L3,5`, where 3 is the line number and 5 is the column number.
+   
+   **Parameters:**
+   - `source`: `readonly T[]` - The source items for the drag and drop operation.
+   - `data-transfer`: `DataTransfer` - The data transfer associated with this drag.
+   - `token`: `CancellationToken` - A cancellation token indicating that drag has been cancelled.
+   
+   **Returns:** `void | Thenable<void>`"
   ^js [tree-drag-and-drop-controller source data-transfer token]
   (.handleDrag ^js tree-drag-and-drop-controller source data-transfer token))
 
 (defn handle-drop
   "Called when a drag and drop action results in a drop on the tree that this `DragAndDropController` belongs to.
    
-   Extensions should fire {@link TreeDataProvider.onDidChangeTreeData onDidChangeTreeData} for any elements that need to be refreshed."
+   Extensions should fire {@link TreeDataProvider.onDidChangeTreeData onDidChangeTreeData} for any elements that need to be refreshed.
+   
+   **Parameters:**
+   - `target`: `T | undefined` - The target tree element that the drop is occurring on. When undefined, the target is the root.
+   - `data-transfer`: `DataTransfer` - The data transfer items of the source of the drag.
+   - `token`: `CancellationToken` - A cancellation token indicating that the drop has been cancelled.
+   
+   **Returns:** `void | Thenable<void>`"
   (^js [tree-drag-and-drop-controller]
    (.handleDrop ^js tree-drag-and-drop-controller))
   (^js [tree-drag-and-drop-controller target]

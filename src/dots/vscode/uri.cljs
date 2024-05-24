@@ -46,7 +46,7 @@
    ```ts
    const u = URI.parse('file://server/c$/folder/file.txt')
    u.authority === 'server'
-   u.path === '/shares/c$/file.txt'
+   u.path === '/c$/folder/file.txt'
    u.fsPath === '\\\\server\\c$\\folder\\file.txt'
    ```"
   ^js [uri]
@@ -59,7 +59,14 @@
    let file = Uri.parse('before:some/file/path');
    let other = file.with({ scheme: 'after' });
    assert.ok(other.toString() === 'after:some/file/path');
-   ```"
+   ```
+   
+   **Parameters:**
+   - `change`: `{ scheme?: string | undefined; authority?: string | undefined; path?: string | undefined; query?: string | undefined; fragment?: string | undefined; }` - An object that describes a change to this Uri. To unset components use `null` or
+   the empty string.
+   
+   **Returns:** `Uri` - A new Uri that reflects the given change. Will return `this` Uri if the change
+   is not changing anything."
   ^js [uri change]
   (.with ^js uri change))
 
@@ -74,14 +81,22 @@
    but not incorrect, results. For instance, colons are encoded to `%3A` which might be unexpected
    in file-uri. Also `&` and `=` will be encoded which might be unexpected for http-uris. For stability
    reasons this cannot be changed anymore. If you suffer from too aggressive encoding you should use
-   the `skipEncoding`-argument: `uri.toString(true)`."
+   the `skipEncoding`-argument: `uri.toString(true)`.
+   
+   **Parameters:**
+   - `skip-encoding?`: `boolean | undefined` - Do not percentage-encode the result, defaults to `false`. Note that
+   the `#` and `?` characters occurring in the path will always be encoded.
+   
+   **Returns:** `string` - A string representation of this Uri."
   (^js [uri]
    (.toString ^js uri))
   (^js [uri skip-encoding?]
    (.toString ^js uri skip-encoding?)))
 
 (defn to-json
-  "Returns a JSON representation of this Uri."
+  "Returns a JSON representation of this Uri.
+   
+   **Returns:** `any` - An object."
   ^js [uri]
   (.toJSON ^js uri))
 
@@ -91,7 +106,13 @@
    
    *Note* that for a while uris without a `scheme` were accepted. That is not correct
    as all uris should have a scheme. To avoid breakage of existing code the optional
-   `strict`-argument has been added. We *strongly* advise to use it, e.g. `Uri.parse('my:uri', true)`"
+   `strict`-argument has been added. We *strongly* advise to use it, e.g. `Uri.parse('my:uri', true)`
+   
+   **Parameters:**
+   - `value`: `string` - The string value of an Uri.
+   - `strict?`: `boolean | undefined` - Throw an error when `value` is empty or when no `scheme` can be parsed.
+   
+   **Returns:** `Uri` - A new Uri instance."
   (^js [value]
    (.parse vscode/Uri value))
   (^js [value strict?]
@@ -115,7 +136,12 @@
    bad.scheme === 'file';
    bad.path === '/coding/c'; // path is now broken
    bad.fragment === '/project1';
-   ```"
+   ```
+   
+   **Parameters:**
+   - `path`: `string` - A file system or UNC path.
+   
+   **Returns:** `Uri` - A new Uri instance."
   ^js [path]
   (.file vscode/Uri path))
 
@@ -133,11 +159,22 @@
    - for `file`-uris on windows, the backslash-character (`\\`) is considered a path-separator
    - the `..`-segment denotes the parent segment, the `.` denotes the current segment
    - paths have a root which always remains, for instance on windows drive-letters are roots
-   so that is true: `joinPath(Uri.file('file:///c:/root'), '../../other').fsPath === 'c:/other'`"
+   so that is true: `joinPath(Uri.file('file:///c:/root'), '../../other').fsPath === 'c:/other'`
+   
+   **Parameters:**
+   - `base`: `Uri` - An uri. Must have a path.
+   - `path-segments`: `string[]` - One more more path fragments
+   
+   **Returns:** `Uri` - A new uri which path is joined with the given fragments"
   ^js [base & path-segments]
   (.. vscode/Uri -joinPath (apply vscode/Uri (to-array (cons base path-segments)))))
 
 (defn from
-  "Create an URI from its component parts"
+  "Create an URI from its component parts
+   
+   **Parameters:**
+   - `components`: `{ readonly scheme: string; readonly authority?: string | undefined; readonly path?: string | undefined; readonly query?: string | undefined; readonly fragment?: string | undefined; }` - The component parts of an Uri.
+   
+   **Returns:** `Uri` - A new Uri instance."
   ^js [components]
   (.from vscode/Uri components))

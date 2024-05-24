@@ -37,7 +37,13 @@
    
    To implement `save`, the implementer must persist the custom editor. This usually means writing the
    file data for the custom document to disk. After `save` completes, any associated editor instances will
-   no longer be marked as dirty."
+   no longer be marked as dirty.
+   
+   **Parameters:**
+   - `document`: `T` - Document to save.
+   - `cancellation`: `CancellationToken` - Token that signals the save is no longer required (for example, if another save was triggered).
+   
+   **Returns:** `Thenable<void>` - Thenable signaling that saving has completed."
   ^js [custom-editor-provider document cancellation]
   (.saveCustomDocument ^js custom-editor-provider document cancellation))
 
@@ -47,7 +53,14 @@
    This method is invoked by the editor when the user triggers 'save as' on a custom editor. The implementer must
    persist the custom editor to `destination`.
    
-   When the user accepts save as, the current editor is be replaced by an non-dirty editor for the newly saved file."
+   When the user accepts save as, the current editor is be replaced by an non-dirty editor for the newly saved file.
+   
+   **Parameters:**
+   - `document`: `T` - Document to save.
+   - `destination`: `Uri` - Location to save to.
+   - `cancellation`: `CancellationToken` - Token that signals the save is no longer required.
+   
+   **Returns:** `Thenable<void>` - Thenable signaling that saving has completed."
   ^js [custom-editor-provider document destination cancellation]
   (.saveCustomDocumentAs ^js custom-editor-provider document destination cancellation))
 
@@ -59,7 +72,13 @@
    
    To implement `revert`, the implementer must make sure all editor instances (webviews) for `document`
    are displaying the document in the same state is saved in. This usually means reloading the file from the
-   workspace."
+   workspace.
+   
+   **Parameters:**
+   - `document`: `T` - Document to revert.
+   - `cancellation`: `CancellationToken` - Token that signals the revert is no longer required.
+   
+   **Returns:** `Thenable<void>` - Thenable signaling that the change has completed."
   ^js [custom-editor-provider document cancellation]
   (.revertCustomDocument ^js custom-editor-provider document cancellation))
 
@@ -75,7 +94,17 @@
    `backup` is triggered approximately one second after the user stops editing the document. If the user
    rapidly edits the document, `backup` will not be invoked until the editing stops.
    
-   `backup` is not invoked when `auto save` is enabled (since auto save already persists the resource)."
+   `backup` is not invoked when `auto save` is enabled (since auto save already persists the resource).
+   
+   **Parameters:**
+   - `document`: `T` - Document to backup.
+   - `context`: `CustomDocumentBackupContext` - Information that can be used to backup the document.
+   - `cancellation`: `CancellationToken` - Token that signals the current backup since a new backup is coming in. It is up to your
+   extension to decided how to respond to cancellation. If for example your extension is backing up a large file
+   in an operation that takes time to complete, your extension may decide to finish the ongoing backup rather
+   than cancelling it to ensure that the editor has some valid backup.
+   
+   **Returns:** `Thenable<CustomDocumentBackup>`"
   ^js [custom-editor-provider document context cancellation]
   (.backupCustomDocument ^js custom-editor-provider document context cancellation))
 
@@ -87,13 +116,31 @@
    
    Already opened `CustomDocument` are re-used if the user opened additional editors. When all editors for a
    given resource are closed, the `CustomDocument` is disposed of. Opening an editor at this point will
-   trigger another call to `openCustomDocument`."
+   trigger another call to `openCustomDocument`.
+   
+   **Parameters:**
+   - `uri`: `Uri` - Uri of the document to open.
+   - `open-context`: `CustomDocumentOpenContext` - Additional information about the opening custom document.
+   - `token`: `CancellationToken` - A cancellation token that indicates the result is no longer needed.
+   
+   **Returns:** `T | Thenable<T>` - The custom document."
   ^js [custom-editor-provider uri open-context token]
   (.openCustomDocument ^js custom-editor-provider uri open-context token))
 
 (defn resolve-custom-editor
   "Resolve a custom editor for a given resource.
    
-   This is called whenever the user opens a new editor for this `CustomEditorProvider`."
+   This is called whenever the user opens a new editor for this `CustomEditorProvider`.
+   
+   **Parameters:**
+   - `document`: `T` - Document for the resource being resolved.
+   - `webview-panel`: `WebviewPanel` - The webview panel used to display the editor UI for this resource.
+   
+   During resolve, the provider must fill in the initial html for the content webview panel and hook up all
+   the event listeners on it that it is interested in. The provider can also hold onto the `WebviewPanel` to
+   use later for example in a command. See {@linkcode WebviewPanel } for additional details.
+   - `token`: `CancellationToken` - A cancellation token that indicates the result is no longer needed.
+   
+   **Returns:** `void | Thenable<void>` - Optional thenable indicating that the custom editor has been resolved."
   ^js [custom-editor-provider document webview-panel token]
   (.resolveCustomEditor ^js custom-editor-provider document webview-panel token))

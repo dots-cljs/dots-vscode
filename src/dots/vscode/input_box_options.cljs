@@ -24,7 +24,7 @@
 (defn value-selection
   "Selection of the pre-filled {@linkcode InputBoxOptions.value value}. Defined as tuple of two number where the
    first is the inclusive start index and the second the exclusive end index. When `undefined` the whole
-   word will be selected, when empty (start equals end) only the cursor will be set,
+   pre-filled value will be selected, when empty (start equals end) only the cursor will be set,
    otherwise the defined range will be selected."
   ^js [input-box-options]
   (.-valueSelection ^js input-box-options))
@@ -32,7 +32,7 @@
 (defn set-value-selection!
   "Selection of the pre-filled {@linkcode InputBoxOptions.value value}. Defined as tuple of two number where the
    first is the inclusive start index and the second the exclusive end index. When `undefined` the whole
-   word will be selected, when empty (start equals end) only the cursor will be set,
+   pre-filled value will be selected, when empty (start equals end) only the cursor will be set,
    otherwise the defined range will be selected."
   ^js [input-box-options value]
   (set! (.-valueSelection ^js input-box-options) value))
@@ -81,6 +81,11 @@
 
 (defn validate-input
   "An optional function that will be called to validate input and to give a hint
-   to the user."
+   to the user.
+   
+   **Parameters:**
+   - `value`: `string` - The current value of the input box.
+   
+   **Returns:** `string | InputBoxValidationMessage | Thenable<string | InputBoxValidationMessage | null | undefined> | null | undefined` - Either a human-readable string which is presented as an error message or an {@link InputBoxValidationMessage}which can provide a specific message severity. Return `undefined`, `null`, or the empty string when 'value' is valid."
   ^js [input-box-options value]
   (.validateInput ^js input-box-options value))

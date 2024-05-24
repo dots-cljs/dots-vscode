@@ -109,6 +109,8 @@
   (set! (.-accessibilityInformation ^js language-status-item) value))
 
 (defn dispose
-  "Dispose and free associated resources."
+  "Dispose and free associated resources.
+   
+   **Returns:** `void`"
   ^js [language-status-item]
   (.dispose ^js language-status-item))

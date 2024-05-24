@@ -3,7 +3,14 @@
    semantic tokens.")
 
 (defn on-did-change-semantic-tokens
-  "An optional event to signal that the semantic tokens from this provider have changed."
+  "An optional event to signal that the semantic tokens from this provider have changed.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js [document-semantic-tokens-provider]
    (.-onDidChangeSemanticTokens ^js document-semantic-tokens-provider))
   (^js [document-semantic-tokens-provider listener]
@@ -71,7 +78,13 @@
    ```
       // 1st token,  2nd token,  3rd token
       [  2,5,3,0,3,  0,5,4,1,0,  3,2,7,2,0 ]
-   ```"
+   ```
+   
+   **Parameters:**
+   - `document`: `TextDocument`
+   - `token`: `CancellationToken`
+   
+   **Returns:** `ProviderResult<SemanticTokens>`"
   ^js [document-semantic-tokens-provider document token]
   (.provideDocumentSemanticTokens ^js document-semantic-tokens-provider document token))
 
@@ -102,6 +115,13 @@
    ```
    
    *NOTE*: If the provider cannot compute `SemanticTokensEdits`, it can \"give up\" and return all the tokens in the document again.
-   *NOTE*: All edits in `SemanticTokensEdits` contain indices in the old integers array, so they all refer to the previous result state."
+   *NOTE*: All edits in `SemanticTokensEdits` contain indices in the old integers array, so they all refer to the previous result state.
+   
+   **Parameters:**
+   - `document`: `TextDocument`
+   - `previous-result-id`: `string`
+   - `token`: `CancellationToken`
+   
+   **Returns:** `ProviderResult<SemanticTokens | SemanticTokensEdits>`"
   ^js [document-semantic-tokens-provider document previous-result-id token]
   (.provideDocumentSemanticTokensEdits ^js document-semantic-tokens-provider document previous-result-id token))

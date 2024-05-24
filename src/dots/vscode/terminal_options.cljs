@@ -58,7 +58,7 @@
   "Whether the terminal process environment should be exactly as provided in
    `TerminalOptions.env`. When this is false (default), the environment will be based on the
    window's environment and also apply configured platform settings like
-   `terminal.integrated.windows.env` on top. When this is true, the complete environment
+   `terminal.integrated.env.windows` on top. When this is true, the complete environment
    must be provided as nothing will be inherited from the process or any configuration."
   ^js [terminal-options]
   (.-strictEnv ^js terminal-options))
@@ -67,7 +67,7 @@
   "Whether the terminal process environment should be exactly as provided in
    `TerminalOptions.env`. When this is false (default), the environment will be based on the
    window's environment and also apply configured platform settings like
-   `terminal.integrated.windows.env` on top. When this is true, the complete environment
+   `terminal.integrated.env.windows` on top. When this is true, the complete environment
    must be provided as nothing will be inherited from the process or any configuration."
   ^js [terminal-options value]
   (set! (.-strictEnv ^js terminal-options) value))
@@ -77,7 +77,7 @@
    until `Terminal.show` is called. The typical usage for this is when you need to run
    something that may need interactivity but only want to tell the user about it when
    interaction is needed. Note that the terminals will still be exposed to all extensions
-   as normal."
+   as normal. The hidden terminals will not be restored when the workspace is next opened."
   ^js [terminal-options]
   (.-hideFromUser ^js terminal-options))
 
@@ -86,7 +86,7 @@
    until `Terminal.show` is called. The typical usage for this is when you need to run
    something that may need interactivity but only want to tell the user about it when
    interaction is needed. Note that the terminals will still be exposed to all extensions
-   as normal."
+   as normal. The hidden terminals will not be restored when the workspace is next opened."
   ^js [terminal-options value]
   (set! (.-hideFromUser ^js terminal-options) value))
 

@@ -68,3 +68,13 @@
   "Controls whether the terminal is cleared before executing the task."
   ^js [task-presentation-options value]
   (set! (.-clear ^js task-presentation-options) value))
+
+(defn close?
+  "Controls whether the terminal is closed after executing the task."
+  ^js [task-presentation-options]
+  (.-close ^js task-presentation-options))
+
+(defn set-close!
+  "Controls whether the terminal is closed after executing the task."
+  ^js [task-presentation-options value]
+  (set! (.-close ^js task-presentation-options) value))

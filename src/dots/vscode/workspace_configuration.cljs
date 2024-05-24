@@ -63,14 +63,25 @@
   (:refer-clojure :exclude [get update]))
 
 (defn get
-  "Return a value from this configuration."
+  "Return a value from this configuration.
+   
+   **Parameters:**
+   - `section`: `string` - Configuration name, supports _dotted_ names.
+   - `default-value`: `T` - A value should be returned when no value could be found, is `undefined`.
+   
+   **Returns:** `T` - The value `section` denotes or the default."
   (^js [workspace-configuration section]
    (.get ^js workspace-configuration section))
   (^js [workspace-configuration section default-value]
    (.get ^js workspace-configuration section default-value)))
 
 (defn has?
-  "Check if this configuration has a certain value."
+  "Check if this configuration has a certain value.
+   
+   **Parameters:**
+   - `section`: `string` - Configuration name, supports _dotted_ names.
+   
+   **Returns:** `boolean` - `true` if the section doesn't resolve to `undefined`."
   ^js [workspace-configuration section]
   (.has ^js workspace-configuration section))
 
@@ -83,7 +94,12 @@
    Also provides all language ids under which the given configuration setting is defined.
    
    *Note:* The configuration name must denote a leaf in the configuration tree
-   (`editor.fontSize` vs `editor`) otherwise no result is returned."
+   (`editor.fontSize` vs `editor`) otherwise no result is returned.
+   
+   **Parameters:**
+   - `section`: `string` - Configuration name, supports _dotted_ names.
+   
+   **Returns:** `{ key: string; defaultValue?: T | undefined; globalValue?: T | undefined; workspaceValue?: T | undefined; workspaceFolderValue?: T | undefined; defaultLanguageValue?: T | undefined; globalLanguageValue?: T | undefined; workspaceLanguageValue?: T | undefined; workspaceFolderLanguageValue?: T | undefined; languageIds?...` - Information about a configuration setting or `undefined`."
   ^js [workspace-configuration section]
   (.inspect ^js workspace-configuration section))
 
@@ -97,7 +113,21 @@
    - {@link ConfigurationTarget.WorkspaceFolder Workspace folder settings}: Changes the value for settings from one of the {@link workspace.workspaceFolders Workspace Folders} under which the requested resource belongs to.
    - Language settings: Changes the value for the requested languageId.
    
-   *Note:* To remove a configuration value use `undefined`, like so: `config.update('somekey', undefined)`"
+   *Note:* To remove a configuration value use `undefined`, like so: `config.update('somekey', undefined)`
+   
+   **Parameters:**
+   - `section`: `string` - Configuration name, supports _dotted_ names.
+   - `value`: `any` - The new value.
+   - `configuration-target?`: `boolean | ConfigurationTarget | null | undefined` - The {@link ConfigurationTarget configuration target} or a boolean value.
+   - If `true` updates {@link ConfigurationTarget.Global Global settings}.
+   - If `false` updates {@link ConfigurationTarget.Workspace Workspace settings}.
+   - If `undefined` or `null` updates to {@link ConfigurationTarget.WorkspaceFolder Workspace folder settings} if configuration is resource specific,
+   otherwise to {@link ConfigurationTarget.Workspace Workspace settings}.
+   - `override-in-language?`: `boolean | undefined` - Whether to update the value in the scope of requested languageId or not.
+   - If `true` updates the value under the requested languageId.
+   - If `undefined` updates the value under the requested languageId only if the configuration is defined for the language.
+   
+   **Returns:** `Thenable<void>`"
   (^js [workspace-configuration section value]
    (.update ^js workspace-configuration section value))
   (^js [workspace-configuration section value configuration-target?]

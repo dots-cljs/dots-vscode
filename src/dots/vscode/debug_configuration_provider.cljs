@@ -5,7 +5,13 @@
 
 (defn provide-debug-configurations
   "Provides {@link DebugConfiguration debug configuration} to the debug service. If more than one debug configuration provider is
-   registered for the same type, debug configurations are concatenated in arbitrary order."
+   registered for the same type, debug configurations are concatenated in arbitrary order.
+   
+   **Parameters:**
+   - `folder`: `WorkspaceFolder | undefined` - The workspace folder for which the configurations are used or `undefined` for a folderless setup.
+   - `token`: `CancellationToken | undefined` - A cancellation token.
+   
+   **Returns:** `ProviderResult<DebugConfiguration[]>` - An array of {@link DebugConfigurationdebug configurations}."
   (^js [debug-configuration-provider]
    (.provideDebugConfigurations ^js debug-configuration-provider))
   (^js [debug-configuration-provider folder]
@@ -18,7 +24,14 @@
    If more than one debug configuration provider is registered for the same type, the resolveDebugConfiguration calls are chained
    in arbitrary order and the initial debug configuration is piped through the chain.
    Returning the value 'undefined' prevents the debug session from starting.
-   Returning the value 'null' prevents the debug session from starting and opens the underlying debug configuration instead."
+   Returning the value 'null' prevents the debug session from starting and opens the underlying debug configuration instead.
+   
+   **Parameters:**
+   - `folder`: `WorkspaceFolder | undefined` - The workspace folder from which the configuration originates from or `undefined` for a folderless setup.
+   - `debug-configuration`: `DebugConfiguration` - The {@link DebugConfiguration debug configuration} to resolve.
+   - `token`: `CancellationToken | undefined` - A cancellation token.
+   
+   **Returns:** `ProviderResult<DebugConfiguration>` - The resolved debug configuration or undefined or null."
   (^js [debug-configuration-provider]
    (.resolveDebugConfiguration ^js debug-configuration-provider))
   (^js [debug-configuration-provider folder]
@@ -34,7 +47,14 @@
    If more than one debug configuration provider is registered for the same type, the 'resolveDebugConfigurationWithSubstitutedVariables' calls are chained
    in arbitrary order and the initial debug configuration is piped through the chain.
    Returning the value 'undefined' prevents the debug session from starting.
-   Returning the value 'null' prevents the debug session from starting and opens the underlying debug configuration instead."
+   Returning the value 'null' prevents the debug session from starting and opens the underlying debug configuration instead.
+   
+   **Parameters:**
+   - `folder`: `WorkspaceFolder | undefined` - The workspace folder from which the configuration originates from or `undefined` for a folderless setup.
+   - `debug-configuration`: `DebugConfiguration` - The {@link DebugConfiguration debug configuration} to resolve.
+   - `token`: `CancellationToken | undefined` - A cancellation token.
+   
+   **Returns:** `ProviderResult<DebugConfiguration>` - The resolved debug configuration or undefined or null."
   (^js [debug-configuration-provider]
    (.resolveDebugConfigurationWithSubstitutedVariables ^js debug-configuration-provider))
   (^js [debug-configuration-provider folder]

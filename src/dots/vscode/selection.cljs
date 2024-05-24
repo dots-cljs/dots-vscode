@@ -67,28 +67,59 @@
   (set! (.-isSingleLine ^js selection) value))
 
 (defn contains?
-  "Check if a position or a range is contained in this range."
+  "Check if a position or a range is contained in this range.
+   
+   **Parameters:**
+   - `position-or-range`: `Range | Position` - A position or a range.
+   
+   **Returns:** `boolean` - `true` if the position or range is inside or equal
+   to this range."
   ^js [selection position-or-range]
   (.contains ^js selection position-or-range))
 
 (defn equal?
-  "Check if `other` equals this range."
+  "Check if `other` equals this range.
+   
+   **Parameters:**
+   - `other`: `Range` - A range.
+   
+   **Returns:** `boolean` - `true` when start and end are {@link Position.isEqualequal} to
+   start and end of this range."
   ^js [selection other]
   (.isEqual ^js selection other))
 
 (defn intersection
   "Intersect `range` with this range and returns a new range or `undefined`
-   if the ranges have no overlap."
+   if the ranges have no overlap.
+   
+   **Parameters:**
+   - `range`: `Range` - A range.
+   
+   **Returns:** `Range | undefined` - A range of the greater start and smaller end positions. Will
+   return undefined when there is no overlap."
   ^js [selection range]
   (.intersection ^js selection range))
 
 (defn union
-  "Compute the union of `other` with this range."
+  "Compute the union of `other` with this range.
+   
+   **Parameters:**
+   - `other`: `Range` - A range.
+   
+   **Returns:** `Range` - A range of smaller start position and the greater end position."
   ^js [selection other]
   (.union ^js selection other))
 
 (defn with
-  "Derived a new range from this range."
+  "Derived a new range from this range.
+   
+   **Parameters:**
+   - `change`: `{ start?: Position | undefined; end?: Position | undefined; }` - An object that describes a change to this range.
+   - `start`: `Position | undefined` - A position that should be used as start. The default value is the {@link Range.start current start}.
+   - `end`: `Position | undefined` - A position that should be used as end. The default value is the {@link Range.end current end}.
+   
+   **Returns:** `Range` - A range that reflects the given change. Will return `this` range if the change
+   is not changing anything."
   {:arglists '([selection]
                [selection change]
                [selection start]

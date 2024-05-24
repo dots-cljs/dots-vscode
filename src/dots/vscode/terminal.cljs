@@ -41,25 +41,41 @@
 
 (defn send-text
   "Send text to the terminal. The text is written to the stdin of the underlying pty process
-   (shell) of the terminal."
+   (shell) of the terminal.
+   
+   **Parameters:**
+   - `text`: `string` - The text to send.
+   - `should-execute?`: `boolean | undefined` - Indicates that the text being sent should be executed rather than just inserted in the terminal.
+   The character(s) added are `\\n` or `\\r\\n`, depending on the platform. This defaults to `true`.
+   
+   **Returns:** `void`"
   (^js [terminal text]
    (.sendText ^js terminal text))
-  (^js [terminal text add-new-line?]
-   (.sendText ^js terminal text add-new-line?)))
+  (^js [terminal text should-execute?]
+   (.sendText ^js terminal text should-execute?)))
 
 (defn show
-  "Show the terminal panel and reveal this terminal in the UI."
+  "Show the terminal panel and reveal this terminal in the UI.
+   
+   **Parameters:**
+   - `preserve-focus?`: `boolean | undefined` - When `true` the terminal will not take focus.
+   
+   **Returns:** `void`"
   (^js [terminal]
    (.show ^js terminal))
   (^js [terminal preserve-focus?]
    (.show ^js terminal preserve-focus?)))
 
 (defn hide
-  "Hide the terminal panel if this terminal is currently showing."
+  "Hide the terminal panel if this terminal is currently showing.
+   
+   **Returns:** `void`"
   ^js [terminal]
   (.hide ^js terminal))
 
 (defn dispose
-  "Dispose and free associated resources."
+  "Dispose and free associated resources.
+   
+   **Returns:** `void`"
   ^js [terminal]
   (.dispose ^js terminal))

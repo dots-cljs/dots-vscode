@@ -2,6 +2,19 @@
   "Namespace describing the environment the editor runs in."
   (:require ["vscode" :as vscode]))
 
+(defn create-telemetry-logger
+  "Creates a new {@link TelemetryLogger telemetry logger}.
+   
+   **Parameters:**
+   - `sender`: `TelemetrySender` - The telemetry sender that is used by the telemetry logger.
+   - `options`: `TelemetryLoggerOptions | undefined` - Options for the telemetry logger.
+   
+   **Returns:** `TelemetryLogger` - A new telemetry logger"
+  (^js [sender]
+   (.createTelemetryLogger vscode/env sender))
+  (^js [sender options]
+   (.createTelemetryLogger vscode/env sender options)))
+
 (defn open-external
   "Opens a link externally using the default application. Depending on the
    used scheme this can be:
@@ -10,7 +23,12 @@
    * VSCode itself (`vscode:` from `vscode.env.uriScheme`)
    
    *Note* that {@linkcode window.showTextDocument showTextDocument} is the right
-   way to open a text document inside the editor, not this function."
+   way to open a text document inside the editor, not this function.
+   
+   **Parameters:**
+   - `target`: `Uri` - The uri that should be opened.
+   
+   **Returns:** `Thenable<boolean>` - A promise indicating if open was successful."
   ^js [target]
   (.openExternal vscode/env target))
 
@@ -63,7 +81,12 @@
    #### Any other scheme
    
    Any other scheme will be handled as if the provided URI is a workspace URI. In that case, the method will return
-   a URI which, when handled, will make the editor open the workspace."
+   a URI which, when handled, will make the editor open the workspace.
+   
+   **Parameters:**
+   - `target`: `Uri`
+   
+   **Returns:** `Thenable<Uri>` - A uri that can be used on the client machine."
   ^js [target]
   (.asExternalUri vscode/env target))
 
@@ -128,7 +151,14 @@
 
 (defn on-did-change-telemetry-enabled
   "An {@link Event } which fires when the user enabled or disables telemetry.
-   `true` if the user has enabled telemetry or `false` if the user has disabled telemetry."
+   `true` if the user has enabled telemetry or `false` if the user has disabled telemetry.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js []
    (.-onDidChangeTelemetryEnabled vscode/env))
   (^js [listener]
@@ -137,6 +167,25 @@
    (.onDidChangeTelemetryEnabled vscode/env listener this-args))
   (^js [listener this-args disposables]
    (.onDidChangeTelemetryEnabled vscode/env listener this-args disposables)))
+
+(defn on-did-change-shell
+  "An {@link Event } which fires when the default shell changes. This fires with the new
+   shell path.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
+  (^js []
+   (.-onDidChangeShell vscode/env))
+  (^js [listener]
+   (.onDidChangeShell vscode/env listener))
+  (^js [listener this-args]
+   (.onDidChangeShell vscode/env listener this-args))
+  (^js [listener this-args disposables]
+   (.onDidChangeShell vscode/env listener this-args disposables)))
 
 (defn remote-name
   "The name of a remote. Defined by extensions, popular samples are `wsl` for the Windows
@@ -162,3 +211,26 @@
    from a desktop application or a web browser."
   ^js []
   (.-uiKind vscode/env))
+
+(defn log-level
+  "The current log level of the editor."
+  ^js []
+  (.-logLevel vscode/env))
+
+(defn on-did-change-log-level
+  "An {@link Event } which fires when the log level of the editor changes.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
+  (^js []
+   (.-onDidChangeLogLevel vscode/env))
+  (^js [listener]
+   (.onDidChangeLogLevel vscode/env listener))
+  (^js [listener this-args]
+   (.onDidChangeLogLevel vscode/env listener this-args))
+  (^js [listener this-args disposables]
+   (.onDidChangeLogLevel vscode/env listener this-args disposables)))

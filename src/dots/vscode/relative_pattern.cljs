@@ -5,12 +5,16 @@
    preferred way of creating the relative pattern.")
 
 (defn base-uri
-  "A base file path to which this pattern will be matched against relatively."
+  "A base file path to which this pattern will be matched against relatively. The
+   file path must be absolute, should not have any trailing path separators and
+   not include any relative segments (`.` or `..`)."
   ^js [relative-pattern]
   (.-baseUri ^js relative-pattern))
 
 (defn set-base-uri!
-  "A base file path to which this pattern will be matched against relatively."
+  "A base file path to which this pattern will be matched against relatively. The
+   file path must be absolute, should not have any trailing path separators and
+   not include any relative segments (`.` or `..`)."
   ^js [relative-pattern value]
   (set! (.-baseUri ^js relative-pattern) value))
 

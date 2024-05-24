@@ -3,7 +3,14 @@
    [Folding](https://code.visualstudio.com/docs/editor/codebasics#_folding) in the editor.")
 
 (defn on-did-change-folding-ranges
-  "An optional event to signal that the folding ranges from this provider have changed."
+  "An optional event to signal that the folding ranges from this provider have changed.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js [folding-range-provider]
    (.-onDidChangeFoldingRanges ^js folding-range-provider))
   (^js [folding-range-provider listener]
@@ -20,6 +27,13 @@
 
 (defn provide-folding-ranges
   "Returns a list of folding ranges or null and undefined if the provider
-   does not want to participate or was cancelled."
+   does not want to participate or was cancelled.
+   
+   **Parameters:**
+   - `document`: `TextDocument` - The document in which the command was invoked.
+   - `context`: `FoldingContext` - Additional context information (for future use)
+   - `token`: `CancellationToken` - A cancellation token.
+   
+   **Returns:** `ProviderResult<FoldingRange[]>`"
   ^js [folding-range-provider document context token]
   (.provideFoldingRanges ^js folding-range-provider document context token))

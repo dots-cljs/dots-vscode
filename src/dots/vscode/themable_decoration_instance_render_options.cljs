@@ -1,4 +1,5 @@
-(ns dots.vscode.themable-decoration-instance-render-options)
+(ns dots.vscode.themable-decoration-instance-render-options
+  "Represents themable render options for decoration instances.")
 
 (defn before
   "Defines the rendering options of the attachment that is inserted before the decorated text."

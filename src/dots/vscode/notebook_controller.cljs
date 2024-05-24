@@ -108,7 +108,12 @@
    
    This should be used in response to the {@link NotebookController.executeHandler execution handler}
    being called or when cell execution has been started else, e.g when a cell was already
-   executing or when cell execution was triggered from another source."
+   executing or when cell execution was triggered from another source.
+   
+   **Parameters:**
+   - `cell`: `NotebookCell` - The notebook cell for which to create the execution.
+   
+   **Returns:** `NotebookCellExecution` - A notebook cell execution."
   ^js [notebook-controller cell]
   (.createNotebookCellExecution ^js notebook-controller cell))
 
@@ -160,7 +165,14 @@
    the editor _suggests_ a controller that is most likely to be _selected_.
    
    _Note_ that controller selection is persisted (by the controllers {@link NotebookController.id id}) and restored as soon as a
-   controller is re-created or as a notebook is {@link workspace.onDidOpenNotebookDocument opened}."
+   controller is re-created or as a notebook is {@link workspace.onDidOpenNotebookDocument opened}.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js [notebook-controller]
    (.-onDidChangeSelectedNotebooks ^js notebook-controller))
   (^js [notebook-controller listener]
@@ -172,11 +184,19 @@
 
 (defn update-notebook-affinity
   "A controller can set affinities for specific notebook documents. This allows a controller
-   to be presented more prominent for some notebooks."
+   to be presented more prominent for some notebooks.
+   
+   **Parameters:**
+   - `notebook`: `NotebookDocument` - The notebook for which a priority is set.
+   - `affinity`: `NotebookControllerAffinity` - A controller affinity
+   
+   **Returns:** `void`"
   ^js [notebook-controller notebook affinity]
   (.updateNotebookAffinity ^js notebook-controller notebook affinity))
 
 (defn dispose
-  "Dispose and free associated resources."
+  "Dispose and free associated resources.
+   
+   **Returns:** `void`"
   ^js [notebook-controller]
   (.dispose ^js notebook-controller))

@@ -44,7 +44,13 @@
   (.. vscode/window -activeNotebookEditor -viewColumn))
 
 (defn reveal-range
-  "Scroll as indicated by `revealType` in order to reveal the given range."
+  "Scroll as indicated by `revealType` in order to reveal the given range.
+   
+   **Parameters:**
+   - `range`: `NotebookRange` - A range.
+   - `reveal-type`: `NotebookEditorRevealType | undefined` - The scrolling strategy for revealing `range`.
+   
+   **Returns:** `void`"
   (^js [range]
    (.. vscode/window -activeNotebookEditor (revealRange range)))
   (^js [range reveal-type]

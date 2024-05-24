@@ -2,8 +2,14 @@
   "The kind of executions that {@link TestRunProfile TestRunProfiles} control."
   (:require ["vscode" :as vscode]))
 
-(def run (.-Run vscode/TestRunProfileKind))
+(def run
+  "The `Run` test profile kind."
+  (.-Run vscode/TestRunProfileKind))
 
-(def debug (.-Debug vscode/TestRunProfileKind))
+(def debug
+  "The `Debug` test profile kind."
+  (.-Debug vscode/TestRunProfileKind))
 
-(def coverage (.-Coverage vscode/TestRunProfileKind))
+(def coverage
+  "The `Coverage` test profile kind."
+  (.-Coverage vscode/TestRunProfileKind))

@@ -19,6 +19,12 @@
   (.-isEmpty ^js notebook-range))
 
 (defn with
-  "Derive a new range for this range."
+  "Derive a new range for this range.
+   
+   **Parameters:**
+   - `change`: `{ start?: number | undefined; end?: number | undefined; }` - An object that describes a change to this range.
+   
+   **Returns:** `NotebookRange` - A range that reflects the given change. Will return `this` range if the change
+   is not changing anything."
   ^js [notebook-range change]
   (.with ^js notebook-range change))

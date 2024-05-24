@@ -70,7 +70,14 @@
    
    Webview content can post strings or json serializable objects back to an extension. They cannot
    post `Blob`, `File`, `ImageData` and other DOM specific objects since the extension that receives the
-   message does not run in a browser environment."
+   message does not run in a browser environment.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js [webview]
    (.-onDidReceiveMessage ^js webview))
   (^js [webview listener]
@@ -84,7 +91,33 @@
   "Post a message to the webview content.
    
    Messages are only delivered if the webview is live (either visible or in the
-   background with `retainContextWhenHidden`)."
+   background with `retainContextWhenHidden`).
+   
+   **Parameters:**
+   - `message`: `any` - Body of the message. This must be a string or other json serializable object.
+   
+   For older versions of vscode, if an `ArrayBuffer` is included in `message`,
+   it will not be serialized properly and will not be received by the webview.
+   Similarly any TypedArrays, such as a `Uint8Array`, will be very inefficiently
+   serialized and will also not be recreated as a typed array inside the webview.
+   
+   However if your extension targets vscode 1.57+ in the `engines` field of its
+   `package.json`, any `ArrayBuffer` values that appear in `message` will be more
+   efficiently transferred to the webview and will also be correctly recreated inside
+   of the webview.
+   
+   **Returns:** `Thenable<boolean>` - A promise that resolves when the message is posted to a webview or when it is
+   dropped because the message was not deliverable.
+   
+   Returns `true` if the message was posted to the webview. Messages can only be posted to
+   live webviews (i.e. either visible webviews or hidden webviews that set `retainContextWhenHidden`).
+   
+   A response of `true` does not mean that the message was actually received by the webview.
+   For example, no message listeners may be have been hooked up inside the webview or the webview may
+   have been destroyed after the message was posted but before it was received.
+   
+   If you want confirm that a message as actually received, you can try having your webview posting a
+   confirmation message back to your extension."
   ^js [webview message]
   (.postMessage ^js webview message))
 
@@ -97,7 +130,12 @@
    
    ```ts
    webview.html = `<img src=\"${webview.asWebviewUri(vscode.Uri.file('/Users/codey/workspace/cat.gif'))}\">`
-   ```"
+   ```
+   
+   **Parameters:**
+   - `local-resource`: `Uri`
+   
+   **Returns:** `Uri`"
   ^js [webview local-resource]
   (.asWebviewUri ^js webview local-resource))
 

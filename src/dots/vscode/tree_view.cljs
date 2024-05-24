@@ -2,7 +2,14 @@
   "Represents a Tree view")
 
 (defn on-did-expand-element
-  "Event that is fired when an element is expanded"
+  "Event that is fired when an element is expanded
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js [tree-view]
    (.-onDidExpandElement ^js tree-view))
   (^js [tree-view listener]
@@ -13,7 +20,14 @@
    (.onDidExpandElement ^js tree-view listener this-args disposables)))
 
 (defn on-did-collapse-element
-  "Event that is fired when an element is collapsed"
+  "Event that is fired when an element is collapsed
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js [tree-view]
    (.-onDidCollapseElement ^js tree-view))
   (^js [tree-view listener]
@@ -29,7 +43,14 @@
   (.-selection ^js tree-view))
 
 (defn on-did-change-selection
-  "Event that is fired when the {@link TreeView.selection selection} has changed"
+  "Event that is fired when the {@link TreeView.selection selection} has changed
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js [tree-view]
    (.-onDidChangeSelection ^js tree-view))
   (^js [tree-view listener]
@@ -45,7 +66,14 @@
   (.-visible ^js tree-view))
 
 (defn on-did-change-visibility
-  "Event that is fired when {@link TreeView.visible visibility} has changed"
+  "Event that is fired when {@link TreeView.visible visibility} has changed
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js [tree-view]
    (.-onDidChangeVisibility ^js tree-view))
   (^js [tree-view listener]
@@ -54,6 +82,24 @@
    (.onDidChangeVisibility ^js tree-view listener this-args))
   (^js [tree-view listener this-args disposables]
    (.onDidChangeVisibility ^js tree-view listener this-args disposables)))
+
+(defn on-did-change-checkbox-state
+  "An event to signal that an element or root has either been checked or unchecked.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
+  (^js [tree-view]
+   (.-onDidChangeCheckboxState ^js tree-view))
+  (^js [tree-view listener]
+   (.onDidChangeCheckboxState ^js tree-view listener))
+  (^js [tree-view listener this-args]
+   (.onDidChangeCheckboxState ^js tree-view listener this-args))
+  (^js [tree-view listener this-args disposables]
+   (.onDidChangeCheckboxState ^js tree-view listener this-args disposables)))
 
 (defn message
   "An optional human-readable message that will be rendered in the view.
@@ -111,15 +157,23 @@
    In order to not to select, set the option `select` to `false`.
    In order to focus, set the option `focus` to `true`.
    In order to expand the revealed element, set the option `expand` to `true`. To expand recursively set `expand` to the number of levels to expand.
-   **NOTE:** You can expand only to 3 levels maximum.
    
-   **NOTE:** The {@link TreeDataProvider } that the `TreeView` {@link window.createTreeView is registered with} with must implement {@link TreeDataProvider.getParent getParent} method to access this API."
+   * *NOTE:* You can expand only to 3 levels maximum.
+   * *NOTE:* The {@link TreeDataProvider } that the `TreeView` {@link window.createTreeView is registered with} with must implement {@link TreeDataProvider.getParent getParent} method to access this API.
+   
+   **Parameters:**
+   - `element`: `T`
+   - `options`: `{ select?: boolean | undefined; focus?: boolean | undefined; expand?: number | boolean | undefined; } | undefined`
+   
+   **Returns:** `Thenable<void>`"
   (^js [tree-view element]
    (.reveal ^js tree-view element))
   (^js [tree-view element options]
    (.reveal ^js tree-view element options)))
 
 (defn dispose
-  "Dispose this object."
+  "Dispose this object.
+   
+   **Returns:** `any`"
   ^js [tree-view]
   (.dispose ^js tree-view))

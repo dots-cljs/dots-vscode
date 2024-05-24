@@ -1,4 +1,5 @@
-(ns dots.vscode.tree-item)
+(ns dots.vscode.tree-item
+  "A tree item is an UI element of the tree. Tree items are created by the {@link TreeDataProvider data provider}.")
 
 (defn label
   "A human-readable string describing this item. When `falsy`, it is derived from {@link TreeItem.resourceUri resourceUri}."
@@ -157,3 +158,15 @@
    however, there are cases where a TreeItem is not displayed in a tree-like way where setting the `role` may make sense."
   ^js [tree-item value]
   (set! (.-accessibilityInformation ^js tree-item) value))
+
+(defn checkbox-state
+  "{@link TreeItemCheckboxState TreeItemCheckboxState} of the tree item.
+   {@link TreeDataProvider.onDidChangeTreeData onDidChangeTreeData} should be fired when {@link TreeItem.checkboxState checkboxState} changes."
+  ^js [tree-item]
+  (.-checkboxState ^js tree-item))
+
+(defn set-checkbox-state!
+  "{@link TreeItemCheckboxState TreeItemCheckboxState} of the tree item.
+   {@link TreeDataProvider.onDidChangeTreeData onDidChangeTreeData} should be fired when {@link TreeItem.checkboxState checkboxState} changes."
+  ^js [tree-item value]
+  (set! (.-checkboxState ^js tree-item) value))

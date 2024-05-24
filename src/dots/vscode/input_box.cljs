@@ -15,13 +15,35 @@
   ^js [input-box value]
   (set! (.-value ^js input-box) value))
 
+(defn value-selection
+  "Selection range in the input value. Defined as tuple of two number where the
+   first is the inclusive start index and the second the exclusive end index. When `undefined` the whole
+   pre-filled value will be selected, when empty (start equals end) only the cursor will be set,
+   otherwise the defined range will be selected.
+   
+   This property does not get updated when the user types or makes a selection,
+   but it can be updated by the extension."
+  ^js [input-box]
+  (.-valueSelection ^js input-box))
+
+(defn set-value-selection!
+  "Selection range in the input value. Defined as tuple of two number where the
+   first is the inclusive start index and the second the exclusive end index. When `undefined` the whole
+   pre-filled value will be selected, when empty (start equals end) only the cursor will be set,
+   otherwise the defined range will be selected.
+   
+   This property does not get updated when the user types or makes a selection,
+   but it can be updated by the extension."
+  ^js [input-box value]
+  (set! (.-valueSelection ^js input-box) value))
+
 (defn placeholder
-  "Optional placeholder in the filter text."
+  "Optional placeholder shown when no value has been input."
   ^js [input-box]
   (.-placeholder ^js input-box))
 
 (defn set-placeholder!
-  "Optional placeholder in the filter text."
+  "Optional placeholder shown when no value has been input."
   ^js [input-box value]
   (set! (.-placeholder ^js input-box) value))
 
@@ -36,7 +58,14 @@
   (set! (.-password ^js input-box) value))
 
 (defn on-did-change-value
-  "An event signaling when the value has changed."
+  "An event signaling when the value has changed.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js [input-box]
    (.-onDidChangeValue ^js input-box))
   (^js [input-box listener]
@@ -47,7 +76,14 @@
    (.onDidChangeValue ^js input-box listener this-args disposables)))
 
 (defn on-did-accept
-  "An event signaling when the user indicated acceptance of the input value."
+  "An event signaling when the user indicated acceptance of the input value.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js [input-box]
    (.-onDidAccept ^js input-box))
   (^js [input-box listener]
@@ -68,7 +104,14 @@
   (set! (.-buttons ^js input-box) value))
 
 (defn on-did-trigger-button
-  "An event signaling when a button was triggered."
+  "An event signaling when a button was triggered.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js [input-box]
    (.-onDidTriggerButton ^js input-box))
   (^js [input-box listener]
@@ -178,13 +221,17 @@
 
 (defn show
   "Makes the input UI visible in its current configuration. Any other input
-   UI will first fire an {@link QuickInput.onDidHide } event."
+   UI will first fire an {@link QuickInput.onDidHide } event.
+   
+   **Returns:** `void`"
   ^js [input-box]
   (.show ^js input-box))
 
 (defn hide
   "Hides this input UI. This will also fire an {@link QuickInput.onDidHide }
-   event."
+   event.
+   
+   **Returns:** `void`"
   ^js [input-box]
   (.hide ^js input-box))
 
@@ -194,7 +241,14 @@
    There are several reasons why this UI might have to be hidden and
    the extension will be notified through {@link QuickInput.onDidHide }.
    (Examples include: an explicit call to {@link QuickInput.hide },
-   the user pressing Esc, some other input UI opening, etc.)"
+   the user pressing Esc, some other input UI opening, etc.)
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js [input-box]
    (.-onDidHide ^js input-box))
   (^js [input-box listener]
@@ -218,6 +272,8 @@
   "Dispose of this input UI and any associated resources. If it is still
    visible, it is first hidden. After this call the input UI is no longer
    functional and no additional methods or properties on it should be
-   accessed. Instead a new input UI should be created."
+   accessed. Instead a new input UI should be created.
+   
+   **Returns:** `void`"
   ^js [input-box]
   (.dispose ^js input-box))

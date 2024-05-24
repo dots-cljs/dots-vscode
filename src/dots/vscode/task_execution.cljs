@@ -15,6 +15,8 @@
   (set! (.-task ^js task-execution) value))
 
 (defn terminate
-  "Terminates the task execution."
+  "Terminates the task execution.
+   
+   **Returns:** `void`"
   ^js [task-execution]
   (.terminate ^js task-execution))

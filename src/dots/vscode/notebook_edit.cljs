@@ -44,26 +44,54 @@
   (set! (.-newNotebookMetadata ^js notebook-edit) value))
 
 (defn replace-cells
-  "Utility to create a edit that replaces cells in a notebook."
+  "Utility to create a edit that replaces cells in a notebook.
+   
+   **Parameters:**
+   - `range`: `NotebookRange` - The range of cells to replace
+   - `new-cells`: `NotebookCellData[]` - The new notebook cells.
+   
+   **Returns:** `NotebookEdit`"
   ^js [range new-cells]
   (.replaceCells vscode/NotebookEdit range new-cells))
 
 (defn insert-cells
-  "Utility to create an edit that replaces cells in a notebook."
+  "Utility to create an edit that replaces cells in a notebook.
+   
+   **Parameters:**
+   - `index`: `number` - The index to insert cells at.
+   - `new-cells`: `NotebookCellData[]` - The new notebook cells.
+   
+   **Returns:** `NotebookEdit`"
   ^js [index new-cells]
   (.insertCells vscode/NotebookEdit index new-cells))
 
 (defn delete-cells
-  "Utility to create an edit that deletes cells in a notebook."
+  "Utility to create an edit that deletes cells in a notebook.
+   
+   **Parameters:**
+   - `range`: `NotebookRange` - The range of cells to delete.
+   
+   **Returns:** `NotebookEdit`"
   ^js [range]
   (.deleteCells vscode/NotebookEdit range))
 
 (defn update-cell-metadata
-  "Utility to create an edit that update a cell's metadata."
+  "Utility to create an edit that update a cell's metadata.
+   
+   **Parameters:**
+   - `index`: `number` - The index of the cell to update.
+   - `new-cell-metadata`: `{ [key: string]: any; }` - The new metadata for the cell.
+   
+   **Returns:** `NotebookEdit`"
   ^js [index new-cell-metadata]
   (.updateCellMetadata vscode/NotebookEdit index new-cell-metadata))
 
 (defn update-notebook-metadata
-  "Utility to create an edit that updates the notebook's metadata."
+  "Utility to create an edit that updates the notebook's metadata.
+   
+   **Parameters:**
+   - `new-notebook-metadata`: `{ [key: string]: any; }` - The new metadata for the notebook.
+   
+   **Returns:** `NotebookEdit`"
   ^js [new-notebook-metadata]
   (.updateNotebookMetadata vscode/NotebookEdit new-notebook-metadata))

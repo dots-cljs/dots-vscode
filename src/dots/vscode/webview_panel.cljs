@@ -53,7 +53,14 @@
   (.-visible ^js webview-panel))
 
 (defn on-did-change-view-state
-  "Fired when the panel's view state changes."
+  "Fired when the panel's view state changes.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js [webview-panel]
    (.-onDidChangeViewState ^js webview-panel))
   (^js [webview-panel listener]
@@ -69,7 +76,14 @@
    This may be because the user closed the panel or because `.dispose()` was
    called on it.
    
-   Trying to use the panel after it has been disposed throws an exception."
+   Trying to use the panel after it has been disposed throws an exception.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js [webview-panel]
    (.-onDidDispose ^js webview-panel))
   (^js [webview-panel listener]
@@ -83,7 +97,13 @@
   "Show the webview panel in a given column.
    
    A webview panel may only show in a single column at a time. If it is already showing, this
-   method moves it to a new column."
+   method moves it to a new column.
+   
+   **Parameters:**
+   - `view-column`: `ViewColumn | undefined` - View column to show the panel in. Shows in the current `viewColumn` if undefined.
+   - `preserve-focus?`: `boolean | undefined` - When `true`, the webview will not take focus.
+   
+   **Returns:** `void`"
   (^js [webview-panel]
    (.reveal ^js webview-panel))
   (^js [webview-panel view-column]
@@ -96,6 +116,8 @@
    
    This closes the panel if it showing and disposes of the resources owned by the webview.
    Webview panels are also disposed when the user closes the webview panel. Both cases
-   fire the `onDispose` event."
+   fire the `onDispose` event.
+   
+   **Returns:** `any`"
   ^js [webview-panel]
   (.dispose ^js webview-panel))

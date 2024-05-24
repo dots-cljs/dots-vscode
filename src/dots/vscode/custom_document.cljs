@@ -13,6 +13,8 @@
   "Dispose of the custom document.
    
    This is invoked by the editor when there are no more references to a given `CustomDocument` (for example when
-   all editors associated with the document have been closed.)"
+   all editors associated with the document have been closed.)
+   
+   **Returns:** `void`"
   ^js [custom-document]
   (.dispose ^js custom-document))

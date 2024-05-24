@@ -38,7 +38,14 @@
 
 (defn create-comment-thread
   "Create a {@link CommentThread comment thread}. The comment thread will be displayed in visible text editors (if the resource matches)
-   and Comments Panel once created."
+   and Comments Panel once created.
+   
+   **Parameters:**
+   - `uri`: `Uri` - The uri of the document the thread has been created on.
+   - `range`: `Range` - The range the comment thread is located within the document.
+   - `comments`: `readonly Comment[]` - The ordered comments of the thread.
+   
+   **Returns:** `CommentThread`"
   ^js [comment-controller uri range comments]
   (.createCommentThread ^js comment-controller uri range comments))
 
@@ -56,6 +63,8 @@
   "Dispose this comment controller.
    
    Once disposed, all {@link CommentThread comment threads} created by this comment controller will also be removed from the editor
-   and Comments Panel."
+   and Comments Panel.
+   
+   **Returns:** `void`"
   ^js [comment-controller]
   (.dispose ^js comment-controller))

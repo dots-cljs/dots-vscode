@@ -19,7 +19,12 @@
 (defn workspace-folder
   "Returns the {@link WorkspaceFolder workspace folder} that contains a given uri.
    * returns `undefined` when the given uri doesn't match any workspace folder
-   * returns the *input* when the given uri is a workspace folder itself"
+   * returns the *input* when the given uri is a workspace folder itself
+   
+   **Parameters:**
+   - `uri`: `Uri` - An uri.
+   
+   **Returns:** `WorkspaceFolder | undefined` - A workspace folder or `undefined`"
   ^js [uri]
   (.getWorkspaceFolder vscode/workspace uri))
 
@@ -27,7 +32,15 @@
   "Returns a path that is relative to the workspace folder or folders.
    
    When there are no {@link workspace.workspaceFolders workspace folders} or when the path
-   is not contained in them, the input is returned."
+   is not contained in them, the input is returned.
+   
+   **Parameters:**
+   - `path-or-uri`: `string | Uri` - A path or uri. When a uri is given its {@link Uri.fsPath fsPath} is used.
+   - `include-workspace-folder?`: `boolean | undefined` - When `true` and when the given path is contained inside a
+   workspace folder the name of the workspace is prepended. Defaults to `true` when there are
+   multiple workspace folders and `false` otherwise.
+   
+   **Returns:** `string` - A path relative to the root or the input."
   (^js [path-or-uri]
    (.asRelativePath vscode/workspace path-or-uri))
   (^js [path-or-uri include-workspace-folder?]
@@ -38,9 +51,11 @@
    by an optional set of `workspaceFoldersToAdd` on the `vscode.workspace.workspaceFolders` array. This \"splice\"
    behavior can be used to add, remove and change workspace folders in a single operation.
    
-   If the first workspace folder is added, removed or changed, the currently executing extensions (including the
-   one that called this method) will be terminated and restarted so that the (deprecated) `rootPath` property is
-   updated to point to the first workspace folder.
+   **Note:** in some cases calling this method may result in the currently executing extensions (including the
+   one that called this method) to be terminated and restarted. For example when the first workspace folder is
+   added, removed or changed the (deprecated) `rootPath` property is updated to point to the first workspace
+   folder. Another case is when transitioning from an empty or single-folder workspace into a multi-folder
+   workspace (see also: https://code.visualstudio.com/docs/editor/workspaces).
    
    Use the {@linkcode onDidChangeWorkspaceFolders onDidChangeWorkspaceFolders()} event to get notified when the
    workspace folders have been updated.
@@ -64,7 +79,16 @@
    to rename that folder.
    
    **Note:** it is not valid to call {@link updateWorkspaceFolders updateWorkspaceFolders()} multiple times
-   without waiting for the {@linkcode onDidChangeWorkspaceFolders onDidChangeWorkspaceFolders()} to fire."
+   without waiting for the {@linkcode onDidChangeWorkspaceFolders onDidChangeWorkspaceFolders()} to fire.
+   
+   **Parameters:**
+   - `start`: `number` - the zero-based location in the list of currently opened {@link WorkspaceFolder workspace folders}from which to start deleting workspace folders.
+   - `delete-count`: `number | null | undefined` - the optional number of workspace folders to remove.
+   - `workspace-folders-to-add`: `{ readonly uri: Uri; readonly name?: string | undefined; }[]` - the optional variable set of workspace folders to add in place of the deleted ones.
+   Each workspace is identified with a mandatory URI and an optional name.
+   
+   **Returns:** `boolean` - true if the operation was successfully started and false otherwise if arguments were used that would result
+   in invalid workspace folder state (e.g. 2 folders with the same URI)."
   (^js [start]
    (.updateWorkspaceFolders vscode/workspace start))
   (^js [start delete-count & workspace-folders-to-add]
@@ -78,17 +102,12 @@
    for file changes recursively.
    
    Additional paths can be added for file watching by providing a {@link RelativePattern } with
-   a `base` path to watch. If the `pattern` is complex (e.g. contains `**` or path segments),
-   the path will be watched recursively and otherwise will be watched non-recursively (i.e. only
-   changes to the first level of the path will be reported).
+   a `base` path to watch. If the path is a folder and the `pattern` is complex (e.g. contains
+   `**` or path segments), it will be watched recursively and otherwise will be watched
+   non-recursively (i.e. only changes to the first level of the path will be reported).
    
-   *Note* that requests for recursive file watchers for a `base` path that is inside the opened
-   workspace are ignored given all opened {@link workspace.workspaceFolders workspace folders} are
-   watched for file changes recursively by default. Non-recursive file watchers however are always
-   supported, even inside the opened workspace because they allow to bypass the configured settings
-   for excludes (`files.watcherExclude`). If you need to watch in a location that is typically
-   excluded (for example `node_modules` or `.git` folder), then you can use a non-recursive watcher
-   in the workspace for this purpose.
+   *Note* that paths must exist in the file system to be watched. File watching may stop when
+   the watched path is renamed or deleted.
    
    If possible, keep the use of recursive watchers to a minimum because recursive file watching
    is quite resource intense.
@@ -159,7 +178,7 @@
    If you want to monitor file events across all opened workspace folders:
    
    ```ts
-   vscode.workspace.createFileSystemWatcher('**​/*.js'));
+   vscode.workspace.createFileSystemWatcher('**​/*.js');
    ```
    
    *Note:* the array of workspace folders can be empty if no workspace is opened (empty window).
@@ -183,7 +202,15 @@
    
    ```ts
    vscode.workspace.createFileSystemWatcher(new vscode.RelativePattern(vscode.window.activeTextEditor.document.uri, '*'));
-   ```"
+   ```
+   
+   **Parameters:**
+   - `glob-pattern`: `GlobPattern` - A {@link GlobPattern glob pattern} that controls which file events the watcher should report.
+   - `ignore-create-events?`: `boolean | undefined` - Ignore when files have been created.
+   - `ignore-change-events?`: `boolean | undefined` - Ignore when files have been changed.
+   - `ignore-delete-events?`: `boolean | undefined` - Ignore when files have been deleted.
+   
+   **Returns:** `FileSystemWatcher` - A new file system watcher instance. Must be disposed when no longer needed."
   (^js [glob-pattern]
    (.createFileSystemWatcher vscode/workspace glob-pattern))
   (^js [glob-pattern ignore-create-events?]
@@ -194,7 +221,20 @@
    (.createFileSystemWatcher vscode/workspace glob-pattern ignore-create-events? ignore-change-events? ignore-delete-events?)))
 
 (defn find-files
-  "Find files across all {@link workspace.workspaceFolders workspace folders} in the workspace."
+  "Find files across all {@link workspace.workspaceFolders workspace folders} in the workspace.
+   
+   **Parameters:**
+   - `include`: `GlobPattern` - A {@link GlobPattern glob pattern} that defines the files to search for. The glob pattern
+   will be matched against the file paths of resulting matches relative to their workspace. Use a {@link RelativePattern relative pattern}
+   to restrict the search results to a {@link WorkspaceFolder workspace folder}.
+   - `exclude`: `GlobPattern | null | undefined` - A {@link GlobPattern glob pattern} that defines files and folders to exclude. The glob pattern
+   will be matched against the file paths of resulting matches relative to their workspace. When `undefined`, default file-excludes (e.g. the `files.exclude`-setting
+   but not `search.exclude`) will apply. When `null`, no excludes will apply.
+   - `max-results`: `number | undefined` - An upper-bound for the result.
+   - `token`: `CancellationToken | undefined` - A token that can be used to signal cancellation to the underlying search engine.
+   
+   **Returns:** `Thenable<Uri[]>` - A thenable that resolves to an array of resource identifiers. Will return no results if no
+   {@link workspace.workspaceFoldersworkspace folders} are opened."
   (^js [include]
    (.findFiles vscode/workspace include))
   (^js [include exclude]
@@ -204,8 +244,41 @@
   (^js [include exclude max-results token]
    (.findFiles vscode/workspace include exclude max-results token)))
 
+(defn save
+  "Saves the editor identified by the given resource and returns the resulting resource or `undefined`
+   if save was not successful or no editor with the given resource was found.
+   
+   **Note** that an editor with the provided resource must be opened in order to be saved.
+   
+   **Parameters:**
+   - `uri`: `Uri` - the associated uri for the opened editor to save.
+   
+   **Returns:** `Thenable<Uri | undefined>` - A thenable that resolves when the save operation has finished."
+  ^js [uri]
+  (.save vscode/workspace uri))
+
+(defn save-as
+  "Saves the editor identified by the given resource to a new file name as provided by the user and
+   returns the resulting resource or `undefined` if save was not successful or cancelled or no editor
+   with the given resource was found.
+   
+   **Note** that an editor with the provided resource must be opened in order to be saved as.
+   
+   **Parameters:**
+   - `uri`: `Uri` - the associated uri for the opened editor to save as.
+   
+   **Returns:** `Thenable<Uri | undefined>` - A thenable that resolves when the save-as operation has finished."
+  ^js [uri]
+  (.saveAs vscode/workspace uri))
+
 (defn save-all
-  "Save all dirty files."
+  "Save all dirty files.
+   
+   **Parameters:**
+   - `include-untitled?`: `boolean | undefined` - Also save files that have been created during this session.
+   
+   **Returns:** `Thenable<boolean>` - A thenable that resolves when the files have been saved. Will return `false`
+   for any file that failed to save."
   (^js []
    (.saveAll vscode/workspace))
   (^js [include-untitled?]
@@ -222,9 +295,17 @@
    
    When applying a workspace edit that consists only of text edits an 'all-or-nothing'-strategy is used.
    A workspace edit with resource creations or deletions aborts the operation, e.g. consecutive edits will
-   not be attempted, when a single edit fails."
-  ^js [edit]
-  (.applyEdit vscode/workspace edit))
+   not be attempted, when a single edit fails.
+   
+   **Parameters:**
+   - `edit`: `WorkspaceEdit` - A workspace edit.
+   - `metadata`: `WorkspaceEditMetadata | undefined` - Optional {@link WorkspaceEditMetadata metadata} for the edit.
+   
+   **Returns:** `Thenable<boolean>` - A thenable that resolves when the edit could be applied."
+  (^js [edit]
+   (.applyEdit vscode/workspace edit))
+  (^js [edit metadata]
+   (.applyEdit vscode/workspace edit metadata)))
 
 (defn open-text-document
   "Opens a document. Will return early if this document is already open. Otherwise
@@ -241,13 +322,20 @@
    
    *Note* that the lifecycle of the returned document is owned by the editor and not by the extension. That means an
    {@linkcode workspace.onDidCloseTextDocument onDidClose}-event can occur at any time after opening it.
-   A short-hand for `openTextDocument(Uri.file(fileName))`.
+   A short-hand for `openTextDocument(Uri.file(path))`.
    Opens an untitled text document. The editor will prompt the user for a file
    path when the document is to be saved. The `options` parameter allows to
-   specify the *language* and/or the *content* of the document."
+   specify the *language* and/or the *content* of the document.
+   
+   **Parameters:**
+   - `options`: `{ language?: string | undefined; content?: string | undefined; } | undefined` - Options to control how the document will be created.
+   - `path`: `string` - A path of a file on disk.
+   - `uri`: `Uri` - Identifies the resource to open.
+   
+   **Returns:** `Thenable<TextDocument>` - A promise that resolves to a {@link TextDocumentdocument}."
   {:arglists '([]
-               [file-name]
                [options]
+               [path]
                [uri])}
   (^js []
    (.openTextDocument vscode/workspace))
@@ -257,21 +345,34 @@
 (defn register-text-document-content-provider
   "Register a text document content provider.
    
-   Only one provider can be registered per scheme."
+   Only one provider can be registered per scheme.
+   
+   **Parameters:**
+   - `scheme`: `string` - The uri-scheme to register for.
+   - `provider`: `TextDocumentContentProvider` - A content provider.
+   
+   **Returns:** `Disposable` - A {@link Disposable} that unregisters this provider when being disposed."
   ^js [scheme provider]
   (.registerTextDocumentContentProvider vscode/workspace scheme provider))
 
 (defn open-notebook-document
-  "Open a notebook. Will return early if this notebook is already {@link notebook.notebookDocuments loaded}. Otherwise
-   the notebook is loaded and the {@linkcode notebook.onDidOpenNotebookDocument onDidOpenNotebookDocument}-event fires.
+  "Open a notebook. Will return early if this notebook is already {@link notebookDocuments loaded}. Otherwise
+   the notebook is loaded and the {@linkcode onDidOpenNotebookDocument }-event fires.
    
    *Note* that the lifecycle of the returned notebook is owned by the editor and not by the extension. That means an
-   {@linkcode notebook.onDidCloseNotebookDocument onDidCloseNotebookDocument}-event can occur at any time after.
+   {@linkcode onDidCloseNotebookDocument }-event can occur at any time after.
    
    *Note* that opening a notebook does not show a notebook editor. This function only returns a notebook document which
    can be shown in a notebook editor but it can also be used for other things.
    Open an untitled notebook. The editor will prompt the user for a file
-   path when the document is to be saved."
+   path when the document is to be saved.
+   
+   **Parameters:**
+   - `notebook-type`: `string` - The notebook type that should be used.
+   - `uri`: `Uri` - The resource to open.
+   - `content`: `NotebookData | undefined` - The initial contents of the notebook.
+   
+   **Returns:** `Thenable<NotebookDocument>` - A promise that resolves to a {@link NotebookDocumentnotebook}."
   {:arglists '([notebook-type]
                [notebook-type content]
                [uri])}
@@ -284,7 +385,14 @@
   "Register a {@link NotebookSerializer notebook serializer}.
    
    A notebook serializer must be contributed through the `notebooks` extension point. When opening a notebook file, the editor will send
-   the `onNotebook:<notebookType>` activation event, and extensions must register their serializer in return."
+   the `onNotebook:<notebookType>` activation event, and extensions must register their serializer in return.
+   
+   **Parameters:**
+   - `notebook-type`: `string` - A notebook.
+   - `serializer`: `NotebookSerializer` - A notebook serializer.
+   - `options`: `NotebookDocumentContentOptions | undefined` - Optional context options that define what parts of a notebook should be persisted
+   
+   **Returns:** `Disposable` - A {@link Disposable} that unregisters this serializer when being disposed."
   (^js [notebook-type serializer]
    (.registerNotebookSerializer vscode/workspace notebook-type serializer))
   (^js [notebook-type serializer options]
@@ -297,7 +405,13 @@
    is returned. Dots in the section-identifier are interpreted as child-access,
    like `{ myExt: { setting: { doIt: true }}}` and `getConfiguration('myExt.setting').get('doIt') === true`.
    
-   When a scope is provided configuration confined to that scope is returned. Scope can be a resource or a language identifier or both."
+   When a scope is provided configuration confined to that scope is returned. Scope can be a resource or a language identifier or both.
+   
+   **Parameters:**
+   - `section`: `string | undefined` - A dot-separated identifier.
+   - `scope`: `ConfigurationScope | null | undefined` - A scope for which the configuration is asked for.
+   
+   **Returns:** `WorkspaceConfiguration` - The full configuration or a subset."
   (^js []
    (.getConfiguration vscode/workspace))
   (^js [section]
@@ -306,7 +420,13 @@
    (.getConfiguration vscode/workspace section scope)))
 
 (defn register-task-provider
-  "Register a task provider."
+  "Register a task provider.
+   
+   **Parameters:**
+   - `type`: `string` - The task kind type this provider is registered for.
+   - `provider`: `TaskProvider<Task>` - A task provider.
+   
+   **Returns:** `Disposable` - A {@link Disposable} that unregisters this provider when being disposed."
   ^js [type provider]
   (.registerTaskProvider vscode/workspace type provider))
 
@@ -314,7 +434,14 @@
   "Register a filesystem provider for a given scheme, e.g. `ftp`.
    
    There can only be one provider per scheme and an error is being thrown when a scheme
-   has been claimed by another provider or when it is reserved."
+   has been claimed by another provider or when it is reserved.
+   
+   **Parameters:**
+   - `scheme`: `string` - The uri-{@link Uri.scheme scheme} the provider registers for.
+   - `provider`: `FileSystemProvider` - The filesystem provider.
+   - `options`: `{ readonly isCaseSensitive?: boolean | undefined; readonly isReadonly?: boolean | MarkdownString | undefined; } | undefined` - Immutable metadata about the provider.
+   
+   **Returns:** `Disposable` - A {@link Disposable} that unregisters this provider when being disposed."
   (^js [scheme provider]
    (.registerFileSystemProvider vscode/workspace scheme provider))
   (^js [scheme provider options]
@@ -395,7 +522,14 @@
    **Note:** this event will not fire if the first workspace folder is added, removed or changed,
    because in that case the currently executing extensions (including the one that listens to this
    event) will be terminated and restarted so that the (deprecated) `rootPath` property is updated
-   to point to the first workspace folder."
+   to point to the first workspace folder.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js []
    (.-onDidChangeWorkspaceFolders vscode/workspace))
   (^js [listener]
@@ -419,7 +553,14 @@
    
    - The event is emitted before the {@link TextDocument document} is updated in the
    {@link window.activeTextEditor active text editor}
-   - When a {@link TextDocument text document} is already open (e.g.: open in another {@link window.visibleTextEditors visible text editor}) this event is not emitted"
+   - When a {@link TextDocument text document} is already open (e.g.: open in another {@link window.visibleTextEditors visible text editor}) this event is not emitted
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js []
    (.-onDidOpenTextDocument vscode/workspace))
   (^js [listener]
@@ -437,7 +578,14 @@
    {@linkcode window.onDidChangeVisibleTextEditors onDidChangeVisibleTextEditors}-event to know when editors change.
    
    *Note 2:* A document can be open but not shown in an editor which means this event can fire
-   for a document that has not been shown in an editor."
+   for a document that has not been shown in an editor.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js []
    (.-onDidCloseTextDocument vscode/workspace))
   (^js [listener]
@@ -450,7 +598,14 @@
 (defn on-did-change-text-document
   "An event that is emitted when a {@link TextDocument text document} is changed. This usually happens
    when the {@link TextDocument.getText contents} changes but also when other things like the
-   {@link TextDocument.isDirty dirty}-state changes."
+   {@link TextDocument.isDirty dirty}-state changes.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js []
    (.-onDidChangeTextDocument vscode/workspace))
   (^js [listener]
@@ -471,7 +626,14 @@
     * there is an overall time budget that all listeners share and if that is exhausted no further listener is called
     * listeners that take a long time or produce errors frequently will not be called anymore
    
-   The current thresholds are 1.5 seconds as overall time budget and a listener can misbehave 3 times before being ignored."
+   The current thresholds are 1.5 seconds as overall time budget and a listener can misbehave 3 times before being ignored.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js []
    (.-onWillSaveTextDocument vscode/workspace))
   (^js [listener]
@@ -482,7 +644,14 @@
    (.onWillSaveTextDocument vscode/workspace listener this-args disposables)))
 
 (defn on-did-save-text-document
-  "An event that is emitted when a {@link TextDocument text document} is saved to disk."
+  "An event that is emitted when a {@link TextDocument text document} is saved to disk.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js []
    (.-onDidSaveTextDocument vscode/workspace))
   (^js [listener]
@@ -498,7 +667,14 @@
   (.-notebookDocuments vscode/workspace))
 
 (defn on-did-change-notebook-document
-  "An event that is emitted when a {@link NotebookDocument notebook} has changed."
+  "An event that is emitted when a {@link NotebookDocument notebook} has changed.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js []
    (.-onDidChangeNotebookDocument vscode/workspace))
   (^js [listener]
@@ -508,8 +684,43 @@
   (^js [listener this-args disposables]
    (.onDidChangeNotebookDocument vscode/workspace listener this-args disposables)))
 
+(defn on-will-save-notebook-document
+  "An event that is emitted when a {@link NotebookDocument notebook document} will be saved to disk.
+   
+   *Note 1:* Subscribers can delay saving by registering asynchronous work. For the sake of data integrity the editor
+   might save without firing this event. For instance when shutting down with dirty files.
+   
+   *Note 2:* Subscribers are called sequentially and they can {@link NotebookDocumentWillSaveEvent.waitUntil delay} saving
+   by registering asynchronous work. Protection against misbehaving listeners is implemented as such:
+    * there is an overall time budget that all listeners share and if that is exhausted no further listener is called
+    * listeners that take a long time or produce errors frequently will not be called anymore
+   
+   The current thresholds are 1.5 seconds as overall time budget and a listener can misbehave 3 times before being ignored.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
+  (^js []
+   (.-onWillSaveNotebookDocument vscode/workspace))
+  (^js [listener]
+   (.onWillSaveNotebookDocument vscode/workspace listener))
+  (^js [listener this-args]
+   (.onWillSaveNotebookDocument vscode/workspace listener this-args))
+  (^js [listener this-args disposables]
+   (.onWillSaveNotebookDocument vscode/workspace listener this-args disposables)))
+
 (defn on-did-save-notebook-document
-  "An event that is emitted when a {@link NotebookDocument notebook} is saved."
+  "An event that is emitted when a {@link NotebookDocument notebook} is saved.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js []
    (.-onDidSaveNotebookDocument vscode/workspace))
   (^js [listener]
@@ -520,7 +731,14 @@
    (.onDidSaveNotebookDocument vscode/workspace listener this-args disposables)))
 
 (defn on-did-open-notebook-document
-  "An event that is emitted when a {@link NotebookDocument notebook} is opened."
+  "An event that is emitted when a {@link NotebookDocument notebook} is opened.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js []
    (.-onDidOpenNotebookDocument vscode/workspace))
   (^js [listener]
@@ -536,7 +754,14 @@
    *Note 1:* There is no guarantee that this event fires when an editor tab is closed.
    
    *Note 2:* A notebook can be open but not shown in an editor which means this event can fire
-   for a notebook that has not been shown in an editor."
+   for a notebook that has not been shown in an editor.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js []
    (.-onDidCloseNotebookDocument vscode/workspace))
   (^js [listener]
@@ -554,7 +779,14 @@
    files change on disk, e.g triggered by another application, or when using the
    {@linkcode FileSystem workspace.fs}-api.
    
-   *Note 2:* When this event is fired, edits to files that are are being created cannot be applied."
+   *Note 2:* When this event is fired, edits to files that are are being created cannot be applied.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js []
    (.-onWillCreateFiles vscode/workspace))
   (^js [listener]
@@ -570,7 +802,14 @@
    *Note:* This event is triggered by user gestures, like creating a file from the
    explorer, or from the {@linkcode workspace.applyEdit }-api, but this event is *not* fired when
    files change on disk, e.g triggered by another application, or when using the
-   {@linkcode FileSystem workspace.fs}-api."
+   {@linkcode FileSystem workspace.fs}-api.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js []
    (.-onDidCreateFiles vscode/workspace))
   (^js [listener]
@@ -588,7 +827,14 @@
    files change on disk, e.g triggered by another application, or when using the
    {@linkcode FileSystem workspace.fs}-api.
    
-   *Note 2:* When deleting a folder with children only one event is fired."
+   *Note 2:* When deleting a folder with children only one event is fired.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js []
    (.-onWillDeleteFiles vscode/workspace))
   (^js [listener]
@@ -606,7 +852,14 @@
    files change on disk, e.g triggered by another application, or when using the
    {@linkcode FileSystem workspace.fs}-api.
    
-   *Note 2:* When deleting a folder with children only one event is fired."
+   *Note 2:* When deleting a folder with children only one event is fired.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js []
    (.-onDidDeleteFiles vscode/workspace))
   (^js [listener]
@@ -624,7 +877,14 @@
    files change on disk, e.g triggered by another application, or when using the
    {@linkcode FileSystem workspace.fs}-api.
    
-   *Note 2:* When renaming a folder with children only one event is fired."
+   *Note 2:* When renaming a folder with children only one event is fired.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js []
    (.-onWillRenameFiles vscode/workspace))
   (^js [listener]
@@ -642,7 +902,14 @@
    files change on disk, e.g triggered by another application, or when using the
    {@linkcode FileSystem workspace.fs}-api.
    
-   *Note 2:* When renaming a folder with children only one event is fired."
+   *Note 2:* When renaming a folder with children only one event is fired.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js []
    (.-onDidRenameFiles vscode/workspace))
   (^js [listener]
@@ -653,7 +920,14 @@
    (.onDidRenameFiles vscode/workspace listener this-args disposables)))
 
 (defn on-did-change-configuration
-  "An event that is emitted when the {@link WorkspaceConfiguration configuration} changed."
+  "An event that is emitted when the {@link WorkspaceConfiguration configuration} changed.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js []
    (.-onDidChangeConfiguration vscode/workspace))
   (^js [listener]
@@ -669,7 +943,14 @@
   (.-isTrusted vscode/workspace))
 
 (defn on-did-grant-workspace-trust
-  "Event that fires when the current workspace has been trusted."
+  "Event that fires when the current workspace has been trusted.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js []
    (.-onDidGrantWorkspaceTrust vscode/workspace))
   (^js [listener]

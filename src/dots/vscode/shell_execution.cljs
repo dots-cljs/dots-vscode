@@ -1,4 +1,5 @@
-(ns dots.vscode.shell-execution)
+(ns dots.vscode.shell-execution
+  "Represents a task execution that happens inside a shell.")
 
 (defn command-line
   "The shell command line. Is `undefined` if created with a command and arguments."

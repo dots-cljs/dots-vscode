@@ -3,54 +3,106 @@
   (:refer-clojure :exclude [array boolean key namespace])
   (:require ["vscode" :as vscode]))
 
-(def file (.-File vscode/SymbolKind))
+(def file
+  "The `File` symbol kind."
+  (.-File vscode/SymbolKind))
 
-(def module (.-Module vscode/SymbolKind))
+(def module
+  "The `Module` symbol kind."
+  (.-Module vscode/SymbolKind))
 
-(def namespace (.-Namespace vscode/SymbolKind))
+(def namespace
+  "The `Namespace` symbol kind."
+  (.-Namespace vscode/SymbolKind))
 
-(def package (.-Package vscode/SymbolKind))
+(def package
+  "The `Package` symbol kind."
+  (.-Package vscode/SymbolKind))
 
-(def class (.-Class vscode/SymbolKind))
+(def class
+  "The `Class` symbol kind."
+  (.-Class vscode/SymbolKind))
 
-(def method (.-Method vscode/SymbolKind))
+(def method
+  "The `Method` symbol kind."
+  (.-Method vscode/SymbolKind))
 
-(def property (.-Property vscode/SymbolKind))
+(def property
+  "The `Property` symbol kind."
+  (.-Property vscode/SymbolKind))
 
-(def field (.-Field vscode/SymbolKind))
+(def field
+  "The `Field` symbol kind."
+  (.-Field vscode/SymbolKind))
 
-(def constructor (.-Constructor vscode/SymbolKind))
+(def constructor
+  "The `Constructor` symbol kind."
+  (.-Constructor vscode/SymbolKind))
 
-(def enum (.-Enum vscode/SymbolKind))
+(def enum
+  "The `Enum` symbol kind."
+  (.-Enum vscode/SymbolKind))
 
-(def interface (.-Interface vscode/SymbolKind))
+(def interface
+  "The `Interface` symbol kind."
+  (.-Interface vscode/SymbolKind))
 
-(def function (.-Function vscode/SymbolKind))
+(def function
+  "The `Function` symbol kind."
+  (.-Function vscode/SymbolKind))
 
-(def variable (.-Variable vscode/SymbolKind))
+(def variable
+  "The `Variable` symbol kind."
+  (.-Variable vscode/SymbolKind))
 
-(def constant (.-Constant vscode/SymbolKind))
+(def constant
+  "The `Constant` symbol kind."
+  (.-Constant vscode/SymbolKind))
 
-(def string (.-String vscode/SymbolKind))
+(def string
+  "The `String` symbol kind."
+  (.-String vscode/SymbolKind))
 
-(def number (.-Number vscode/SymbolKind))
+(def number
+  "The `Number` symbol kind."
+  (.-Number vscode/SymbolKind))
 
-(def boolean (.-Boolean vscode/SymbolKind))
+(def boolean
+  "The `Boolean` symbol kind."
+  (.-Boolean vscode/SymbolKind))
 
-(def array (.-Array vscode/SymbolKind))
+(def array
+  "The `Array` symbol kind."
+  (.-Array vscode/SymbolKind))
 
-(def object (.-Object vscode/SymbolKind))
+(def object
+  "The `Object` symbol kind."
+  (.-Object vscode/SymbolKind))
 
-(def key (.-Key vscode/SymbolKind))
+(def key
+  "The `Key` symbol kind."
+  (.-Key vscode/SymbolKind))
 
-(def null (.-Null vscode/SymbolKind))
+(def null
+  "The `Null` symbol kind."
+  (.-Null vscode/SymbolKind))
 
-(def enum-member (.-EnumMember vscode/SymbolKind))
+(def enum-member
+  "The `EnumMember` symbol kind."
+  (.-EnumMember vscode/SymbolKind))
 
-(def struct (.-Struct vscode/SymbolKind))
+(def struct
+  "The `Struct` symbol kind."
+  (.-Struct vscode/SymbolKind))
 
-(def event (.-Event vscode/SymbolKind))
+(def event
+  "The `Event` symbol kind."
+  (.-Event vscode/SymbolKind))
 
-(def operator (.-Operator vscode/SymbolKind))
+(def operator
+  "The `Operator` symbol kind."
+  (.-Operator vscode/SymbolKind))
 
-(def type-parameter (.-TypeParameter vscode/SymbolKind))
+(def type-parameter
+  "The `TypeParameter` symbol kind."
+  (.-TypeParameter vscode/SymbolKind))

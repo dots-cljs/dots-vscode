@@ -19,17 +19,24 @@
   (set! (.-value ^js quick-pick) value))
 
 (defn placeholder
-  "Optional placeholder in the filter text."
+  "Optional placeholder shown in the filter textbox when no filter has been entered."
   ^js [quick-pick]
   (.-placeholder ^js quick-pick))
 
 (defn set-placeholder!
-  "Optional placeholder in the filter text."
+  "Optional placeholder shown in the filter textbox when no filter has been entered."
   ^js [quick-pick value]
   (set! (.-placeholder ^js quick-pick) value))
 
 (defn on-did-change-value
-  "An event signaling when the value of the filter text has changed."
+  "An event signaling when the value of the filter text has changed.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js [quick-pick]
    (.-onDidChangeValue ^js quick-pick))
   (^js [quick-pick listener]
@@ -40,7 +47,14 @@
    (.onDidChangeValue ^js quick-pick listener this-args disposables)))
 
 (defn on-did-accept
-  "An event signaling when the user indicated acceptance of the selected item(s)."
+  "An event signaling when the user indicated acceptance of the selected item(s).
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js [quick-pick]
    (.-onDidAccept ^js quick-pick))
   (^js [quick-pick listener]
@@ -62,7 +76,14 @@
 
 (defn on-did-trigger-button
   "An event signaling when a button in the title bar was triggered.
-   This event does not fire for buttons on a {@link QuickPickItem }."
+   This event does not fire for buttons on a {@link QuickPickItem }.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js [quick-pick]
    (.-onDidTriggerButton ^js quick-pick))
   (^js [quick-pick listener]
@@ -74,7 +95,14 @@
 
 (defn on-did-trigger-item-button
   "An event signaling when a button in a particular {@link QuickPickItem } was triggered.
-   This event does not fire for buttons in the title bar."
+   This event does not fire for buttons in the title bar.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js [quick-pick]
    (.-onDidTriggerItemButton ^js quick-pick))
   (^js [quick-pick listener]
@@ -125,10 +153,12 @@
   (set! (.-matchOnDetail ^js quick-pick) value))
 
 (defn keep-scroll-position?
+  "An optional flag to maintain the scroll position of the quick pick when the quick pick items are updated. Defaults to false."
   ^js [quick-pick]
   (.-keepScrollPosition ^js quick-pick))
 
 (defn set-keep-scroll-position!
+  "An optional flag to maintain the scroll position of the quick pick when the quick pick items are updated. Defaults to false."
   ^js [quick-pick value]
   (set! (.-keepScrollPosition ^js quick-pick) value))
 
@@ -143,7 +173,14 @@
   (set! (.-activeItems ^js quick-pick) value))
 
 (defn on-did-change-active
-  "An event signaling when the active items have changed."
+  "An event signaling when the active items have changed.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js [quick-pick]
    (.-onDidChangeActive ^js quick-pick))
   (^js [quick-pick listener]
@@ -164,7 +201,14 @@
   (set! (.-selectedItems ^js quick-pick) value))
 
 (defn on-did-change-selection
-  "An event signaling when the selected items have changed."
+  "An event signaling when the selected items have changed.
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js [quick-pick]
    (.-onDidChangeSelection ^js quick-pick))
   (^js [quick-pick listener]
@@ -250,13 +294,17 @@
 
 (defn show
   "Makes the input UI visible in its current configuration. Any other input
-   UI will first fire an {@link QuickInput.onDidHide } event."
+   UI will first fire an {@link QuickInput.onDidHide } event.
+   
+   **Returns:** `void`"
   ^js [quick-pick]
   (.show ^js quick-pick))
 
 (defn hide
   "Hides this input UI. This will also fire an {@link QuickInput.onDidHide }
-   event."
+   event.
+   
+   **Returns:** `void`"
   ^js [quick-pick]
   (.hide ^js quick-pick))
 
@@ -266,7 +314,14 @@
    There are several reasons why this UI might have to be hidden and
    the extension will be notified through {@link QuickInput.onDidHide }.
    (Examples include: an explicit call to {@link QuickInput.hide },
-   the user pressing Esc, some other input UI opening, etc.)"
+   the user pressing Esc, some other input UI opening, etc.)
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js [quick-pick]
    (.-onDidHide ^js quick-pick))
   (^js [quick-pick listener]
@@ -290,6 +345,8 @@
   "Dispose of this input UI and any associated resources. If it is still
    visible, it is first hidden. After this call the input UI is no longer
    functional and no additional methods or properties on it should be
-   accessed. Instead a new input UI should be created."
+   accessed. Instead a new input UI should be created.
+   
+   **Returns:** `void`"
   ^js [quick-pick]
   (.dispose ^js quick-pick))

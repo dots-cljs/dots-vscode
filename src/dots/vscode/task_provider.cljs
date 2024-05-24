@@ -3,7 +3,12 @@
    A task provider is registered via {@link tasks.registerTaskProvider }.")
 
 (defn provide-tasks
-  "Provides tasks."
+  "Provides tasks.
+   
+   **Parameters:**
+   - `token`: `CancellationToken` - A cancellation token.
+   
+   **Returns:** `ProviderResult<T[]>` - an array of tasks"
   ^js [task-provider token]
   (.provideTasks ^js task-provider token))
 
@@ -18,6 +23,12 @@
    
    Note that when filling in the properties of `task`, you _must_ be sure to
    use the exact same `TaskDefinition` and not create a new one. Other properties
-   may be changed."
+   may be changed.
+   
+   **Parameters:**
+   - `task`: `T` - The task to resolve.
+   - `token`: `CancellationToken` - A cancellation token.
+   
+   **Returns:** `ProviderResult<T>` - The resolved task"
   ^js [task-provider task token]
   (.resolveTask ^js task-provider task token))

@@ -1,4 +1,5 @@
 (ns dots.vscode.task-filter
+  "A task filter denotes tasks by their version and types"
   (:refer-clojure :exclude [type]))
 
 (defn version

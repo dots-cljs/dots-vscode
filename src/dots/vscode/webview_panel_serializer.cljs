@@ -32,6 +32,13 @@
 (defn deserialize-webview-panel
   "Restore a webview panel from its serialized `state`.
    
-   Called when a serialized webview first becomes visible."
+   Called when a serialized webview first becomes visible.
+   
+   **Parameters:**
+   - `webview-panel`: `WebviewPanel` - Webview panel to restore. The serializer should take ownership of this panel. The
+   serializer must restore the webview's `.html` and hook up all webview events.
+   - `state`: `T` - Persisted state from the webview content.
+   
+   **Returns:** `Thenable<void>` - Thenable indicating that the webview has been fully restored."
   ^js [webview-panel-serializer webview-panel state]
   (.deserializeWebviewPanel ^js webview-panel-serializer webview-panel state))

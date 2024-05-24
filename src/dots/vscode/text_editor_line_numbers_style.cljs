@@ -13,3 +13,7 @@
 (def relative
   "Render the line numbers with values relative to the primary cursor location."
   (.-Relative vscode/TextEditorLineNumbersStyle))
+
+(def interval
+  "Render the line numbers on every 10th line number."
+  (.-Interval vscode/TextEditorLineNumbersStyle))

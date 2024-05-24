@@ -64,6 +64,11 @@
   (set! (.-canPickMany ^js quick-pick-options) value))
 
 (defn on-did-select-item
-  "An optional function that is invoked whenever an item is selected."
+  "An optional function that is invoked whenever an item is selected.
+   
+   **Parameters:**
+   - `item`: `string | QuickPickItem`
+   
+   **Returns:** `any`"
   ^js [quick-pick-options item]
   (.onDidSelectItem ^js quick-pick-options item))

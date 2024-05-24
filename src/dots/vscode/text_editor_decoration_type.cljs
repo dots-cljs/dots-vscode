@@ -12,6 +12,8 @@
   (.-key ^js text-editor-decoration-type))
 
 (defn dispose
-  "Remove this decoration type and all decorations on all text editors using it."
+  "Remove this decoration type and all decorations on all text editors using it.
+   
+   **Returns:** `void`"
   ^js [text-editor-decoration-type]
   (.dispose ^js text-editor-decoration-type))

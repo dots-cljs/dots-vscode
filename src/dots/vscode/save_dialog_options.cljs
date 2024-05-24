@@ -23,10 +23,10 @@
 
 (defn filters
   "A set of file filters that are used by the dialog. Each entry is a human-readable label,
-   like \"TypeScript\", and an array of extensions, e.g.
+   like \"TypeScript\", and an array of extensions, for example:
    ```ts
    {
-   	'Images': ['png', 'jpg']
+   	'Images': ['png', 'jpg'],
    	'TypeScript': ['ts', 'tsx']
    }
    ```"
@@ -35,10 +35,10 @@
 
 (defn set-filters!
   "A set of file filters that are used by the dialog. Each entry is a human-readable label,
-   like \"TypeScript\", and an array of extensions, e.g.
+   like \"TypeScript\", and an array of extensions, for example:
    ```ts
    {
-   	'Images': ['png', 'jpg']
+   	'Images': ['png', 'jpg'],
    	'TypeScript': ['ts', 'tsx']
    }
    ```"

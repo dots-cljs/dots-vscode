@@ -61,3 +61,13 @@
   "The language's rules to be evaluated when pressing Enter."
   ^js [language-configuration value]
   (set! (.-onEnterRules ^js language-configuration) value))
+
+(defn auto-closing-pairs
+  "The language's auto closing pairs."
+  ^js [language-configuration]
+  (.-autoClosingPairs ^js language-configuration))
+
+(defn set-auto-closing-pairs!
+  "The language's auto closing pairs."
+  ^js [language-configuration value]
+  (set! (.-autoClosingPairs ^js language-configuration) value))

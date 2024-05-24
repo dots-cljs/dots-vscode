@@ -1,5 +1,5 @@
 (ns dots.vscode.custom-document-backup-context
-  "Additional information used to implement {@linkcode CustomEditableDocument.backup }.")
+  "Additional information used to implement {@linkcode CustomDocumentBackup }.")
 
 (defn destination
   "Suggested file location to write the new backup.

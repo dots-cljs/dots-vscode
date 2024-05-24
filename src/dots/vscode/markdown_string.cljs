@@ -18,13 +18,17 @@
 
 (defn trusted?
   "Indicates that this markdown string is from a trusted source. Only *trusted*
-   markdown supports links that execute commands, e.g. `[Run it](command:myCommandId)`."
+   markdown supports links that execute commands, e.g. `[Run it](command:myCommandId)`.
+   
+   Defaults to `false` (commands are disabled)."
   ^js [markdown-string]
   (.-isTrusted ^js markdown-string))
 
 (defn set-is-trusted!
   "Indicates that this markdown string is from a trusted source. Only *trusted*
-   markdown supports links that execute commands, e.g. `[Run it](command:myCommandId)`."
+   markdown supports links that execute commands, e.g. `[Run it](command:myCommandId)`.
+   
+   Defaults to `false` (commands are disabled)."
   ^js [markdown-string value]
   (set! (.-isTrusted ^js markdown-string) value))
 
@@ -105,17 +109,33 @@
   (set! (.-baseUri ^js markdown-string) value))
 
 (defn append-text
-  "Appends and escapes the given string to this markdown string."
+  "Appends and escapes the given string to this markdown string.
+   
+   **Parameters:**
+   - `value`: `string` - Plain text.
+   
+   **Returns:** `MarkdownString`"
   ^js [markdown-string value]
   (.appendText ^js markdown-string value))
 
 (defn append-markdown
-  "Appends the given string 'as is' to this markdown string. When {@linkcode MarkdownString.supportThemeIcons supportThemeIcons} is `true`, {@link ThemeIcon ThemeIcons} in the `value` will be iconified."
+  "Appends the given string 'as is' to this markdown string. When {@linkcode MarkdownString.supportThemeIcons supportThemeIcons} is `true`, {@link ThemeIcon ThemeIcons} in the `value` will be iconified.
+   
+   **Parameters:**
+   - `value`: `string` - Markdown string.
+   
+   **Returns:** `MarkdownString`"
   ^js [markdown-string value]
   (.appendMarkdown ^js markdown-string value))
 
 (defn append-codeblock
-  "Appends the given string as codeblock using the provided language."
+  "Appends the given string as codeblock using the provided language.
+   
+   **Parameters:**
+   - `value`: `string` - A code snippet.
+   - `language`: `string | undefined` - An optional {@link languages.getLanguages language identifier}.
+   
+   **Returns:** `MarkdownString`"
   (^js [markdown-string value]
    (.appendCodeblock ^js markdown-string value))
   (^js [markdown-string value language]

@@ -6,6 +6,14 @@
 (defn provide-evaluatable-expression
   "Provide an evaluatable expression for the given document and position.
    The editor will evaluate this expression in the active debug session and will show the result in the debug hover.
-   The expression can be implicitly specified by the range in the underlying document or by explicitly returning an expression."
+   The expression can be implicitly specified by the range in the underlying document or by explicitly returning an expression.
+   
+   **Parameters:**
+   - `document`: `TextDocument` - The document for which the debug hover is about to appear.
+   - `position`: `Position` - The line and character position in the document where the debug hover is about to appear.
+   - `token`: `CancellationToken` - A cancellation token.
+   
+   **Returns:** `ProviderResult<EvaluatableExpression>` - An EvaluatableExpression or a thenable that resolves to such. The lack of a result can be
+   signaled by returning `undefined` or `null`."
   ^js [evaluatable-expression-provider document position token]
   (.provideEvaluatableExpression ^js evaluatable-expression-provider document position token))

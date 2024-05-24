@@ -11,3 +11,8 @@
   "The value to use for the variable."
   ^js [environment-variable-mutator]
   (.-value ^js environment-variable-mutator))
+
+(defn options
+  "Options applied to the mutator."
+  ^js [environment-variable-mutator]
+  (.-options ^js environment-variable-mutator))

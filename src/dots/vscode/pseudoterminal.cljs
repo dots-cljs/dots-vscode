@@ -26,7 +26,14 @@
    **Example:** Move the cursor to the 10th row and 20th column and write an asterisk
    ```typescript
    writeEmitter.fire('\\x1b[10;20H*');
-   ```"
+   ```
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js [pseudoterminal]
    (.-onDidWrite ^js pseudoterminal))
   (^js [pseudoterminal listener]
@@ -89,7 +96,14 @@
      close: () => {}
    };
    vscode.window.createTerminal({ name: 'My terminal', pty });
-   ```"
+   ```
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js [pseudoterminal]
    (.-onDidOverrideDimensions ^js pseudoterminal))
   (^js [pseudoterminal listener]
@@ -140,7 +154,7 @@
    **Example:** Exit the terminal when \"y\" is pressed, otherwise show a notification.
    ```typescript
    const writeEmitter = new vscode.EventEmitter<string>();
-   const closeEmitter = new vscode.EventEmitter<vscode.TerminalDimensions>();
+   const closeEmitter = new vscode.EventEmitter<void>();
    const pty: vscode.Pseudoterminal = {
      onDidWrite: writeEmitter.event,
      onDidClose: closeEmitter.event,
@@ -153,8 +167,16 @@
        closeEmitter.fire();
      }
    };
-   vscode.window.createTerminal({ name: 'Exit example', pty });
-   ```"
+   const terminal = vscode.window.createTerminal({ name: 'Exit example', pty });
+   terminal.show(true);
+   ```
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js [pseudoterminal]
    (.-onDidClose ^js pseudoterminal))
   (^js [pseudoterminal listener]
@@ -177,7 +199,7 @@
    **Example:** Exit the terminal when \"y\" is pressed, otherwise show a notification.
    ```typescript
    const writeEmitter = new vscode.EventEmitter<string>();
-   const closeEmitter = new vscode.EventEmitter<vscode.TerminalDimensions>();
+   const closeEmitter = new vscode.EventEmitter<void>();
    const pty: vscode.Pseudoterminal = {
      onDidWrite: writeEmitter.event,
      onDidClose: closeEmitter.event,
@@ -190,7 +212,8 @@
        closeEmitter.fire();
      }
    };
-   vscode.window.createTerminal({ name: 'Exit example', pty });
+   const terminal = vscode.window.createTerminal({ name: 'Exit example', pty });
+   terminal.show(true);
    ```"
   ^js [pseudoterminal value]
   (set! (.-onDidClose ^js pseudoterminal) value))
@@ -211,7 +234,14 @@
      close: () => {}
    };
    vscode.window.createTerminal({ name: 'My terminal', pty });
-   ```"
+   ```
+   
+   **Parameters:**
+   - `listener`: `(e: T) => any` - The listener function will be called when the event happens.
+   - `this-args`: `any` - The `this`-argument which will be used when calling the event listener.
+   - `disposables`: `Disposable[] | undefined` - An array to which a {@link Disposable } will be added.
+   
+   **Returns:** `Disposable` - A disposable which unsubscribes the event listener."
   (^js [pseudoterminal]
    (.-onDidChangeName ^js pseudoterminal))
   (^js [pseudoterminal listener]
@@ -242,21 +272,47 @@
   (set! (.-onDidChangeName ^js pseudoterminal) value))
 
 (defn open
-  "Implement to handle when the pty is open and ready to start firing events."
+  "Implement to handle when the pty is open and ready to start firing events.
+   
+   **Parameters:**
+   - `initial-dimensions`: `TerminalDimensions | undefined` - The dimensions of the terminal, this will be undefined if the
+   terminal panel has not been opened before this is called.
+   
+   **Returns:** `void`"
   (^js [pseudoterminal]
    (.open ^js pseudoterminal))
   (^js [pseudoterminal initial-dimensions]
    (.open ^js pseudoterminal initial-dimensions)))
 
 (defn close
-  "Implement to handle when the terminal is closed by an act of the user."
+  "Implement to handle when the terminal is closed by an act of the user.
+   
+   **Returns:** `void`"
   ^js [pseudoterminal]
   (.close ^js pseudoterminal))
 
 (defn handle-input
   "Implement to handle incoming keystrokes in the terminal or when an extension calls
    {@link Terminal.sendText }. `data` contains the keystrokes/text serialized into
-   their corresponding VT sequence representation."
+   their corresponding VT sequence representation.
+   
+   **Parameters:**
+   - `data`: `string` - The incoming data.
+   
+   **Example:** Echo input in the terminal. The sequence for enter (`\\r`) is translated to
+   CRLF to go to a new line and move the cursor to the start of the line.
+   ```typescript
+   const writeEmitter = new vscode.EventEmitter<string>();
+   const pty: vscode.Pseudoterminal = {
+   onDidWrite: writeEmitter.event,
+   open: () => {},
+   close: () => {},
+   handleInput: data => writeEmitter.fire(data === '\\r' ? '\\r\\n' : data)
+   };
+   vscode.window.createTerminal({ name: 'Local echo', pty });
+   ```
+   
+   **Returns:** `void`"
   ^js [pseudoterminal data]
   (.handleInput ^js pseudoterminal data))
 
@@ -269,6 +325,11 @@
    When dimensions are overridden by
    {@link Pseudoterminal.onDidOverrideDimensions onDidOverrideDimensions}, `setDimensions` will
    continue to be called with the regular panel dimensions, allowing the extension continue
-   to react dimension changes."
+   to react dimension changes.
+   
+   **Parameters:**
+   - `dimensions`: `TerminalDimensions` - The new dimensions.
+   
+   **Returns:** `void`"
   ^js [pseudoterminal dimensions]
   (.setDimensions ^js pseudoterminal dimensions))

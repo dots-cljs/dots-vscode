@@ -57,7 +57,13 @@
    
    The given callback-function is invoked with an {@link TextEditorEdit edit-builder} which must
    be used to make edits. Note that the edit-builder is only valid while the
-   callback executes."
+   callback executes.
+   
+   **Parameters:**
+   - `callback`: `(editBuilder: TextEditorEdit) => void` - A function which can create edits using an {@link TextEditorEdit edit-builder}.
+   - `options`: `{ readonly undoStopBefore: boolean; readonly undoStopAfter: boolean; } | undefined` - The undo/redo behavior around this edit. By default, undo stops will be created before and after this edit.
+   
+   **Returns:** `Thenable<boolean>` - A promise that resolves with a value indicating if the edits could be applied."
   (^js [callback]
    (.. vscode/window -activeTextEditor (edit callback)))
   (^js [callback options]
@@ -66,7 +72,15 @@
 (defn insert-snippet
   "Insert a {@link SnippetString snippet} and put the editor into snippet mode. \"Snippet mode\"
    means the editor adds placeholders and additional cursors so that the user can complete
-   or accept the snippet."
+   or accept the snippet.
+   
+   **Parameters:**
+   - `snippet`: `SnippetString` - The snippet to insert in this edit.
+   - `location`: `Range | Position | readonly Range[] | readonly Position[] | undefined` - Position or range at which to insert the snippet, defaults to the current editor selection or selections.
+   - `options`: `{ readonly undoStopBefore: boolean; readonly undoStopAfter: boolean; } | undefined` - The undo/redo behavior around this edit. By default, undo stops will be created before and after this edit.
+   
+   **Returns:** `Thenable<boolean>` - A promise that resolves with a value indicating if the snippet could be inserted. Note that the promise does not signal
+   that the snippet is completely filled-in or accepted."
   (^js [snippet]
    (.. vscode/window -activeTextEditor (insertSnippet snippet)))
   (^js [snippet location]
@@ -78,25 +92,45 @@
   "Adds a set of decorations to the text editor. If a set of decorations already exists with
    the given {@link TextEditorDecorationType decoration type}, they will be replaced. If
    `rangesOrOptions` is empty, the existing decorations with the given {@link TextEditorDecorationType decoration type}
-   will be removed."
+   will be removed.
+   
+   **Parameters:**
+   - `decoration-type`: `TextEditorDecorationType` - A decoration type.
+   - `ranges-or-options`: `readonly Range[] | readonly DecorationOptions[]` - Either {@link Range ranges} or more detailed {@link DecorationOptions options}.
+   
+   **Returns:** `void`"
   ^js [decoration-type ranges-or-options]
   (.. vscode/window -activeTextEditor (setDecorations decoration-type ranges-or-options)))
 
 (defn reveal-range
-  "Scroll as indicated by `revealType` in order to reveal the given range."
+  "Scroll as indicated by `revealType` in order to reveal the given range.
+   
+   **Parameters:**
+   - `range`: `Range` - A range.
+   - `reveal-type`: `TextEditorRevealType | undefined` - The scrolling strategy for revealing `range`.
+   
+   **Returns:** `void`"
   (^js [range]
    (.. vscode/window -activeTextEditor (revealRange range)))
   (^js [range reveal-type]
    (.. vscode/window -activeTextEditor (revealRange range reveal-type))))
 
 (defn show
-  "Show the text editor."
+  "Show the text editor.
+   
+   **Parameters:**
+   - `column`: `ViewColumn | undefined` - The {@link ViewColumn column} in which to show this editor.
+   This method shows unexpected behavior and will be removed in the next major update.
+   
+   **Returns:** `void`"
   (^js []
    (.. vscode/window -activeTextEditor (show)))
   (^js [column]
    (.. vscode/window -activeTextEditor (show column))))
 
 (defn hide
-  "Hide the text editor."
+  "Hide the text editor.
+   
+   **Returns:** `void`"
   ^js []
   (.. vscode/window -activeTextEditor (hide)))
