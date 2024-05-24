@@ -4,28 +4,38 @@
    To get an instance of an `Extension` use {@link extensions.getExtension getExtension}.")
 
 (defn id
-  "The canonical extension identifier in the form of: `publisher.name`."
+  "The canonical extension identifier in the form of: `publisher.name`.
+   
+   **Returns:** `string`"
   ^js [extension]
   (.-id ^js extension))
 
 (defn extension-uri
-  "The uri of the directory containing the extension."
+  "The uri of the directory containing the extension.
+   
+   **Returns:** `Uri`"
   ^js [extension]
   (.-extensionUri ^js extension))
 
 (defn extension-path
   "The absolute file path of the directory containing this extension. Shorthand
-   notation for {@link Extension.extensionUri Extension.extensionUri.fsPath} (independent of the uri scheme)."
+   notation for {@link Extension.extensionUri Extension.extensionUri.fsPath} (independent of the uri scheme).
+   
+   **Returns:** `string`"
   ^js [extension]
   (.-extensionPath ^js extension))
 
 (defn active?
-  "`true` if the extension has been activated."
+  "`true` if the extension has been activated.
+   
+   **Returns:** `boolean`"
   ^js [extension]
   (.-isActive ^js extension))
 
 (defn package-json
-  "The parsed contents of the extension's package.json."
+  "The parsed contents of the extension's package.json.
+   
+   **Returns:** `any`"
   ^js [extension]
   (.-packageJSON ^js extension))
 
@@ -34,7 +44,9 @@
    or if an extension runs where the remote extension host runs. The extension kind
    is defined in the `package.json`-file of extensions but can also be refined
    via the `remote.extensionKind`-setting. When no remote extension host exists,
-   the value is {@linkcode ExtensionKind.UI }."
+   the value is {@linkcode ExtensionKind.UI }.
+   
+   **Returns:** `ExtensionKind`"
   ^js [extension]
   (.-extensionKind ^js extension))
 
@@ -49,7 +61,9 @@
 
 (defn exports
   "The public API exported by this extension (return value of `activate`).
-   It is an invalid action to access this field before this extension has been activated."
+   It is an invalid action to access this field before this extension has been activated.
+   
+   **Returns:** `T`"
   ^js [extension]
   (.-exports ^js extension))
 

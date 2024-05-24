@@ -6,11 +6,15 @@
    - Zero: the terminal process or custom execution succeeded.
    - Non-zero: the terminal process or custom execution failed.
    - `undefined`: the user forcibly closed the terminal or a custom execution exited
-     without providing an exit code."
+     without providing an exit code.
+   
+   **Returns:** `number | undefined`"
   ^js [terminal-exit-status]
   (.-code ^js terminal-exit-status))
 
 (defn reason
-  "The reason that triggered the exit of a terminal."
+  "The reason that triggered the exit of a terminal.
+   
+   **Returns:** `TerminalExitReason`"
   ^js [terminal-exit-status]
   (.-reason ^js terminal-exit-status))

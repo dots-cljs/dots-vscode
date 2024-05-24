@@ -2,12 +2,16 @@
   "A panel that contains a webview.")
 
 (defn view-type
-  "Identifies the type of the webview panel, such as `'markdown.preview'`."
+  "Identifies the type of the webview panel, such as `'markdown.preview'`.
+   
+   **Returns:** `string`"
   ^js [webview-panel]
   (.-viewType ^js webview-panel))
 
 (defn title
-  "Title of the panel shown in UI."
+  "Title of the panel shown in UI.
+   
+   **Returns:** `string`"
   ^js [webview-panel]
   (.-title ^js webview-panel))
 
@@ -17,7 +21,9 @@
   (set! (.-title ^js webview-panel) value))
 
 (defn icon-path
-  "Icon for the panel shown in UI."
+  "Icon for the panel shown in UI.
+   
+   **Returns:** `Uri | { readonly light: Uri; readonly dark: Uri; } | undefined`"
   ^js [webview-panel]
   (.-iconPath ^js webview-panel))
 
@@ -27,28 +33,38 @@
   (set! (.-iconPath ^js webview-panel) value))
 
 (defn webview
-  "{@linkcode Webview } belonging to the panel."
+  "{@linkcode Webview } belonging to the panel.
+   
+   **Returns:** `Webview`"
   ^js [webview-panel]
   (.-webview ^js webview-panel))
 
 (defn options
-  "Content settings for the webview panel."
+  "Content settings for the webview panel.
+   
+   **Returns:** `WebviewPanelOptions`"
   ^js [webview-panel]
   (.-options ^js webview-panel))
 
 (defn view-column
   "Editor position of the panel. This property is only set if the webview is in
-   one of the editor view columns."
+   one of the editor view columns.
+   
+   **Returns:** `ViewColumn | undefined`"
   ^js [webview-panel]
   (.-viewColumn ^js webview-panel))
 
 (defn active?
-  "Whether the panel is active (focused by the user)."
+  "Whether the panel is active (focused by the user).
+   
+   **Returns:** `boolean`"
   ^js [webview-panel]
   (.-active ^js webview-panel))
 
 (defn visible?
-  "Whether the panel is visible."
+  "Whether the panel is visible.
+   
+   **Returns:** `boolean`"
   ^js [webview-panel]
   (.-visible ^js webview-panel))
 

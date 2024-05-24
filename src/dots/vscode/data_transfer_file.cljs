@@ -5,14 +5,18 @@
   (:refer-clojure :exclude [name]))
 
 (defn name
-  "The name of the file."
+  "The name of the file.
+   
+   **Returns:** `string`"
   ^js [data-transfer-file]
   (.-name ^js data-transfer-file))
 
 (defn uri
   "The full file path of the file.
    
-   May be `undefined` on web."
+   May be `undefined` on web.
+   
+   **Returns:** `Uri | undefined`"
   ^js [data-transfer-file]
   (.-uri ^js data-transfer-file))
 

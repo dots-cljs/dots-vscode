@@ -2,7 +2,9 @@
   "Describes how comments for a language work.")
 
 (defn line-comment
-  "The line comment token, like `// this is a comment`"
+  "The line comment token, like `// this is a comment`
+   
+   **Returns:** `string | undefined`"
   ^js [comment-rule]
   (.-lineComment ^js comment-rule))
 
@@ -12,7 +14,9 @@
   (set! (.-lineComment ^js comment-rule) value))
 
 (defn block-comment
-  "The block comment character pair, like `/* block comment *&#47;`"
+  "The block comment character pair, like `/* block comment *&#47;`
+   
+   **Returns:** `CharacterPair | undefined`"
   ^js [comment-rule]
   (.-blockComment ^js comment-rule))
 

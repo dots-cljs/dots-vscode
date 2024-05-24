@@ -4,7 +4,9 @@
 (defn enable-scripts?
   "Controls whether scripts are enabled in the webview content or not.
    
-   Defaults to false (scripts-disabled)."
+   Defaults to false (scripts-disabled).
+   
+   **Returns:** `boolean | undefined`"
   ^js [webview-options]
   (.-enableScripts ^js webview-options))
 
@@ -12,7 +14,9 @@
   "Controls whether forms are enabled in the webview content or not.
    
    Defaults to true if {@link WebviewOptions.enableScripts scripts are enabled}. Otherwise defaults to false.
-   Explicitly setting this property to either true or false overrides the default."
+   Explicitly setting this property to either true or false overrides the default.
+   
+   **Returns:** `boolean | undefined`"
   ^js [webview-options]
   (.-enableForms ^js webview-options))
 
@@ -21,7 +25,9 @@
    
    Defaults to `false` (command uris are disabled).
    
-   If you pass in an array, only the commands in the array are allowed."
+   If you pass in an array, only the commands in the array are allowed.
+   
+   **Returns:** `boolean | readonly string[] | undefined`"
   ^js [webview-options]
   (.-enableCommandUris ^js webview-options))
 
@@ -30,7 +36,9 @@
    
    Default to the root folders of the current workspace plus the extension's install directory.
    
-   Pass in an empty array to disallow access to any local resources."
+   Pass in an empty array to disallow access to any local resources.
+   
+   **Returns:** `readonly Uri[] | undefined`"
   ^js [webview-options]
   (.-localResourceRoots ^js webview-options))
 
@@ -45,6 +53,8 @@
    the `webviewPort` and `extensionHostPort` ports are the same.
    
    *Note* that port mappings only work for `http` or `https` urls. Websocket urls (e.g. `ws://localhost:3000`)
-   cannot be mapped to another port."
+   cannot be mapped to another port.
+   
+   **Returns:** `readonly WebviewPortMapping[] | undefined`"
   ^js [webview-options]
   (.-portMapping ^js webview-options))

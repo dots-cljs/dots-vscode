@@ -7,7 +7,9 @@
    and the editor then silently adjusts the options to select files.")
 
 (defn default-uri
-  "The resource the dialog shows when opened."
+  "The resource the dialog shows when opened.
+   
+   **Returns:** `Uri | undefined`"
   ^js [open-dialog-options]
   (.-defaultUri ^js open-dialog-options))
 
@@ -17,7 +19,9 @@
   (set! (.-defaultUri ^js open-dialog-options) value))
 
 (defn open-label
-  "A human-readable string for the open button."
+  "A human-readable string for the open button.
+   
+   **Returns:** `string | undefined`"
   ^js [open-dialog-options]
   (.-openLabel ^js open-dialog-options))
 
@@ -27,7 +31,9 @@
   (set! (.-openLabel ^js open-dialog-options) value))
 
 (defn can-select-files?
-  "Allow to select files, defaults to `true`."
+  "Allow to select files, defaults to `true`.
+   
+   **Returns:** `boolean | undefined`"
   ^js [open-dialog-options]
   (.-canSelectFiles ^js open-dialog-options))
 
@@ -37,7 +43,9 @@
   (set! (.-canSelectFiles ^js open-dialog-options) value))
 
 (defn can-select-folders?
-  "Allow to select folders, defaults to `false`."
+  "Allow to select folders, defaults to `false`.
+   
+   **Returns:** `boolean | undefined`"
   ^js [open-dialog-options]
   (.-canSelectFolders ^js open-dialog-options))
 
@@ -47,7 +55,9 @@
   (set! (.-canSelectFolders ^js open-dialog-options) value))
 
 (defn can-select-many?
-  "Allow to select many files or folders."
+  "Allow to select many files or folders.
+   
+   **Returns:** `boolean | undefined`"
   ^js [open-dialog-options]
   (.-canSelectMany ^js open-dialog-options))
 
@@ -64,7 +74,9 @@
    	'Images': ['png', 'jpg'],
    	'TypeScript': ['ts', 'tsx']
    }
-   ```"
+   ```
+   
+   **Returns:** `{ [name: string]: string[]; } | undefined`"
   ^js [open-dialog-options]
   (.-filters ^js open-dialog-options))
 
@@ -84,7 +96,9 @@
   "Dialog title.
    
    This parameter might be ignored, as not all operating systems display a title on open dialogs
-   (for example, macOS)."
+   (for example, macOS).
+   
+   **Returns:** `string | undefined`"
   ^js [open-dialog-options]
   (.-title ^js open-dialog-options))
 

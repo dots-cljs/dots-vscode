@@ -3,6 +3,8 @@
 
 (defn supports-multiple-accounts?
   "Whether it is possible to be signed into multiple accounts at once with this provider.
-   If not specified, will default to false."
+   If not specified, will default to false.
+   
+   **Returns:** `boolean | undefined`"
   ^js [authentication-provider-options]
   (.-supportsMultipleAccounts ^js authentication-provider-options))

@@ -2,7 +2,9 @@
   "Options to configure the behavior of the quick pick UI.")
 
 (defn title
-  "An optional string that represents the title of the quick pick."
+  "An optional string that represents the title of the quick pick.
+   
+   **Returns:** `string | undefined`"
   ^js [quick-pick-options]
   (.-title ^js quick-pick-options))
 
@@ -12,7 +14,9 @@
   (set! (.-title ^js quick-pick-options) value))
 
 (defn match-on-description?
-  "An optional flag to include the description when filtering the picks."
+  "An optional flag to include the description when filtering the picks.
+   
+   **Returns:** `boolean | undefined`"
   ^js [quick-pick-options]
   (.-matchOnDescription ^js quick-pick-options))
 
@@ -22,7 +26,9 @@
   (set! (.-matchOnDescription ^js quick-pick-options) value))
 
 (defn match-on-detail?
-  "An optional flag to include the detail when filtering the picks."
+  "An optional flag to include the detail when filtering the picks.
+   
+   **Returns:** `boolean | undefined`"
   ^js [quick-pick-options]
   (.-matchOnDetail ^js quick-pick-options))
 
@@ -32,7 +38,9 @@
   (set! (.-matchOnDetail ^js quick-pick-options) value))
 
 (defn place-holder
-  "An optional string to show as placeholder in the input box to guide the user what to pick on."
+  "An optional string to show as placeholder in the input box to guide the user what to pick on.
+   
+   **Returns:** `string | undefined`"
   ^js [quick-pick-options]
   (.-placeHolder ^js quick-pick-options))
 
@@ -43,7 +51,9 @@
 
 (defn ignore-focus-out?
   "Set to `true` to keep the picker open when focus moves to another part of the editor or to another window.
-   This setting is ignored on iPad and is always false."
+   This setting is ignored on iPad and is always false.
+   
+   **Returns:** `boolean | undefined`"
   ^js [quick-pick-options]
   (.-ignoreFocusOut ^js quick-pick-options))
 
@@ -54,7 +64,9 @@
   (set! (.-ignoreFocusOut ^js quick-pick-options) value))
 
 (defn can-pick-many?
-  "An optional flag to make the picker accept multiple selections, if true the result is an array of picks."
+  "An optional flag to make the picker accept multiple selections, if true the result is an array of picks.
+   
+   **Returns:** `boolean | undefined`"
   ^js [quick-pick-options]
   (.-canPickMany ^js quick-pick-options))
 

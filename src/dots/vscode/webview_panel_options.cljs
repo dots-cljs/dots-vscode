@@ -4,7 +4,9 @@
 (defn enable-find-widget?
   "Controls if the find widget is enabled in the panel.
    
-   Defaults to `false`."
+   Defaults to `false`.
+   
+   **Returns:** `boolean | undefined`"
   ^js [webview-panel-options]
   (.-enableFindWidget ^js webview-panel-options))
 
@@ -22,6 +24,8 @@
    hidden webview, even with `retainContextWhenHidden` enabled.
    
    `retainContextWhenHidden` has a high memory overhead and should only be used if
-   your panel's context cannot be quickly saved and restored."
+   your panel's context cannot be quickly saved and restored.
+   
+   **Returns:** `boolean | undefined`"
   ^js [webview-panel-options]
   (.-retainContextWhenHidden ^js webview-panel-options))

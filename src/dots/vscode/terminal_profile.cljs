@@ -2,7 +2,9 @@
   "A terminal profile defines how a terminal will be launched.")
 
 (defn options
-  "The options that the terminal will launch with."
+  "The options that the terminal will launch with.
+   
+   **Returns:** `TerminalOptions | ExtensionTerminalOptions`"
   ^js [terminal-profile]
   (.-options ^js terminal-profile))
 

@@ -3,7 +3,9 @@
   (:refer-clojure :exclude [range]))
 
 (defn range
-  "Range to which this decoration is applied. The range must not be empty."
+  "Range to which this decoration is applied. The range must not be empty.
+   
+   **Returns:** `Range`"
   ^js [decoration-options]
   (.-range ^js decoration-options))
 
@@ -13,7 +15,9 @@
   (set! (.-range ^js decoration-options) value))
 
 (defn hover-message
-  "A message that should be rendered when hovering over the decoration."
+  "A message that should be rendered when hovering over the decoration.
+   
+   **Returns:** `MarkdownString | MarkedString | (MarkdownString | MarkedString)[] | undefined`"
   ^js [decoration-options]
   (.-hoverMessage ^js decoration-options))
 
@@ -24,7 +28,9 @@
 
 (defn render-options
   "Render options applied to the current decoration. For performance reasons, keep the
-   number of decoration specific options small, and use decoration types wherever possible."
+   number of decoration specific options small, and use decoration types wherever possible.
+   
+   **Returns:** `DecorationInstanceRenderOptions | undefined`"
   ^js [decoration-options]
   (.-renderOptions ^js decoration-options))
 

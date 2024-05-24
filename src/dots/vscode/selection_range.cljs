@@ -4,7 +4,9 @@
   (:refer-clojure :exclude [range]))
 
 (defn range
-  "The {@link Range } of this selection range."
+  "The {@link Range } of this selection range.
+   
+   **Returns:** `Range`"
   ^js [selection-range]
   (.-range ^js selection-range))
 
@@ -14,7 +16,9 @@
   (set! (.-range ^js selection-range) value))
 
 (defn parent
-  "The parent selection range containing this range."
+  "The parent selection range containing this range.
+   
+   **Returns:** `SelectionRange | undefined`"
   ^js [selection-range]
   (.-parent ^js selection-range))
 

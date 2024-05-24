@@ -5,6 +5,8 @@
 
 (defn id
   "ID of the test tag. `TestTag` instances with the same ID are considered
-   to be identical."
+   to be identical.
+   
+   **Returns:** `string`"
   ^js [test-tag]
   (.-id ^js test-tag))

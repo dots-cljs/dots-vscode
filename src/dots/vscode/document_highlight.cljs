@@ -5,7 +5,9 @@
   (:refer-clojure :exclude [range]))
 
 (defn range
-  "The range this highlight applies to."
+  "The range this highlight applies to.
+   
+   **Returns:** `Range`"
   ^js [document-highlight]
   (.-range ^js document-highlight))
 
@@ -15,7 +17,9 @@
   (set! (.-range ^js document-highlight) value))
 
 (defn kind
-  "The highlight kind, default is {@link DocumentHighlightKind.Text text}."
+  "The highlight kind, default is {@link DocumentHighlightKind.Text text}.
+   
+   **Returns:** `DocumentHighlightKind | undefined`"
   ^js [document-highlight]
   (.-kind ^js document-highlight))
 

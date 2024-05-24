@@ -5,12 +5,16 @@
   (:require ["vscode" :as vscode]))
 
 (defn notebook
-  "The {@link NotebookDocument notebook document} associated with this notebook editor."
+  "The {@link NotebookDocument notebook document} associated with this notebook editor.
+   
+   **Returns:** `NotebookDocument`"
   ^js []
   (.. vscode/window -activeNotebookEditor -notebook))
 
 (defn selection
-  "The primary selection in this notebook editor."
+  "The primary selection in this notebook editor.
+   
+   **Returns:** `NotebookRange`"
   ^js []
   (.. vscode/window -activeNotebookEditor -selection))
 
@@ -22,7 +26,9 @@
 (defn selections
   "All selections in this notebook editor.
    
-   The primary selection (or focused range) is `selections[0]`. When the document has no cells, the primary selection is empty `{ start: 0, end: 0 }`;"
+   The primary selection (or focused range) is `selections[0]`. When the document has no cells, the primary selection is empty `{ start: 0, end: 0 }`;
+   
+   **Returns:** `readonly NotebookRange[]`"
   ^js []
   (.. vscode/window -activeNotebookEditor -selections))
 
@@ -34,12 +40,16 @@
   (set! (.. vscode/window -activeNotebookEditor -selections) value))
 
 (defn visible-ranges
-  "The current visible ranges in the editor (vertically)."
+  "The current visible ranges in the editor (vertically).
+   
+   **Returns:** `readonly NotebookRange[]`"
   ^js []
   (.. vscode/window -activeNotebookEditor -visibleRanges))
 
 (defn view-column
-  "The column in which this editor shows."
+  "The column in which this editor shows.
+   
+   **Returns:** `ViewColumn | undefined`"
   ^js []
   (.. vscode/window -activeNotebookEditor -viewColumn))
 

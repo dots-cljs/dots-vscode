@@ -5,6 +5,8 @@
   "A back button for {@link QuickPick } and {@link InputBox }.
    
    When a navigation 'back' button is needed this one should be used for consistency.
-   It comes with a predefined icon, tooltip and location."
+   It comes with a predefined icon, tooltip and location.
+   
+   **Returns:** `QuickInputButton`"
   ^js [quick-input-buttons]
   (.-Back ^js quick-input-buttons))

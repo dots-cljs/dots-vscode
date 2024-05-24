@@ -480,19 +480,25 @@
   (.registerFileDecorationProvider vscode/window provider))
 
 (defn tab-groups
-  "Represents the grid widget within the main editor area"
+  "Represents the grid widget within the main editor area
+   
+   **Returns:** `TabGroups`"
   ^js []
   (.-tabGroups vscode/window))
 
 (defn active-text-editor
   "The currently active editor or `undefined`. The active editor is the one
    that currently has focus or, when none has focus, the one that has changed
-   input most recently."
+   input most recently.
+   
+   **Returns:** `TextEditor | undefined`"
   ^js []
   (.-activeTextEditor vscode/window))
 
 (defn visible-text-editors
-  "The currently visible editors or an empty array."
+  "The currently visible editors or an empty array.
+   
+   **Returns:** `readonly TextEditor[]`"
   ^js []
   (.-visibleTextEditors vscode/window))
 
@@ -608,7 +614,9 @@
    (.onDidChangeTextEditorViewColumn vscode/window listener this-args disposables)))
 
 (defn visible-notebook-editors
-  "The currently visible {@link NotebookEditor notebook editors} or an empty array."
+  "The currently visible {@link NotebookEditor notebook editors} or an empty array.
+   
+   **Returns:** `readonly NotebookEditor[]`"
   ^js []
   (.-visibleNotebookEditors vscode/window))
 
@@ -634,7 +642,9 @@
 (defn active-notebook-editor
   "The currently active {@link NotebookEditor notebook editor} or `undefined`. The active editor is the one
    that currently has focus or, when none has focus, the one that has changed
-   input most recently."
+   input most recently.
+   
+   **Returns:** `NotebookEditor | undefined`"
   ^js []
   (.-activeNotebookEditor vscode/window))
 
@@ -697,13 +707,17 @@
    (.onDidChangeNotebookEditorVisibleRanges vscode/window listener this-args disposables)))
 
 (defn terminals
-  "The currently opened terminals or an empty array."
+  "The currently opened terminals or an empty array.
+   
+   **Returns:** `readonly Terminal[]`"
   ^js []
   (.-terminals vscode/window))
 
 (defn active-terminal
   "The currently active terminal or `undefined`. The active terminal is the one that
-   currently has focus or most recently had focus."
+   currently has focus or most recently had focus.
+   
+   **Returns:** `Terminal | undefined`"
   ^js []
   (.-activeTerminal vscode/window))
 
@@ -783,7 +797,9 @@
    (.onDidChangeTerminalState vscode/window listener this-args disposables)))
 
 (defn state
-  "Represents the current window's state."
+  "Represents the current window's state.
+   
+   **Returns:** `WindowState`"
   ^js []
   (.-state vscode/window))
 
@@ -808,7 +824,9 @@
 
 (defn active-color-theme
   "The currently active color theme as configured in the settings. The active
-   theme can be changed via the `workbench.colorTheme` setting."
+   theme can be changed via the `workbench.colorTheme` setting.
+   
+   **Returns:** `ColorTheme`"
   ^js []
   (.-activeColorTheme vscode/window))
 

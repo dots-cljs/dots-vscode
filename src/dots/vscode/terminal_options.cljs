@@ -3,7 +3,9 @@
   (:refer-clojure :exclude [name]))
 
 (defn name
-  "A human-readable string which will be used to represent the terminal in the UI."
+  "A human-readable string which will be used to represent the terminal in the UI.
+   
+   **Returns:** `string | undefined`"
   ^js [terminal-options]
   (.-name ^js terminal-options))
 
@@ -13,7 +15,9 @@
   (set! (.-name ^js terminal-options) value))
 
 (defn shell-path
-  "A path to a custom shell executable to be used in the terminal."
+  "A path to a custom shell executable to be used in the terminal.
+   
+   **Returns:** `string | undefined`"
   ^js [terminal-options]
   (.-shellPath ^js terminal-options))
 
@@ -24,7 +28,9 @@
 
 (defn shell-args
   "Args for the custom shell executable. A string can be used on Windows only which allows
-   specifying shell args in [command-line format](https://msdn.microsoft.com/en-au/08dfcab2-eb6e-49a4-80eb-87d4076c98c6)."
+   specifying shell args in [command-line format](https://msdn.microsoft.com/en-au/08dfcab2-eb6e-49a4-80eb-87d4076c98c6).
+   
+   **Returns:** `string | string[] | undefined`"
   ^js [terminal-options]
   (.-shellArgs ^js terminal-options))
 
@@ -35,7 +41,9 @@
   (set! (.-shellArgs ^js terminal-options) value))
 
 (defn cwd
-  "A path or Uri for the current working directory to be used for the terminal."
+  "A path or Uri for the current working directory to be used for the terminal.
+   
+   **Returns:** `string | Uri | undefined`"
   ^js [terminal-options]
   (.-cwd ^js terminal-options))
 
@@ -45,7 +53,9 @@
   (set! (.-cwd ^js terminal-options) value))
 
 (defn env
-  "Object with environment variables that will be added to the editor process."
+  "Object with environment variables that will be added to the editor process.
+   
+   **Returns:** `{ [key: string]: string | null | undefined; } | undefined`"
   ^js [terminal-options]
   (.-env ^js terminal-options))
 
@@ -59,7 +69,9 @@
    `TerminalOptions.env`. When this is false (default), the environment will be based on the
    window's environment and also apply configured platform settings like
    `terminal.integrated.env.windows` on top. When this is true, the complete environment
-   must be provided as nothing will be inherited from the process or any configuration."
+   must be provided as nothing will be inherited from the process or any configuration.
+   
+   **Returns:** `boolean | undefined`"
   ^js [terminal-options]
   (.-strictEnv ^js terminal-options))
 
@@ -77,7 +89,9 @@
    until `Terminal.show` is called. The typical usage for this is when you need to run
    something that may need interactivity but only want to tell the user about it when
    interaction is needed. Note that the terminals will still be exposed to all extensions
-   as normal. The hidden terminals will not be restored when the workspace is next opened."
+   as normal. The hidden terminals will not be restored when the workspace is next opened.
+   
+   **Returns:** `boolean | undefined`"
   ^js [terminal-options]
   (.-hideFromUser ^js terminal-options))
 
@@ -93,7 +107,9 @@
 (defn message
   "A message to write to the terminal on first launch, note that this is not sent to the
    process but, rather written directly to the terminal. This supports escape sequences such
-   a setting text style."
+   a setting text style.
+   
+   **Returns:** `string | undefined`"
   ^js [terminal-options]
   (.-message ^js terminal-options))
 
@@ -105,7 +121,9 @@
   (set! (.-message ^js terminal-options) value))
 
 (defn icon-path
-  "The icon path or {@link ThemeIcon } for the terminal."
+  "The icon path or {@link ThemeIcon } for the terminal.
+   
+   **Returns:** `Uri | ThemeIcon | { light: Uri; dark: Uri; } | undefined`"
   ^js [terminal-options]
   (.-iconPath ^js terminal-options))
 
@@ -117,7 +135,9 @@
 (defn color
   "The icon {@link ThemeColor } for the terminal.
    The `terminal.ansi*` theme keys are
-   recommended for the best contrast and consistency across themes."
+   recommended for the best contrast and consistency across themes.
+   
+   **Returns:** `ThemeColor | undefined`"
   ^js [terminal-options]
   (.-color ^js terminal-options))
 
@@ -129,7 +149,9 @@
   (set! (.-color ^js terminal-options) value))
 
 (defn location
-  "The {@link TerminalLocation } or {@link TerminalEditorLocationOptions } or {@link TerminalSplitLocationOptions } for the terminal."
+  "The {@link TerminalLocation } or {@link TerminalEditorLocationOptions } or {@link TerminalSplitLocationOptions } for the terminal.
+   
+   **Returns:** `TerminalLocation | TerminalEditorLocationOptions | TerminalSplitLocationOptions | undefined`"
   ^js [terminal-options]
   (.-location ^js terminal-options))
 
@@ -140,7 +162,9 @@
 
 (defn transient?
   "Opt-out of the default terminal persistence on restart and reload.
-   This will only take effect when `terminal.integrated.enablePersistentSessions` is enabled."
+   This will only take effect when `terminal.integrated.enablePersistentSessions` is enabled.
+   
+   **Returns:** `boolean | undefined`"
   ^js [terminal-options]
   (.-isTransient ^js terminal-options))
 

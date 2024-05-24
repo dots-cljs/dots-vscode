@@ -3,7 +3,9 @@
    and various editor features, like automatic bracket insertion, automatic indentation etc.")
 
 (defn comments
-  "The language's comment settings."
+  "The language's comment settings.
+   
+   **Returns:** `CommentRule | undefined`"
   ^js [language-configuration]
   (.-comments ^js language-configuration))
 
@@ -14,7 +16,9 @@
 
 (defn brackets
   "The language's brackets.
-   This configuration implicitly affects pressing Enter around these brackets."
+   This configuration implicitly affects pressing Enter around these brackets.
+   
+   **Returns:** `CharacterPair[] | undefined`"
   ^js [language-configuration]
   (.-brackets ^js language-configuration))
 
@@ -29,7 +33,9 @@
    If the language supports Unicode identifiers (e.g. JavaScript), it is preferable
    to provide a word definition that uses exclusion of known separators.
    e.g.: A regex that matches anything except known separators (and dot is allowed to occur in a floating point number):
-     /(-?\\d*\\.\\d\\w*)|([^\\`\\~\\!\\@\\#\\%\\^\\&\\*\\(\\)\\-\\=\\+\\[\\{\\]\\}\\\\\\|\\;\\:\\'\\\"\\,\\.\\<\\>\\/\\?\\s]+)/g"
+     /(-?\\d*\\.\\d\\w*)|([^\\`\\~\\!\\@\\#\\%\\^\\&\\*\\(\\)\\-\\=\\+\\[\\{\\]\\}\\\\\\|\\;\\:\\'\\\"\\,\\.\\<\\>\\/\\?\\s]+)/g
+   
+   **Returns:** `RegExp | undefined`"
   ^js [language-configuration]
   (.-wordPattern ^js language-configuration))
 
@@ -43,7 +49,9 @@
   (set! (.-wordPattern ^js language-configuration) value))
 
 (defn indentation-rules
-  "The language's indentation settings."
+  "The language's indentation settings.
+   
+   **Returns:** `IndentationRule | undefined`"
   ^js [language-configuration]
   (.-indentationRules ^js language-configuration))
 
@@ -53,7 +61,9 @@
   (set! (.-indentationRules ^js language-configuration) value))
 
 (defn on-enter-rules
-  "The language's rules to be evaluated when pressing Enter."
+  "The language's rules to be evaluated when pressing Enter.
+   
+   **Returns:** `OnEnterRule[] | undefined`"
   ^js [language-configuration]
   (.-onEnterRules ^js language-configuration))
 
@@ -63,7 +73,9 @@
   (set! (.-onEnterRules ^js language-configuration) value))
 
 (defn auto-closing-pairs
-  "The language's auto closing pairs."
+  "The language's auto closing pairs.
+   
+   **Returns:** `AutoClosingPair[] | undefined`"
   ^js [language-configuration]
   (.-autoClosingPairs ^js language-configuration))
 

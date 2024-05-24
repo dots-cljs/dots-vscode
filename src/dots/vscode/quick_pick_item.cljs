@@ -4,7 +4,9 @@
 
 (defn label
   "A human-readable string which is rendered prominent. Supports rendering of {@link ThemeIcon theme icons} via
-   the `$(<name>)`-syntax."
+   the `$(<name>)`-syntax.
+   
+   **Returns:** `string`"
   ^js [quick-pick-item]
   (.-label ^js quick-pick-item))
 
@@ -16,7 +18,9 @@
 
 (defn kind
   "The kind of QuickPickItem that will determine how this item is rendered in the quick pick. When not specified,
-   the default is {@link QuickPickItemKind.Default }."
+   the default is {@link QuickPickItemKind.Default }.
+   
+   **Returns:** `QuickPickItemKind | undefined`"
   ^js [quick-pick-item]
   (.-kind ^js quick-pick-item))
 
@@ -27,7 +31,9 @@
   (set! (.-kind ^js quick-pick-item) value))
 
 (defn icon-path
-  "The icon path or {@link ThemeIcon } for the QuickPickItem."
+  "The icon path or {@link ThemeIcon } for the QuickPickItem.
+   
+   **Returns:** `Uri | ThemeIcon | { light: Uri; dark: Uri; } | undefined`"
   ^js [quick-pick-item]
   (.-iconPath ^js quick-pick-item))
 
@@ -40,7 +46,9 @@
   "A human-readable string which is rendered less prominent in the same line. Supports rendering of
    {@link ThemeIcon theme icons} via the `$(<name>)`-syntax.
    
-   Note: this property is ignored when {@link QuickPickItem.kind kind} is set to {@link QuickPickItemKind.Separator }"
+   Note: this property is ignored when {@link QuickPickItem.kind kind} is set to {@link QuickPickItemKind.Separator }
+   
+   **Returns:** `string | undefined`"
   ^js [quick-pick-item]
   (.-description ^js quick-pick-item))
 
@@ -56,7 +64,9 @@
   "A human-readable string which is rendered less prominent in a separate line. Supports rendering of
    {@link ThemeIcon theme icons} via the `$(<name>)`-syntax.
    
-   Note: this property is ignored when {@link QuickPickItem.kind kind} is set to {@link QuickPickItemKind.Separator }"
+   Note: this property is ignored when {@link QuickPickItem.kind kind} is set to {@link QuickPickItemKind.Separator }
+   
+   **Returns:** `string | undefined`"
   ^js [quick-pick-item]
   (.-detail ^js quick-pick-item))
 
@@ -73,7 +83,9 @@
    the {@link window.showQuickPick showQuickPick()} API. To do the same thing with
    the {@link window.createQuickPick createQuickPick()} API, simply set the {@link QuickPick.selectedItems }
    to the items you want picked initially.
-   (*Note:* This is only honored when the picker allows multiple selections.)"
+   (*Note:* This is only honored when the picker allows multiple selections.)
+   
+   **Returns:** `boolean | undefined`"
   ^js [quick-pick-item]
   (.-picked ^js quick-pick-item))
 
@@ -89,7 +101,9 @@
 (defn always-show?
   "Always show this item.
    
-   Note: this property is ignored when {@link QuickPickItem.kind kind} is set to {@link QuickPickItemKind.Separator }"
+   Note: this property is ignored when {@link QuickPickItem.kind kind} is set to {@link QuickPickItemKind.Separator }
+   
+   **Returns:** `boolean | undefined`"
   ^js [quick-pick-item]
   (.-alwaysShow ^js quick-pick-item))
 
@@ -106,7 +120,9 @@
    created by the {@link window.createQuickPick createQuickPick()} API. Buttons are not rendered when using
    the {@link window.showQuickPick showQuickPick()} API.
    
-   Note: this property is ignored when {@link QuickPickItem.kind kind} is set to {@link QuickPickItemKind.Separator }"
+   Note: this property is ignored when {@link QuickPickItem.kind kind} is set to {@link QuickPickItemKind.Separator }
+   
+   **Returns:** `readonly QuickInputButton[] | undefined`"
   ^js [quick-pick-item]
   (.-buttons ^js quick-pick-item))
 

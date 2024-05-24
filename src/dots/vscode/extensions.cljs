@@ -42,7 +42,9 @@
   (.getExtension vscode/extensions extension-id))
 
 (defn all
-  "All extensions currently known to the system."
+  "All extensions currently known to the system.
+   
+   **Returns:** `readonly Extension<any>[]`"
   ^js []
   (.-all vscode/extensions))
 

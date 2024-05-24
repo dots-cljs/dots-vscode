@@ -4,7 +4,9 @@
   (:refer-clojure :exclude [range]))
 
 (defn range
-  "The range this link applies to."
+  "The range this link applies to.
+   
+   **Returns:** `Range`"
   ^js [document-link]
   (.-range ^js document-link))
 
@@ -14,7 +16,9 @@
   (set! (.-range ^js document-link) value))
 
 (defn target
-  "The uri this link points to."
+  "The uri this link points to.
+   
+   **Returns:** `Uri | undefined`"
   ^js [document-link]
   (.-target ^js document-link))
 
@@ -28,7 +32,9 @@
    
    If a tooltip is provided, is will be displayed in a string that includes instructions on how to
    trigger the link, such as `{0} (ctrl + click)`. The specific instructions vary depending on OS,
-   user settings, and localization."
+   user settings, and localization.
+   
+   **Returns:** `string | undefined`"
   ^js [document-link]
   (.-tooltip ^js document-link))
 

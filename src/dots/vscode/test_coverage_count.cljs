@@ -3,7 +3,9 @@
    be give for lines, branches, and declarations in a file.")
 
 (defn covered
-  "Number of items covered in the file."
+  "Number of items covered in the file.
+   
+   **Returns:** `number`"
   ^js [test-coverage-count]
   (.-covered ^js test-coverage-count))
 
@@ -13,7 +15,9 @@
   (set! (.-covered ^js test-coverage-count) value))
 
 (defn total
-  "Total number of covered items in the file."
+  "Total number of covered items in the file.
+   
+   **Returns:** `number`"
   ^js [test-coverage-count]
   (.-total ^js test-coverage-count))
 

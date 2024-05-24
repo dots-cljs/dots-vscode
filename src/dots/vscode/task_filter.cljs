@@ -4,7 +4,9 @@
 
 (defn version
   "The task version as used in the tasks.json file.
-   The string support the package.json semver notation."
+   The string support the package.json semver notation.
+   
+   **Returns:** `string | undefined`"
   ^js [task-filter]
   (.-version ^js task-filter))
 
@@ -15,7 +17,9 @@
   (set! (.-version ^js task-filter) value))
 
 (defn type
-  "The task type to return;"
+  "The task type to return;
+   
+   **Returns:** `string | undefined`"
   ^js [task-filter]
   (.-type ^js task-filter))
 

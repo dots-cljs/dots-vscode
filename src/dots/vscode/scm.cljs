@@ -18,6 +18,8 @@
 
 (defn input-box
   "The {@link SourceControlInputBox input box} for the last source control
-   created by the extension."
+   created by the extension.
+   
+   **Returns:** `SourceControlInputBox`"
   ^js []
   (.-inputBox vscode/scm))

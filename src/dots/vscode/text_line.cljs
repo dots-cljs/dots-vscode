@@ -6,33 +6,45 @@
   (:refer-clojure :exclude [range]))
 
 (defn line-number
-  "The zero-based line number."
+  "The zero-based line number.
+   
+   **Returns:** `number`"
   ^js [text-line]
   (.-lineNumber ^js text-line))
 
 (defn text
-  "The text of this line without the line separator characters."
+  "The text of this line without the line separator characters.
+   
+   **Returns:** `string`"
   ^js [text-line]
   (.-text ^js text-line))
 
 (defn range
-  "The range this line covers without the line separator characters."
+  "The range this line covers without the line separator characters.
+   
+   **Returns:** `Range`"
   ^js [text-line]
   (.-range ^js text-line))
 
 (defn range-including-line-break
-  "The range this line covers with the line separator characters."
+  "The range this line covers with the line separator characters.
+   
+   **Returns:** `Range`"
   ^js [text-line]
   (.-rangeIncludingLineBreak ^js text-line))
 
 (defn first-non-whitespace-character-index
   "The offset of the first character which is not a whitespace character as defined
-   by `/\\s/`. **Note** that if a line is all whitespace the length of the line is returned."
+   by `/\\s/`. **Note** that if a line is all whitespace the length of the line is returned.
+   
+   **Returns:** `number`"
   ^js [text-line]
   (.-firstNonWhitespaceCharacterIndex ^js text-line))
 
 (defn empty-or-whitespace?
   "Whether this line is whitespace only, shorthand
-   for {@link TextLine.firstNonWhitespaceCharacterIndex } === {@link TextLine.text TextLine.text.length}."
+   for {@link TextLine.firstNonWhitespaceCharacterIndex } === {@link TextLine.text TextLine.text.length}.
+   
+   **Returns:** `boolean`"
   ^js [text-line]
   (.-isEmptyOrWhitespace ^js text-line))

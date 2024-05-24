@@ -6,7 +6,9 @@
   (:refer-clojure :exclude [name replace]))
 
 (defn log-level
-  "The current log level of the channel. Defaults to {@link env.logLevel editor log level}."
+  "The current log level of the channel. Defaults to {@link env.logLevel editor log level}.
+   
+   **Returns:** `LogLevel`"
   ^js [log-output-channel]
   (.-logLevel ^js log-output-channel))
 
@@ -94,7 +96,9 @@
   (.. ^js log-output-channel -error (apply ^js log-output-channel (to-array (cons error args)))))
 
 (defn name
-  "The human-readable name of this output channel."
+  "The human-readable name of this output channel.
+   
+   **Returns:** `string`"
   ^js [log-output-channel]
   (.-name ^js log-output-channel))
 

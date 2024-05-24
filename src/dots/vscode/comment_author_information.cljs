@@ -3,7 +3,9 @@
   (:refer-clojure :exclude [name]))
 
 (defn name
-  "The display name of the author of the comment"
+  "The display name of the author of the comment
+   
+   **Returns:** `string`"
   ^js [comment-author-information]
   (.-name ^js comment-author-information))
 
@@ -13,7 +15,9 @@
   (set! (.-name ^js comment-author-information) value))
 
 (defn icon-path
-  "The optional icon path for the author"
+  "The optional icon path for the author
+   
+   **Returns:** `Uri | undefined`"
   ^js [comment-author-information]
   (.-iconPath ^js comment-author-information))
 

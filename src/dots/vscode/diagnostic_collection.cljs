@@ -10,7 +10,9 @@
 (defn name
   "The name of this diagnostic collection, for instance `typescript`. Every diagnostic
    from this collection will be associated with this name. Also, the task framework uses this
-   name when defining [problem matchers](https://code.visualstudio.com/docs/editor/tasks#_defining-a-problem-matcher)."
+   name when defining [problem matchers](https://code.visualstudio.com/docs/editor/tasks#_defining-a-problem-matcher).
+   
+   **Returns:** `string`"
   ^js [diagnostic-collection]
   (.-name ^js diagnostic-collection))
 

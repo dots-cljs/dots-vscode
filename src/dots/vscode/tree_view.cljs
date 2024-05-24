@@ -38,7 +38,9 @@
    (.onDidCollapseElement ^js tree-view listener this-args disposables)))
 
 (defn selection
-  "Currently selected elements."
+  "Currently selected elements.
+   
+   **Returns:** `readonly T[]`"
   ^js [tree-view]
   (.-selection ^js tree-view))
 
@@ -61,7 +63,9 @@
    (.onDidChangeSelection ^js tree-view listener this-args disposables)))
 
 (defn visible?
-  "`true` if the {@link TreeView tree view} is visible otherwise `false`."
+  "`true` if the {@link TreeView tree view} is visible otherwise `false`.
+   
+   **Returns:** `boolean`"
   ^js [tree-view]
   (.-visible ^js tree-view))
 
@@ -103,7 +107,9 @@
 
 (defn message
   "An optional human-readable message that will be rendered in the view.
-   Setting the message to null, undefined, or empty string will remove the message from the view."
+   Setting the message to null, undefined, or empty string will remove the message from the view.
+   
+   **Returns:** `string | undefined`"
   ^js [tree-view]
   (.-message ^js tree-view))
 
@@ -115,7 +121,9 @@
 
 (defn title
   "The tree view title is initially taken from the extension package.json
-   Changes to the title property will be properly reflected in the UI in the title of the view."
+   Changes to the title property will be properly reflected in the UI in the title of the view.
+   
+   **Returns:** `string | undefined`"
   ^js [tree-view]
   (.-title ^js tree-view))
 
@@ -127,7 +135,9 @@
 
 (defn description
   "An optional human-readable description which is rendered less prominently in the title of the view.
-   Setting the title description to null, undefined, or empty string will remove the description from the view."
+   Setting the title description to null, undefined, or empty string will remove the description from the view.
+   
+   **Returns:** `string | undefined`"
   ^js [tree-view]
   (.-description ^js tree-view))
 
@@ -139,7 +149,9 @@
 
 (defn badge
   "The badge to display for this TreeView.
-   To remove the badge, set to undefined."
+   To remove the badge, set to undefined.
+   
+   **Returns:** `ViewBadge | undefined`"
   ^js [tree-view]
   (.-badge ^js tree-view))
 

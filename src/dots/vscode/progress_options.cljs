@@ -2,7 +2,9 @@
   "Value-object describing where and how progress should show.")
 
 (defn location
-  "The location at which progress should show."
+  "The location at which progress should show.
+   
+   **Returns:** `ProgressLocation | { viewId: string; }`"
   ^js [progress-options]
   (.-location ^js progress-options))
 
@@ -13,7 +15,9 @@
 
 (defn title
   "A human-readable string which will be used to describe the
-   operation."
+   operation.
+   
+   **Returns:** `string | undefined`"
   ^js [progress-options]
   (.-title ^js progress-options))
 
@@ -27,7 +31,9 @@
   "Controls if a cancel button should show to allow the user to
    cancel the long running operation.  Note that currently only
    `ProgressLocation.Notification` is supporting to show a cancel
-   button."
+   button.
+   
+   **Returns:** `boolean | undefined`"
   ^js [progress-options]
   (.-cancellable ^js progress-options))
 

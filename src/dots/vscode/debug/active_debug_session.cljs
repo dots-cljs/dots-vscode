@@ -6,23 +6,31 @@
   (:require ["vscode" :as vscode]))
 
 (defn id
-  "The unique ID of this debug session."
+  "The unique ID of this debug session.
+   
+   **Returns:** `string`"
   ^js []
   (.. vscode/debug -activeDebugSession -id))
 
 (defn type
-  "The debug session's type from the {@link DebugConfiguration debug configuration}."
+  "The debug session's type from the {@link DebugConfiguration debug configuration}.
+   
+   **Returns:** `string`"
   ^js []
   (.. vscode/debug -activeDebugSession -type))
 
 (defn parent-session
-  "The parent session of this debug session, if it was created as a child."
+  "The parent session of this debug session, if it was created as a child.
+   
+   **Returns:** `DebugSession | undefined`"
   ^js []
   (.. vscode/debug -activeDebugSession -parentSession))
 
 (defn name
   "The debug session's name is initially taken from the {@link DebugConfiguration debug configuration}.
-   Any changes will be properly reflected in the UI."
+   Any changes will be properly reflected in the UI.
+   
+   **Returns:** `string`"
   ^js []
   (.. vscode/debug -activeDebugSession -name))
 
@@ -33,7 +41,9 @@
   (set! (.. vscode/debug -activeDebugSession -name) value))
 
 (defn workspace-folder
-  "The workspace folder of this session or `undefined` for a folderless setup."
+  "The workspace folder of this session or `undefined` for a folderless setup.
+   
+   **Returns:** `WorkspaceFolder | undefined`"
   ^js []
   (.. vscode/debug -activeDebugSession -workspaceFolder))
 
@@ -41,7 +51,9 @@
   "The \"resolved\" {@link DebugConfiguration debug configuration} of this session.
    \"Resolved\" means that
    - all variables have been substituted and
-   - platform specific attribute sections have been \"flattened\" for the matching platform and removed for non-matching platforms."
+   - platform specific attribute sections have been \"flattened\" for the matching platform and removed for non-matching platforms.
+   
+   **Returns:** `DebugConfiguration`"
   ^js []
   (.. vscode/debug -activeDebugSession -configuration))
 

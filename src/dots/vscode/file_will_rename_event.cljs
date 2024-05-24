@@ -6,12 +6,16 @@
    thenable that resolves to a {@link WorkspaceEdit workspace edit}.")
 
 (defn token
-  "A cancellation token."
+  "A cancellation token.
+   
+   **Returns:** `CancellationToken`"
   ^js [file-will-rename-event]
   (.-token ^js file-will-rename-event))
 
 (defn files
-  "The files that are going to be renamed."
+  "The files that are going to be renamed.
+   
+   **Returns:** `readonly { readonly oldUri: Uri; readonly newUri: Uri; }[]`"
   ^js [file-will-rename-event]
   (.-files ^js file-will-rename-event))
 

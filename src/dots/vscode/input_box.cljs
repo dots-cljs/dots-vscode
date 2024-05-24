@@ -6,7 +6,9 @@
    when {@link window.showInputBox } does not offer the required flexibility.")
 
 (defn value
-  "Current input value."
+  "Current input value.
+   
+   **Returns:** `string`"
   ^js [input-box]
   (.-value ^js input-box))
 
@@ -22,7 +24,9 @@
    otherwise the defined range will be selected.
    
    This property does not get updated when the user types or makes a selection,
-   but it can be updated by the extension."
+   but it can be updated by the extension.
+   
+   **Returns:** `readonly [number, number] | undefined`"
   ^js [input-box]
   (.-valueSelection ^js input-box))
 
@@ -38,7 +42,9 @@
   (set! (.-valueSelection ^js input-box) value))
 
 (defn placeholder
-  "Optional placeholder shown when no value has been input."
+  "Optional placeholder shown when no value has been input.
+   
+   **Returns:** `string | undefined`"
   ^js [input-box]
   (.-placeholder ^js input-box))
 
@@ -48,7 +54,9 @@
   (set! (.-placeholder ^js input-box) value))
 
 (defn password?
-  "If the input value should be hidden. Defaults to false."
+  "If the input value should be hidden. Defaults to false.
+   
+   **Returns:** `boolean`"
   ^js [input-box]
   (.-password ^js input-box))
 
@@ -94,7 +102,9 @@
    (.onDidAccept ^js input-box listener this-args disposables)))
 
 (defn buttons
-  "Buttons for actions in the UI."
+  "Buttons for actions in the UI.
+   
+   **Returns:** `readonly QuickInputButton[]`"
   ^js [input-box]
   (.-buttons ^js input-box))
 
@@ -122,7 +132,9 @@
    (.onDidTriggerButton ^js input-box listener this-args disposables)))
 
 (defn prompt
-  "An optional prompt text providing some ask or explanation to the user."
+  "An optional prompt text providing some ask or explanation to the user.
+   
+   **Returns:** `string | undefined`"
   ^js [input-box]
   (.-prompt ^js input-box))
 
@@ -134,7 +146,9 @@
 (defn validation-message
   "An optional validation message indicating a problem with the current input value.
    By returning a string, the InputBox will use a default {@link InputBoxValidationSeverity } of Error.
-   Returning undefined clears the validation message."
+   Returning undefined clears the validation message.
+   
+   **Returns:** `string | InputBoxValidationMessage | undefined`"
   ^js [input-box]
   (.-validationMessage ^js input-box))
 
@@ -146,7 +160,9 @@
   (set! (.-validationMessage ^js input-box) value))
 
 (defn title
-  "An optional title."
+  "An optional title.
+   
+   **Returns:** `string | undefined`"
   ^js [input-box]
   (.-title ^js input-box))
 
@@ -156,7 +172,9 @@
   (set! (.-title ^js input-box) value))
 
 (defn step
-  "An optional current step count."
+  "An optional current step count.
+   
+   **Returns:** `number | undefined`"
   ^js [input-box]
   (.-step ^js input-box))
 
@@ -166,7 +184,9 @@
   (set! (.-step ^js input-box) value))
 
 (defn total-steps
-  "An optional total step count."
+  "An optional total step count.
+   
+   **Returns:** `number | undefined`"
   ^js [input-box]
   (.-totalSteps ^js input-box))
 
@@ -179,7 +199,9 @@
   "If the UI should allow for user input. Defaults to true.
    
    Change this to false, e.g., while validating user input or
-   loading data for the next step in user input."
+   loading data for the next step in user input.
+   
+   **Returns:** `boolean`"
   ^js [input-box]
   (.-enabled ^js input-box))
 
@@ -195,7 +217,9 @@
   "If the UI should show a progress indicator. Defaults to false.
    
    Change this to true, e.g., while loading more data or validating
-   user input."
+   user input.
+   
+   **Returns:** `boolean`"
   ^js [input-box]
   (.-busy ^js input-box))
 
@@ -209,7 +233,9 @@
 
 (defn ignore-focus-out?
   "If the UI should stay open even when loosing UI focus. Defaults to false.
-   This setting is ignored on iPad and is always false."
+   This setting is ignored on iPad and is always false.
+   
+   **Returns:** `boolean`"
   ^js [input-box]
   (.-ignoreFocusOut ^js input-box))
 

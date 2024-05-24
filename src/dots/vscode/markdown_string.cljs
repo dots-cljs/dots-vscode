@@ -7,7 +7,9 @@
    Rendering of embedded html is supported when {@linkcode supportHtml } is set to `true`.")
 
 (defn value
-  "The markdown string."
+  "The markdown string.
+   
+   **Returns:** `string`"
   ^js [markdown-string]
   (.-value ^js markdown-string))
 
@@ -20,7 +22,9 @@
   "Indicates that this markdown string is from a trusted source. Only *trusted*
    markdown supports links that execute commands, e.g. `[Run it](command:myCommandId)`.
    
-   Defaults to `false` (commands are disabled)."
+   Defaults to `false` (commands are disabled).
+   
+   **Returns:** `boolean | { readonly enabledCommands: readonly string[]; } | undefined`"
   ^js [markdown-string]
   (.-isTrusted ^js markdown-string))
 
@@ -33,7 +37,9 @@
   (set! (.-isTrusted ^js markdown-string) value))
 
 (defn support-theme-icons?
-  "Indicates that this markdown string can contain {@link ThemeIcon ThemeIcons}, e.g. `$(zap)`."
+  "Indicates that this markdown string can contain {@link ThemeIcon ThemeIcons}, e.g. `$(zap)`.
+   
+   **Returns:** `boolean | undefined`"
   ^js [markdown-string]
   (.-supportThemeIcons ^js markdown-string))
 
@@ -50,7 +56,9 @@
    
    When `supportHtml` is true, the markdown render will also allow a safe subset of html tags
    and attributes to be rendered. See https://github.com/microsoft/vscode/blob/6d2920473c6f13759c978dd89104c4270a83422d/src/vs/base/browser/markdownRenderer.ts#L296
-   for a list of all supported tags and attributes."
+   for a list of all supported tags and attributes.
+   
+   **Returns:** `boolean | undefined`"
   ^js [markdown-string]
   (.-supportHtml ^js markdown-string))
 
@@ -83,7 +91,9 @@
    const md = new vscode.MarkdownString(`[link](./file.js)`);
    md.baseUri = vscode.Uri.file('/path/to/otherFile.js');
    // Here 'link' in the rendered markdown resolves to '/path/to/file.js'
-   ```"
+   ```
+   
+   **Returns:** `Uri | undefined`"
   ^js [markdown-string]
   (.-baseUri ^js markdown-string))
 

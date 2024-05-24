@@ -13,6 +13,8 @@
    - terminal focus in/out
    
    For more information on events that can send data see \"DEC Private Mode Set (DECSET)\" on
-   https://invisible-island.net/xterm/ctlseqs/ctlseqs.html"
+   https://invisible-island.net/xterm/ctlseqs/ctlseqs.html
+   
+   **Returns:** `boolean`"
   ^js [terminal-state]
   (.-isInteractedWith ^js terminal-state))

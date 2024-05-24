@@ -6,28 +6,38 @@
 
 (defn scheme
   "Scheme is the `http` part of `http://www.example.com/some/path?query#fragment`.
-   The part before the first colon."
+   The part before the first colon.
+   
+   **Returns:** `string`"
   ^js []
   (.. vscode/l10n -uri -scheme))
 
 (defn authority
   "Authority is the `www.example.com` part of `http://www.example.com/some/path?query#fragment`.
-   The part between the first double slashes and the next slash."
+   The part between the first double slashes and the next slash.
+   
+   **Returns:** `string`"
   ^js []
   (.. vscode/l10n -uri -authority))
 
 (defn path
-  "Path is the `/some/path` part of `http://www.example.com/some/path?query#fragment`."
+  "Path is the `/some/path` part of `http://www.example.com/some/path?query#fragment`.
+   
+   **Returns:** `string`"
   ^js []
   (.. vscode/l10n -uri -path))
 
 (defn query
-  "Query is the `query` part of `http://www.example.com/some/path?query#fragment`."
+  "Query is the `query` part of `http://www.example.com/some/path?query#fragment`.
+   
+   **Returns:** `string`"
   ^js []
   (.. vscode/l10n -uri -query))
 
 (defn fragment
-  "Fragment is the `fragment` part of `http://www.example.com/some/path?query#fragment`."
+  "Fragment is the `fragment` part of `http://www.example.com/some/path?query#fragment`.
+   
+   **Returns:** `string`"
   ^js []
   (.. vscode/l10n -uri -fragment))
 
@@ -49,7 +59,9 @@
    u.authority === 'server'
    u.path === '/c$/folder/file.txt'
    u.fsPath === '\\\\server\\c$\\folder\\file.txt'
-   ```"
+   ```
+   
+   **Returns:** `string`"
   ^js []
   (.. vscode/l10n -uri -fsPath))
 

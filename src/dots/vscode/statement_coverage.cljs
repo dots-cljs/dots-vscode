@@ -4,7 +4,9 @@
 (defn executed?
   "The number of times this statement was executed, or a boolean indicating
    whether it was executed if the exact count is unknown. If zero or false,
-   the statement will be marked as un-covered."
+   the statement will be marked as un-covered.
+   
+   **Returns:** `number | boolean`"
   ^js [statement-coverage]
   (.-executed ^js statement-coverage))
 
@@ -16,7 +18,9 @@
   (set! (.-executed ^js statement-coverage) value))
 
 (defn location
-  "Statement location."
+  "Statement location.
+   
+   **Returns:** `Range | Position`"
   ^js [statement-coverage]
   (.-location ^js statement-coverage))
 
@@ -27,7 +31,9 @@
 
 (defn branches
   "Coverage from branches of this line or statement. If it's not a
-   conditional, this will be empty."
+   conditional, this will be empty.
+   
+   **Returns:** `BranchCoverage[]`"
   ^js [statement-coverage]
   (.-branches ^js statement-coverage))
 

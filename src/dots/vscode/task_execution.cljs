@@ -5,7 +5,9 @@
    This interface is not intended to be implemented.")
 
 (defn task
-  "The task that got started."
+  "The task that got started.
+   
+   **Returns:** `Task`"
   ^js [task-execution]
   (.-task ^js task-execution))
 

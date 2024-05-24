@@ -3,7 +3,9 @@
    {@link ThemableDecorationRenderOptions.after after} the content of text decorations.")
 
 (defn content-text
-  "Defines a text content that is shown in the attachment. Either an icon or a text can be shown, but not both."
+  "Defines a text content that is shown in the attachment. Either an icon or a text can be shown, but not both.
+   
+   **Returns:** `string | undefined`"
   ^js [themable-decoration-attachment-render-options]
   (.-contentText ^js themable-decoration-attachment-render-options))
 
@@ -14,7 +16,9 @@
 
 (defn content-icon-path
   "An **absolute path** or an URI to an image to be rendered in the attachment. Either an icon
-   or a text can be shown, but not both."
+   or a text can be shown, but not both.
+   
+   **Returns:** `string | Uri | undefined`"
   ^js [themable-decoration-attachment-render-options]
   (.-contentIconPath ^js themable-decoration-attachment-render-options))
 
@@ -25,7 +29,9 @@
   (set! (.-contentIconPath ^js themable-decoration-attachment-render-options) value))
 
 (defn border
-  "CSS styling property that will be applied to the decoration attachment."
+  "CSS styling property that will be applied to the decoration attachment.
+   
+   **Returns:** `string | undefined`"
   ^js [themable-decoration-attachment-render-options]
   (.-border ^js themable-decoration-attachment-render-options))
 
@@ -35,7 +41,9 @@
   (set! (.-border ^js themable-decoration-attachment-render-options) value))
 
 (defn border-color
-  "CSS styling property that will be applied to text enclosed by a decoration."
+  "CSS styling property that will be applied to text enclosed by a decoration.
+   
+   **Returns:** `string | ThemeColor | undefined`"
   ^js [themable-decoration-attachment-render-options]
   (.-borderColor ^js themable-decoration-attachment-render-options))
 
@@ -45,7 +53,9 @@
   (set! (.-borderColor ^js themable-decoration-attachment-render-options) value))
 
 (defn font-style
-  "CSS styling property that will be applied to the decoration attachment."
+  "CSS styling property that will be applied to the decoration attachment.
+   
+   **Returns:** `string | undefined`"
   ^js [themable-decoration-attachment-render-options]
   (.-fontStyle ^js themable-decoration-attachment-render-options))
 
@@ -55,7 +65,9 @@
   (set! (.-fontStyle ^js themable-decoration-attachment-render-options) value))
 
 (defn font-weight
-  "CSS styling property that will be applied to the decoration attachment."
+  "CSS styling property that will be applied to the decoration attachment.
+   
+   **Returns:** `string | undefined`"
   ^js [themable-decoration-attachment-render-options]
   (.-fontWeight ^js themable-decoration-attachment-render-options))
 
@@ -65,7 +77,9 @@
   (set! (.-fontWeight ^js themable-decoration-attachment-render-options) value))
 
 (defn text-decoration
-  "CSS styling property that will be applied to the decoration attachment."
+  "CSS styling property that will be applied to the decoration attachment.
+   
+   **Returns:** `string | undefined`"
   ^js [themable-decoration-attachment-render-options]
   (.-textDecoration ^js themable-decoration-attachment-render-options))
 
@@ -75,7 +89,9 @@
   (set! (.-textDecoration ^js themable-decoration-attachment-render-options) value))
 
 (defn color
-  "CSS styling property that will be applied to the decoration attachment."
+  "CSS styling property that will be applied to the decoration attachment.
+   
+   **Returns:** `string | ThemeColor | undefined`"
   ^js [themable-decoration-attachment-render-options]
   (.-color ^js themable-decoration-attachment-render-options))
 
@@ -85,7 +101,9 @@
   (set! (.-color ^js themable-decoration-attachment-render-options) value))
 
 (defn background-color
-  "CSS styling property that will be applied to the decoration attachment."
+  "CSS styling property that will be applied to the decoration attachment.
+   
+   **Returns:** `string | ThemeColor | undefined`"
   ^js [themable-decoration-attachment-render-options]
   (.-backgroundColor ^js themable-decoration-attachment-render-options))
 
@@ -95,7 +113,9 @@
   (set! (.-backgroundColor ^js themable-decoration-attachment-render-options) value))
 
 (defn margin
-  "CSS styling property that will be applied to the decoration attachment."
+  "CSS styling property that will be applied to the decoration attachment.
+   
+   **Returns:** `string | undefined`"
   ^js [themable-decoration-attachment-render-options]
   (.-margin ^js themable-decoration-attachment-render-options))
 
@@ -105,7 +125,9 @@
   (set! (.-margin ^js themable-decoration-attachment-render-options) value))
 
 (defn width
-  "CSS styling property that will be applied to the decoration attachment."
+  "CSS styling property that will be applied to the decoration attachment.
+   
+   **Returns:** `string | undefined`"
   ^js [themable-decoration-attachment-render-options]
   (.-width ^js themable-decoration-attachment-render-options))
 
@@ -115,7 +137,9 @@
   (set! (.-width ^js themable-decoration-attachment-render-options) value))
 
 (defn height
-  "CSS styling property that will be applied to the decoration attachment."
+  "CSS styling property that will be applied to the decoration attachment.
+   
+   **Returns:** `string | undefined`"
   ^js [themable-decoration-attachment-render-options]
   (.-height ^js themable-decoration-attachment-render-options))
 

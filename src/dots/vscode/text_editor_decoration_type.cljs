@@ -7,7 +7,9 @@
   (:refer-clojure :exclude [key]))
 
 (defn key
-  "Internal representation of the handle."
+  "Internal representation of the handle.
+   
+   **Returns:** `string`"
   ^js [text-editor-decoration-type]
   (.-key ^js text-editor-decoration-type))
 

@@ -5,7 +5,9 @@
    managed by the editor. When no more references remain to a `CustomDocument`, it is disposed of.")
 
 (defn uri
-  "The associated uri for this document."
+  "The associated uri for this document.
+   
+   **Returns:** `Uri`"
   ^js [custom-document]
   (.-uri ^js custom-document))
 

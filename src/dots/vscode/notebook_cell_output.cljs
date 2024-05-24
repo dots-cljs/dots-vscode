@@ -14,7 +14,9 @@
    	vscode.NotebookCellOutputItem.text('_Hello_', 'text/markdown'),
    	vscode.NotebookCellOutputItem.text('Hey', 'text/plain'), // INVALID: repeated type, editor will pick just one
    ])
-   ```"
+   ```
+   
+   **Returns:** `NotebookCellOutputItem[]`"
   ^js [notebook-cell-output]
   (.-items ^js notebook-cell-output))
 
@@ -34,7 +36,9 @@
   (set! (.-items ^js notebook-cell-output) value))
 
 (defn metadata
-  "Arbitrary metadata for this cell output. Can be anything but must be JSON-stringifyable."
+  "Arbitrary metadata for this cell output. Can be anything but must be JSON-stringifyable.
+   
+   **Returns:** `{ [key: string]: any; } | undefined`"
   ^js [notebook-cell-output]
   (.-metadata ^js notebook-cell-output))
 

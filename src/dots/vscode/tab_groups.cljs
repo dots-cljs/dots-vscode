@@ -2,12 +2,16 @@
   "Represents the main editor area which consists of multiple groups which contain tabs.")
 
 (defn all
-  "All the groups within the group container."
+  "All the groups within the group container.
+   
+   **Returns:** `readonly TabGroup[]`"
   ^js [tab-groups]
   (.-all ^js tab-groups))
 
 (defn active-tab-group
-  "The currently active group."
+  "The currently active group.
+   
+   **Returns:** `TabGroup`"
   ^js [tab-groups]
   (.-activeTabGroup ^js tab-groups))
 

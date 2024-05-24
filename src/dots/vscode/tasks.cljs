@@ -39,7 +39,9 @@
   (.executeTask vscode/tasks task))
 
 (defn task-executions
-  "The currently active task executions or an empty array."
+  "The currently active task executions or an empty array.
+   
+   **Returns:** `readonly TaskExecution[]`"
   ^js []
   (.-taskExecutions vscode/tasks))
 

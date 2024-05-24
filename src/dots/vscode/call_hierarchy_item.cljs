@@ -4,7 +4,9 @@
   (:refer-clojure :exclude [name range]))
 
 (defn name
-  "The name of this item."
+  "The name of this item.
+   
+   **Returns:** `string`"
   ^js [call-hierarchy-item]
   (.-name ^js call-hierarchy-item))
 
@@ -14,7 +16,9 @@
   (set! (.-name ^js call-hierarchy-item) value))
 
 (defn kind
-  "The kind of this item."
+  "The kind of this item.
+   
+   **Returns:** `SymbolKind`"
   ^js [call-hierarchy-item]
   (.-kind ^js call-hierarchy-item))
 
@@ -24,7 +28,9 @@
   (set! (.-kind ^js call-hierarchy-item) value))
 
 (defn tags
-  "Tags for this item."
+  "Tags for this item.
+   
+   **Returns:** `readonly SymbolTag[] | undefined`"
   ^js [call-hierarchy-item]
   (.-tags ^js call-hierarchy-item))
 
@@ -34,7 +40,9 @@
   (set! (.-tags ^js call-hierarchy-item) value))
 
 (defn detail
-  "More detail for this item, e.g. the signature of a function."
+  "More detail for this item, e.g. the signature of a function.
+   
+   **Returns:** `string | undefined`"
   ^js [call-hierarchy-item]
   (.-detail ^js call-hierarchy-item))
 
@@ -44,7 +52,9 @@
   (set! (.-detail ^js call-hierarchy-item) value))
 
 (defn uri
-  "The resource identifier of this item."
+  "The resource identifier of this item.
+   
+   **Returns:** `Uri`"
   ^js [call-hierarchy-item]
   (.-uri ^js call-hierarchy-item))
 
@@ -54,7 +64,9 @@
   (set! (.-uri ^js call-hierarchy-item) value))
 
 (defn range
-  "The range enclosing this symbol not including leading/trailing whitespace but everything else, e.g. comments and code."
+  "The range enclosing this symbol not including leading/trailing whitespace but everything else, e.g. comments and code.
+   
+   **Returns:** `Range`"
   ^js [call-hierarchy-item]
   (.-range ^js call-hierarchy-item))
 
@@ -65,7 +77,9 @@
 
 (defn selection-range
   "The range that should be selected and revealed when this symbol is being picked, e.g. the name of a function.
-   Must be contained by the {@linkcode CallHierarchyItem.range range}."
+   Must be contained by the {@linkcode CallHierarchyItem.range range}.
+   
+   **Returns:** `Range`"
   ^js [call-hierarchy-item]
   (.-selectionRange ^js call-hierarchy-item))
 

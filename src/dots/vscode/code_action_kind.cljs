@@ -8,7 +8,9 @@
   (:refer-clojure :exclude [contains? empty]))
 
 (defn value
-  "String value of the kind, e.g. `\"refactor.extract.function\"`."
+  "String value of the kind, e.g. `\"refactor.extract.function\"`.
+   
+   **Returns:** `string`"
   ^js [code-action-kind]
   (.-value ^js code-action-kind))
 
@@ -51,21 +53,27 @@
   (.contains ^js code-action-kind other))
 
 (defn empty
-  "Empty kind."
+  "Empty kind.
+   
+   **Returns:** `CodeActionKind`"
   ^js [code-action-kind]
   (.-Empty ^js code-action-kind))
 
 (defn quick-fix
   "Base kind for quickfix actions: `quickfix`.
    
-   Quick fix actions address a problem in the code and are shown in the normal code action context menu."
+   Quick fix actions address a problem in the code and are shown in the normal code action context menu.
+   
+   **Returns:** `CodeActionKind`"
   ^js [code-action-kind]
   (.-QuickFix ^js code-action-kind))
 
 (defn refactor
   "Base kind for refactoring actions: `refactor`
    
-   Refactoring actions are shown in the refactoring context menu."
+   Refactoring actions are shown in the refactoring context menu.
+   
+   **Returns:** `CodeActionKind`"
   ^js [code-action-kind]
   (.-Refactor ^js code-action-kind))
 
@@ -78,7 +86,9 @@
    - Extract function
    - Extract variable
    - Extract interface from class
-   - ..."
+   - ...
+   
+   **Returns:** `CodeActionKind`"
   ^js [code-action-kind]
   (.-RefactorExtract ^js code-action-kind))
 
@@ -90,7 +100,9 @@
    - Inline function
    - Inline variable
    - Inline constant
-   - ..."
+   - ...
+   
+   **Returns:** `CodeActionKind`"
   ^js [code-action-kind]
   (.-RefactorInline ^js code-action-kind))
 
@@ -102,7 +114,9 @@
    - Move a function to a new file
    - Move a property between classes
    - Move method to base class
-   - ..."
+   - ...
+   
+   **Returns:** `CodeActionKind`"
   ^js [code-action-kind]
   (.-RefactorMove ^js code-action-kind))
 
@@ -115,7 +129,9 @@
    - Add or remove parameter
    - Encapsulate field
    - Make method static
-   - ..."
+   - ...
+   
+   **Returns:** `CodeActionKind`"
   ^js [code-action-kind]
   (.-RefactorRewrite ^js code-action-kind))
 
@@ -124,12 +140,16 @@
    
    Source code actions apply to the entire file. They must be explicitly requested and will not show in the
    normal [lightbulb](https://code.visualstudio.com/docs/editor/editingevolved#_code-action) menu. Source actions
-   can be run on save using `editor.codeActionsOnSave` and are also shown in the `source` context menu."
+   can be run on save using `editor.codeActionsOnSave` and are also shown in the `source` context menu.
+   
+   **Returns:** `CodeActionKind`"
   ^js [code-action-kind]
   (.-Source ^js code-action-kind))
 
 (defn source-organize-imports
-  "Base kind for an organize imports source action: `source.organizeImports`."
+  "Base kind for an organize imports source action: `source.organizeImports`.
+   
+   **Returns:** `CodeActionKind`"
   ^js [code-action-kind]
   (.-SourceOrganizeImports ^js code-action-kind))
 
@@ -137,7 +157,9 @@
   "Base kind for auto-fix source actions: `source.fixAll`.
    
    Fix all actions automatically fix errors that have a clear fix that do not require user input.
-   They should not suppress errors or perform unsafe fixes such as generating new types or classes."
+   They should not suppress errors or perform unsafe fixes such as generating new types or classes.
+   
+   **Returns:** `CodeActionKind`"
   ^js [code-action-kind]
   (.-SourceFixAll ^js code-action-kind))
 
@@ -155,6 +177,8 @@
    
    Example Kinds/Actions:
    - `notebook.source.organizeImports` (might move all imports to a new top cell)
-   - `notebook.source.normalizeVariableNames` (might rename all variables to a standardized casing format)"
+   - `notebook.source.normalizeVariableNames` (might rename all variables to a standardized casing format)
+   
+   **Returns:** `CodeActionKind`"
   ^js [code-action-kind]
   (.-Notebook ^js code-action-kind))

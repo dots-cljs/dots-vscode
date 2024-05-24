@@ -3,19 +3,25 @@
   (:refer-clojure :exclude [name]))
 
 (defn name
-  "The name of the terminal."
+  "The name of the terminal.
+   
+   **Returns:** `string`"
   ^js [terminal]
   (.-name ^js terminal))
 
 (defn process-id
-  "The process ID of the shell process."
+  "The process ID of the shell process.
+   
+   **Returns:** `Thenable<number | undefined>`"
   ^js [terminal]
   (.-processId ^js terminal))
 
 (defn creation-options
   "The object used to initialize the terminal, this is useful for example to detecting the
    shell type of when the terminal was not launched by this extension or for detecting what
-   folder the shell was launched in."
+   folder the shell was launched in.
+   
+   **Returns:** `Readonly<TerminalOptions | ExtensionTerminalOptions>`"
   ^js [terminal]
   (.-creationOptions ^js terminal))
 
@@ -30,12 +36,16 @@
      	vscode.window.showInformationMessage(`Exit code: ${t.exitStatus.code}`);
      }
    });
-   ```"
+   ```
+   
+   **Returns:** `TerminalExitStatus | undefined`"
   ^js [terminal]
   (.-exitStatus ^js terminal))
 
 (defn state
-  "The current state of the {@link Terminal }."
+  "The current state of the {@link Terminal }.
+   
+   **Returns:** `TerminalState`"
   ^js [terminal]
   (.-state ^js terminal))
 

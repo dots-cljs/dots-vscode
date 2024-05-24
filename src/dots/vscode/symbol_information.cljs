@@ -4,7 +4,9 @@
   (:refer-clojure :exclude [name]))
 
 (defn name
-  "The name of this symbol."
+  "The name of this symbol.
+   
+   **Returns:** `string`"
   ^js [symbol-information]
   (.-name ^js symbol-information))
 
@@ -14,7 +16,9 @@
   (set! (.-name ^js symbol-information) value))
 
 (defn container-name
-  "The name of the symbol containing this symbol."
+  "The name of the symbol containing this symbol.
+   
+   **Returns:** `string`"
   ^js [symbol-information]
   (.-containerName ^js symbol-information))
 
@@ -24,7 +28,9 @@
   (set! (.-containerName ^js symbol-information) value))
 
 (defn kind
-  "The kind of this symbol."
+  "The kind of this symbol.
+   
+   **Returns:** `SymbolKind`"
   ^js [symbol-information]
   (.-kind ^js symbol-information))
 
@@ -34,7 +40,9 @@
   (set! (.-kind ^js symbol-information) value))
 
 (defn tags
-  "Tags for this symbol."
+  "Tags for this symbol.
+   
+   **Returns:** `readonly SymbolTag[] | undefined`"
   ^js [symbol-information]
   (.-tags ^js symbol-information))
 
@@ -44,7 +52,9 @@
   (set! (.-tags ^js symbol-information) value))
 
 (defn location
-  "The location of this symbol."
+  "The location of this symbol.
+   
+   **Returns:** `Location`"
   ^js [symbol-information]
   (.-location ^js symbol-information))
 

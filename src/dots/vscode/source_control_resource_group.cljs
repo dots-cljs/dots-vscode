@@ -3,12 +3,16 @@
    {@link SourceControlResourceState source control resource states}.")
 
 (defn id
-  "The id of this source control resource group."
+  "The id of this source control resource group.
+   
+   **Returns:** `string`"
   ^js [source-control-resource-group]
   (.-id ^js source-control-resource-group))
 
 (defn label
-  "The label of this source control resource group."
+  "The label of this source control resource group.
+   
+   **Returns:** `string`"
   ^js [source-control-resource-group]
   (.-label ^js source-control-resource-group))
 
@@ -19,7 +23,9 @@
 
 (defn hide-when-empty?
   "Whether this source control resource group is hidden when it contains
-   no {@link SourceControlResourceState source control resource states}."
+   no {@link SourceControlResourceState source control resource states}.
+   
+   **Returns:** `boolean | undefined`"
   ^js [source-control-resource-group]
   (.-hideWhenEmpty ^js source-control-resource-group))
 
@@ -31,7 +37,9 @@
 
 (defn resource-states
   "This group's collection of
-   {@link SourceControlResourceState source control resource states}."
+   {@link SourceControlResourceState source control resource states}.
+   
+   **Returns:** `SourceControlResourceState[]`"
   ^js [source-control-resource-group]
   (.-resourceStates ^js source-control-resource-group))
 

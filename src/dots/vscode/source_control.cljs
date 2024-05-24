@@ -4,22 +4,30 @@
   (:refer-clojure :exclude [count]))
 
 (defn id
-  "The id of this source control."
+  "The id of this source control.
+   
+   **Returns:** `string`"
   ^js [source-control]
   (.-id ^js source-control))
 
 (defn label
-  "The human-readable label of this source control."
+  "The human-readable label of this source control.
+   
+   **Returns:** `string`"
   ^js [source-control]
   (.-label ^js source-control))
 
 (defn root-uri
-  "The (optional) Uri of the root of this source control."
+  "The (optional) Uri of the root of this source control.
+   
+   **Returns:** `Uri | undefined`"
   ^js [source-control]
   (.-rootUri ^js source-control))
 
 (defn input-box
-  "The {@link SourceControlInputBox input box} for this source control."
+  "The {@link SourceControlInputBox input box} for this source control.
+   
+   **Returns:** `SourceControlInputBox`"
   ^js [source-control]
   (.-inputBox ^js source-control))
 
@@ -29,7 +37,9 @@
    
    If undefined, this source control will
    - display its UI-visible count as zero, and
-   - contribute the count of its {@link SourceControlResourceState resource states} to the UI-visible aggregated count for all source controls"
+   - contribute the count of its {@link SourceControlResourceState resource states} to the UI-visible aggregated count for all source controls
+   
+   **Returns:** `number | undefined`"
   ^js [source-control]
   (.-count ^js source-control))
 
@@ -44,7 +54,9 @@
   (set! (.-count ^js source-control) value))
 
 (defn quick-diff-provider
-  "An optional {@link QuickDiffProvider quick diff provider}."
+  "An optional {@link QuickDiffProvider quick diff provider}.
+   
+   **Returns:** `QuickDiffProvider | undefined`"
   ^js [source-control]
   (.-quickDiffProvider ^js source-control))
 
@@ -57,7 +69,9 @@
   "Optional commit template string.
    
    The Source Control viewlet will populate the Source Control
-   input with this value when appropriate."
+   input with this value when appropriate.
+   
+   **Returns:** `string | undefined`"
   ^js [source-control]
   (.-commitTemplate ^js source-control))
 
@@ -73,7 +87,9 @@
   "Optional accept input command.
    
    This command will be invoked when the user accepts the value
-   in the Source Control input."
+   in the Source Control input.
+   
+   **Returns:** `Command | undefined`"
   ^js [source-control]
   (.-acceptInputCommand ^js source-control))
 
@@ -88,7 +104,9 @@
 (defn status-bar-commands
   "Optional status bar commands.
    
-   These commands will be displayed in the editor's status bar."
+   These commands will be displayed in the editor's status bar.
+   
+   **Returns:** `Command[] | undefined`"
   ^js [source-control]
   (.-statusBarCommands ^js source-control))
 

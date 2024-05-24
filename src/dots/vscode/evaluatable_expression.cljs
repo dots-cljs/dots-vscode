@@ -7,9 +7,11 @@
   (:refer-clojure :exclude [range]))
 
 (defn range
+  "**Returns:** `Range`"
   ^js [evaluatable-expression]
   (.-range ^js evaluatable-expression))
 
 (defn expression
+  "**Returns:** `string | undefined`"
   ^js [evaluatable-expression]
   (.-expression ^js evaluatable-expression))

@@ -3,6 +3,8 @@
    has changed.")
 
 (defn document
-  "The document that the change is for."
+  "The document that the change is for.
+   
+   **Returns:** `T`"
   ^js [custom-document-content-change-event]
   (.-document ^js custom-document-content-change-event))

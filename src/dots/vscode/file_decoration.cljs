@@ -2,7 +2,9 @@
   "A file decoration represents metadata that can be rendered with a file.")
 
 (defn badge
-  "A very short string that represents this decoration."
+  "A very short string that represents this decoration.
+   
+   **Returns:** `string | undefined`"
   ^js [file-decoration]
   (.-badge ^js file-decoration))
 
@@ -12,7 +14,9 @@
   (set! (.-badge ^js file-decoration) value))
 
 (defn tooltip
-  "A human-readable tooltip for this decoration."
+  "A human-readable tooltip for this decoration.
+   
+   **Returns:** `string | undefined`"
   ^js [file-decoration]
   (.-tooltip ^js file-decoration))
 
@@ -22,7 +26,9 @@
   (set! (.-tooltip ^js file-decoration) value))
 
 (defn color
-  "The color of this decoration."
+  "The color of this decoration.
+   
+   **Returns:** `ThemeColor | undefined`"
   ^js [file-decoration]
   (.-color ^js file-decoration))
 
@@ -33,7 +39,9 @@
 
 (defn propagate?
   "A flag expressing that this decoration should be
-   propagated to its parents."
+   propagated to its parents.
+   
+   **Returns:** `boolean | undefined`"
   ^js [file-decoration]
   (.-propagate ^js file-decoration))
 

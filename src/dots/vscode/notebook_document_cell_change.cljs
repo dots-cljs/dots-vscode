@@ -2,7 +2,9 @@
   "Describes a change to a notebook cell.")
 
 (defn cell
-  "The affected cell."
+  "The affected cell.
+   
+   **Returns:** `NotebookCell`"
   ^js [notebook-document-cell-change]
   (.-cell ^js notebook-document-cell-change))
 
@@ -10,21 +12,29 @@
   "The document of the cell or `undefined` when it did not change.
    
    *Note* that you should use the {@link workspace.onDidChangeTextDocument onDidChangeTextDocument}-event
-   for detailed change information, like what edits have been performed."
+   for detailed change information, like what edits have been performed.
+   
+   **Returns:** `TextDocument | undefined`"
   ^js [notebook-document-cell-change]
   (.-document ^js notebook-document-cell-change))
 
 (defn metadata
-  "The new metadata of the cell or `undefined` when it did not change."
+  "The new metadata of the cell or `undefined` when it did not change.
+   
+   **Returns:** `{ [key: string]: any; } | undefined`"
   ^js [notebook-document-cell-change]
   (.-metadata ^js notebook-document-cell-change))
 
 (defn outputs
-  "The new outputs of the cell or `undefined` when they did not change."
+  "The new outputs of the cell or `undefined` when they did not change.
+   
+   **Returns:** `readonly NotebookCellOutput[] | undefined`"
   ^js [notebook-document-cell-change]
   (.-outputs ^js notebook-document-cell-change))
 
 (defn execution-summary
-  "The new execution summary of the cell or `undefined` when it did not change."
+  "The new execution summary of the cell or `undefined` when it did not change.
+   
+   **Returns:** `NotebookCellExecutionSummary | undefined`"
   ^js [notebook-document-cell-change]
   (.-executionSummary ^js notebook-document-cell-change))

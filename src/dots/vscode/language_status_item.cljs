@@ -4,12 +4,16 @@
   (:refer-clojure :exclude [name]))
 
 (defn id
-  "The identifier of this item."
+  "The identifier of this item.
+   
+   **Returns:** `string`"
   ^js [language-status-item]
   (.-id ^js language-status-item))
 
 (defn name
-  "The short name of this item, like 'Java Language Status', etc."
+  "The short name of this item, like 'Java Language Status', etc.
+   
+   **Returns:** `string | undefined`"
   ^js [language-status-item]
   (.-name ^js language-status-item))
 
@@ -20,7 +24,9 @@
 
 (defn selector
   "A {@link DocumentSelector selector} that defines for what editors
-   this item shows."
+   this item shows.
+   
+   **Returns:** `DocumentSelector`"
   ^js [language-status-item]
   (.-selector ^js language-status-item))
 
@@ -35,7 +41,9 @@
    
    Defaults to {@link LanguageStatusSeverity.Information information}. You can use this property to
    signal to users that there is a problem that needs attention, like a missing executable or an
-   invalid configuration."
+   invalid configuration.
+   
+   **Returns:** `LanguageStatusSeverity`"
   ^js [language-status-item]
   (.-severity ^js language-status-item))
 
@@ -54,7 +62,9 @@
    `My text $(icon-name) contains icons like $(icon-name) this one.`
    
    Where the icon-name is taken from the ThemeIcon [icon set](https://code.visualstudio.com/api/references/icons-in-labels#icon-listing), e.g.
-   `light-bulb`, `thumbsup`, `zap` etc."
+   `light-bulb`, `thumbsup`, `zap` etc.
+   
+   **Returns:** `string`"
   ^js [language-status-item]
   (.-text ^js language-status-item))
 
@@ -69,7 +79,9 @@
   (set! (.-text ^js language-status-item) value))
 
 (defn detail
-  "Optional, human-readable details for this item."
+  "Optional, human-readable details for this item.
+   
+   **Returns:** `string | undefined`"
   ^js [language-status-item]
   (.-detail ^js language-status-item))
 
@@ -79,7 +91,9 @@
   (set! (.-detail ^js language-status-item) value))
 
 (defn busy?
-  "Controls whether the item is shown as \"busy\". Defaults to `false`."
+  "Controls whether the item is shown as \"busy\". Defaults to `false`.
+   
+   **Returns:** `boolean`"
   ^js [language-status-item]
   (.-busy ^js language-status-item))
 
@@ -89,7 +103,9 @@
   (set! (.-busy ^js language-status-item) value))
 
 (defn command
-  "A {@linkcode Command command} for this item."
+  "A {@linkcode Command command} for this item.
+   
+   **Returns:** `Command | undefined`"
   ^js [language-status-item]
   (.-command ^js language-status-item))
 
@@ -99,7 +115,9 @@
   (set! (.-command ^js language-status-item) value))
 
 (defn accessibility-information
-  "Accessibility information used when a screen reader interacts with this item"
+  "Accessibility information used when a screen reader interacts with this item
+   
+   **Returns:** `AccessibilityInformation | undefined`"
   ^js [language-status-item]
   (.-accessibilityInformation ^js language-status-item))
 

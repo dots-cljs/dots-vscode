@@ -10,11 +10,14 @@
   "A code that identifies this error.
    
    Possible values are names of errors, like {@linkcode FileSystemError.FileNotFound FileNotFound},
-   or `Unknown` for unspecified errors."
+   or `Unknown` for unspecified errors.
+   
+   **Returns:** `string`"
   ^js [file-system-error]
   (.-code ^js file-system-error))
 
 (defn name
+  "**Returns:** `string`"
   ^js [file-system-error]
   (.-name ^js file-system-error))
 
@@ -23,6 +26,7 @@
   (set! (.-name ^js file-system-error) value))
 
 (defn message
+  "**Returns:** `string`"
   ^js [file-system-error]
   (.-message ^js file-system-error))
 
@@ -31,6 +35,7 @@
   (set! (.-message ^js file-system-error) value))
 
 (defn stack
+  "**Returns:** `string | undefined`"
   ^js [file-system-error]
   (.-stack ^js file-system-error))
 

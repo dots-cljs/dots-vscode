@@ -3,7 +3,9 @@
   (:refer-clojure :exclude [name]))
 
 (defn definition
-  "The task's definition."
+  "The task's definition.
+   
+   **Returns:** `TaskDefinition`"
   ^js [task]
   (.-definition ^js task))
 
@@ -13,12 +15,16 @@
   (set! (.-definition ^js task) value))
 
 (defn scope
-  "The task's scope."
+  "The task's scope.
+   
+   **Returns:** `TaskScope | WorkspaceFolder | undefined`"
   ^js [task]
   (.-scope ^js task))
 
 (defn name
-  "The task's name"
+  "The task's name
+   
+   **Returns:** `string`"
   ^js [task]
   (.-name ^js task))
 
@@ -30,7 +36,9 @@
 (defn detail
   "A human-readable string which is rendered less prominently on a separate line in places
    where the task's name is displayed. Supports rendering of {@link ThemeIcon theme icons}
-   via the `$(<name>)`-syntax."
+   via the `$(<name>)`-syntax.
+   
+   **Returns:** `string | undefined`"
   ^js [task]
   (.-detail ^js task))
 
@@ -42,7 +50,9 @@
   (set! (.-detail ^js task) value))
 
 (defn execution
-  "The task's execution engine"
+  "The task's execution engine
+   
+   **Returns:** `ProcessExecution | ShellExecution | CustomExecution | undefined`"
   ^js [task]
   (.-execution ^js task))
 
@@ -52,7 +62,9 @@
   (set! (.-execution ^js task) value))
 
 (defn background?
-  "Whether the task is a background task or not."
+  "Whether the task is a background task or not.
+   
+   **Returns:** `boolean`"
   ^js [task]
   (.-isBackground ^js task))
 
@@ -63,7 +75,9 @@
 
 (defn source
   "A human-readable string describing the source of this shell task, e.g. 'gulp'
-   or 'npm'. Supports rendering of {@link ThemeIcon theme icons} via the `$(<name>)`-syntax."
+   or 'npm'. Supports rendering of {@link ThemeIcon theme icons} via the `$(<name>)`-syntax.
+   
+   **Returns:** `string`"
   ^js [task]
   (.-source ^js task))
 
@@ -77,7 +91,9 @@
   "The task group this tasks belongs to. See TaskGroup
    for a predefined set of available groups.
    Defaults to undefined meaning that the task doesn't
-   belong to any special group."
+   belong to any special group.
+   
+   **Returns:** `TaskGroup | undefined`"
   ^js [task]
   (.-group ^js task))
 
@@ -90,7 +106,9 @@
   (set! (.-group ^js task) value))
 
 (defn presentation-options
-  "The presentation options. Defaults to an empty literal."
+  "The presentation options. Defaults to an empty literal.
+   
+   **Returns:** `TaskPresentationOptions`"
   ^js [task]
   (.-presentationOptions ^js task))
 
@@ -101,7 +119,9 @@
 
 (defn problem-matchers
   "The problem matchers attached to the task. Defaults to an empty
-   array."
+   array.
+   
+   **Returns:** `string[]`"
   ^js [task]
   (.-problemMatchers ^js task))
 
@@ -112,7 +132,9 @@
   (set! (.-problemMatchers ^js task) value))
 
 (defn run-options
-  "Run options for the task"
+  "Run options for the task
+   
+   **Returns:** `RunOptions`"
   ^js [task]
   (.-runOptions ^js task))
 

@@ -24,6 +24,8 @@
   "Custom data stored on this item.
    
    You can use `value` to share data across operations. The original object can be retrieved so long as the extension that
-   created the `DataTransferItem` runs in the same extension host."
+   created the `DataTransferItem` runs in the same extension host.
+   
+   **Returns:** `any`"
   ^js [data-transfer-item]
   (.-value ^js data-transfer-item))

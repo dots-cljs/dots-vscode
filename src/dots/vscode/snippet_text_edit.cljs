@@ -10,7 +10,9 @@
   (:require ["vscode" :as vscode]))
 
 (defn range
-  "The range this edit applies to."
+  "The range this edit applies to.
+   
+   **Returns:** `Range`"
   ^js [snippet-text-edit]
   (.-range ^js snippet-text-edit))
 
@@ -20,7 +22,9 @@
   (set! (.-range ^js snippet-text-edit) value))
 
 (defn snippet
-  "The {@link SnippetString snippet} this edit will perform."
+  "The {@link SnippetString snippet} this edit will perform.
+   
+   **Returns:** `SnippetString`"
   ^js [snippet-text-edit]
   (.-snippet ^js snippet-text-edit))
 

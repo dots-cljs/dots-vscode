@@ -2,19 +2,25 @@
   "A webview based view.")
 
 (defn view-type
-  "Identifies the type of the webview view, such as `'hexEditor.dataView'`."
+  "Identifies the type of the webview view, such as `'hexEditor.dataView'`.
+   
+   **Returns:** `string`"
   ^js [webview-view]
   (.-viewType ^js webview-view))
 
 (defn webview
-  "The underlying webview for the view."
+  "The underlying webview for the view.
+   
+   **Returns:** `Webview`"
   ^js [webview-view]
   (.-webview ^js webview-view))
 
 (defn title
   "View title displayed in the UI.
    
-   The view title is initially taken from the extension `package.json` contribution."
+   The view title is initially taken from the extension `package.json` contribution.
+   
+   **Returns:** `string | undefined`"
   ^js [webview-view]
   (.-title ^js webview-view))
 
@@ -26,7 +32,9 @@
   (set! (.-title ^js webview-view) value))
 
 (defn description
-  "Human-readable string which is rendered less prominently in the title."
+  "Human-readable string which is rendered less prominently in the title.
+   
+   **Returns:** `string | undefined`"
   ^js [webview-view]
   (.-description ^js webview-view))
 
@@ -37,7 +45,9 @@
 
 (defn badge
   "The badge to display for this webview view.
-   To remove the badge, set to undefined."
+   To remove the badge, set to undefined.
+   
+   **Returns:** `ViewBadge | undefined`"
   ^js [webview-view]
   (.-badge ^js webview-view))
 
@@ -73,7 +83,9 @@
 (defn visible?
   "Tracks if the webview is currently visible.
    
-   Views are visible when they are on the screen and expanded."
+   Views are visible when they are on the screen and expanded.
+   
+   **Returns:** `boolean`"
   ^js [webview-view]
   (.-visible ^js webview-view))
 

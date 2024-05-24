@@ -451,7 +451,9 @@
   "A {@link FileSystem file system} instance that allows to interact with local and remote
    files, e.g. `vscode.workspace.fs.readDirectory(someUri)` allows to retrieve all entries
    of a directory or `vscode.workspace.fs.stat(anotherUri)` returns the meta data for a
-   file."
+   file.
+   
+   **Returns:** `FileSystem`"
   ^js []
   (.-fs vscode/workspace))
 
@@ -460,7 +462,9 @@
    as `string`. `undefined` if there is no first entry.
    
    Refer to https://code.visualstudio.com/docs/editor/workspaces for more information
-   on workspaces."
+   on workspaces.
+   
+   **Returns:** `string | undefined`"
   ^js []
   (.-rootPath vscode/workspace))
 
@@ -469,7 +473,9 @@
    has been opened.
    
    Refer to https://code.visualstudio.com/docs/editor/workspaces for more information
-   on workspaces."
+   on workspaces.
+   
+   **Returns:** `readonly WorkspaceFolder[] | undefined`"
   ^js []
   (.-workspaceFolders vscode/workspace))
 
@@ -478,7 +484,9 @@
    has been opened.
    
    Refer to https://code.visualstudio.com/docs/editor/workspaces for more information on
-   the concept of workspaces."
+   the concept of workspaces.
+   
+   **Returns:** `string | undefined`"
   ^js []
   (.-name vscode/workspace))
 
@@ -512,7 +520,9 @@
    **Note:** it is not advised to use `workspace.workspaceFile` to write
    configuration data into the file. You can use `workspace.getConfiguration().update()`
    for that purpose which will work both when a single folder is opened as
-   well as an untitled or saved workspace."
+   well as an untitled or saved workspace.
+   
+   **Returns:** `Uri | undefined`"
   ^js []
   (.-workspaceFile vscode/workspace))
 
@@ -540,7 +550,9 @@
    (.onDidChangeWorkspaceFolders vscode/workspace listener this-args disposables)))
 
 (defn text-documents
-  "All text documents currently known to the editor."
+  "All text documents currently known to the editor.
+   
+   **Returns:** `readonly TextDocument[]`"
   ^js []
   (.-textDocuments vscode/workspace))
 
@@ -662,7 +674,9 @@
    (.onDidSaveTextDocument vscode/workspace listener this-args disposables)))
 
 (defn notebook-documents
-  "All notebook documents currently known to the editor."
+  "All notebook documents currently known to the editor.
+   
+   **Returns:** `readonly NotebookDocument[]`"
   ^js []
   (.-notebookDocuments vscode/workspace))
 
@@ -938,7 +952,9 @@
    (.onDidChangeConfiguration vscode/workspace listener this-args disposables)))
 
 (defn trusted?
-  "When true, the user has explicitly trusted the contents of the workspace."
+  "When true, the user has explicitly trusted the contents of the workspace.
+   
+   **Returns:** `boolean`"
   ^js []
   (.-isTrusted vscode/workspace))
 

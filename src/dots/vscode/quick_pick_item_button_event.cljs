@@ -3,11 +3,15 @@
    This event does not fire for buttons in the title bar.")
 
 (defn button
-  "The button that was clicked."
+  "The button that was clicked.
+   
+   **Returns:** `QuickInputButton`"
   ^js [quick-pick-item-button-event]
   (.-button ^js quick-pick-item-button-event))
 
 (defn item
-  "The item that the button belongs to."
+  "The item that the button belongs to.
+   
+   **Returns:** `T`"
   ^js [quick-pick-item-button-event]
   (.-item ^js quick-pick-item-button-event))

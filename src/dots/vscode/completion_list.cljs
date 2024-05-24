@@ -4,7 +4,9 @@
 
 (defn incomplete?
   "This list is not complete. Further typing should result in recomputing
-   this list."
+   this list.
+   
+   **Returns:** `boolean | undefined`"
   ^js [completion-list]
   (.-isIncomplete ^js completion-list))
 
@@ -15,7 +17,9 @@
   (set! (.-isIncomplete ^js completion-list) value))
 
 (defn items
-  "The completion items."
+  "The completion items.
+   
+   **Returns:** `T[]`"
   ^js [completion-list]
   (.-items ^js completion-list))
 

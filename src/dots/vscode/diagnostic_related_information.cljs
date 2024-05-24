@@ -4,7 +4,9 @@
    a symbol in a scope.")
 
 (defn location
-  "The location of this related diagnostic information."
+  "The location of this related diagnostic information.
+   
+   **Returns:** `Location`"
   ^js [diagnostic-related-information]
   (.-location ^js diagnostic-related-information))
 
@@ -14,7 +16,9 @@
   (set! (.-location ^js diagnostic-related-information) value))
 
 (defn message
-  "The message of this related diagnostic information."
+  "The message of this related diagnostic information.
+   
+   **Returns:** `string`"
   ^js [diagnostic-related-information]
   (.-message ^js diagnostic-related-information))
 

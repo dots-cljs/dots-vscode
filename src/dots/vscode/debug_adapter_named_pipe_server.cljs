@@ -2,6 +2,8 @@
   "Represents a debug adapter running as a Named Pipe (on Windows)/UNIX Domain Socket (on non-Windows) based server.")
 
 (defn path
-  "The path to the NamedPipe/UNIX Domain Socket."
+  "The path to the NamedPipe/UNIX Domain Socket.
+   
+   **Returns:** `string`"
   ^js [debug-adapter-named-pipe-server]
   (.-path ^js debug-adapter-named-pipe-server))

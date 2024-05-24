@@ -3,19 +3,25 @@
    resource within a certain {@link SourceControlResourceGroup source control group}.")
 
 (defn resource-uri
-  "The {@link Uri } of the underlying resource inside the workspace."
+  "The {@link Uri } of the underlying resource inside the workspace.
+   
+   **Returns:** `Uri`"
   ^js [source-control-resource-state]
   (.-resourceUri ^js source-control-resource-state))
 
 (defn command
   "The {@link Command } which should be run when the resource
-   state is open in the Source Control viewlet."
+   state is open in the Source Control viewlet.
+   
+   **Returns:** `Command | undefined`"
   ^js [source-control-resource-state]
   (.-command ^js source-control-resource-state))
 
 (defn decorations
   "The {@link SourceControlResourceDecorations decorations} for this source control
-   resource state."
+   resource state.
+   
+   **Returns:** `SourceControlResourceDecorations | undefined`"
   ^js [source-control-resource-state]
   (.-decorations ^js source-control-resource-state))
 
@@ -35,6 +41,8 @@
      }
    }
    ```
-   This will show action `extension.diff` only for resources with `contextValue` is `diffable`."
+   This will show action `extension.diff` only for resources with `contextValue` is `diffable`.
+   
+   **Returns:** `string | undefined`"
   ^js [source-control-resource-state]
   (.-contextValue ^js source-control-resource-state))

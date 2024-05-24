@@ -2,7 +2,9 @@
   "Describes pairs of strings where the close string will be automatically inserted when typing the opening string.")
 
 (defn open
-  "The string that will trigger the automatic insertion of the closing string."
+  "The string that will trigger the automatic insertion of the closing string.
+   
+   **Returns:** `string`"
   ^js [auto-closing-pair]
   (.-open ^js auto-closing-pair))
 
@@ -12,7 +14,9 @@
   (set! (.-open ^js auto-closing-pair) value))
 
 (defn close
-  "The closing string that will be automatically inserted when typing the opening string."
+  "The closing string that will be automatically inserted when typing the opening string.
+   
+   **Returns:** `string`"
   ^js [auto-closing-pair]
   (.-close ^js auto-closing-pair))
 
@@ -22,7 +26,9 @@
   (set! (.-close ^js auto-closing-pair) value))
 
 (defn not-in
-  "A set of tokens where the pair should not be auto closed."
+  "A set of tokens where the pair should not be auto closed.
+   
+   **Returns:** `SyntaxTokenType[] | undefined`"
   ^js [auto-closing-pair]
   (.-notIn ^js auto-closing-pair))
 

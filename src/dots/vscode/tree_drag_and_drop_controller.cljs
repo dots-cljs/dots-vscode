@@ -16,7 +16,9 @@
    2. Use the Developer: Set Log Level... command to set the level to \"Debug\"
    3. Open the developer tools and drag the item with unknown mime type over your tree. The mime types will be logged to the developer console
    
-   Note that mime types that cannot be sent to the extension will be omitted."
+   Note that mime types that cannot be sent to the extension will be omitted.
+   
+   **Returns:** `readonly string[]`"
   ^js [tree-drag-and-drop-controller]
   (.-dropMimeTypes ^js tree-drag-and-drop-controller))
 
@@ -24,7 +26,9 @@
   "The mime types that the {@link TreeDragAndDropController.handleDrag `handleDrag`} method of this `TreeDragAndDropController` may add to the tree data transfer.
    This could be well-defined, existing, mime types, and also mime types defined by the extension.
    
-   The recommended mime type of the tree (`application/vnd.code.tree.<treeidlowercase>`) will be automatically added."
+   The recommended mime type of the tree (`application/vnd.code.tree.<treeidlowercase>`) will be automatically added.
+   
+   **Returns:** `readonly string[]`"
   ^js [tree-drag-and-drop-controller]
   (.-dragMimeTypes ^js tree-drag-and-drop-controller))
 

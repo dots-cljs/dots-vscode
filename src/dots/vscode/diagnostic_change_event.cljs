@@ -2,6 +2,8 @@
   "The event that is fired when diagnostics change.")
 
 (defn uris
-  "An array of resources for which diagnostics have changed."
+  "An array of resources for which diagnostics have changed.
+   
+   **Returns:** `readonly Uri[]`"
   ^js [diagnostic-change-event]
   (.-uris ^js diagnostic-change-event))

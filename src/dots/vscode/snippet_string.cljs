@@ -9,7 +9,9 @@
    [the full snippet syntax](https://code.visualstudio.com/docs/editor/userdefinedsnippets#_create-your-own-snippets).")
 
 (defn value
-  "The snippet string."
+  "The snippet string.
+   
+   **Returns:** `string`"
   ^js [snippet-string]
   (.-value ^js snippet-string))
 

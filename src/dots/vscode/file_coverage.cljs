@@ -3,13 +3,17 @@
   (:require ["vscode" :as vscode]))
 
 (defn uri
-  "File URI."
+  "File URI.
+   
+   **Returns:** `Uri`"
   ^js [file-coverage]
   (.-uri ^js file-coverage))
 
 (defn statement-coverage
   "Statement coverage information. If the reporter does not provide statement
-   coverage information, this can instead be used to represent line coverage."
+   coverage information, this can instead be used to represent line coverage.
+   
+   **Returns:** `TestCoverageCount`"
   ^js [file-coverage]
   (.-statementCoverage ^js file-coverage))
 
@@ -20,7 +24,9 @@
   (set! (.-statementCoverage ^js file-coverage) value))
 
 (defn branch-coverage
-  "Branch coverage information."
+  "Branch coverage information.
+   
+   **Returns:** `TestCoverageCount | undefined`"
   ^js [file-coverage]
   (.-branchCoverage ^js file-coverage))
 
@@ -31,7 +37,9 @@
 
 (defn declaration-coverage
   "Declaration coverage information. Depending on the reporter and
-   language, this may be types such as functions, methods, or namespaces."
+   language, this may be types such as functions, methods, or namespaces.
+   
+   **Returns:** `TestCoverageCount | undefined`"
   ^js [file-coverage]
   (.-declarationCoverage ^js file-coverage))
 

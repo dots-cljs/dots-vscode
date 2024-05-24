@@ -2,6 +2,8 @@
   "The event that is fired when there is a change in {@link TreeView.selection tree view's selection}")
 
 (defn selection
-  "Selected elements."
+  "Selected elements.
+   
+   **Returns:** `readonly T[]`"
   ^js [tree-view-selection-change-event]
   (.-selection ^js tree-view-selection-change-event))

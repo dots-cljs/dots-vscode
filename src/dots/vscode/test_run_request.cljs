@@ -15,7 +15,9 @@
    undefined, then the extension should simply run all tests.
    
    The process of running tests should resolve the children of any test
-   items who have not yet been resolved."
+   items who have not yet been resolved.
+   
+   **Returns:** `readonly TestItem[] | undefined`"
   ^js [test-run-request]
   (.-include ^js test-run-request))
 
@@ -24,19 +26,25 @@
    in this run; exclusions should apply after inclusions.
    
    May be omitted if no exclusions were requested. Test controllers should
-   not run excluded tests or any children of excluded tests."
+   not run excluded tests or any children of excluded tests.
+   
+   **Returns:** `readonly TestItem[] | undefined`"
   ^js [test-run-request]
   (.-exclude ^js test-run-request))
 
 (defn profile
   "The profile used for this request. This will always be defined
    for requests issued from the editor UI, though extensions may
-   programmatically create requests not associated with any profile."
+   programmatically create requests not associated with any profile.
+   
+   **Returns:** `TestRunProfile | undefined`"
   ^js [test-run-request]
   (.-profile ^js test-run-request))
 
 (defn continuous?
   "Whether the profile should run continuously as source code changes. Only
-   relevant for profiles that set {@link TestRunProfile.supportsContinuousRun }."
+   relevant for profiles that set {@link TestRunProfile.supportsContinuousRun }.
+   
+   **Returns:** `boolean | undefined`"
   ^js [test-run-request]
   (.-continuous ^js test-run-request))

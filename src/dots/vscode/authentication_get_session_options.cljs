@@ -15,7 +15,9 @@
    value at first and then when this flag is provided, a new value can be set for that workspace. This also means
    that pre-existing workspaces will not lose their preference if a new workspace sets this flag.
    
-   Defaults to false."
+   Defaults to false.
+   
+   **Returns:** `boolean | undefined`"
   ^js [authentication-get-session-options]
   (.-clearSessionPreference ^js authentication-get-session-options))
 
@@ -49,7 +51,9 @@
    
    Defaults to false.
    
-   Note: you cannot use this option with {@link AuthenticationGetSessionOptions.silent silent}."
+   Note: you cannot use this option with {@link AuthenticationGetSessionOptions.silent silent}.
+   
+   **Returns:** `boolean | undefined`"
   ^js [authentication-get-session-options]
   (.-createIfNone ^js authentication-get-session-options))
 
@@ -78,7 +82,9 @@
    If there are no existing sessions and forceNewSession is true, it will behave identically to
    {@link AuthenticationGetSessionOptions.createIfNone createIfNone}.
    
-   This defaults to false."
+   This defaults to false.
+   
+   **Returns:** `boolean | AuthenticationForceNewSessionOptions | undefined`"
   ^js [authentication-get-session-options]
   (.-forceNewSession ^js authentication-get-session-options))
 
@@ -103,7 +109,9 @@
    
    Defaults to false.
    
-   Note: you cannot use this option with any other options that prompt the user like {@link AuthenticationGetSessionOptions.createIfNone createIfNone}."
+   Note: you cannot use this option with any other options that prompt the user like {@link AuthenticationGetSessionOptions.createIfNone createIfNone}.
+   
+   **Returns:** `boolean | undefined`"
   ^js [authentication-get-session-options]
   (.-silent ^js authentication-get-session-options))
 

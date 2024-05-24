@@ -7,7 +7,9 @@
 (defn base-uri
   "A base file path to which this pattern will be matched against relatively. The
    file path must be absolute, should not have any trailing path separators and
-   not include any relative segments (`.` or `..`)."
+   not include any relative segments (`.` or `..`).
+   
+   **Returns:** `Uri`"
   ^js [relative-pattern]
   (.-baseUri ^js relative-pattern))
 
@@ -24,7 +26,9 @@
    This matches the `fsPath` value of {@link RelativePattern.baseUri }.
    
    *Note:* updating this value will update {@link RelativePattern.baseUri } to
-   be a uri with `file` scheme."
+   be a uri with `file` scheme.
+   
+   **Returns:** `string`"
   ^js [relative-pattern]
   (.-base ^js relative-pattern))
 
@@ -43,7 +47,9 @@
    relative to the base path.
    
    Example: Given a base of `/home/work/folder` and a file path of `/home/work/folder/index.js`,
-   the file glob pattern will match on `index.js`."
+   the file glob pattern will match on `index.js`.
+   
+   **Returns:** `string`"
   ^js [relative-pattern]
   (.-pattern ^js relative-pattern))
 

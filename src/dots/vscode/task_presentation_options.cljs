@@ -3,7 +3,9 @@
 
 (defn reveal
   "Controls whether the task output is reveal in the user interface.
-   Defaults to `RevealKind.Always`."
+   Defaults to `RevealKind.Always`.
+   
+   **Returns:** `TaskRevealKind | undefined`"
   ^js [task-presentation-options]
   (.-reveal ^js task-presentation-options))
 
@@ -15,7 +17,9 @@
 
 (defn echo?
   "Controls whether the command associated with the task is echoed
-   in the user interface."
+   in the user interface.
+   
+   **Returns:** `boolean | undefined`"
   ^js [task-presentation-options]
   (.-echo ^js task-presentation-options))
 
@@ -26,7 +30,9 @@
   (set! (.-echo ^js task-presentation-options) value))
 
 (defn focus?
-  "Controls whether the panel showing the task output is taking focus."
+  "Controls whether the panel showing the task output is taking focus.
+   
+   **Returns:** `boolean | undefined`"
   ^js [task-presentation-options]
   (.-focus ^js task-presentation-options))
 
@@ -38,7 +44,9 @@
 (defn panel
   "Controls if the task panel is used for this task only (dedicated),
    shared between tasks (shared) or if a new panel is created on
-   every task execution (new). Defaults to `TaskInstanceKind.Shared`"
+   every task execution (new). Defaults to `TaskInstanceKind.Shared`
+   
+   **Returns:** `TaskPanelKind | undefined`"
   ^js [task-presentation-options]
   (.-panel ^js task-presentation-options))
 
@@ -50,7 +58,9 @@
   (set! (.-panel ^js task-presentation-options) value))
 
 (defn show-reuse-message?
-  "Controls whether to show the \"Terminal will be reused by tasks, press any key to close it\" message."
+  "Controls whether to show the \"Terminal will be reused by tasks, press any key to close it\" message.
+   
+   **Returns:** `boolean | undefined`"
   ^js [task-presentation-options]
   (.-showReuseMessage ^js task-presentation-options))
 
@@ -60,7 +70,9 @@
   (set! (.-showReuseMessage ^js task-presentation-options) value))
 
 (defn clear?
-  "Controls whether the terminal is cleared before executing the task."
+  "Controls whether the terminal is cleared before executing the task.
+   
+   **Returns:** `boolean | undefined`"
   ^js [task-presentation-options]
   (.-clear ^js task-presentation-options))
 
@@ -70,7 +82,9 @@
   (set! (.-clear ^js task-presentation-options) value))
 
 (defn close?
-  "Controls whether the terminal is closed after executing the task."
+  "Controls whether the terminal is closed after executing the task.
+   
+   **Returns:** `boolean | undefined`"
   ^js [task-presentation-options]
   (.-close ^js task-presentation-options))
 

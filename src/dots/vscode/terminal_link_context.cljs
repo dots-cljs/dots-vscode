@@ -2,7 +2,9 @@
   "Provides information on a line in a terminal in order to provide links for it.")
 
 (defn line
-  "This is the text from the unwrapped line in the terminal."
+  "This is the text from the unwrapped line in the terminal.
+   
+   **Returns:** `string`"
   ^js [terminal-link-context]
   (.-line ^js terminal-link-context))
 
@@ -12,7 +14,9 @@
   (set! (.-line ^js terminal-link-context) value))
 
 (defn terminal
-  "The terminal the link belongs to."
+  "The terminal the link belongs to.
+   
+   **Returns:** `Terminal`"
   ^js [terminal-link-context]
   (.-terminal ^js terminal-link-context))
 

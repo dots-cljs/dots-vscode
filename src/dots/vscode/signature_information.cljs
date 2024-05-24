@@ -5,7 +5,9 @@
 
 (defn label
   "The label of this signature. Will be shown in
-   the UI."
+   the UI.
+   
+   **Returns:** `string`"
   ^js [signature-information]
   (.-label ^js signature-information))
 
@@ -17,7 +19,9 @@
 
 (defn documentation
   "The human-readable doc-comment of this signature. Will be shown
-   in the UI but can be omitted."
+   in the UI but can be omitted.
+   
+   **Returns:** `string | MarkdownString | undefined`"
   ^js [signature-information]
   (.-documentation ^js signature-information))
 
@@ -28,7 +32,9 @@
   (set! (.-documentation ^js signature-information) value))
 
 (defn parameters
-  "The parameters of this signature."
+  "The parameters of this signature.
+   
+   **Returns:** `ParameterInformation[]`"
   ^js [signature-information]
   (.-parameters ^js signature-information))
 
@@ -40,7 +46,9 @@
 (defn active-parameter
   "The index of the active parameter.
    
-   If provided, this is used in place of {@linkcode SignatureHelp.activeParameter }."
+   If provided, this is used in place of {@linkcode SignatureHelp.activeParameter }.
+   
+   **Returns:** `number | undefined`"
   ^js [signature-information]
   (.-activeParameter ^js signature-information))
 

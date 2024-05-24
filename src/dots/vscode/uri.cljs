@@ -5,28 +5,38 @@
 
 (defn scheme
   "Scheme is the `http` part of `http://www.example.com/some/path?query#fragment`.
-   The part before the first colon."
+   The part before the first colon.
+   
+   **Returns:** `string`"
   ^js [uri]
   (.-scheme ^js uri))
 
 (defn authority
   "Authority is the `www.example.com` part of `http://www.example.com/some/path?query#fragment`.
-   The part between the first double slashes and the next slash."
+   The part between the first double slashes and the next slash.
+   
+   **Returns:** `string`"
   ^js [uri]
   (.-authority ^js uri))
 
 (defn path
-  "Path is the `/some/path` part of `http://www.example.com/some/path?query#fragment`."
+  "Path is the `/some/path` part of `http://www.example.com/some/path?query#fragment`.
+   
+   **Returns:** `string`"
   ^js [uri]
   (.-path ^js uri))
 
 (defn query
-  "Query is the `query` part of `http://www.example.com/some/path?query#fragment`."
+  "Query is the `query` part of `http://www.example.com/some/path?query#fragment`.
+   
+   **Returns:** `string`"
   ^js [uri]
   (.-query ^js uri))
 
 (defn fragment
-  "Fragment is the `fragment` part of `http://www.example.com/some/path?query#fragment`."
+  "Fragment is the `fragment` part of `http://www.example.com/some/path?query#fragment`.
+   
+   **Returns:** `string`"
   ^js [uri]
   (.-fragment ^js uri))
 
@@ -48,7 +58,9 @@
    u.authority === 'server'
    u.path === '/c$/folder/file.txt'
    u.fsPath === '\\\\server\\c$\\folder\\file.txt'
-   ```"
+   ```
+   
+   **Returns:** `string`"
   ^js [uri]
   (.-fsPath ^js uri))
 

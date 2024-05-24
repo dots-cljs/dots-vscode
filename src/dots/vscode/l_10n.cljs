@@ -36,13 +36,17 @@
 (defn bundle
   "The bundle of localized strings that have been loaded for the extension.
    It's undefined if no bundle has been loaded. The bundle is typically not loaded if
-   there was no bundle found or when we are running with the default language."
+   there was no bundle found or when we are running with the default language.
+   
+   **Returns:** `{ [key: string]: string; } | undefined`"
   ^js []
   (.-bundle vscode/l10n))
 
 (defn uri
   "The URI of the localization bundle that has been loaded for the extension.
    It's undefined if no bundle has been loaded. The bundle is typically not loaded if
-   there was no bundle found or when we are running with the default language."
+   there was no bundle found or when we are running with the default language.
+   
+   **Returns:** `Uri | undefined`"
   ^js []
   (.-uri vscode/l10n))

@@ -14,7 +14,9 @@
 (defn label
   "The label of this completion item. By default
    this is also the text that is inserted when selecting
-   this completion."
+   this completion.
+   
+   **Returns:** `string | CompletionItemLabel`"
   ^js [completion-item]
   (.-label ^js completion-item))
 
@@ -27,7 +29,9 @@
 
 (defn kind
   "The kind of this completion item. Based on the kind
-   an icon is chosen by the editor."
+   an icon is chosen by the editor.
+   
+   **Returns:** `CompletionItemKind | undefined`"
   ^js [completion-item]
   (.-kind ^js completion-item))
 
@@ -38,7 +42,9 @@
   (set! (.-kind ^js completion-item) value))
 
 (defn tags
-  "Tags for this completion item."
+  "Tags for this completion item.
+   
+   **Returns:** `readonly CompletionItemTag[] | undefined`"
   ^js [completion-item]
   (.-tags ^js completion-item))
 
@@ -49,7 +55,9 @@
 
 (defn detail
   "A human-readable string with additional information
-   about this item, like type or symbol information."
+   about this item, like type or symbol information.
+   
+   **Returns:** `string | undefined`"
   ^js [completion-item]
   (.-detail ^js completion-item))
 
@@ -60,7 +68,9 @@
   (set! (.-detail ^js completion-item) value))
 
 (defn documentation
-  "A human-readable string that represents a doc-comment."
+  "A human-readable string that represents a doc-comment.
+   
+   **Returns:** `string | MarkdownString | undefined`"
   ^js [completion-item]
   (.-documentation ^js completion-item))
 
@@ -79,7 +89,9 @@
    well completions match that prefix and the initial ordering is only used
    when completions match equally well. The prefix is defined by the
    {@linkcode CompletionItem.range range}-property and can therefore be different
-   for each completion."
+   for each completion.
+   
+   **Returns:** `string | undefined`"
   ^js [completion-item]
   (.-sortText ^js completion-item))
 
@@ -103,7 +115,9 @@
    is used.
    
    Note that the filter text is matched against the leading word (prefix) which is defined
-   by the {@linkcode CompletionItem.range range}-property."
+   by the {@linkcode CompletionItem.range range}-property.
+   
+   **Returns:** `string | undefined`"
   ^js [completion-item]
   (.-filterText ^js completion-item))
 
@@ -120,7 +134,9 @@
 (defn preselect?
   "Select this item when showing. *Note* that only one completion item can be selected and
    that the editor decides which item that is. The rule is that the *first* item of those
-   that match best is selected."
+   that match best is selected.
+   
+   **Returns:** `boolean | undefined`"
   ^js [completion-item]
   (.-preselect ^js completion-item))
 
@@ -134,7 +150,9 @@
 (defn insert-text
   "A string or snippet that should be inserted in a document when selecting
    this completion. When `falsy` the {@link CompletionItem.label label}
-   is used."
+   is used.
+   
+   **Returns:** `string | SnippetString | undefined`"
   ^js [completion-item]
   (.-insertText ^js completion-item))
 
@@ -154,7 +172,9 @@
    
    *Note 1:* A range must be a {@link Range.isSingleLine single line} and it must
    {@link Range.contains contain} the position at which completion has been {@link CompletionItemProvider.provideCompletionItems requested}.
-   *Note 2:* A insert range must be a prefix of a replace range, that means it must be contained and starting at the same position."
+   *Note 2:* A insert range must be a prefix of a replace range, that means it must be contained and starting at the same position.
+   
+   **Returns:** `Range | { inserting: Range; replacing: Range; } | undefined`"
   ^js [completion-item]
   (.-range ^js completion-item))
 
@@ -174,7 +194,9 @@
 (defn commit-characters
   "An optional set of characters that when pressed while this completion is active will accept it first and
    then type that character. *Note* that all commit characters should have `length=1` and that superfluous
-   characters will be ignored."
+   characters will be ignored.
+   
+   **Returns:** `string[] | undefined`"
   ^js [completion-item]
   (.-commitCharacters ^js completion-item))
 
@@ -188,7 +210,9 @@
 (defn keep-whitespace?
   "Keep whitespace of the {@link CompletionItem.insertText insertText} as is. By default, the editor adjusts leading
    whitespace of new lines so that they match the indentation of the line for which the item is accepted - setting
-   this to `true` will prevent that."
+   this to `true` will prevent that.
+   
+   **Returns:** `boolean | undefined`"
   ^js [completion-item]
   (.-keepWhitespace ^js completion-item))
 
@@ -200,6 +224,7 @@
   (set! (.-keepWhitespace ^js completion-item) value))
 
 (defn text-edit
+  "**Returns:** `TextEdit | undefined`"
   ^js [completion-item]
   (.-textEdit ^js completion-item))
 
@@ -210,7 +235,9 @@
 (defn additional-text-edits
   "An optional array of additional {@link TextEdit text edits} that are applied when
    selecting this completion. Edits must not overlap with the main {@link CompletionItem.textEdit edit}
-   nor with themselves."
+   nor with themselves.
+   
+   **Returns:** `TextEdit[] | undefined`"
   ^js [completion-item]
   (.-additionalTextEdits ^js completion-item))
 
@@ -224,7 +251,9 @@
 (defn command
   "An optional {@link Command } that is executed *after* inserting this completion. *Note* that
    additional modifications to the current document should be described with the
-   {@link CompletionItem.additionalTextEdits additionalTextEdits}-property."
+   {@link CompletionItem.additionalTextEdits additionalTextEdits}-property.
+   
+   **Returns:** `Command | undefined`"
   ^js [completion-item]
   (.-command ^js completion-item))
 

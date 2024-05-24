@@ -4,7 +4,9 @@
    active and only one active parameter.")
 
 (defn signatures
-  "One or more signatures."
+  "One or more signatures.
+   
+   **Returns:** `SignatureInformation[]`"
   ^js [signature-help]
   (.-signatures ^js signature-help))
 
@@ -14,7 +16,9 @@
   (set! (.-signatures ^js signature-help) value))
 
 (defn active-signature
-  "The active signature."
+  "The active signature.
+   
+   **Returns:** `number`"
   ^js [signature-help]
   (.-activeSignature ^js signature-help))
 
@@ -24,7 +28,9 @@
   (set! (.-activeSignature ^js signature-help) value))
 
 (defn active-parameter
-  "The active parameter of the active signature."
+  "The active parameter of the active signature.
+   
+   **Returns:** `number`"
   ^js [signature-help]
   (.-activeParameter ^js signature-help))
 

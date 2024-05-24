@@ -3,13 +3,17 @@
   (:refer-clojure :exclude [range]))
 
 (defn uri
-  "The uri of the document the thread has been created on."
+  "The uri of the document the thread has been created on.
+   
+   **Returns:** `Uri`"
   ^js [comment-thread]
   (.-uri ^js comment-thread))
 
 (defn range
   "The range the comment thread is located within the document. The thread icon will be shown
-   at the last line of the range."
+   at the last line of the range.
+   
+   **Returns:** `Range`"
   ^js [comment-thread]
   (.-range ^js comment-thread))
 
@@ -20,7 +24,9 @@
   (set! (.-range ^js comment-thread) value))
 
 (defn comments
-  "The ordered comments of the thread."
+  "The ordered comments of the thread.
+   
+   **Returns:** `readonly Comment[]`"
   ^js [comment-thread]
   (.-comments ^js comment-thread))
 
@@ -31,7 +37,9 @@
 
 (defn collapsible-state
   "Whether the thread should be collapsed or expanded when opening the document.
-   Defaults to Collapsed."
+   Defaults to Collapsed.
+   
+   **Returns:** `CommentThreadCollapsibleState`"
   ^js [comment-thread]
   (.-collapsibleState ^js comment-thread))
 
@@ -43,7 +51,9 @@
 
 (defn can-reply?
   "Whether the thread supports reply.
-   Defaults to true."
+   Defaults to true.
+   
+   **Returns:** `boolean`"
   ^js [comment-thread]
   (.-canReply ^js comment-thread))
 
@@ -69,7 +79,9 @@
      }
    }
    ```
-   This will show action `extension.deleteCommentThread` only for comment threads with `contextValue` is `editable`."
+   This will show action `extension.deleteCommentThread` only for comment threads with `contextValue` is `editable`.
+   
+   **Returns:** `string | undefined`"
   ^js [comment-thread]
   (.-contextValue ^js comment-thread))
 
@@ -94,7 +106,9 @@
   (set! (.-contextValue ^js comment-thread) value))
 
 (defn label
-  "The optional human-readable label describing the {@link CommentThread Comment Thread}"
+  "The optional human-readable label describing the {@link CommentThread Comment Thread}
+   
+   **Returns:** `string | undefined`"
   ^js [comment-thread]
   (.-label ^js comment-thread))
 
@@ -104,7 +118,9 @@
   (set! (.-label ^js comment-thread) value))
 
 (defn state
-  "The optional state of a comment thread, which may affect how the comment is displayed."
+  "The optional state of a comment thread, which may affect how the comment is displayed.
+   
+   **Returns:** `CommentThreadState | undefined`"
   ^js [comment-thread]
   (.-state ^js comment-thread))
 

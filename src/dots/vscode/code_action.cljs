@@ -5,7 +5,9 @@
    A CodeAction must set either {@linkcode CodeAction.edit edit} and/or a {@linkcode CodeAction.command command}. If both are supplied, the `edit` is applied first, then the command is executed.")
 
 (defn title
-  "A short, human-readable, title for this code action."
+  "A short, human-readable, title for this code action.
+   
+   **Returns:** `string`"
   ^js [code-action]
   (.-title ^js code-action))
 
@@ -15,7 +17,9 @@
   (set! (.-title ^js code-action) value))
 
 (defn edit
-  "A {@link WorkspaceEdit workspace edit} this code action performs."
+  "A {@link WorkspaceEdit workspace edit} this code action performs.
+   
+   **Returns:** `WorkspaceEdit | undefined`"
   ^js [code-action]
   (.-edit ^js code-action))
 
@@ -25,7 +29,9 @@
   (set! (.-edit ^js code-action) value))
 
 (defn diagnostics
-  "{@link Diagnostic Diagnostics} that this code action resolves."
+  "{@link Diagnostic Diagnostics} that this code action resolves.
+   
+   **Returns:** `Diagnostic[] | undefined`"
   ^js [code-action]
   (.-diagnostics ^js code-action))
 
@@ -38,7 +44,9 @@
   "A {@link Command } this code action executes.
    
    If this command throws an exception, the editor displays the exception message to users in the editor at the
-   current cursor position."
+   current cursor position.
+   
+   **Returns:** `Command | undefined`"
   ^js [code-action]
   (.-command ^js code-action))
 
@@ -53,7 +61,9 @@
 (defn kind
   "{@link CodeActionKind Kind} of the code action.
    
-   Used to filter code actions."
+   Used to filter code actions.
+   
+   **Returns:** `CodeActionKind | undefined`"
   ^js [code-action]
   (.-kind ^js code-action))
 
@@ -69,7 +79,9 @@
    by keybindings.
    
    A quick fix should be marked preferred if it properly addresses the underlying error.
-   A refactoring should be marked preferred if it is the most reasonable choice of actions to take."
+   A refactoring should be marked preferred if it is the most reasonable choice of actions to take.
+   
+   **Returns:** `boolean | undefined`"
   ^js [code-action]
   (.-isPreferred ^js code-action))
 
@@ -93,7 +105,9 @@
    
    - If the user has a [keybinding](https://code.visualstudio.com/docs/editor/refactoring#_keybindings-for-code-actions)
    that auto applies a code action and only a disabled code actions are returned, the editor will show the user an
-   error message with `reason` in the editor."
+   error message with `reason` in the editor.
+   
+   **Returns:** `{ readonly reason: string; } | undefined`"
   ^js [code-action]
   (.-disabled ^js code-action))
 

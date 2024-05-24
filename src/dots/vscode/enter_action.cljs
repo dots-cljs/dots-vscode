@@ -2,7 +2,9 @@
   "Describes what to do when pressing Enter.")
 
 (defn indent-action
-  "Describe what to do with the indentation."
+  "Describe what to do with the indentation.
+   
+   **Returns:** `IndentAction`"
   ^js [enter-action]
   (.-indentAction ^js enter-action))
 
@@ -12,7 +14,9 @@
   (set! (.-indentAction ^js enter-action) value))
 
 (defn append-text
-  "Describes text to be appended after the new line and after the indentation."
+  "Describes text to be appended after the new line and after the indentation.
+   
+   **Returns:** `string | undefined`"
   ^js [enter-action]
   (.-appendText ^js enter-action))
 
@@ -22,7 +26,9 @@
   (set! (.-appendText ^js enter-action) value))
 
 (defn remove-text
-  "Describes the number of characters to remove from the new line's indentation."
+  "Describes the number of characters to remove from the new line's indentation.
+   
+   **Returns:** `number | undefined`"
   ^js [enter-action]
   (.-removeText ^js enter-action))
 

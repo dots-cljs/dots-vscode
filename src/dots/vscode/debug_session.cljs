@@ -3,23 +3,31 @@
   (:refer-clojure :exclude [name type]))
 
 (defn id
-  "The unique ID of this debug session."
+  "The unique ID of this debug session.
+   
+   **Returns:** `string`"
   ^js [debug-session]
   (.-id ^js debug-session))
 
 (defn type
-  "The debug session's type from the {@link DebugConfiguration debug configuration}."
+  "The debug session's type from the {@link DebugConfiguration debug configuration}.
+   
+   **Returns:** `string`"
   ^js [debug-session]
   (.-type ^js debug-session))
 
 (defn parent-session
-  "The parent session of this debug session, if it was created as a child."
+  "The parent session of this debug session, if it was created as a child.
+   
+   **Returns:** `DebugSession | undefined`"
   ^js [debug-session]
   (.-parentSession ^js debug-session))
 
 (defn name
   "The debug session's name is initially taken from the {@link DebugConfiguration debug configuration}.
-   Any changes will be properly reflected in the UI."
+   Any changes will be properly reflected in the UI.
+   
+   **Returns:** `string`"
   ^js [debug-session]
   (.-name ^js debug-session))
 
@@ -30,7 +38,9 @@
   (set! (.-name ^js debug-session) value))
 
 (defn workspace-folder
-  "The workspace folder of this session or `undefined` for a folderless setup."
+  "The workspace folder of this session or `undefined` for a folderless setup.
+   
+   **Returns:** `WorkspaceFolder | undefined`"
   ^js [debug-session]
   (.-workspaceFolder ^js debug-session))
 
@@ -38,7 +48,9 @@
   "The \"resolved\" {@link DebugConfiguration debug configuration} of this session.
    \"Resolved\" means that
    - all variables have been substituted and
-   - platform specific attribute sections have been \"flattened\" for the matching platform and removed for non-matching platforms."
+   - platform specific attribute sections have been \"flattened\" for the matching platform and removed for non-matching platforms.
+   
+   **Returns:** `DebugConfiguration`"
   ^js [debug-session]
   (.-configuration ^js debug-session))
 

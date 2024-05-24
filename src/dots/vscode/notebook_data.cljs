@@ -5,7 +5,9 @@
    can create a {@linkcode NotebookDocument }.")
 
 (defn cells
-  "The cell data of this notebook data."
+  "The cell data of this notebook data.
+   
+   **Returns:** `NotebookCellData[]`"
   ^js [notebook-data]
   (.-cells ^js notebook-data))
 
@@ -15,7 +17,9 @@
   (set! (.-cells ^js notebook-data) value))
 
 (defn metadata
-  "Arbitrary metadata of notebook data."
+  "Arbitrary metadata of notebook data.
+   
+   **Returns:** `{ [key: string]: any; } | undefined`"
   ^js [notebook-data]
   (.-metadata ^js notebook-data))
 

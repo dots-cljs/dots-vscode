@@ -2,7 +2,9 @@
   "A comment is displayed within the editor or the Comments Panel, depending on how it is provided.")
 
 (defn body
-  "The human-readable comment body"
+  "The human-readable comment body
+   
+   **Returns:** `string | MarkdownString`"
   ^js [comment]
   (.-body ^js comment))
 
@@ -12,7 +14,9 @@
   (set! (.-body ^js comment) value))
 
 (defn mode
-  "{@link CommentMode Comment mode} of the comment"
+  "{@link CommentMode Comment mode} of the comment
+   
+   **Returns:** `CommentMode`"
   ^js [comment]
   (.-mode ^js comment))
 
@@ -22,7 +26,9 @@
   (set! (.-mode ^js comment) value))
 
 (defn author
-  "The {@link CommentAuthorInformation author information} of the comment"
+  "The {@link CommentAuthorInformation author information} of the comment
+   
+   **Returns:** `CommentAuthorInformation`"
   ^js [comment]
   (.-author ^js comment))
 
@@ -47,7 +53,9 @@
    	}
    }
    ```
-   This will show action `extension.deleteComment` only for comments with `contextValue` is `editable`."
+   This will show action `extension.deleteComment` only for comments with `contextValue` is `editable`.
+   
+   **Returns:** `string | undefined`"
   ^js [comment]
   (.-contextValue ^js comment))
 
@@ -72,7 +80,9 @@
   (set! (.-contextValue ^js comment) value))
 
 (defn reactions
-  "Optional reactions of the {@link Comment }"
+  "Optional reactions of the {@link Comment }
+   
+   **Returns:** `CommentReaction[] | undefined`"
   ^js [comment]
   (.-reactions ^js comment))
 
@@ -83,7 +93,9 @@
 
 (defn label
   "Optional label describing the {@link Comment }
-   Label will be rendered next to authorName if exists."
+   Label will be rendered next to authorName if exists.
+   
+   **Returns:** `string | undefined`"
   ^js [comment]
   (.-label ^js comment))
 
@@ -95,7 +107,9 @@
 
 (defn timestamp
   "Optional timestamp that will be displayed in comments.
-   The date will be formatted according to the user's locale and settings."
+   The date will be formatted according to the user's locale and settings.
+   
+   **Returns:** `Date | undefined`"
   ^js [comment]
   (.-timestamp ^js comment))
 

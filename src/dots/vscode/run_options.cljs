@@ -2,7 +2,9 @@
   "Run options for a task.")
 
 (defn reevaluate-on-rerun?
-  "Controls whether task variables are re-evaluated on rerun."
+  "Controls whether task variables are re-evaluated on rerun.
+   
+   **Returns:** `boolean | undefined`"
   ^js [run-options]
   (.-reevaluateOnRerun ^js run-options))
 

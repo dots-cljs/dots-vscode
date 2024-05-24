@@ -4,7 +4,9 @@
   (:refer-clojure :exclude [range]))
 
 (defn range
-  "The range to which this diagnostic applies."
+  "The range to which this diagnostic applies.
+   
+   **Returns:** `Range`"
   ^js [diagnostic]
   (.-range ^js diagnostic))
 
@@ -14,7 +16,9 @@
   (set! (.-range ^js diagnostic) value))
 
 (defn message
-  "The human-readable message."
+  "The human-readable message.
+   
+   **Returns:** `string`"
   ^js [diagnostic]
   (.-message ^js diagnostic))
 
@@ -24,7 +28,9 @@
   (set! (.-message ^js diagnostic) value))
 
 (defn severity
-  "The severity, default is {@link DiagnosticSeverity.Error error}."
+  "The severity, default is {@link DiagnosticSeverity.Error error}.
+   
+   **Returns:** `DiagnosticSeverity`"
   ^js [diagnostic]
   (.-severity ^js diagnostic))
 
@@ -35,7 +41,9 @@
 
 (defn source
   "A human-readable string describing the source of this
-   diagnostic, e.g. 'typescript' or 'super lint'."
+   diagnostic, e.g. 'typescript' or 'super lint'.
+   
+   **Returns:** `string | undefined`"
   ^js [diagnostic]
   (.-source ^js diagnostic))
 
@@ -47,7 +55,9 @@
 
 (defn code
   "A code or identifier for this diagnostic.
-   Should be used for later processing, e.g. when providing {@link CodeActionContext code actions}."
+   Should be used for later processing, e.g. when providing {@link CodeActionContext code actions}.
+   
+   **Returns:** `string | number | { value: string | number; target: Uri; } | undefined`"
   ^js [diagnostic]
   (.-code ^js diagnostic))
 
@@ -59,7 +69,9 @@
 
 (defn related-information
   "An array of related diagnostic information, e.g. when symbol-names within
-   a scope collide all definitions can be marked via this property."
+   a scope collide all definitions can be marked via this property.
+   
+   **Returns:** `DiagnosticRelatedInformation[] | undefined`"
   ^js [diagnostic]
   (.-relatedInformation ^js diagnostic))
 
@@ -70,7 +82,9 @@
   (set! (.-relatedInformation ^js diagnostic) value))
 
 (defn tags
-  "Additional metadata about the diagnostic."
+  "Additional metadata about the diagnostic.
+   
+   **Returns:** `DiagnosticTag[] | undefined`"
   ^js [diagnostic]
   (.-tags ^js diagnostic))
 

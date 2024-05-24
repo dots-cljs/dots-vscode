@@ -4,7 +4,9 @@
    for instance all edits labelled with \"Changes in Strings\" would be a tree node.")
 
 (defn needs-confirmation?
-  "A flag which indicates that user confirmation is needed."
+  "A flag which indicates that user confirmation is needed.
+   
+   **Returns:** `boolean`"
   ^js [workspace-edit-entry-metadata]
   (.-needsConfirmation ^js workspace-edit-entry-metadata))
 
@@ -14,7 +16,9 @@
   (set! (.-needsConfirmation ^js workspace-edit-entry-metadata) value))
 
 (defn label
-  "A human-readable string which is rendered prominent."
+  "A human-readable string which is rendered prominent.
+   
+   **Returns:** `string`"
   ^js [workspace-edit-entry-metadata]
   (.-label ^js workspace-edit-entry-metadata))
 
@@ -24,7 +28,9 @@
   (set! (.-label ^js workspace-edit-entry-metadata) value))
 
 (defn description
-  "A human-readable string which is rendered less prominent on the same line."
+  "A human-readable string which is rendered less prominent on the same line.
+   
+   **Returns:** `string | undefined`"
   ^js [workspace-edit-entry-metadata]
   (.-description ^js workspace-edit-entry-metadata))
 
@@ -34,7 +40,9 @@
   (set! (.-description ^js workspace-edit-entry-metadata) value))
 
 (defn icon-path
-  "The icon path or {@link ThemeIcon } for the edit."
+  "The icon path or {@link ThemeIcon } for the edit.
+   
+   **Returns:** `Uri | ThemeIcon | { light: Uri; dark: Uri; } | undefined`"
   ^js [workspace-edit-entry-metadata]
   (.-iconPath ^js workspace-edit-entry-metadata))
 

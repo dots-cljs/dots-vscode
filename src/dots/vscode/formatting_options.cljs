@@ -2,7 +2,9 @@
   "Value-object describing what options formatting should use.")
 
 (defn tab-size
-  "Size of a tab in spaces."
+  "Size of a tab in spaces.
+   
+   **Returns:** `number`"
   ^js [formatting-options]
   (.-tabSize ^js formatting-options))
 
@@ -12,7 +14,9 @@
   (set! (.-tabSize ^js formatting-options) value))
 
 (defn insert-spaces?
-  "Prefer spaces over tabs."
+  "Prefer spaces over tabs.
+   
+   **Returns:** `boolean`"
   ^js [formatting-options]
   (.-insertSpaces ^js formatting-options))
 

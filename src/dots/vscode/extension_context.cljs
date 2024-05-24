@@ -9,42 +9,56 @@
   "An array to which disposables can be added. When this
    extension is deactivated the disposables will be disposed.
    
-   *Note* that asynchronous dispose-functions aren't awaited."
+   *Note* that asynchronous dispose-functions aren't awaited.
+   
+   **Returns:** `{ dispose(): any; }[]`"
   ^js [extension-context]
   (.-subscriptions ^js extension-context))
 
 (defn workspace-state
   "A memento object that stores state in the context
-   of the currently opened {@link workspace.workspaceFolders workspace}."
+   of the currently opened {@link workspace.workspaceFolders workspace}.
+   
+   **Returns:** `Memento`"
   ^js [extension-context]
   (.-workspaceState ^js extension-context))
 
 (defn global-state
   "A memento object that stores state independent
-   of the current opened {@link workspace.workspaceFolders workspace}."
+   of the current opened {@link workspace.workspaceFolders workspace}.
+   
+   **Returns:** `Memento & { setKeysForSync(keys: readonly string[]): void; }`"
   ^js [extension-context]
   (.-globalState ^js extension-context))
 
 (defn secrets
   "A storage utility for secrets. Secrets are persisted across reloads and are independent of the
-   current opened {@link workspace.workspaceFolders workspace}."
+   current opened {@link workspace.workspaceFolders workspace}.
+   
+   **Returns:** `SecretStorage`"
   ^js [extension-context]
   (.-secrets ^js extension-context))
 
 (defn extension-uri
-  "The uri of the directory containing the extension."
+  "The uri of the directory containing the extension.
+   
+   **Returns:** `Uri`"
   ^js [extension-context]
   (.-extensionUri ^js extension-context))
 
 (defn extension-path
   "The absolute file path of the directory containing the extension. Shorthand
-   notation for {@link TextDocument.uri ExtensionContext.extensionUri.fsPath} (independent of the uri scheme)."
+   notation for {@link TextDocument.uri ExtensionContext.extensionUri.fsPath} (independent of the uri scheme).
+   
+   **Returns:** `string`"
   ^js [extension-context]
   (.-extensionPath ^js extension-context))
 
 (defn environment-variable-collection
   "Gets the extension's global environment variable collection for this workspace, enabling changes to be
-   applied to terminal environment variables."
+   applied to terminal environment variables.
+   
+   **Returns:** `GlobalEnvironmentVariableCollection`"
   ^js [extension-context]
   (.-environmentVariableCollection ^js extension-context))
 
@@ -68,7 +82,9 @@
    The value is `undefined` when no workspace nor folder has been opened.
    
    Use {@linkcode ExtensionContext.workspaceState workspaceState} or
-   {@linkcode ExtensionContext.globalState globalState} to store key value data."
+   {@linkcode ExtensionContext.globalState globalState} to store key value data.
+   
+   **Returns:** `Uri | undefined`"
   ^js [extension-context]
   (.-storageUri ^js extension-context))
 
@@ -78,7 +94,9 @@
    up to the extension. However, the parent directory is guaranteed to be existent.
    
    Use {@linkcode ExtensionContext.workspaceState workspaceState} or
-   {@linkcode ExtensionContext.globalState globalState} to store key value data."
+   {@linkcode ExtensionContext.globalState globalState} to store key value data.
+   
+   **Returns:** `string | undefined`"
   ^js [extension-context]
   (.-storagePath ^js extension-context))
 
@@ -87,7 +105,9 @@
    The directory might not exist on disk and creation is
    up to the extension. However, the parent directory is guaranteed to be existent.
    
-   Use {@linkcode ExtensionContext.globalState globalState} to store key value data."
+   Use {@linkcode ExtensionContext.globalState globalState} to store key value data.
+   
+   **Returns:** `Uri`"
   ^js [extension-context]
   (.-globalStorageUri ^js extension-context))
 
@@ -96,31 +116,41 @@
    The directory might not exist on disk and creation is
    up to the extension. However, the parent directory is guaranteed to be existent.
    
-   Use {@linkcode ExtensionContext.globalState globalState} to store key value data."
+   Use {@linkcode ExtensionContext.globalState globalState} to store key value data.
+   
+   **Returns:** `string`"
   ^js [extension-context]
   (.-globalStoragePath ^js extension-context))
 
 (defn log-uri
   "The uri of a directory in which the extension can create log files.
    The directory might not exist on disk and creation is up to the extension. However,
-   the parent directory is guaranteed to be existent."
+   the parent directory is guaranteed to be existent.
+   
+   **Returns:** `Uri`"
   ^js [extension-context]
   (.-logUri ^js extension-context))
 
 (defn log-path
   "An absolute file path of a directory in which the extension can create log files.
    The directory might not exist on disk and creation is up to the extension. However,
-   the parent directory is guaranteed to be existent."
+   the parent directory is guaranteed to be existent.
+   
+   **Returns:** `string`"
   ^js [extension-context]
   (.-logPath ^js extension-context))
 
 (defn extension-mode
   "The mode the extension is running in. See {@link ExtensionMode }
-   for possible values and scenarios."
+   for possible values and scenarios.
+   
+   **Returns:** `ExtensionMode`"
   ^js [extension-context]
   (.-extensionMode ^js extension-context))
 
 (defn extension
-  "The current `Extension` instance."
+  "The current `Extension` instance.
+   
+   **Returns:** `Extension<any>`"
   ^js [extension-context]
   (.-extension ^js extension-context))

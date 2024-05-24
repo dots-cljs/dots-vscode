@@ -6,44 +6,60 @@
   "The associated uri for this notebook.
    
    *Note* that most notebooks use the `file`-scheme, which means they are files on disk. However, **not** all notebooks are
-   saved on disk and therefore the `scheme` must be checked before trying to access the underlying file or siblings on disk."
+   saved on disk and therefore the `scheme` must be checked before trying to access the underlying file or siblings on disk.
+   
+   **Returns:** `Uri`"
   ^js [notebook-document]
   (.-uri ^js notebook-document))
 
 (defn notebook-type
-  "The type of notebook."
+  "The type of notebook.
+   
+   **Returns:** `string`"
   ^js [notebook-document]
   (.-notebookType ^js notebook-document))
 
 (defn version
   "The version number of this notebook (it will strictly increase after each
-   change, including undo/redo)."
+   change, including undo/redo).
+   
+   **Returns:** `number`"
   ^js [notebook-document]
   (.-version ^js notebook-document))
 
 (defn dirty?
-  "`true` if there are unpersisted changes."
+  "`true` if there are unpersisted changes.
+   
+   **Returns:** `boolean`"
   ^js [notebook-document]
   (.-isDirty ^js notebook-document))
 
 (defn untitled?
-  "Is this notebook representing an untitled file which has not been saved yet."
+  "Is this notebook representing an untitled file which has not been saved yet.
+   
+   **Returns:** `boolean`"
   ^js [notebook-document]
   (.-isUntitled ^js notebook-document))
 
 (defn closed?
   "`true` if the notebook has been closed. A closed notebook isn't synchronized anymore
-   and won't be re-used when the same resource is opened again."
+   and won't be re-used when the same resource is opened again.
+   
+   **Returns:** `boolean`"
   ^js [notebook-document]
   (.-isClosed ^js notebook-document))
 
 (defn metadata
-  "Arbitrary metadata for this notebook. Can be anything but must be JSON-stringifyable."
+  "Arbitrary metadata for this notebook. Can be anything but must be JSON-stringifyable.
+   
+   **Returns:** `{ [key: string]: any; }`"
   ^js [notebook-document]
   (.-metadata ^js notebook-document))
 
 (defn cell-count
-  "The number of cells in the notebook."
+  "The number of cells in the notebook.
+   
+   **Returns:** `number`"
   ^js [notebook-document]
   (.-cellCount ^js notebook-document))
 

@@ -4,7 +4,9 @@
 (defn label
   "The label of this completion item.
    
-   By default this is also the text that is inserted when this completion is selected."
+   By default this is also the text that is inserted when this completion is selected.
+   
+   **Returns:** `string`"
   ^js [completion-item-label]
   (.-label ^js completion-item-label))
 
@@ -17,7 +19,9 @@
 
 (defn detail
   "An optional string which is rendered less prominently directly after {@link CompletionItemLabel.label label},
-   without any spacing. Should be used for function signatures or type annotations."
+   without any spacing. Should be used for function signatures or type annotations.
+   
+   **Returns:** `string | undefined`"
   ^js [completion-item-label]
   (.-detail ^js completion-item-label))
 
@@ -29,7 +33,9 @@
 
 (defn description
   "An optional string which is rendered less prominently after {@link CompletionItemLabel.detail }. Should be used
-   for fully qualified names or file path."
+   for fully qualified names or file path.
+   
+   **Returns:** `string | undefined`"
   ^js [completion-item-label]
   (.-description ^js completion-item-label))
 

@@ -7,7 +7,9 @@
    {@link CancellationTokenSource }.")
 
 (defn cancellation-requested?
-  "Is `true` when the token has been cancelled, `false` otherwise."
+  "Is `true` when the token has been cancelled, `false` otherwise.
+   
+   **Returns:** `boolean`"
   ^js [cancellation-token]
   (.-isCancellationRequested ^js cancellation-token))
 

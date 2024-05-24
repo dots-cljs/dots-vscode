@@ -4,6 +4,8 @@
   (:require ["vscode" :as vscode]))
 
 (defn version
-  "The version of the editor."
+  "The version of the editor.
+   
+   **Returns:** `string`"
   ^js []
   vscode/version)

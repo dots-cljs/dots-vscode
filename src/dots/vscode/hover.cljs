@@ -4,7 +4,9 @@
   (:refer-clojure :exclude [range]))
 
 (defn contents
-  "The contents of this hover."
+  "The contents of this hover.
+   
+   **Returns:** `(MarkdownString | MarkedString)[]`"
   ^js [hover]
   (.-contents ^js hover))
 
@@ -16,7 +18,9 @@
 (defn range
   "The range to which this hover applies. When missing, the
    editor will use the range at the current position or the
-   current position itself."
+   current position itself.
+   
+   **Returns:** `Range | undefined`"
   ^js [hover]
   (.-range ^js hover))
 

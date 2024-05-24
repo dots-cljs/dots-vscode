@@ -5,7 +5,9 @@
   (:refer-clojure :exclude [name range]))
 
 (defn name
-  "The name of this symbol."
+  "The name of this symbol.
+   
+   **Returns:** `string`"
   ^js [document-symbol]
   (.-name ^js document-symbol))
 
@@ -15,7 +17,9 @@
   (set! (.-name ^js document-symbol) value))
 
 (defn detail
-  "More detail for this symbol, e.g. the signature of a function."
+  "More detail for this symbol, e.g. the signature of a function.
+   
+   **Returns:** `string`"
   ^js [document-symbol]
   (.-detail ^js document-symbol))
 
@@ -25,7 +29,9 @@
   (set! (.-detail ^js document-symbol) value))
 
 (defn kind
-  "The kind of this symbol."
+  "The kind of this symbol.
+   
+   **Returns:** `SymbolKind`"
   ^js [document-symbol]
   (.-kind ^js document-symbol))
 
@@ -35,7 +41,9 @@
   (set! (.-kind ^js document-symbol) value))
 
 (defn tags
-  "Tags for this symbol."
+  "Tags for this symbol.
+   
+   **Returns:** `readonly SymbolTag[] | undefined`"
   ^js [document-symbol]
   (.-tags ^js document-symbol))
 
@@ -45,7 +53,9 @@
   (set! (.-tags ^js document-symbol) value))
 
 (defn range
-  "The range enclosing this symbol not including leading/trailing whitespace but everything else, e.g. comments and code."
+  "The range enclosing this symbol not including leading/trailing whitespace but everything else, e.g. comments and code.
+   
+   **Returns:** `Range`"
   ^js [document-symbol]
   (.-range ^js document-symbol))
 
@@ -56,7 +66,9 @@
 
 (defn selection-range
   "The range that should be selected and reveal when this symbol is being picked, e.g. the name of a function.
-   Must be contained by the {@linkcode DocumentSymbol.range range}."
+   Must be contained by the {@linkcode DocumentSymbol.range range}.
+   
+   **Returns:** `Range`"
   ^js [document-symbol]
   (.-selectionRange ^js document-symbol))
 
@@ -67,7 +79,9 @@
   (set! (.-selectionRange ^js document-symbol) value))
 
 (defn children
-  "Children of this symbol, e.g. properties of a class."
+  "Children of this symbol, e.g. properties of a class.
+   
+   **Returns:** `DocumentSymbol[]`"
   ^js [document-symbol]
   (.-children ^js document-symbol))
 

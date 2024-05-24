@@ -3,6 +3,8 @@
   (:refer-clojure :exclude [key]))
 
 (defn key
-  "The key of the secret that has changed."
+  "The key of the secret that has changed.
+   
+   **Returns:** `string`"
   ^js [secret-storage-change-event]
   (.-key ^js secret-storage-change-event))

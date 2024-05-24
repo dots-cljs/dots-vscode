@@ -4,7 +4,9 @@
 (defn id
   "Unique identifier for the backup.
    
-   This id is passed back to your extension in `openCustomDocument` when opening a custom editor from a backup."
+   This id is passed back to your extension in `openCustomDocument` when opening a custom editor from a backup.
+   
+   **Returns:** `string`"
   ^js [custom-document-backup]
   (.-id ^js custom-document-backup))
 

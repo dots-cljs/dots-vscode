@@ -3,7 +3,9 @@
   (:refer-clojure :exclude [name]))
 
 (defn name
-  "A human-readable string which will be used to represent the terminal in the UI."
+  "A human-readable string which will be used to represent the terminal in the UI.
+   
+   **Returns:** `string`"
   ^js [extension-terminal-options]
   (.-name ^js extension-terminal-options))
 
@@ -14,7 +16,9 @@
 
 (defn pty
   "An implementation of {@link Pseudoterminal } that allows an extension to
-   control a terminal."
+   control a terminal.
+   
+   **Returns:** `Pseudoterminal`"
   ^js [extension-terminal-options]
   (.-pty ^js extension-terminal-options))
 
@@ -25,7 +29,9 @@
   (set! (.-pty ^js extension-terminal-options) value))
 
 (defn icon-path
-  "The icon path or {@link ThemeIcon } for the terminal."
+  "The icon path or {@link ThemeIcon } for the terminal.
+   
+   **Returns:** `Uri | ThemeIcon | { light: Uri; dark: Uri; } | undefined`"
   ^js [extension-terminal-options]
   (.-iconPath ^js extension-terminal-options))
 
@@ -37,7 +43,9 @@
 (defn color
   "The icon {@link ThemeColor } for the terminal.
    The standard `terminal.ansi*` theme keys are
-   recommended for the best contrast and consistency across themes."
+   recommended for the best contrast and consistency across themes.
+   
+   **Returns:** `ThemeColor | undefined`"
   ^js [extension-terminal-options]
   (.-color ^js extension-terminal-options))
 
@@ -49,7 +57,9 @@
   (set! (.-color ^js extension-terminal-options) value))
 
 (defn location
-  "The {@link TerminalLocation } or {@link TerminalEditorLocationOptions } or {@link TerminalSplitLocationOptions } for the terminal."
+  "The {@link TerminalLocation } or {@link TerminalEditorLocationOptions } or {@link TerminalSplitLocationOptions } for the terminal.
+   
+   **Returns:** `TerminalLocation | TerminalEditorLocationOptions | TerminalSplitLocationOptions | undefined`"
   ^js [extension-terminal-options]
   (.-location ^js extension-terminal-options))
 
@@ -60,7 +70,9 @@
 
 (defn transient?
   "Opt-out of the default terminal persistence on restart and reload.
-   This will only take effect when `terminal.integrated.enablePersistentSessions` is enabled."
+   This will only take effect when `terminal.integrated.enablePersistentSessions` is enabled.
+   
+   **Returns:** `boolean | undefined`"
   ^js [extension-terminal-options]
   (.-isTransient ^js extension-terminal-options))
 

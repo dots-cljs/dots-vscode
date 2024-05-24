@@ -2,6 +2,8 @@
   "The event that is fired when an element in the {@link TreeView } is expanded or collapsed")
 
 (defn element
-  "Element that is expanded or collapsed."
+  "Element that is expanded or collapsed.
+   
+   **Returns:** `T`"
   ^js [tree-view-expansion-event]
   (.-element ^js tree-view-expansion-event))

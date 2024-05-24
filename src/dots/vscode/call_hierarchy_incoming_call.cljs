@@ -2,7 +2,9 @@
   "Represents an incoming call, e.g. a caller of a method or constructor.")
 
 (defn from
-  "The item that makes the call."
+  "The item that makes the call.
+   
+   **Returns:** `CallHierarchyItem`"
   ^js [call-hierarchy-incoming-call]
   (.-from ^js call-hierarchy-incoming-call))
 
@@ -13,7 +15,9 @@
 
 (defn from-ranges
   "The range at which at which the calls appears. This is relative to the caller
-   denoted by {@linkcode CallHierarchyIncomingCall.from this.from}."
+   denoted by {@linkcode CallHierarchyIncomingCall.from this.from}.
+   
+   **Returns:** `Range[]`"
   ^js [call-hierarchy-incoming-call]
   (.-fromRanges ^js call-hierarchy-incoming-call))
 

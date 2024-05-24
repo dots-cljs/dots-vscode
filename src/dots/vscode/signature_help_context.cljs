@@ -3,7 +3,9 @@
    {@linkcode SignatureHelpProvider.provideSignatureHelp SignatureHelpProvider} was triggered.")
 
 (defn trigger-kind
-  "Action that caused signature help to be triggered."
+  "Action that caused signature help to be triggered.
+   
+   **Returns:** `SignatureHelpTriggerKind`"
   ^js [signature-help-context]
   (.-triggerKind ^js signature-help-context))
 
@@ -11,7 +13,9 @@
   "Character that caused signature help to be triggered.
    
    This is `undefined` when signature help is not triggered by typing, such as when manually invoking
-   signature help or when moving the cursor."
+   signature help or when moving the cursor.
+   
+   **Returns:** `string | undefined`"
   ^js [signature-help-context]
   (.-triggerCharacter ^js signature-help-context))
 
@@ -19,7 +23,9 @@
   "`true` if signature help was already showing when it was triggered.
    
    Retriggers occur when the signature help is already active and can be caused by actions such as
-   typing a trigger character, a cursor move, or document content changes."
+   typing a trigger character, a cursor move, or document content changes.
+   
+   **Returns:** `boolean`"
   ^js [signature-help-context]
   (.-isRetrigger ^js signature-help-context))
 
@@ -27,6 +33,8 @@
   "The currently active {@linkcode SignatureHelp }.
    
    The `activeSignatureHelp` has its [`SignatureHelp.activeSignature`] field updated based on
-   the user arrowing through available signatures."
+   the user arrowing through available signatures.
+   
+   **Returns:** `SignatureHelp | undefined`"
   ^js [signature-help-context]
   (.-activeSignatureHelp ^js signature-help-context))

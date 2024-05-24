@@ -2,7 +2,9 @@
   "A tree item is an UI element of the tree. Tree items are created by the {@link TreeDataProvider data provider}.")
 
 (defn label
-  "A human-readable string describing this item. When `falsy`, it is derived from {@link TreeItem.resourceUri resourceUri}."
+  "A human-readable string describing this item. When `falsy`, it is derived from {@link TreeItem.resourceUri resourceUri}.
+   
+   **Returns:** `string | TreeItemLabel | undefined`"
   ^js [tree-item]
   (.-label ^js tree-item))
 
@@ -14,7 +16,9 @@
 (defn id
   "Optional id for the tree item that has to be unique across tree. The id is used to preserve the selection and expansion state of the tree item.
    
-   If not provided, an id is generated using the tree item's label. **Note** that when labels change, ids will change and that selection and expansion state cannot be kept stable anymore."
+   If not provided, an id is generated using the tree item's label. **Note** that when labels change, ids will change and that selection and expansion state cannot be kept stable anymore.
+   
+   **Returns:** `string | undefined`"
   ^js [tree-item]
   (.-id ^js tree-item))
 
@@ -28,7 +32,9 @@
 (defn icon-path
   "The icon path or {@link ThemeIcon } for the tree item.
    When `falsy`, {@link ThemeIcon.Folder Folder Theme Icon} is assigned, if item is collapsible otherwise {@link ThemeIcon.File File Theme Icon}.
-   When a file or folder {@link ThemeIcon } is specified, icon is derived from the current file icon theme for the specified theme icon using {@link TreeItem.resourceUri resourceUri} (if provided)."
+   When a file or folder {@link ThemeIcon } is specified, icon is derived from the current file icon theme for the specified theme icon using {@link TreeItem.resourceUri resourceUri} (if provided).
+   
+   **Returns:** `string | Uri | ThemeIcon | { light: string | Uri; dark: string | Uri; } | undefined`"
   ^js [tree-item]
   (.-iconPath ^js tree-item))
 
@@ -41,7 +47,9 @@
 
 (defn description?
   "A human-readable string which is rendered less prominent.
-   When `true`, it is derived from {@link TreeItem.resourceUri resourceUri} and when `falsy`, it is not shown."
+   When `true`, it is derived from {@link TreeItem.resourceUri resourceUri} and when `falsy`, it is not shown.
+   
+   **Returns:** `string | boolean | undefined`"
   ^js [tree-item]
   (.-description ^js tree-item))
 
@@ -55,7 +63,9 @@
   "The {@link Uri } of the resource representing this item.
    
    Will be used to derive the {@link TreeItem.label label}, when it is not provided.
-   Will be used to derive the icon from current file icon theme, when {@link TreeItem.iconPath iconPath} has {@link ThemeIcon } value."
+   Will be used to derive the icon from current file icon theme, when {@link TreeItem.iconPath iconPath} has {@link ThemeIcon } value.
+   
+   **Returns:** `Uri | undefined`"
   ^js [tree-item]
   (.-resourceUri ^js tree-item))
 
@@ -68,7 +78,9 @@
   (set! (.-resourceUri ^js tree-item) value))
 
 (defn tooltip
-  "The tooltip text when you hover over this item."
+  "The tooltip text when you hover over this item.
+   
+   **Returns:** `string | MarkdownString | undefined`"
   ^js [tree-item]
   (.-tooltip ^js tree-item))
 
@@ -82,7 +94,9 @@
    
    Please use `vscode.open` or `vscode.diff` as command IDs when the tree item is opening
    something in the editor. Using these commands ensures that the resulting editor will
-   appear consistent with how other built-in trees open editors."
+   appear consistent with how other built-in trees open editors.
+   
+   **Returns:** `Command | undefined`"
   ^js [tree-item]
   (.-command ^js tree-item))
 
@@ -96,7 +110,9 @@
   (set! (.-command ^js tree-item) value))
 
 (defn collapsible-state
-  "{@link TreeItemCollapsibleState } of the tree item."
+  "{@link TreeItemCollapsibleState } of the tree item.
+   
+   **Returns:** `TreeItemCollapsibleState | undefined`"
   ^js [tree-item]
   (.-collapsibleState ^js tree-item))
 
@@ -121,7 +137,9 @@
      }
    }
    ```
-   This will show action `extension.deleteFolder` only for items with `contextValue` is `folder`."
+   This will show action `extension.deleteFolder` only for items with `contextValue` is `folder`.
+   
+   **Returns:** `string | undefined`"
   ^js [tree-item]
   (.-contextValue ^js tree-item))
 
@@ -148,7 +166,9 @@
 (defn accessibility-information
   "Accessibility information used when screen reader interacts with this tree item.
    Generally, a TreeItem has no need to set the `role` of the accessibilityInformation;
-   however, there are cases where a TreeItem is not displayed in a tree-like way where setting the `role` may make sense."
+   however, there are cases where a TreeItem is not displayed in a tree-like way where setting the `role` may make sense.
+   
+   **Returns:** `AccessibilityInformation | undefined`"
   ^js [tree-item]
   (.-accessibilityInformation ^js tree-item))
 
@@ -161,7 +181,9 @@
 
 (defn checkbox-state
   "{@link TreeItemCheckboxState TreeItemCheckboxState} of the tree item.
-   {@link TreeDataProvider.onDidChangeTreeData onDidChangeTreeData} should be fired when {@link TreeItem.checkboxState checkboxState} changes."
+   {@link TreeDataProvider.onDidChangeTreeData onDidChangeTreeData} should be fired when {@link TreeItem.checkboxState checkboxState} changes.
+   
+   **Returns:** `TreeItemCheckboxState | { readonly state: TreeItemCheckboxState; readonly tooltip?: string | undefined; readonly accessibilityInformation?: AccessibilityInformation | undefined; } | undefined`"
   ^js [tree-item]
   (.-checkboxState ^js tree-item))
 

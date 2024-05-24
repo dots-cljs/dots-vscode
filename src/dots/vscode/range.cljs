@@ -8,17 +8,23 @@
   (:refer-clojure :exclude [contains? empty?]))
 
 (defn start
-  "The start position. It is before or equal to {@link Range.end end}."
+  "The start position. It is before or equal to {@link Range.end end}.
+   
+   **Returns:** `Position`"
   ^js [range]
   (.-start ^js range))
 
 (defn end
-  "The end position. It is after or equal to {@link Range.start start}."
+  "The end position. It is after or equal to {@link Range.start start}.
+   
+   **Returns:** `Position`"
   ^js [range]
   (.-end ^js range))
 
 (defn empty?
-  "`true` if `start` and `end` are equal."
+  "`true` if `start` and `end` are equal.
+   
+   **Returns:** `boolean`"
   ^js [range]
   (.-isEmpty ^js range))
 
@@ -28,7 +34,9 @@
   (set! (.-isEmpty ^js range) value))
 
 (defn single-line?
-  "`true` if `start.line` and `end.line` are equal."
+  "`true` if `start.line` and `end.line` are equal.
+   
+   **Returns:** `boolean`"
   ^js [range]
   (.-isSingleLine ^js range))
 

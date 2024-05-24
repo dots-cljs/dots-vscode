@@ -6,7 +6,9 @@
   (:refer-clojure :exclude [get replace set]))
 
 (defn size
-  "The number of affected resources of textual or resource changes."
+  "The number of affected resources of textual or resource changes.
+   
+   **Returns:** `number`"
   ^js [workspace-edit]
   (.-size ^js workspace-edit))
 

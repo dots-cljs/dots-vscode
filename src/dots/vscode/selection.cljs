@@ -4,7 +4,9 @@
 
 (defn anchor
   "The position at which the selection starts.
-   This position might be before or after {@link Selection.active active}."
+   This position might be before or after {@link Selection.active active}.
+   
+   **Returns:** `Position`"
   ^js [selection]
   (.-anchor ^js selection))
 
@@ -16,7 +18,9 @@
 
 (defn active
   "The position of the cursor.
-   This position might be before or after {@link Selection.anchor anchor}."
+   This position might be before or after {@link Selection.anchor anchor}.
+   
+   **Returns:** `Position`"
   ^js [selection]
   (.-active ^js selection))
 
@@ -27,7 +31,9 @@
   (set! (.-active ^js selection) value))
 
 (defn reversed?
-  "A selection is reversed if its {@link Selection.anchor anchor} is the {@link Selection.end end} position."
+  "A selection is reversed if its {@link Selection.anchor anchor} is the {@link Selection.end end} position.
+   
+   **Returns:** `boolean`"
   ^js [selection]
   (.-isReversed ^js selection))
 
@@ -37,17 +43,23 @@
   (set! (.-isReversed ^js selection) value))
 
 (defn start
-  "The start position. It is before or equal to {@link Range.end end}."
+  "The start position. It is before or equal to {@link Range.end end}.
+   
+   **Returns:** `Position`"
   ^js [selection]
   (.-start ^js selection))
 
 (defn end
-  "The end position. It is after or equal to {@link Range.start start}."
+  "The end position. It is after or equal to {@link Range.start start}.
+   
+   **Returns:** `Position`"
   ^js [selection]
   (.-end ^js selection))
 
 (defn empty?
-  "`true` if `start` and `end` are equal."
+  "`true` if `start` and `end` are equal.
+   
+   **Returns:** `boolean`"
   ^js [selection]
   (.-isEmpty ^js selection))
 
@@ -57,7 +69,9 @@
   (set! (.-isEmpty ^js selection) value))
 
 (defn single-line?
-  "`true` if `start.line` and `end.line` are equal."
+  "`true` if `start.line` and `end.line` are equal.
+   
+   **Returns:** `boolean`"
   ^js [selection]
   (.-isSingleLine ^js selection))
 

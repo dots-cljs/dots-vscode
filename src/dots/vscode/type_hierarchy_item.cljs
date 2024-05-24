@@ -3,7 +3,9 @@
   (:refer-clojure :exclude [name range]))
 
 (defn name
-  "The name of this item."
+  "The name of this item.
+   
+   **Returns:** `string`"
   ^js [type-hierarchy-item]
   (.-name ^js type-hierarchy-item))
 
@@ -13,7 +15,9 @@
   (set! (.-name ^js type-hierarchy-item) value))
 
 (defn kind
-  "The kind of this item."
+  "The kind of this item.
+   
+   **Returns:** `SymbolKind`"
   ^js [type-hierarchy-item]
   (.-kind ^js type-hierarchy-item))
 
@@ -23,7 +27,9 @@
   (set! (.-kind ^js type-hierarchy-item) value))
 
 (defn tags
-  "Tags for this item."
+  "Tags for this item.
+   
+   **Returns:** `readonly SymbolTag[] | undefined`"
   ^js [type-hierarchy-item]
   (.-tags ^js type-hierarchy-item))
 
@@ -33,7 +39,9 @@
   (set! (.-tags ^js type-hierarchy-item) value))
 
 (defn detail
-  "More detail for this item, e.g. the signature of a function."
+  "More detail for this item, e.g. the signature of a function.
+   
+   **Returns:** `string | undefined`"
   ^js [type-hierarchy-item]
   (.-detail ^js type-hierarchy-item))
 
@@ -43,7 +51,9 @@
   (set! (.-detail ^js type-hierarchy-item) value))
 
 (defn uri
-  "The resource identifier of this item."
+  "The resource identifier of this item.
+   
+   **Returns:** `Uri`"
   ^js [type-hierarchy-item]
   (.-uri ^js type-hierarchy-item))
 
@@ -54,7 +64,9 @@
 
 (defn range
   "The range enclosing this symbol not including leading/trailing whitespace
-   but everything else, e.g. comments and code."
+   but everything else, e.g. comments and code.
+   
+   **Returns:** `Range`"
   ^js [type-hierarchy-item]
   (.-range ^js type-hierarchy-item))
 
@@ -66,7 +78,9 @@
 
 (defn selection-range
   "The range that should be selected and revealed when this symbol is being
-   picked, e.g. the name of a class. Must be contained by the {@link TypeHierarchyItem.range range}-property."
+   picked, e.g. the name of a class. Must be contained by the {@link TypeHierarchyItem.range range}-property.
+   
+   **Returns:** `Range`"
   ^js [type-hierarchy-item]
   (.-selectionRange ^js type-hierarchy-item))
 

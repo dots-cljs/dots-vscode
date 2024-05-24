@@ -2,7 +2,9 @@
   "Describes a rule to be evaluated when pressing Enter.")
 
 (defn before-text
-  "This rule will only execute if the text before the cursor matches this regular expression."
+  "This rule will only execute if the text before the cursor matches this regular expression.
+   
+   **Returns:** `RegExp`"
   ^js [on-enter-rule]
   (.-beforeText ^js on-enter-rule))
 
@@ -12,7 +14,9 @@
   (set! (.-beforeText ^js on-enter-rule) value))
 
 (defn after-text
-  "This rule will only execute if the text after the cursor matches this regular expression."
+  "This rule will only execute if the text after the cursor matches this regular expression.
+   
+   **Returns:** `RegExp | undefined`"
   ^js [on-enter-rule]
   (.-afterText ^js on-enter-rule))
 
@@ -22,7 +26,9 @@
   (set! (.-afterText ^js on-enter-rule) value))
 
 (defn previous-line-text
-  "This rule will only execute if the text above the current line matches this regular expression."
+  "This rule will only execute if the text above the current line matches this regular expression.
+   
+   **Returns:** `RegExp | undefined`"
   ^js [on-enter-rule]
   (.-previousLineText ^js on-enter-rule))
 
@@ -32,7 +38,9 @@
   (set! (.-previousLineText ^js on-enter-rule) value))
 
 (defn action
-  "The action to execute."
+  "The action to execute.
+   
+   **Returns:** `EnterAction`"
   ^js [on-enter-rule]
   (.-action ^js on-enter-rule))
 

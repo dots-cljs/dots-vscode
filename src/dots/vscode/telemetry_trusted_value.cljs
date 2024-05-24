@@ -3,6 +3,8 @@
    This is to be used when you can guarantee no identifiable information is contained in the value and the cleaning is improperly redacting it.")
 
 (defn value
-  "The value that is trusted to not contain PII."
+  "The value that is trusted to not contain PII.
+   
+   **Returns:** `T`"
   ^js [telemetry-trusted-value]
   (.-value ^js telemetry-trusted-value))

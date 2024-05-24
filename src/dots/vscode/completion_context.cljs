@@ -3,7 +3,9 @@
    {@link CompletionItemProvider.provideCompletionItems completion provider} is triggered.")
 
 (defn trigger-kind
-  "How the completion was triggered."
+  "How the completion was triggered.
+   
+   **Returns:** `CompletionTriggerKind`"
   ^js [completion-context]
   (.-triggerKind ^js completion-context))
 
@@ -12,6 +14,8 @@
    
    `undefined` if the provider was not triggered by a character.
    
-   The trigger character is already in the document when the completion provider is triggered."
+   The trigger character is already in the document when the completion provider is triggered.
+   
+   **Returns:** `string | undefined`"
   ^js [completion-context]
   (.-triggerCharacter ^js completion-context))

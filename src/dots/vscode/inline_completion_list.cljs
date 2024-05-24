@@ -3,7 +3,9 @@
    in the editor.")
 
 (defn items
-  "The inline completion items."
+  "The inline completion items.
+   
+   **Returns:** `InlineCompletionItem[]`"
   ^js [inline-completion-list]
   (.-items ^js inline-completion-list))
 

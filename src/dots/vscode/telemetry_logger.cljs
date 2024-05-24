@@ -30,12 +30,16 @@
    (.onDidChangeEnableStates ^js telemetry-logger listener this-args disposables)))
 
 (defn usage-enabled?
-  "Whether or not usage telemetry is enabled for this logger."
+  "Whether or not usage telemetry is enabled for this logger.
+   
+   **Returns:** `boolean`"
   ^js [telemetry-logger]
   (.-isUsageEnabled ^js telemetry-logger))
 
 (defn errors-enabled?
-  "Whether or not error telemetry is enabled for this logger."
+  "Whether or not error telemetry is enabled for this logger.
+   
+   **Returns:** `boolean`"
   ^js [telemetry-logger]
   (.-isErrorsEnabled ^js telemetry-logger))
 

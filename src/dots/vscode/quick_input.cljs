@@ -20,7 +20,9 @@
    See {@link QuickPick } and {@link InputBox } for concrete UIs.")
 
 (defn title
-  "An optional title."
+  "An optional title.
+   
+   **Returns:** `string | undefined`"
   ^js [quick-input]
   (.-title ^js quick-input))
 
@@ -30,7 +32,9 @@
   (set! (.-title ^js quick-input) value))
 
 (defn step
-  "An optional current step count."
+  "An optional current step count.
+   
+   **Returns:** `number | undefined`"
   ^js [quick-input]
   (.-step ^js quick-input))
 
@@ -40,7 +44,9 @@
   (set! (.-step ^js quick-input) value))
 
 (defn total-steps
-  "An optional total step count."
+  "An optional total step count.
+   
+   **Returns:** `number | undefined`"
   ^js [quick-input]
   (.-totalSteps ^js quick-input))
 
@@ -53,7 +59,9 @@
   "If the UI should allow for user input. Defaults to true.
    
    Change this to false, e.g., while validating user input or
-   loading data for the next step in user input."
+   loading data for the next step in user input.
+   
+   **Returns:** `boolean`"
   ^js [quick-input]
   (.-enabled ^js quick-input))
 
@@ -69,7 +77,9 @@
   "If the UI should show a progress indicator. Defaults to false.
    
    Change this to true, e.g., while loading more data or validating
-   user input."
+   user input.
+   
+   **Returns:** `boolean`"
   ^js [quick-input]
   (.-busy ^js quick-input))
 
@@ -83,7 +93,9 @@
 
 (defn ignore-focus-out?
   "If the UI should stay open even when loosing UI focus. Defaults to false.
-   This setting is ignored on iPad and is always false."
+   This setting is ignored on iPad and is always false.
+   
+   **Returns:** `boolean`"
   ^js [quick-input]
   (.-ignoreFocusOut ^js quick-input))
 

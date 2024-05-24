@@ -9,31 +9,41 @@
   "Identifier for the `TestItem`. This is used to correlate
    test results and tests in the document with those in the workspace
    (test explorer). This cannot change for the lifetime of the `TestItem`,
-   and must be unique among its parent's direct children."
+   and must be unique among its parent's direct children.
+   
+   **Returns:** `string`"
   ^js [test-item]
   (.-id ^js test-item))
 
 (defn uri
-  "URI this `TestItem` is associated with. May be a file or directory."
+  "URI this `TestItem` is associated with. May be a file or directory.
+   
+   **Returns:** `Uri | undefined`"
   ^js [test-item]
   (.-uri ^js test-item))
 
 (defn children
   "The children of this test item. For a test suite, this may contain the
-   individual test cases or nested suites."
+   individual test cases or nested suites.
+   
+   **Returns:** `TestItemCollection`"
   ^js [test-item]
   (.-children ^js test-item))
 
 (defn parent
   "The parent of this item. It's set automatically, and is undefined
    top-level items in the {@link TestController.items } and for items that
-   aren't yet included in another item's {@link TestItem.children children}."
+   aren't yet included in another item's {@link TestItem.children children}.
+   
+   **Returns:** `TestItem | undefined`"
   ^js [test-item]
   (.-parent ^js test-item))
 
 (defn tags
   "Tags associated with this test item. May be used in combination with
-   {@link TestRunProfile.tag tags}, or simply as an organizational feature."
+   {@link TestRunProfile.tag tags}, or simply as an organizational feature.
+   
+   **Returns:** `readonly TestTag[]`"
   ^js [test-item]
   (.-tags ^js test-item))
 
@@ -50,7 +60,9 @@
    expanding the item will cause {@link TestController.resolveHandler }
    to be invoked with the item.
    
-   Default to `false`."
+   Default to `false`.
+   
+   **Returns:** `boolean`"
   ^js [test-item]
   (.-canResolveChildren ^js test-item))
 
@@ -69,7 +81,9 @@
   "Controls whether the item is shown as \"busy\" in the Test Explorer view.
    This is useful for showing status while discovering children.
    
-   Defaults to `false`."
+   Defaults to `false`.
+   
+   **Returns:** `boolean`"
   ^js [test-item]
   (.-busy ^js test-item))
 
@@ -82,7 +96,9 @@
   (set! (.-busy ^js test-item) value))
 
 (defn label
-  "Display name describing the test case."
+  "Display name describing the test case.
+   
+   **Returns:** `string`"
   ^js [test-item]
   (.-label ^js test-item))
 
@@ -92,7 +108,9 @@
   (set! (.-label ^js test-item) value))
 
 (defn description
-  "Optional description that appears next to the label."
+  "Optional description that appears next to the label.
+   
+   **Returns:** `string | undefined`"
   ^js [test-item]
   (.-description ^js test-item))
 
@@ -104,7 +122,9 @@
 (defn sort-text
   "A string that should be used when comparing this item
    with other items. When `falsy` the {@link TestItem.label label}
-   is used."
+   is used.
+   
+   **Returns:** `string | undefined`"
   ^js [test-item]
   (.-sortText ^js test-item))
 
@@ -118,7 +138,9 @@
 (defn range
   "Location of the test item in its {@link TestItem.uri uri}.
    
-   This is only meaningful if the `uri` points to a file."
+   This is only meaningful if the `uri` points to a file.
+   
+   **Returns:** `Range | undefined`"
   ^js [test-item]
   (.-range ^js test-item))
 
@@ -133,7 +155,9 @@
   "Optional error encountered while loading the test.
    
    Note that this is not a test result and should only be used to represent errors in
-   test discovery, such as syntax errors."
+   test discovery, such as syntax errors.
+   
+   **Returns:** `string | MarkdownString | undefined`"
   ^js [test-item]
   (.-error ^js test-item))
 

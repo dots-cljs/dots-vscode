@@ -2,7 +2,9 @@
   "An inlay hint label part allows for interactive and composite labels of inlay hints.")
 
 (defn value
-  "The value of this label part."
+  "The value of this label part.
+   
+   **Returns:** `string`"
   ^js [inlay-hint-label-part]
   (.-value ^js inlay-hint-label-part))
 
@@ -15,7 +17,9 @@
   "The tooltip text when you hover over this label part.
    
    *Note* that this property can be set late during
-   {@link InlayHintsProvider.resolveInlayHint resolving} of inlay hints."
+   {@link InlayHintsProvider.resolveInlayHint resolving} of inlay hints.
+   
+   **Returns:** `string | MarkdownString | undefined`"
   ^js [inlay-hint-label-part]
   (.-tooltip ^js inlay-hint-label-part))
 
@@ -37,7 +41,9 @@
    the given location, and it shows a context menu with further code navigation commands.
    
    *Note* that this property can be set late during
-   {@link InlayHintsProvider.resolveInlayHint resolving} of inlay hints."
+   {@link InlayHintsProvider.resolveInlayHint resolving} of inlay hints.
+   
+   **Returns:** `Location | undefined`"
   ^js [inlay-hint-label-part]
   (.-location ^js inlay-hint-label-part))
 
@@ -62,7 +68,9 @@
    when a label part defines {@link InlayHintLabelPart.location location} and {@link InlayHintLabelPart.command command} .
    
    *Note* that this property can be set late during
-   {@link InlayHintsProvider.resolveInlayHint resolving} of inlay hints."
+   {@link InlayHintsProvider.resolveInlayHint resolving} of inlay hints.
+   
+   **Returns:** `Command | undefined`"
   ^js [inlay-hint-label-part]
   (.-command ^js inlay-hint-label-part))
 

@@ -8,7 +8,9 @@
    tests be re-run in a certain way. For example, if tests were run
    normally and the user requests to re-run them in debug mode, the editor
    will attempt use a configuration with the same label of the `Debug`
-   kind. If there is no such configuration, the default will be used."
+   kind. If there is no such configuration, the default will be used.
+   
+   **Returns:** `string`"
   ^js [test-run-profile]
   (.-label ^js test-run-profile))
 
@@ -25,7 +27,9 @@
 
 (defn kind
   "Configures what kind of execution this profile controls. If there
-   are no profiles for a kind, it will not be available in the UI."
+   are no profiles for a kind, it will not be available in the UI.
+   
+   **Returns:** `TestRunProfileKind`"
   ^js [test-run-profile]
   (.-kind ^js test-run-profile))
 
@@ -37,7 +41,9 @@
    user can configure this.
    
    Changes the user makes in their default profiles will be reflected
-   in this property after a {@link onDidChangeDefault } event."
+   in this property after a {@link onDidChangeDefault } event.
+   
+   **Returns:** `boolean`"
   ^js [test-run-profile]
   (.-isDefault ^js test-run-profile))
 
@@ -81,7 +87,9 @@
 (defn supports-continuous-run?
   "Whether this profile supports continuous running of requests. If so,
    then {@link TestRunRequest.continuous } may be set to `true`. Defaults
-   to false."
+   to false.
+   
+   **Returns:** `boolean`"
   ^js [test-run-profile]
   (.-supportsContinuousRun ^js test-run-profile))
 
@@ -94,7 +102,9 @@
 
 (defn tag
   "Associated tag for the profile. If this is set, only {@link TestItem }
-   instances with the same tag will be eligible to execute in this profile."
+   instances with the same tag will be eligible to execute in this profile.
+   
+   **Returns:** `TestTag | undefined`"
   ^js [test-run-profile]
   (.-tag ^js test-run-profile))
 
@@ -108,7 +118,9 @@
   "If this method is present, a configuration gear will be present in the
    UI, and this method will be invoked when it's clicked. When called,
    you can take other editor actions, such as showing a quick pick or
-   opening a configuration file."
+   opening a configuration file.
+   
+   **Returns:** `(() => void) | undefined`"
   ^js [test-run-profile]
   (.-configureHandler ^js test-run-profile))
 
@@ -129,7 +141,9 @@
    If {@link supportsContinuousRun } is set, then {@link TestRunRequest.continuous }
    may be `true`. In this case, the profile should observe changes to
    source code and create new test runs by calling {@link TestController.createTestRun },
-   until the cancellation is requested on the `token`."
+   until the cancellation is requested on the `token`.
+   
+   **Returns:** `(request: TestRunRequest, token: CancellationToken) => void | Thenable<void>`"
   ^js [test-run-profile]
   (.-runHandler ^js test-run-profile))
 
@@ -153,7 +167,9 @@
    expanded in the **Test Coverage** view.
    
    The {@link FileCoverage } object passed to this function is the same instance
-   emitted on {@link TestRun.addCoverage } calls associated with this profile."
+   emitted on {@link TestRun.addCoverage } calls associated with this profile.
+   
+   **Returns:** `((testRun: TestRun, fileCoverage: FileCoverage, token: CancellationToken) => Thenable<FileCoverageDetail[]>) | undefined`"
   ^js [test-run-profile]
   (.-loadDetailedCoverage ^js test-run-profile))
 

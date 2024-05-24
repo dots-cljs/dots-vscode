@@ -3,11 +3,15 @@
   (:refer-clojure :exclude [type]))
 
 (defn type
-  "The type of change."
+  "The type of change.
+   
+   **Returns:** `FileChangeType`"
   ^js [file-change-event]
   (.-type ^js file-change-event))
 
 (defn uri
-  "The uri of the file that has changed."
+  "The uri of the file that has changed.
+   
+   **Returns:** `Uri`"
   ^js [file-change-event]
   (.-uri ^js file-change-event))

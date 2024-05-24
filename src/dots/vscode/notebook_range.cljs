@@ -4,17 +4,23 @@
   (:refer-clojure :exclude [empty?]))
 
 (defn start
-  "The zero-based start index of this range."
+  "The zero-based start index of this range.
+   
+   **Returns:** `number`"
   ^js [notebook-range]
   (.-start ^js notebook-range))
 
 (defn end
-  "The exclusive end index of this range (zero-based)."
+  "The exclusive end index of this range (zero-based).
+   
+   **Returns:** `number`"
   ^js [notebook-range]
   (.-end ^js notebook-range))
 
 (defn empty?
-  "`true` if `start` and `end` are equal."
+  "`true` if `start` and `end` are equal.
+   
+   **Returns:** `boolean`"
   ^js [notebook-range]
   (.-isEmpty ^js notebook-range))
 

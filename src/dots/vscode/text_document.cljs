@@ -6,42 +6,56 @@
   "The associated uri for this document.
    
    *Note* that most documents use the `file`-scheme, which means they are files on disk. However, **not** all documents are
-   saved on disk and therefore the `scheme` must be checked before trying to access the underlying file or siblings on disk."
+   saved on disk and therefore the `scheme` must be checked before trying to access the underlying file or siblings on disk.
+   
+   **Returns:** `Uri`"
   ^js [text-document]
   (.-uri ^js text-document))
 
 (defn file-name
   "The file system path of the associated resource. Shorthand
-   notation for {@link TextDocument.uri TextDocument.uri.fsPath}. Independent of the uri scheme."
+   notation for {@link TextDocument.uri TextDocument.uri.fsPath}. Independent of the uri scheme.
+   
+   **Returns:** `string`"
   ^js [text-document]
   (.-fileName ^js text-document))
 
 (defn untitled?
   "Is this document representing an untitled file which has never been saved yet. *Note* that
    this does not mean the document will be saved to disk, use {@linkcode Uri.scheme }
-   to figure out where a document will be {@link FileSystemProvider saved}, e.g. `file`, `ftp` etc."
+   to figure out where a document will be {@link FileSystemProvider saved}, e.g. `file`, `ftp` etc.
+   
+   **Returns:** `boolean`"
   ^js [text-document]
   (.-isUntitled ^js text-document))
 
 (defn language-id
-  "The identifier of the language associated with this document."
+  "The identifier of the language associated with this document.
+   
+   **Returns:** `string`"
   ^js [text-document]
   (.-languageId ^js text-document))
 
 (defn version
   "The version number of this document (it will strictly increase after each
-   change, including undo/redo)."
+   change, including undo/redo).
+   
+   **Returns:** `number`"
   ^js [text-document]
   (.-version ^js text-document))
 
 (defn dirty?
-  "`true` if there are unpersisted changes."
+  "`true` if there are unpersisted changes.
+   
+   **Returns:** `boolean`"
   ^js [text-document]
   (.-isDirty ^js text-document))
 
 (defn closed?
   "`true` if the document has been closed. A closed document isn't synchronized anymore
-   and won't be re-used when the same resource is opened again."
+   and won't be re-used when the same resource is opened again.
+   
+   **Returns:** `boolean`"
   ^js [text-document]
   (.-isClosed ^js text-document))
 
@@ -55,12 +69,16 @@
 
 (defn eol
   "The {@link EndOfLine end of line} sequence that is predominately
-   used in this document."
+   used in this document.
+   
+   **Returns:** `EndOfLine`"
   ^js [text-document]
   (.-eol ^js text-document))
 
 (defn line-count
-  "The number of lines in this document."
+  "The number of lines in this document.
+   
+   **Returns:** `number`"
   ^js [text-document]
   (.-lineCount ^js text-document))
 

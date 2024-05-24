@@ -4,7 +4,9 @@
   (:require ["vscode" :as vscode]))
 
 (defn message
-  "Human-readable message text to display."
+  "Human-readable message text to display.
+   
+   **Returns:** `string | MarkdownString`"
   ^js [test-message]
   (.-message ^js test-message))
 
@@ -14,7 +16,9 @@
   (set! (.-message ^js test-message) value))
 
 (defn expected-output
-  "Expected test output. If given with {@link TestMessage.actualOutput actualOutput }, a diff view will be shown."
+  "Expected test output. If given with {@link TestMessage.actualOutput actualOutput }, a diff view will be shown.
+   
+   **Returns:** `string | undefined`"
   ^js [test-message]
   (.-expectedOutput ^js test-message))
 
@@ -24,7 +28,9 @@
   (set! (.-expectedOutput ^js test-message) value))
 
 (defn actual-output
-  "Actual test output. If given with {@link TestMessage.expectedOutput expectedOutput }, a diff view will be shown."
+  "Actual test output. If given with {@link TestMessage.expectedOutput expectedOutput }, a diff view will be shown.
+   
+   **Returns:** `string | undefined`"
   ^js [test-message]
   (.-actualOutput ^js test-message))
 
@@ -34,7 +40,9 @@
   (set! (.-actualOutput ^js test-message) value))
 
 (defn location
-  "Associated file location."
+  "Associated file location.
+   
+   **Returns:** `Location | undefined`"
   ^js [test-message]
   (.-location ^js test-message))
 
@@ -70,7 +78,9 @@
    The command will be called with an object containing:
    - `test`: the {@link TestItem } the message is associated with, *if* it
       is still present in the {@link TestController.items } collection.
-   - `message`: the {@link TestMessage } instance."
+   - `message`: the {@link TestMessage } instance.
+   
+   **Returns:** `string | undefined`"
   ^js [test-message]
   (.-contextValue ^js test-message))
 

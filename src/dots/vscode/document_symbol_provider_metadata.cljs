@@ -2,7 +2,9 @@
   "Metadata about a document symbol provider.")
 
 (defn label
-  "A human-readable string that is shown when multiple outlines trees show for one document."
+  "A human-readable string that is shown when multiple outlines trees show for one document.
+   
+   **Returns:** `string | undefined`"
   ^js [document-symbol-provider-metadata]
   (.-label ^js document-symbol-provider-metadata))
 

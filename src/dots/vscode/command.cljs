@@ -5,7 +5,9 @@
    function when invoked.")
 
 (defn title
-  "Title of the command, like `save`."
+  "Title of the command, like `save`.
+   
+   **Returns:** `string`"
   ^js [command]
   (.-title ^js command))
 
@@ -15,7 +17,9 @@
   (set! (.-title ^js command) value))
 
 (defn command
-  "The identifier of the actual command handler."
+  "The identifier of the actual command handler.
+   
+   **Returns:** `string`"
   ^js [command]
   (.-command ^js command))
 
@@ -25,7 +29,9 @@
   (set! (.-command ^js command) value))
 
 (defn tooltip
-  "A tooltip for the command, when represented in the UI."
+  "A tooltip for the command, when represented in the UI.
+   
+   **Returns:** `string | undefined`"
   ^js [command]
   (.-tooltip ^js command))
 
@@ -36,7 +42,9 @@
 
 (defn arguments
   "Arguments that the command handler should be
-   invoked with."
+   invoked with.
+   
+   **Returns:** `any[] | undefined`"
   ^js [command]
   (.-arguments ^js command))
 

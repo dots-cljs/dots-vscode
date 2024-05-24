@@ -5,7 +5,9 @@
   (:require ["vscode" :as vscode]))
 
 (defn range
-  "The range this edit applies to."
+  "The range this edit applies to.
+   
+   **Returns:** `Range`"
   ^js [text-edit]
   (.-range ^js text-edit))
 
@@ -15,7 +17,9 @@
   (set! (.-range ^js text-edit) value))
 
 (defn new-text
-  "The string this edit will insert."
+  "The string this edit will insert.
+   
+   **Returns:** `string`"
   ^js [text-edit]
   (.-newText ^js text-edit))
 
@@ -28,7 +32,9 @@
   "The eol-sequence used in the document.
    
    *Note* that the eol-sequence will be applied to the
-   whole document."
+   whole document.
+   
+   **Returns:** `EndOfLine | undefined`"
   ^js [text-edit]
   (.-newEol ^js text-edit))
 

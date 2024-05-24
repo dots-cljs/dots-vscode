@@ -3,7 +3,9 @@
   (:refer-clojure :exclude [range]))
 
 (defn range
-  "The range in the document where this color appears."
+  "The range in the document where this color appears.
+   
+   **Returns:** `Range`"
   ^js [color-information]
   (.-range ^js color-information))
 
@@ -13,7 +15,9 @@
   (set! (.-range ^js color-information) value))
 
 (defn color
-  "The actual color value for this color range."
+  "The actual color value for this color range.
+   
+   **Returns:** `Color`"
   ^js [color-information]
   (.-color ^js color-information))
 

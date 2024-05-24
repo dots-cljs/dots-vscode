@@ -6,12 +6,16 @@
    that resolves to an array of {@link TextEdit text edits}.")
 
 (defn document
-  "The document that will be saved."
+  "The document that will be saved.
+   
+   **Returns:** `TextDocument`"
   ^js [text-document-will-save-event]
   (.-document ^js text-document-will-save-event))
 
 (defn reason
-  "The reason why save was triggered."
+  "The reason why save was triggered.
+   
+   **Returns:** `TextDocumentSaveReason`"
   ^js [text-document-will-save-event]
   (.-reason ^js text-document-will-save-event))
 

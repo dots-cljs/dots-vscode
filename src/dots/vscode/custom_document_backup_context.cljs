@@ -8,6 +8,8 @@
    
    If the editor is for a resource from the current workspace, `destination` will point to a file inside
    `ExtensionContext.storagePath`. The parent folder of `destination` may not exist, so make sure to created it
-   before writing the backup to this location."
+   before writing the backup to this location.
+   
+   **Returns:** `Uri`"
   ^js [custom-document-backup-context]
   (.-destination ^js custom-document-backup-context))

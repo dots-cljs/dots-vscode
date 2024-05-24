@@ -7,7 +7,9 @@
   (:refer-clojure :exclude [range]))
 
 (defn range
-  "The range in which this code lens is valid. Should only span a single line."
+  "The range in which this code lens is valid. Should only span a single line.
+   
+   **Returns:** `Range`"
   ^js [code-lens]
   (.-range ^js code-lens))
 
@@ -17,7 +19,9 @@
   (set! (.-range ^js code-lens) value))
 
 (defn command
-  "The command this code lens represents."
+  "The command this code lens represents.
+   
+   **Returns:** `Command | undefined`"
   ^js [code-lens]
   (.-command ^js code-lens))
 
@@ -27,6 +31,8 @@
   (set! (.-command ^js code-lens) value))
 
 (defn resolved?
-  "`true` when there is a command associated."
+  "`true` when there is a command associated.
+   
+   **Returns:** `boolean`"
   ^js [code-lens]
   (.-isResolved ^js code-lens))

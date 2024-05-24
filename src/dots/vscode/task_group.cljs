@@ -5,17 +5,23 @@
 
 (defn default?
   "Whether the task that is part of this group is the default for the group.
-   This property cannot be set through API, and is controlled by a user's task configurations."
+   This property cannot be set through API, and is controlled by a user's task configurations.
+   
+   **Returns:** `boolean | undefined`"
   ^js [task-group]
   (.-isDefault ^js task-group))
 
 (defn id
-  "The ID of the task group. Is one of TaskGroup.Clean.id, TaskGroup.Build.id, TaskGroup.Rebuild.id, or TaskGroup.Test.id."
+  "The ID of the task group. Is one of TaskGroup.Clean.id, TaskGroup.Build.id, TaskGroup.Rebuild.id, or TaskGroup.Test.id.
+   
+   **Returns:** `string`"
   ^js [task-group]
   (.-id ^js task-group))
 
 (defn clean
-  "The clean task group;"
+  "The clean task group;
+   
+   **Returns:** `TaskGroup`"
   ^js [task-group]
   (.-Clean ^js task-group))
 
@@ -25,7 +31,9 @@
   (set! (.-Clean ^js task-group) value))
 
 (defn build
-  "The build task group;"
+  "The build task group;
+   
+   **Returns:** `TaskGroup`"
   ^js [task-group]
   (.-Build ^js task-group))
 
@@ -35,7 +43,9 @@
   (set! (.-Build ^js task-group) value))
 
 (defn rebuild
-  "The rebuild all task group;"
+  "The rebuild all task group;
+   
+   **Returns:** `TaskGroup`"
   ^js [task-group]
   (.-Rebuild ^js task-group))
 
@@ -45,7 +55,9 @@
   (set! (.-Rebuild ^js task-group) value))
 
 (defn test
-  "The test all task group;"
+  "The test all task group;
+   
+   **Returns:** `TaskGroup`"
   ^js [task-group]
   (.-Test ^js task-group))
 

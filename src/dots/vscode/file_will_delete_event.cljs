@@ -6,12 +6,16 @@
    thenable that resolves to a {@link WorkspaceEdit workspace edit}.")
 
 (defn token
-  "A cancellation token."
+  "A cancellation token.
+   
+   **Returns:** `CancellationToken`"
   ^js [file-will-delete-event]
   (.-token ^js file-will-delete-event))
 
 (defn files
-  "The files that are going to be deleted."
+  "The files that are going to be deleted.
+   
+   **Returns:** `readonly Uri[]`"
   ^js [file-will-delete-event]
   (.-files ^js file-will-delete-event))
 

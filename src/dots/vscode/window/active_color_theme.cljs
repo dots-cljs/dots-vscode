@@ -4,6 +4,8 @@
   (:require ["vscode" :as vscode]))
 
 (defn kind
-  "The kind of this color theme: light, dark, high contrast dark and high contrast light."
+  "The kind of this color theme: light, dark, high contrast dark and high contrast light.
+   
+   **Returns:** `ColorThemeKind`"
   ^js []
   (.. vscode/window -activeColorTheme -kind))

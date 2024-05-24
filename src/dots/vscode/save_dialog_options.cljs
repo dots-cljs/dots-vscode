@@ -2,7 +2,9 @@
   "Options to configure the behaviour of a file save dialog.")
 
 (defn default-uri
-  "The resource the dialog shows when opened."
+  "The resource the dialog shows when opened.
+   
+   **Returns:** `Uri | undefined`"
   ^js [save-dialog-options]
   (.-defaultUri ^js save-dialog-options))
 
@@ -12,7 +14,9 @@
   (set! (.-defaultUri ^js save-dialog-options) value))
 
 (defn save-label
-  "A human-readable string for the save button."
+  "A human-readable string for the save button.
+   
+   **Returns:** `string | undefined`"
   ^js [save-dialog-options]
   (.-saveLabel ^js save-dialog-options))
 
@@ -29,7 +33,9 @@
    	'Images': ['png', 'jpg'],
    	'TypeScript': ['ts', 'tsx']
    }
-   ```"
+   ```
+   
+   **Returns:** `{ [name: string]: string[]; } | undefined`"
   ^js [save-dialog-options]
   (.-filters ^js save-dialog-options))
 
@@ -49,7 +55,9 @@
   "Dialog title.
    
    This parameter might be ignored, as not all operating systems display a title on save dialogs
-   (for example, macOS)."
+   (for example, macOS).
+   
+   **Returns:** `string | undefined`"
   ^js [save-dialog-options]
   (.-title ^js save-dialog-options))
 

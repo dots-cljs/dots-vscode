@@ -2,11 +2,15 @@
   "Defines a port mapping used for localhost inside the webview.")
 
 (defn webview-port
-  "Localhost port to remap inside the webview."
+  "Localhost port to remap inside the webview.
+   
+   **Returns:** `number`"
   ^js [webview-port-mapping]
   (.-webviewPort ^js webview-port-mapping))
 
 (defn extension-host-port
-  "Destination port. The `webviewPort` is resolved to this port."
+  "Destination port. The `webviewPort` is resolved to this port.
+   
+   **Returns:** `number`"
   ^js [webview-port-mapping]
   (.-extensionHostPort ^js webview-port-mapping))

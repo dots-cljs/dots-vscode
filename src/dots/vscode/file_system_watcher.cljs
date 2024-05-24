@@ -7,19 +7,25 @@
 
 (defn ignore-create-events?
   "true if this file system watcher has been created such that
-   it ignores creation file system events."
+   it ignores creation file system events.
+   
+   **Returns:** `boolean`"
   ^js [file-system-watcher]
   (.-ignoreCreateEvents ^js file-system-watcher))
 
 (defn ignore-change-events?
   "true if this file system watcher has been created such that
-   it ignores change file system events."
+   it ignores change file system events.
+   
+   **Returns:** `boolean`"
   ^js [file-system-watcher]
   (.-ignoreChangeEvents ^js file-system-watcher))
 
 (defn ignore-delete-events?
   "true if this file system watcher has been created such that
-   it ignores delete file system events."
+   it ignores delete file system events.
+   
+   **Returns:** `boolean`"
   ^js [file-system-watcher]
   (.-ignoreDeleteEvents ^js file-system-watcher))
 

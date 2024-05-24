@@ -7,7 +7,9 @@
    is interpreted.
    
    Notebooks have built-in support for certain mime-types, extensions can add support for new
-   types and override existing types."
+   types and override existing types.
+   
+   **Returns:** `string`"
   ^js [notebook-cell-output-item]
   (.-mime ^js notebook-cell-output-item))
 
@@ -21,7 +23,9 @@
   (set! (.-mime ^js notebook-cell-output-item) value))
 
 (defn data
-  "The data of this output item. Must always be an array of unsigned 8-bit integers."
+  "The data of this output item. Must always be an array of unsigned 8-bit integers.
+   
+   **Returns:** `Uint8Array`"
   ^js [notebook-cell-output-item]
   (.-data ^js notebook-cell-output-item))
 

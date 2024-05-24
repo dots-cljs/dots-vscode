@@ -91,7 +91,9 @@
   (.asExternalUri vscode/env target))
 
 (defn app-name
-  "The application name of the editor, like 'VS Code'."
+  "The application name of the editor, like 'VS Code'.
+   
+   **Returns:** `string`"
   ^js []
   (.-appName vscode/env))
 
@@ -99,7 +101,9 @@
   "The application root folder from which the editor is running.
    
    *Note* that the value is the empty string when running in an
-   environment that has no representation of an application root folder."
+   environment that has no representation of an application root folder.
+   
+   **Returns:** `string`"
   ^js []
   (.-appRoot vscode/env))
 
@@ -107,45 +111,61 @@
   "The hosted location of the application
    On desktop this is 'desktop'
    In the web this is the specified embedder i.e. 'github.dev', 'codespaces', or 'web' if the embedder
-   does not provide that information"
+   does not provide that information
+   
+   **Returns:** `string`"
   ^js []
   (.-appHost vscode/env))
 
 (defn uri-scheme
-  "The custom uri scheme the editor registers to in the operating system."
+  "The custom uri scheme the editor registers to in the operating system.
+   
+   **Returns:** `string`"
   ^js []
   (.-uriScheme vscode/env))
 
 (defn language
-  "Represents the preferred user-language, like `de-CH`, `fr`, or `en-US`."
+  "Represents the preferred user-language, like `de-CH`, `fr`, or `en-US`.
+   
+   **Returns:** `string`"
   ^js []
   (.-language vscode/env))
 
 (defn clipboard
-  "The system clipboard."
+  "The system clipboard.
+   
+   **Returns:** `Clipboard`"
   ^js []
   (.-clipboard vscode/env))
 
 (defn machine-id
-  "A unique identifier for the computer."
+  "A unique identifier for the computer.
+   
+   **Returns:** `string`"
   ^js []
   (.-machineId vscode/env))
 
 (defn session-id
   "A unique identifier for the current session.
-   Changes each time the editor is started."
+   Changes each time the editor is started.
+   
+   **Returns:** `string`"
   ^js []
   (.-sessionId vscode/env))
 
 (defn new-app-install?
   "Indicates that this is a fresh install of the application.
-   `true` if within the first day of installation otherwise `false`."
+   `true` if within the first day of installation otherwise `false`.
+   
+   **Returns:** `boolean`"
   ^js []
   (.-isNewAppInstall vscode/env))
 
 (defn telemetry-enabled?
   "Indicates whether the users has telemetry enabled.
-   Can be observed to determine if the extension should send telemetry."
+   Can be observed to determine if the extension should send telemetry.
+   
+   **Returns:** `boolean`"
   ^js []
   (.-isTelemetryEnabled vscode/env))
 
@@ -194,26 +214,34 @@
    *Note* that the value is `undefined` when there is no remote extension host but that the
    value is defined in all extension hosts (local and remote) in case a remote extension host
    exists. Use {@link Extension.extensionKind } to know if
-   a specific extension runs remote or not."
+   a specific extension runs remote or not.
+   
+   **Returns:** `string | undefined`"
   ^js []
   (.-remoteName vscode/env))
 
 (defn shell
   "The detected default shell for the extension host, this is overridden by the
    `terminal.integrated.defaultProfile` setting for the extension host's platform. Note that in
-   environments that do not support a shell the value is the empty string."
+   environments that do not support a shell the value is the empty string.
+   
+   **Returns:** `string`"
   ^js []
   (.-shell vscode/env))
 
 (defn ui-kind
   "The UI kind property indicates from which UI extensions
    are accessed from. For example, extensions could be accessed
-   from a desktop application or a web browser."
+   from a desktop application or a web browser.
+   
+   **Returns:** `UIKind`"
   ^js []
   (.-uiKind vscode/env))
 
 (defn log-level
-  "The current log level of the editor."
+  "The current log level of the editor.
+   
+   **Returns:** `LogLevel`"
   ^js []
   (.-logLevel vscode/env))
 

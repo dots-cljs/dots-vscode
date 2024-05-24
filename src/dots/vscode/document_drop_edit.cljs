@@ -2,7 +2,9 @@
   "An edit operation applied {@link DocumentDropEditProvider on drop}.")
 
 (defn insert-text
-  "The text or snippet to insert at the drop location."
+  "The text or snippet to insert at the drop location.
+   
+   **Returns:** `string | SnippetString`"
   ^js [document-drop-edit]
   (.-insertText ^js document-drop-edit))
 
@@ -12,7 +14,9 @@
   (set! (.-insertText ^js document-drop-edit) value))
 
 (defn additional-edit
-  "An optional additional edit to apply on drop."
+  "An optional additional edit to apply on drop.
+   
+   **Returns:** `WorkspaceEdit | undefined`"
   ^js [document-drop-edit]
   (.-additionalEdit ^js document-drop-edit))
 

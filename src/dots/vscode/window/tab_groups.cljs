@@ -3,12 +3,16 @@
   (:require ["vscode" :as vscode]))
 
 (defn all
-  "All the groups within the group container."
+  "All the groups within the group container.
+   
+   **Returns:** `readonly TabGroup[]`"
   ^js []
   (.. vscode/window -tabGroups -all))
 
 (defn active-tab-group
-  "The currently active group."
+  "The currently active group.
+   
+   **Returns:** `TabGroup`"
   ^js []
   (.. vscode/window -tabGroups -activeTabGroup))
 

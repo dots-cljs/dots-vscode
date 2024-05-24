@@ -4,7 +4,9 @@
   (:require ["vscode" :as vscode]))
 
 (defn value
-  "Setter and getter for the contents of the input box."
+  "Setter and getter for the contents of the input box.
+   
+   **Returns:** `string`"
   ^js []
   (.. vscode/scm -inputBox -value))
 
@@ -14,7 +16,9 @@
   (set! (.. vscode/scm -inputBox -value) value))
 
 (defn placeholder
-  "A string to show as placeholder in the input box to guide the user."
+  "A string to show as placeholder in the input box to guide the user.
+   
+   **Returns:** `string`"
   ^js []
   (.. vscode/scm -inputBox -placeholder))
 
@@ -24,7 +28,9 @@
   (set! (.. vscode/scm -inputBox -placeholder) value))
 
 (defn enabled?
-  "Controls whether the input box is enabled (default is `true`)."
+  "Controls whether the input box is enabled (default is `true`).
+   
+   **Returns:** `boolean`"
   ^js []
   (.. vscode/scm -inputBox -enabled))
 
@@ -34,7 +40,9 @@
   (set! (.. vscode/scm -inputBox -enabled) value))
 
 (defn visible?
-  "Controls whether the input box is visible (default is `true`)."
+  "Controls whether the input box is visible (default is `true`).
+   
+   **Returns:** `boolean`"
   ^js []
   (.. vscode/scm -inputBox -visible))
 

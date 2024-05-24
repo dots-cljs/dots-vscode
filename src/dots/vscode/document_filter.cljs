@@ -4,7 +4,9 @@
    its resource, or a glob-pattern that is applied to the {@link TextDocument.fileName path}.")
 
 (defn language
-  "A language id, like `typescript`."
+  "A language id, like `typescript`.
+   
+   **Returns:** `string | undefined`"
   ^js [document-filter]
   (.-language ^js document-filter))
 
@@ -13,17 +15,23 @@
    to narrow down on the type of a notebook that a {@link NotebookCell.document cell document} belongs to.
    
    *Note* that setting the `notebookType`-property changes how `scheme` and `pattern` are interpreted. When set
-   they are evaluated against the {@link NotebookDocument.uri notebook uri}, not the document uri."
+   they are evaluated against the {@link NotebookDocument.uri notebook uri}, not the document uri.
+   
+   **Returns:** `string | undefined`"
   ^js [document-filter]
   (.-notebookType ^js document-filter))
 
 (defn scheme
-  "A Uri {@link Uri.scheme scheme}, like `file` or `untitled`."
+  "A Uri {@link Uri.scheme scheme}, like `file` or `untitled`.
+   
+   **Returns:** `string | undefined`"
   ^js [document-filter]
   (.-scheme ^js document-filter))
 
 (defn pattern
   "A {@link GlobPattern glob pattern} that is matched on the absolute path of the document. Use a {@link RelativePattern relative pattern}
-   to filter documents to a {@link WorkspaceFolder workspace folder}."
+   to filter documents to a {@link WorkspaceFolder workspace folder}.
+   
+   **Returns:** `GlobPattern | undefined`"
   ^js [document-filter]
   (.-pattern ^js document-filter))

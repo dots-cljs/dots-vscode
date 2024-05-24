@@ -4,7 +4,9 @@
   (:require ["vscode" :as vscode]))
 
 (defn range
-  "Range of the cells being edited. May be empty."
+  "Range of the cells being edited. May be empty.
+   
+   **Returns:** `NotebookRange`"
   ^js [notebook-edit]
   (.-range ^js notebook-edit))
 
@@ -14,7 +16,9 @@
   (set! (.-range ^js notebook-edit) value))
 
 (defn new-cells
-  "New cells being inserted. May be empty."
+  "New cells being inserted. May be empty.
+   
+   **Returns:** `NotebookCellData[]`"
   ^js [notebook-edit]
   (.-newCells ^js notebook-edit))
 
@@ -24,7 +28,9 @@
   (set! (.-newCells ^js notebook-edit) value))
 
 (defn new-cell-metadata
-  "Optional new metadata for the cells."
+  "Optional new metadata for the cells.
+   
+   **Returns:** `{ [key: string]: any; } | undefined`"
   ^js [notebook-edit]
   (.-newCellMetadata ^js notebook-edit))
 
@@ -34,7 +40,9 @@
   (set! (.-newCellMetadata ^js notebook-edit) value))
 
 (defn new-notebook-metadata
-  "Optional new metadata for the notebook."
+  "Optional new metadata for the notebook.
+   
+   **Returns:** `{ [key: string]: any; } | undefined`"
   ^js [notebook-edit]
   (.-newNotebookMetadata ^js notebook-edit))
 

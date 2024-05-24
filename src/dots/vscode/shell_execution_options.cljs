@@ -2,7 +2,9 @@
   "Options for a shell execution")
 
 (defn executable
-  "The shell executable."
+  "The shell executable.
+   
+   **Returns:** `string | undefined`"
   ^js [shell-execution-options]
   (.-executable ^js shell-execution-options))
 
@@ -15,7 +17,9 @@
   "The arguments to be passed to the shell executable used to run the task. Most shells
    require special arguments to execute a command. For  example `bash` requires the `-c`
    argument to execute a command, `PowerShell` requires `-Command` and `cmd` requires both
-   `/d` and `/c`."
+   `/d` and `/c`.
+   
+   **Returns:** `string[] | undefined`"
   ^js [shell-execution-options]
   (.-shellArgs ^js shell-execution-options))
 
@@ -28,7 +32,9 @@
   (set! (.-shellArgs ^js shell-execution-options) value))
 
 (defn shell-quoting
-  "The shell quotes supported by this shell."
+  "The shell quotes supported by this shell.
+   
+   **Returns:** `ShellQuotingOptions | undefined`"
   ^js [shell-execution-options]
   (.-shellQuoting ^js shell-execution-options))
 
@@ -39,7 +45,9 @@
 
 (defn cwd
   "The current working directory of the executed shell.
-   If omitted the tools current workspace root is used."
+   If omitted the tools current workspace root is used.
+   
+   **Returns:** `string | undefined`"
   ^js [shell-execution-options]
   (.-cwd ^js shell-execution-options))
 
@@ -52,7 +60,9 @@
 (defn env
   "The additional environment of the executed shell. If omitted
    the parent process' environment is used. If provided it is merged with
-   the parent process' environment."
+   the parent process' environment.
+   
+   **Returns:** `{ [key: string]: string; } | undefined`"
   ^js [shell-execution-options]
   (.-env ^js shell-execution-options))
 

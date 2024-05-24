@@ -2,7 +2,9 @@
   "Options for creating a {@link TreeView }")
 
 (defn tree-data-provider
-  "A data provider that provides tree data."
+  "A data provider that provides tree data.
+   
+   **Returns:** `TreeDataProvider<T>`"
   ^js [tree-view-options]
   (.-treeDataProvider ^js tree-view-options))
 
@@ -12,7 +14,9 @@
   (set! (.-treeDataProvider ^js tree-view-options) value))
 
 (defn show-collapse-all?
-  "Whether to show collapse all action or not."
+  "Whether to show collapse all action or not.
+   
+   **Returns:** `boolean | undefined`"
   ^js [tree-view-options]
   (.-showCollapseAll ^js tree-view-options))
 
@@ -24,7 +28,9 @@
 (defn can-select-many?
   "Whether the tree supports multi-select. When the tree supports multi-select and a command is executed from the tree,
    the first argument to the command is the tree item that the command was executed on and the second argument is an
-   array containing all selected tree items."
+   array containing all selected tree items.
+   
+   **Returns:** `boolean | undefined`"
   ^js [tree-view-options]
   (.-canSelectMany ^js tree-view-options))
 
@@ -36,7 +42,9 @@
   (set! (.-canSelectMany ^js tree-view-options) value))
 
 (defn drag-and-drop-controller
-  "An optional interface to implement drag and drop in the tree view."
+  "An optional interface to implement drag and drop in the tree view.
+   
+   **Returns:** `TreeDragAndDropController<T> | undefined`"
   ^js [tree-view-options]
   (.-dragAndDropController ^js tree-view-options))
 
@@ -79,7 +87,9 @@
      When the user unchecks Child 1, the tree will look like this:
      - [ ] Parent
        - [ ] Child 1
-       - [x] Child 2"
+       - [x] Child 2
+   
+   **Returns:** `boolean | undefined`"
   ^js [tree-view-options]
   (.-manageCheckboxStateManually ^js tree-view-options))
 

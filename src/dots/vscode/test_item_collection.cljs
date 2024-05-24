@@ -4,7 +4,9 @@
   (:refer-clojure :exclude [get replace]))
 
 (defn size
-  "Gets the number of items in the collection."
+  "Gets the number of items in the collection.
+   
+   **Returns:** `number`"
   ^js [test-item-collection]
   (.-size ^js test-item-collection))
 

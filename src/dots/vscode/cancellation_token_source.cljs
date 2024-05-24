@@ -2,7 +2,9 @@
   "A cancellation source creates and controls a {@link CancellationToken cancellation token}.")
 
 (defn token
-  "The cancellation token of this source."
+  "The cancellation token of this source.
+   
+   **Returns:** `CancellationToken`"
   ^js [cancellation-token-source]
   (.-token ^js cancellation-token-source))
 

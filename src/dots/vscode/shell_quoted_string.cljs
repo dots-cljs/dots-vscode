@@ -2,7 +2,9 @@
   "A string that will be quoted depending on the used shell.")
 
 (defn value
-  "The actual string value."
+  "The actual string value.
+   
+   **Returns:** `string`"
   ^js [shell-quoted-string]
   (.-value ^js shell-quoted-string))
 
@@ -12,7 +14,9 @@
   (set! (.-value ^js shell-quoted-string) value))
 
 (defn quoting
-  "The quoting style to use."
+  "The quoting style to use.
+   
+   **Returns:** `ShellQuoting`"
   ^js [shell-quoted-string]
   (.-quoting ^js shell-quoted-string))
 

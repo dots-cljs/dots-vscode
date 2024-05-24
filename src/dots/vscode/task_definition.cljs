@@ -16,6 +16,8 @@
    ```
    
    Note that type identifier starting with a '$' are reserved for internal
-   usages and shouldn't be used by extensions."
+   usages and shouldn't be used by extensions.
+   
+   **Returns:** `string`"
   ^js [task-definition]
   (.-type ^js task-definition))

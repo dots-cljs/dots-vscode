@@ -2,7 +2,9 @@
   "Represents render options for decoration instances. See {@link DecorationOptions.renderOptions }.")
 
 (defn light
-  "Overwrite options for light themes."
+  "Overwrite options for light themes.
+   
+   **Returns:** `ThemableDecorationInstanceRenderOptions | undefined`"
   ^js [decoration-instance-render-options]
   (.-light ^js decoration-instance-render-options))
 
@@ -12,7 +14,9 @@
   (set! (.-light ^js decoration-instance-render-options) value))
 
 (defn dark
-  "Overwrite options for dark themes."
+  "Overwrite options for dark themes.
+   
+   **Returns:** `ThemableDecorationInstanceRenderOptions | undefined`"
   ^js [decoration-instance-render-options]
   (.-dark ^js decoration-instance-render-options))
 
@@ -22,7 +26,9 @@
   (set! (.-dark ^js decoration-instance-render-options) value))
 
 (defn before
-  "Defines the rendering options of the attachment that is inserted before the decorated text."
+  "Defines the rendering options of the attachment that is inserted before the decorated text.
+   
+   **Returns:** `ThemableDecorationAttachmentRenderOptions | undefined`"
   ^js [decoration-instance-render-options]
   (.-before ^js decoration-instance-render-options))
 
@@ -32,7 +38,9 @@
   (set! (.-before ^js decoration-instance-render-options) value))
 
 (defn after
-  "Defines the rendering options of the attachment that is inserted after the decorated text."
+  "Defines the rendering options of the attachment that is inserted after the decorated text.
+   
+   **Returns:** `ThemableDecorationAttachmentRenderOptions | undefined`"
   ^js [decoration-instance-render-options]
   (.-after ^js decoration-instance-render-options))
 

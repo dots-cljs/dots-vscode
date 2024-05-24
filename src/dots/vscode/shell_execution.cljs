@@ -2,7 +2,9 @@
   "Represents a task execution that happens inside a shell.")
 
 (defn command-line
-  "The shell command line. Is `undefined` if created with a command and arguments."
+  "The shell command line. Is `undefined` if created with a command and arguments.
+   
+   **Returns:** `string | undefined`"
   ^js [shell-execution]
   (.-commandLine ^js shell-execution))
 
@@ -12,7 +14,9 @@
   (set! (.-commandLine ^js shell-execution) value))
 
 (defn command
-  "The shell command. Is `undefined` if created with a full command line."
+  "The shell command. Is `undefined` if created with a full command line.
+   
+   **Returns:** `string | ShellQuotedString`"
   ^js [shell-execution]
   (.-command ^js shell-execution))
 
@@ -22,7 +26,9 @@
   (set! (.-command ^js shell-execution) value))
 
 (defn args
-  "The shell args. Is `undefined` if created with a full command line."
+  "The shell args. Is `undefined` if created with a full command line.
+   
+   **Returns:** `(string | ShellQuotedString)[]`"
   ^js [shell-execution]
   (.-args ^js shell-execution))
 
@@ -33,7 +39,9 @@
 
 (defn options
   "The shell options used when the command line is executed in a shell.
-   Defaults to undefined."
+   Defaults to undefined.
+   
+   **Returns:** `ShellExecutionOptions | undefined`"
   ^js [shell-execution]
   (.-options ^js shell-execution))
 

@@ -4,6 +4,8 @@
    This interface is not intended to be implemented.")
 
 (defn execution
-  "The task item representing the task that got started."
+  "The task item representing the task that got started.
+   
+   **Returns:** `TaskExecution`"
   ^js [task-start-event]
   (.-execution ^js task-start-event))

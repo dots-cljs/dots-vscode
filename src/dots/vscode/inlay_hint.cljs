@@ -2,7 +2,9 @@
   "Inlay hint information.")
 
 (defn position
-  "The position of this hint."
+  "The position of this hint.
+   
+   **Returns:** `Position`"
   ^js [inlay-hint]
   (.-position ^js inlay-hint))
 
@@ -14,7 +16,9 @@
 (defn label
   "The label of this hint. A human readable string or an array of {@link InlayHintLabelPart label parts}.
    
-   *Note* that neither the string nor the label part can be empty."
+   *Note* that neither the string nor the label part can be empty.
+   
+   **Returns:** `string | InlayHintLabelPart[]`"
   ^js [inlay-hint]
   (.-label ^js inlay-hint))
 
@@ -29,7 +33,9 @@
   "The tooltip text when you hover over this item.
    
    *Note* that this property can be set late during
-   {@link InlayHintsProvider.resolveInlayHint resolving} of inlay hints."
+   {@link InlayHintsProvider.resolveInlayHint resolving} of inlay hints.
+   
+   **Returns:** `string | MarkdownString | undefined`"
   ^js [inlay-hint]
   (.-tooltip ^js inlay-hint))
 
@@ -42,7 +48,9 @@
   (set! (.-tooltip ^js inlay-hint) value))
 
 (defn kind
-  "The kind of this hint. The inlay hint kind defines the appearance of this inlay hint."
+  "The kind of this hint. The inlay hint kind defines the appearance of this inlay hint.
+   
+   **Returns:** `InlayHintKind | undefined`"
   ^js [inlay-hint]
   (.-kind ^js inlay-hint))
 
@@ -59,7 +67,9 @@
    now part of the document and the inlay hint itself is now obsolete.
    
    *Note* that this property can be set late during
-   {@link InlayHintsProvider.resolveInlayHint resolving} of inlay hints."
+   {@link InlayHintsProvider.resolveInlayHint resolving} of inlay hints.
+   
+   **Returns:** `TextEdit[] | undefined`"
   ^js [inlay-hint]
   (.-textEdits ^js inlay-hint))
 
@@ -78,7 +88,9 @@
 (defn padding-left?
   "Render padding before the hint. Padding will use the editor's background color,
    not the background color of the hint itself. That means padding can be used to visually
-   align/separate an inlay hint."
+   align/separate an inlay hint.
+   
+   **Returns:** `boolean | undefined`"
   ^js [inlay-hint]
   (.-paddingLeft ^js inlay-hint))
 
@@ -92,7 +104,9 @@
 (defn padding-right?
   "Render padding after the hint. Padding will use the editor's background color,
    not the background color of the hint itself. That means padding can be used to visually
-   align/separate an inlay hint."
+   align/separate an inlay hint.
+   
+   **Returns:** `boolean | undefined`"
   ^js [inlay-hint]
   (.-paddingRight ^js inlay-hint))
 

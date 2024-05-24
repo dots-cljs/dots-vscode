@@ -6,7 +6,9 @@
   "Span of the origin of this link.
    
    Used as the underlined span for mouse definition hover. Defaults to the word range at
-   the definition position."
+   the definition position.
+   
+   **Returns:** `Range | undefined`"
   ^js [location-link]
   (.-originSelectionRange ^js location-link))
 
@@ -19,7 +21,9 @@
   (set! (.-originSelectionRange ^js location-link) value))
 
 (defn target-uri
-  "The target resource identifier of this link."
+  "The target resource identifier of this link.
+   
+   **Returns:** `Uri`"
   ^js [location-link]
   (.-targetUri ^js location-link))
 
@@ -29,7 +33,9 @@
   (set! (.-targetUri ^js location-link) value))
 
 (defn target-range
-  "The full target range of this link."
+  "The full target range of this link.
+   
+   **Returns:** `Range`"
   ^js [location-link]
   (.-targetRange ^js location-link))
 
@@ -39,7 +45,9 @@
   (set! (.-targetRange ^js location-link) value))
 
 (defn target-selection-range
-  "The span of this link."
+  "The span of this link.
+   
+   **Returns:** `Range | undefined`"
   ^js [location-link]
   (.-targetSelectionRange ^js location-link))
 

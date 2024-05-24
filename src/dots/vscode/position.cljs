@@ -7,12 +7,16 @@
    from an existing position.")
 
 (defn line
-  "The zero-based line value."
+  "The zero-based line value.
+   
+   **Returns:** `number`"
   ^js [position]
   (.-line ^js position))
 
 (defn character
-  "The zero-based character value."
+  "The zero-based character value.
+   
+   **Returns:** `number`"
   ^js [position]
   (.-character ^js position))
 

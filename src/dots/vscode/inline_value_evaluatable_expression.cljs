@@ -6,11 +6,15 @@
 
 (defn range
   "The document range for which the inline value applies.
-   The range is used to extract the evaluatable expression from the underlying document."
+   The range is used to extract the evaluatable expression from the underlying document.
+   
+   **Returns:** `Range`"
   ^js [inline-value-evaluatable-expression]
   (.-range ^js inline-value-evaluatable-expression))
 
 (defn expression
-  "If specified the expression overrides the extracted expression."
+  "If specified the expression overrides the extracted expression.
+   
+   **Returns:** `string | undefined`"
   ^js [inline-value-evaluatable-expression]
   (.-expression ^js inline-value-evaluatable-expression))

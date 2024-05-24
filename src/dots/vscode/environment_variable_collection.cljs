@@ -7,7 +7,9 @@
    across window reloads. When true the collection will be active immediately such when the
    window reloads. Additionally, this API will return the cached version if it exists. The
    collection will be invalidated when the extension is uninstalled or when the collection
-   is cleared. Defaults to true."
+   is cleared. Defaults to true.
+   
+   **Returns:** `boolean`"
   ^js [environment-variable-collection]
   (.-persistent ^js environment-variable-collection))
 
@@ -22,7 +24,9 @@
 
 (defn description
   "A description for the environment variable collection, this will be used to describe the
-   changes in the UI."
+   changes in the UI.
+   
+   **Returns:** `string | MarkdownString | undefined`"
   ^js [environment-variable-collection]
   (.-description ^js environment-variable-collection))
 

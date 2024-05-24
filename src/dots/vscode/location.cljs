@@ -4,7 +4,9 @@
   (:refer-clojure :exclude [range]))
 
 (defn uri
-  "The resource identifier of this location."
+  "The resource identifier of this location.
+   
+   **Returns:** `Uri`"
   ^js [location]
   (.-uri ^js location))
 
@@ -14,7 +16,9 @@
   (set! (.-uri ^js location) value))
 
 (defn range
-  "The document range of this location."
+  "The document range of this location.
+   
+   **Returns:** `Range`"
   ^js [location]
   (.-range ^js location))
 

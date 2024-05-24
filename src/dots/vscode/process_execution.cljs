@@ -3,7 +3,9 @@
    without shell interaction.")
 
 (defn process
-  "The process to be executed."
+  "The process to be executed.
+   
+   **Returns:** `string`"
   ^js [process-execution]
   (.-process ^js process-execution))
 
@@ -13,7 +15,9 @@
   (set! (.-process ^js process-execution) value))
 
 (defn args
-  "The arguments passed to the process. Defaults to an empty array."
+  "The arguments passed to the process. Defaults to an empty array.
+   
+   **Returns:** `string[]`"
   ^js [process-execution]
   (.-args ^js process-execution))
 
@@ -24,7 +28,9 @@
 
 (defn options
   "The process options used when the process is executed.
-   Defaults to undefined."
+   Defaults to undefined.
+   
+   **Returns:** `ProcessExecutionOptions | undefined`"
   ^js [process-execution]
   (.-options ^js process-execution))
 

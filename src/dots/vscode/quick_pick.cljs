@@ -9,7 +9,9 @@
    when {@link window.showQuickPick } does not offer the required flexibility.")
 
 (defn value
-  "Current value of the filter text."
+  "Current value of the filter text.
+   
+   **Returns:** `string`"
   ^js [quick-pick]
   (.-value ^js quick-pick))
 
@@ -19,7 +21,9 @@
   (set! (.-value ^js quick-pick) value))
 
 (defn placeholder
-  "Optional placeholder shown in the filter textbox when no filter has been entered."
+  "Optional placeholder shown in the filter textbox when no filter has been entered.
+   
+   **Returns:** `string | undefined`"
   ^js [quick-pick]
   (.-placeholder ^js quick-pick))
 
@@ -65,7 +69,9 @@
    (.onDidAccept ^js quick-pick listener this-args disposables)))
 
 (defn buttons
-  "Buttons for actions in the UI."
+  "Buttons for actions in the UI.
+   
+   **Returns:** `readonly QuickInputButton[]`"
   ^js [quick-pick]
   (.-buttons ^js quick-pick))
 
@@ -113,7 +119,9 @@
    (.onDidTriggerItemButton ^js quick-pick listener this-args disposables)))
 
 (defn items
-  "Items to pick from. This can be read and updated by the extension."
+  "Items to pick from. This can be read and updated by the extension.
+   
+   **Returns:** `readonly T[]`"
   ^js [quick-pick]
   (.-items ^js quick-pick))
 
@@ -123,7 +131,9 @@
   (set! (.-items ^js quick-pick) value))
 
 (defn can-select-many?
-  "If multiple items can be selected at the same time. Defaults to false."
+  "If multiple items can be selected at the same time. Defaults to false.
+   
+   **Returns:** `boolean`"
   ^js [quick-pick]
   (.-canSelectMany ^js quick-pick))
 
@@ -133,7 +143,9 @@
   (set! (.-canSelectMany ^js quick-pick) value))
 
 (defn match-on-description?
-  "If the filter text should also be matched against the description of the items. Defaults to false."
+  "If the filter text should also be matched against the description of the items. Defaults to false.
+   
+   **Returns:** `boolean`"
   ^js [quick-pick]
   (.-matchOnDescription ^js quick-pick))
 
@@ -143,7 +155,9 @@
   (set! (.-matchOnDescription ^js quick-pick) value))
 
 (defn match-on-detail?
-  "If the filter text should also be matched against the detail of the items. Defaults to false."
+  "If the filter text should also be matched against the detail of the items. Defaults to false.
+   
+   **Returns:** `boolean`"
   ^js [quick-pick]
   (.-matchOnDetail ^js quick-pick))
 
@@ -153,7 +167,9 @@
   (set! (.-matchOnDetail ^js quick-pick) value))
 
 (defn keep-scroll-position?
-  "An optional flag to maintain the scroll position of the quick pick when the quick pick items are updated. Defaults to false."
+  "An optional flag to maintain the scroll position of the quick pick when the quick pick items are updated. Defaults to false.
+   
+   **Returns:** `boolean | undefined`"
   ^js [quick-pick]
   (.-keepScrollPosition ^js quick-pick))
 
@@ -163,7 +179,9 @@
   (set! (.-keepScrollPosition ^js quick-pick) value))
 
 (defn active-items
-  "Active items. This can be read and updated by the extension."
+  "Active items. This can be read and updated by the extension.
+   
+   **Returns:** `readonly T[]`"
   ^js [quick-pick]
   (.-activeItems ^js quick-pick))
 
@@ -191,7 +209,9 @@
    (.onDidChangeActive ^js quick-pick listener this-args disposables)))
 
 (defn selected-items
-  "Selected items. This can be read and updated by the extension."
+  "Selected items. This can be read and updated by the extension.
+   
+   **Returns:** `readonly T[]`"
   ^js [quick-pick]
   (.-selectedItems ^js quick-pick))
 
@@ -219,7 +239,9 @@
    (.onDidChangeSelection ^js quick-pick listener this-args disposables)))
 
 (defn title
-  "An optional title."
+  "An optional title.
+   
+   **Returns:** `string | undefined`"
   ^js [quick-pick]
   (.-title ^js quick-pick))
 
@@ -229,7 +251,9 @@
   (set! (.-title ^js quick-pick) value))
 
 (defn step
-  "An optional current step count."
+  "An optional current step count.
+   
+   **Returns:** `number | undefined`"
   ^js [quick-pick]
   (.-step ^js quick-pick))
 
@@ -239,7 +263,9 @@
   (set! (.-step ^js quick-pick) value))
 
 (defn total-steps
-  "An optional total step count."
+  "An optional total step count.
+   
+   **Returns:** `number | undefined`"
   ^js [quick-pick]
   (.-totalSteps ^js quick-pick))
 
@@ -252,7 +278,9 @@
   "If the UI should allow for user input. Defaults to true.
    
    Change this to false, e.g., while validating user input or
-   loading data for the next step in user input."
+   loading data for the next step in user input.
+   
+   **Returns:** `boolean`"
   ^js [quick-pick]
   (.-enabled ^js quick-pick))
 
@@ -268,7 +296,9 @@
   "If the UI should show a progress indicator. Defaults to false.
    
    Change this to true, e.g., while loading more data or validating
-   user input."
+   user input.
+   
+   **Returns:** `boolean`"
   ^js [quick-pick]
   (.-busy ^js quick-pick))
 
@@ -282,7 +312,9 @@
 
 (defn ignore-focus-out?
   "If the UI should stay open even when loosing UI focus. Defaults to false.
-   This setting is ignored on iPad and is always false."
+   This setting is ignored on iPad and is always false.
+   
+   **Returns:** `boolean`"
   ^js [quick-pick]
   (.-ignoreFocusOut ^js quick-pick))
 

@@ -3,7 +3,9 @@
   (:refer-clojure :exclude [name type]))
 
 (defn type
-  "The type of the debug session."
+  "The type of the debug session.
+   
+   **Returns:** `string`"
   ^js [debug-configuration]
   (.-type ^js debug-configuration))
 
@@ -13,7 +15,9 @@
   (set! (.-type ^js debug-configuration) value))
 
 (defn name
-  "The name of the debug session."
+  "The name of the debug session.
+   
+   **Returns:** `string`"
   ^js [debug-configuration]
   (.-name ^js debug-configuration))
 
@@ -23,7 +27,9 @@
   (set! (.-name ^js debug-configuration) value))
 
 (defn request
-  "The request type of the debug session."
+  "The request type of the debug session.
+   
+   **Returns:** `string`"
   ^js [debug-configuration]
   (.-request ^js debug-configuration))
 

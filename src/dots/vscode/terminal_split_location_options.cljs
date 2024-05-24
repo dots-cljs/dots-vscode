@@ -3,7 +3,9 @@
 
 (defn parent-terminal
   "The parent terminal to split this terminal beside. This works whether the parent terminal
-   is in the panel or the editor area."
+   is in the panel or the editor area.
+   
+   **Returns:** `Terminal`"
   ^js [terminal-split-location-options]
   (.-parentTerminal ^js terminal-split-location-options))
 

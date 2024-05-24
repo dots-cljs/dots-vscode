@@ -3,6 +3,8 @@
    requesting references.")
 
 (defn include-declaration?
-  "Include the declaration of the current symbol."
+  "Include the declaration of the current symbol.
+   
+   **Returns:** `boolean`"
   ^js [reference-context]
   (.-includeDeclaration ^js reference-context))

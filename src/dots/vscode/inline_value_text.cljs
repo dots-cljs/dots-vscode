@@ -3,11 +3,15 @@
   (:refer-clojure :exclude [range]))
 
 (defn range
-  "The document range for which the inline value applies."
+  "The document range for which the inline value applies.
+   
+   **Returns:** `Range`"
   ^js [inline-value-text]
   (.-range ^js inline-value-text))
 
 (defn text
-  "The text of the inline value."
+  "The text of the inline value.
+   
+   **Returns:** `string`"
   ^js [inline-value-text]
   (.-text ^js inline-value-text))

@@ -2,7 +2,9 @@
   "Command argument for actions registered in `comments/commentThread/context`.")
 
 (defn thread
-  "The active {@link CommentThread comment thread}"
+  "The active {@link CommentThread comment thread}
+   
+   **Returns:** `CommentThread`"
   ^js [comment-reply]
   (.-thread ^js comment-reply))
 
@@ -12,7 +14,9 @@
   (set! (.-thread ^js comment-reply) value))
 
 (defn text
-  "The value in the comment editor"
+  "The value in the comment editor
+   
+   **Returns:** `string`"
   ^js [comment-reply]
   (.-text ^js comment-reply))
 

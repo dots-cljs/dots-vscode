@@ -2,6 +2,8 @@
   "The tab represents a webview.")
 
 (defn view-type
-  "The type of webview. Maps to {@linkcode WebviewPanel.viewType WebviewPanel's viewType}"
+  "The type of webview. Maps to {@linkcode WebviewPanel.viewType WebviewPanel's viewType}
+   
+   **Returns:** `string`"
   ^js [tab-input-webview]
   (.-viewType ^js tab-input-webview))

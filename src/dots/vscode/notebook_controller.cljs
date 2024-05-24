@@ -15,12 +15,16 @@
   "The identifier of this notebook controller.
    
    _Note_ that controllers are remembered by their identifier and that extensions should use
-   stable identifiers across sessions."
+   stable identifiers across sessions.
+   
+   **Returns:** `string`"
   ^js [notebook-controller]
   (.-id ^js notebook-controller))
 
 (defn notebook-type
-  "The notebook type this controller is for."
+  "The notebook type this controller is for.
+   
+   **Returns:** `string`"
   ^js [notebook-controller]
   (.-notebookType ^js notebook-controller))
 
@@ -37,7 +41,9 @@
    // support all languages
    myController.supportedLanguages = undefined; // falsy
    myController.supportedLanguages = []; // falsy
-   ```"
+   ```
+   
+   **Returns:** `string[] | undefined`"
   ^js [notebook-controller]
   (.-supportedLanguages ^js notebook-controller))
 
@@ -59,7 +65,9 @@
   (set! (.-supportedLanguages ^js notebook-controller) value))
 
 (defn label
-  "The human-readable label of this notebook controller."
+  "The human-readable label of this notebook controller.
+   
+   **Returns:** `string`"
   ^js [notebook-controller]
   (.-label ^js notebook-controller))
 
@@ -69,7 +77,9 @@
   (set! (.-label ^js notebook-controller) value))
 
 (defn description
-  "The human-readable description which is rendered less prominent."
+  "The human-readable description which is rendered less prominent.
+   
+   **Returns:** `string | undefined`"
   ^js [notebook-controller]
   (.-description ^js notebook-controller))
 
@@ -79,7 +89,9 @@
   (set! (.-description ^js notebook-controller) value))
 
 (defn detail
-  "The human-readable detail which is rendered less prominent."
+  "The human-readable detail which is rendered less prominent.
+   
+   **Returns:** `string | undefined`"
   ^js [notebook-controller]
   (.-detail ^js notebook-controller))
 
@@ -90,7 +102,9 @@
 
 (defn supports-execution-order?
   "Whether this controller supports execution order so that the
-   editor can render placeholders for them."
+   editor can render placeholders for them.
+   
+   **Returns:** `boolean | undefined`"
   ^js [notebook-controller]
   (.-supportsExecutionOrder ^js notebook-controller))
 
@@ -119,7 +133,9 @@
 
 (defn execute-handler
   "The execute handler is invoked when the run gestures in the UI are selected, e.g Run Cell, Run All,
-   Run Selection etc. The execute handler is responsible for creating and managing {@link NotebookCellExecution execution}-objects."
+   Run Selection etc. The execute handler is responsible for creating and managing {@link NotebookCellExecution execution}-objects.
+   
+   **Returns:** `(cells: NotebookCell[], notebook: NotebookDocument, controller: NotebookController) => void | Thenable<void>`"
   ^js [notebook-controller]
   (.-executeHandler ^js notebook-controller))
 
@@ -139,7 +155,9 @@
    or `Control+C` in terminals.
    
    _Note_ that supporting {@link NotebookCellExecution.token cancellation tokens} is preferred and that interrupt handlers should
-   only be used when tokens cannot be supported."
+   only be used when tokens cannot be supported.
+   
+   **Returns:** `((notebook: NotebookDocument) => void | Thenable<void>) | undefined`"
   ^js [notebook-controller]
   (.-interruptHandler ^js notebook-controller))
 

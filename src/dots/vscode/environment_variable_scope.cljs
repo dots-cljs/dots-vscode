@@ -2,7 +2,9 @@
   "The scope object to which the environment variable collection applies.")
 
 (defn workspace-folder
-  "Any specific workspace folder to get collection for."
+  "Any specific workspace folder to get collection for.
+   
+   **Returns:** `WorkspaceFolder | undefined`"
   ^js [environment-variable-scope]
   (.-workspaceFolder ^js environment-variable-scope))
 

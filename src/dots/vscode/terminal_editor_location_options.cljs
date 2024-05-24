@@ -7,7 +7,9 @@
    The default is the {@link ViewColumn.Active active}. Columns that do not exist
    will be created as needed up to the maximum of {@linkcode ViewColumn.Nine }.
    Use {@linkcode ViewColumn.Beside } to open the editor to the side of the currently
-   active one."
+   active one.
+   
+   **Returns:** `ViewColumn`"
   ^js [terminal-editor-location-options]
   (.-viewColumn ^js terminal-editor-location-options))
 
@@ -21,7 +23,9 @@
   (set! (.-viewColumn ^js terminal-editor-location-options) value))
 
 (defn preserve-focus?
-  "An optional flag that when `true` will stop the {@link Terminal } from taking focus."
+  "An optional flag that when `true` will stop the {@link Terminal } from taking focus.
+   
+   **Returns:** `boolean | undefined`"
   ^js [terminal-editor-location-options]
   (.-preserveFocus ^js terminal-editor-location-options))
 

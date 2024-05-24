@@ -3,17 +3,23 @@
    provide users various ways to interact with comments.")
 
 (defn id
-  "The id of this comment controller."
+  "The id of this comment controller.
+   
+   **Returns:** `string`"
   ^js [comment-controller]
   (.-id ^js comment-controller))
 
 (defn label
-  "The human-readable label of this comment controller."
+  "The human-readable label of this comment controller.
+   
+   **Returns:** `string`"
   ^js [comment-controller]
   (.-label ^js comment-controller))
 
 (defn options
-  "Comment controller options"
+  "Comment controller options
+   
+   **Returns:** `CommentOptions | undefined`"
   ^js [comment-controller]
   (.-options ^js comment-controller))
 
@@ -25,7 +31,9 @@
 (defn commenting-range-provider
   "Optional commenting range provider. Provide a list {@link Range ranges} which support commenting to any given resource uri.
    
-   If not provided, users cannot leave any comments."
+   If not provided, users cannot leave any comments.
+   
+   **Returns:** `CommentingRangeProvider | undefined`"
   ^js [comment-controller]
   (.-commentingRangeProvider ^js comment-controller))
 
@@ -50,7 +58,9 @@
   (.createCommentThread ^js comment-controller uri range comments))
 
 (defn reaction-handler
-  "Optional reaction handler for creating and deleting reactions on a {@link Comment }."
+  "Optional reaction handler for creating and deleting reactions on a {@link Comment }.
+   
+   **Returns:** `((comment: Comment, reaction: CommentReaction) => Thenable<void>) | undefined`"
   ^js [comment-controller]
   (.-reactionHandler ^js comment-controller))
 

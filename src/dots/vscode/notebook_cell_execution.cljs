@@ -7,7 +7,9 @@
    {@linkcode NotebookCellExecution.end end(...)} is called, it enters the {@linkcode NotebookCellExecutionState.Idle Idle} state.")
 
 (defn cell
-  "The {@link NotebookCell cell} for which this execution has been created."
+  "The {@link NotebookCell cell} for which this execution has been created.
+   
+   **Returns:** `NotebookCell`"
   ^js [notebook-cell-execution]
   (.-cell ^js notebook-cell-execution))
 
@@ -16,12 +18,16 @@
    from the UI.
    
    _Note_ that the cancellation token will not be triggered when the {@link NotebookController controller}
-   that created this execution uses an {@link NotebookController.interruptHandler interrupt-handler}."
+   that created this execution uses an {@link NotebookController.interruptHandler interrupt-handler}.
+   
+   **Returns:** `CancellationToken`"
   ^js [notebook-cell-execution]
   (.-token ^js notebook-cell-execution))
 
 (defn execution-order
-  "Set and unset the order of this cell execution."
+  "Set and unset the order of this cell execution.
+   
+   **Returns:** `number | undefined`"
   ^js [notebook-cell-execution]
   (.-executionOrder ^js notebook-cell-execution))
 

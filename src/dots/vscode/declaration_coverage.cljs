@@ -4,7 +4,9 @@
   (:refer-clojure :exclude [name]))
 
 (defn name
-  "Name of the declaration."
+  "Name of the declaration.
+   
+   **Returns:** `string`"
   ^js [declaration-coverage]
   (.-name ^js declaration-coverage))
 
@@ -16,7 +18,9 @@
 (defn executed?
   "The number of times this declaration was executed, or a boolean
    indicating whether it was executed if the exact count is unknown. If
-   zero or false, the declaration will be marked as un-covered."
+   zero or false, the declaration will be marked as un-covered.
+   
+   **Returns:** `number | boolean`"
   ^js [declaration-coverage]
   (.-executed ^js declaration-coverage))
 
@@ -28,7 +32,9 @@
   (set! (.-executed ^js declaration-coverage) value))
 
 (defn location
-  "Declaration location."
+  "Declaration location.
+   
+   **Returns:** `Range | Position`"
   ^js [declaration-coverage]
   (.-location ^js declaration-coverage))
 

@@ -6,17 +6,23 @@
    that resolves to a {@link WorkspaceEdit workspace edit}.")
 
 (defn token
-  "A cancellation token."
+  "A cancellation token.
+   
+   **Returns:** `CancellationToken`"
   ^js [notebook-document-will-save-event]
   (.-token ^js notebook-document-will-save-event))
 
 (defn notebook
-  "The {@link NotebookDocument notebook document} that will be saved."
+  "The {@link NotebookDocument notebook document} that will be saved.
+   
+   **Returns:** `NotebookDocument`"
   ^js [notebook-document-will-save-event]
   (.-notebook ^js notebook-document-will-save-event))
 
 (defn reason
-  "The reason why save was triggered."
+  "The reason why save was triggered.
+   
+   **Returns:** `TextDocumentSaveReason`"
   ^js [notebook-document-will-save-event]
   (.-reason ^js notebook-document-will-save-event))
 

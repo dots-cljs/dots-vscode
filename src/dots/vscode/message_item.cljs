@@ -3,7 +3,9 @@
    error message.")
 
 (defn title
-  "A short title like 'Retry', 'Open Log' etc."
+  "A short title like 'Retry', 'Open Log' etc.
+   
+   **Returns:** `string`"
   ^js [message-item]
   (.-title ^js message-item))
 
@@ -17,7 +19,9 @@
    when the user cancels the dialog (e.g. by pressing the ESC
    key).
    
-   Note: this option is ignored for non-modal messages."
+   Note: this option is ignored for non-modal messages.
+   
+   **Returns:** `boolean | undefined`"
   ^js [message-item]
   (.-isCloseAffordance ^js message-item))
 

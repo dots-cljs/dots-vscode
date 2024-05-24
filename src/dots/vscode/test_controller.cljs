@@ -6,12 +6,16 @@
 
 (defn id
   "The id of the controller passed in {@link tests.createTestController }.
-   This must be globally unique."
+   This must be globally unique.
+   
+   **Returns:** `string`"
   ^js [test-controller]
   (.-id ^js test-controller))
 
 (defn label
-  "Human-readable label for the test controller."
+  "Human-readable label for the test controller.
+   
+   **Returns:** `string`"
   ^js [test-controller]
   (.-label ^js test-controller))
 
@@ -30,7 +34,9 @@
    fires in order for decorations for tests within a file to be visible.
    
    However, the editor may sometimes explicitly request children using the
-   {@link resolveHandler } See the documentation on that method for more details."
+   {@link resolveHandler } See the documentation on that method for more details.
+   
+   **Returns:** `TestItemCollection`"
   ^js [test-controller]
   (.-items ^js test-controller))
 
@@ -70,7 +76,9 @@
    to resolve the previously-run tests.
    
    The item in the explorer will automatically be marked as \"busy\" until
-   the function returns or the returned thenable resolves."
+   the function returns or the returned thenable resolves.
+   
+   **Returns:** `((item: TestItem | undefined) => void | Thenable<void>) | undefined`"
   ^js [test-controller]
   (.-resolveHandler ^js test-controller))
 
@@ -98,7 +106,9 @@
    removed tests.
    
    It's recommended that extensions try to update tests in realtime, using
-   a {@link FileSystemWatcher } for example, and use this method as a fallback."
+   a {@link FileSystemWatcher } for example, and use this method as a fallback.
+   
+   **Returns:** `((token: CancellationToken) => void | Thenable<void>) | undefined`"
   ^js [test-controller]
   (.-refreshHandler ^js test-controller))
 

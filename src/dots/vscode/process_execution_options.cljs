@@ -3,7 +3,9 @@
 
 (defn cwd
   "The current working directory of the executed program or shell.
-   If omitted the tools current workspace root is used."
+   If omitted the tools current workspace root is used.
+   
+   **Returns:** `string | undefined`"
   ^js [process-execution-options]
   (.-cwd ^js process-execution-options))
 
@@ -16,7 +18,9 @@
 (defn env
   "The additional environment of the executed program or shell. If omitted
    the parent process' environment is used. If provided it is merged with
-   the parent process' environment."
+   the parent process' environment.
+   
+   **Returns:** `{ [key: string]: string; } | undefined`"
   ^js [process-execution-options]
   (.-env ^js process-execution-options))
 

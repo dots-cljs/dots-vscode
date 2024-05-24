@@ -120,18 +120,24 @@
 (defn active-debug-session
   "The currently active {@link DebugSession debug session} or `undefined`. The active debug session is the one
    represented by the debug action floating window or the one currently shown in the drop down menu of the debug action floating window.
-   If no debug session is active, the value is `undefined`."
+   If no debug session is active, the value is `undefined`.
+   
+   **Returns:** `DebugSession | undefined`"
   ^js []
   (.-activeDebugSession vscode/debug))
 
 (defn active-debug-console
   "The currently active {@link DebugConsole debug console}.
-   If no debug session is active, output sent to the debug console is not shown."
+   If no debug session is active, output sent to the debug console is not shown.
+   
+   **Returns:** `DebugConsole`"
   ^js []
   (.-activeDebugConsole vscode/debug))
 
 (defn breakpoints
-  "List of breakpoints."
+  "List of breakpoints.
+   
+   **Returns:** `readonly Breakpoint[]`"
   ^js []
   (.-breakpoints vscode/debug))
 

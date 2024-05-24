@@ -2,7 +2,9 @@
   "Displays html content, similarly to an iframe.")
 
 (defn options
-  "Content settings for the webview."
+  "Content settings for the webview.
+   
+   **Returns:** `WebviewOptions`"
   ^js [webview]
   (.-options ^js webview))
 
@@ -34,7 +36,9 @@
    Keep in mind that even though webviews are sandboxed, they still allow running scripts and loading arbitrary content,
    so extensions must follow all standard web security best practices when working with webviews. This includes
    properly sanitizing all untrusted input (including content from the workspace) and
-   setting a [content security policy](https://aka.ms/vscode-api-webview-csp)."
+   setting a [content security policy](https://aka.ms/vscode-api-webview-csp).
+   
+   **Returns:** `string`"
   ^js [webview]
   (.-html ^js webview))
 
@@ -146,6 +150,8 @@
    
    ```ts
    `img-src https: ${webview.cspSource} ...;`
-   ```"
+   ```
+   
+   **Returns:** `string`"
   ^js [webview]
   (.-cspSource ^js webview))

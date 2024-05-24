@@ -2,7 +2,9 @@
   "Options to configure the behavior of the input box UI.")
 
 (defn title
-  "An optional string that represents the title of the input box."
+  "An optional string that represents the title of the input box.
+   
+   **Returns:** `string | undefined`"
   ^js [input-box-options]
   (.-title ^js input-box-options))
 
@@ -12,7 +14,9 @@
   (set! (.-title ^js input-box-options) value))
 
 (defn value
-  "The value to pre-fill in the input box."
+  "The value to pre-fill in the input box.
+   
+   **Returns:** `string | undefined`"
   ^js [input-box-options]
   (.-value ^js input-box-options))
 
@@ -25,7 +29,9 @@
   "Selection of the pre-filled {@linkcode InputBoxOptions.value value}. Defined as tuple of two number where the
    first is the inclusive start index and the second the exclusive end index. When `undefined` the whole
    pre-filled value will be selected, when empty (start equals end) only the cursor will be set,
-   otherwise the defined range will be selected."
+   otherwise the defined range will be selected.
+   
+   **Returns:** `[number, number] | undefined`"
   ^js [input-box-options]
   (.-valueSelection ^js input-box-options))
 
@@ -38,7 +44,9 @@
   (set! (.-valueSelection ^js input-box-options) value))
 
 (defn prompt
-  "The text to display underneath the input box."
+  "The text to display underneath the input box.
+   
+   **Returns:** `string | undefined`"
   ^js [input-box-options]
   (.-prompt ^js input-box-options))
 
@@ -48,7 +56,9 @@
   (set! (.-prompt ^js input-box-options) value))
 
 (defn place-holder
-  "An optional string to show as placeholder in the input box to guide the user what to type."
+  "An optional string to show as placeholder in the input box to guide the user what to type.
+   
+   **Returns:** `string | undefined`"
   ^js [input-box-options]
   (.-placeHolder ^js input-box-options))
 
@@ -58,7 +68,9 @@
   (set! (.-placeHolder ^js input-box-options) value))
 
 (defn password?
-  "Controls if a password input is shown. Password input hides the typed text."
+  "Controls if a password input is shown. Password input hides the typed text.
+   
+   **Returns:** `boolean | undefined`"
   ^js [input-box-options]
   (.-password ^js input-box-options))
 
@@ -69,7 +81,9 @@
 
 (defn ignore-focus-out?
   "Set to `true` to keep the input box open when focus moves to another part of the editor or to another window.
-   This setting is ignored on iPad and is always false."
+   This setting is ignored on iPad and is always false.
+   
+   **Returns:** `boolean | undefined`"
   ^js [input-box-options]
   (.-ignoreFocusOut ^js input-box-options))
 

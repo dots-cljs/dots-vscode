@@ -6,7 +6,9 @@
   (:refer-clojure :exclude [name replace]))
 
 (defn name
-  "The human-readable name of this output channel."
+  "The human-readable name of this output channel.
+   
+   **Returns:** `string`"
   ^js [output-channel]
   (.-name ^js output-channel))
 

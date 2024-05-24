@@ -28,6 +28,8 @@
    ```
    
    The editor ensures that the persisted state is saved correctly when a webview is hidden and across
-   editor restarts."
+   editor restarts.
+   
+   **Returns:** `T | undefined`"
   ^js [webview-view-resolve-context]
   (.-state ^js webview-view-resolve-context))

@@ -6,18 +6,24 @@
 (defn name
   "The human-readable name of the run. This can be used to
    disambiguate multiple sets of results in a test run. It is useful if
-   tests are run across multiple platforms, for example."
+   tests are run across multiple platforms, for example.
+   
+   **Returns:** `string | undefined`"
   ^js [test-run]
   (.-name ^js test-run))
 
 (defn token
   "A cancellation token which will be triggered when the test run is
-   canceled from the UI."
+   canceled from the UI.
+   
+   **Returns:** `CancellationToken`"
   ^js [test-run]
   (.-token ^js test-run))
 
 (defn persisted?
-  "Whether the test run will be persisted across reloads by the editor."
+  "Whether the test run will be persisted across reloads by the editor.
+   
+   **Returns:** `boolean`"
   ^js [test-run]
   (.-isPersisted ^js test-run))
 

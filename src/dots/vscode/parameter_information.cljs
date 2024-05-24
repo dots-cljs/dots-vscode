@@ -7,7 +7,9 @@
    
    Either a string or inclusive start and exclusive end offsets within its containing
    {@link SignatureInformation.label signature label}. *Note*: A label of type string must be
-   a substring of its containing signature information's {@link SignatureInformation.label label}."
+   a substring of its containing signature information's {@link SignatureInformation.label label}.
+   
+   **Returns:** `string | [number, number]`"
   ^js [parameter-information]
   (.-label ^js parameter-information))
 
@@ -22,7 +24,9 @@
 
 (defn documentation
   "The human-readable doc-comment of this signature. Will be shown
-   in the UI but can be omitted."
+   in the UI but can be omitted.
+   
+   **Returns:** `string | MarkdownString | undefined`"
   ^js [parameter-information]
   (.-documentation ^js parameter-information))
 

@@ -2,12 +2,16 @@
   "Represents an editor that is attached to a {@link TextDocument document}.")
 
 (defn document
-  "The document associated with this text editor. The document will be the same for the entire lifetime of this text editor."
+  "The document associated with this text editor. The document will be the same for the entire lifetime of this text editor.
+   
+   **Returns:** `TextDocument`"
   ^js [text-editor]
   (.-document ^js text-editor))
 
 (defn selection
-  "The primary selection on this text editor. Shorthand for `TextEditor.selections[0]`."
+  "The primary selection on this text editor. Shorthand for `TextEditor.selections[0]`.
+   
+   **Returns:** `Selection`"
   ^js [text-editor]
   (.-selection ^js text-editor))
 
@@ -17,7 +21,9 @@
   (set! (.-selection ^js text-editor) value))
 
 (defn selections
-  "The selections in this text editor. The primary selection is always at index 0."
+  "The selections in this text editor. The primary selection is always at index 0.
+   
+   **Returns:** `readonly Selection[]`"
   ^js [text-editor]
   (.-selections ^js text-editor))
 
@@ -28,12 +34,16 @@
 
 (defn visible-ranges
   "The current visible ranges in the editor (vertically).
-   This accounts only for vertical scrolling, and not for horizontal scrolling."
+   This accounts only for vertical scrolling, and not for horizontal scrolling.
+   
+   **Returns:** `readonly Range[]`"
   ^js [text-editor]
   (.-visibleRanges ^js text-editor))
 
 (defn options
-  "Text editor options."
+  "Text editor options.
+   
+   **Returns:** `TextEditorOptions`"
   ^js [text-editor]
   (.-options ^js text-editor))
 
@@ -45,7 +55,9 @@
 (defn view-column
   "The column in which this editor shows. Will be `undefined` in case this
    isn't one of the main editors, e.g. an embedded editor, or when the editor
-   column is larger than three."
+   column is larger than three.
+   
+   **Returns:** `ViewColumn | undefined`"
   ^js [text-editor]
   (.-viewColumn ^js text-editor))
 

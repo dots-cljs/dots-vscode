@@ -8,7 +8,9 @@
       and `indentSize` is set to `\"tabSize\"`.
    
    When getting a text editor's options, this property will always be a number (resolved).
-   When setting a text editor's options, this property is optional and it can be a number or `\"auto\"`."
+   When setting a text editor's options, this property is optional and it can be a number or `\"auto\"`.
+   
+   **Returns:** `string | number | undefined`"
   ^js [text-editor-options]
   (.-tabSize ^js text-editor-options))
 
@@ -27,7 +29,9 @@
   "The number of spaces to insert when {@link TextEditorOptions.insertSpaces insertSpaces} is true.
    
    When getting a text editor's options, this property will always be a number (resolved).
-   When setting a text editor's options, this property is optional and it can be a number or `\"tabSize\"`."
+   When setting a text editor's options, this property is optional and it can be a number or `\"tabSize\"`.
+   
+   **Returns:** `string | number | undefined`"
   ^js [text-editor-options]
   (.-indentSize ^js text-editor-options))
 
@@ -42,7 +46,9 @@
 (defn insert-spaces?
   "When pressing Tab insert {@link TextEditorOptions.tabSize n} spaces.
    When getting a text editor's options, this property will always be a boolean (resolved).
-   When setting a text editor's options, this property is optional and it can be a boolean or `\"auto\"`."
+   When setting a text editor's options, this property is optional and it can be a boolean or `\"auto\"`.
+   
+   **Returns:** `string | boolean | undefined`"
   ^js [text-editor-options]
   (.-insertSpaces ^js text-editor-options))
 
@@ -56,7 +62,9 @@
 (defn cursor-style
   "The rendering style of the cursor in this editor.
    When getting a text editor's options, this property will always be present.
-   When setting a text editor's options, this property is optional."
+   When setting a text editor's options, this property is optional.
+   
+   **Returns:** `TextEditorCursorStyle | undefined`"
   ^js [text-editor-options]
   (.-cursorStyle ^js text-editor-options))
 
@@ -70,7 +78,9 @@
 (defn line-numbers
   "Render relative line numbers w.r.t. the current line number.
    When getting a text editor's options, this property will always be present.
-   When setting a text editor's options, this property is optional."
+   When setting a text editor's options, this property is optional.
+   
+   **Returns:** `TextEditorLineNumbersStyle | undefined`"
   ^js [text-editor-options]
   (.-lineNumbers ^js text-editor-options))
 

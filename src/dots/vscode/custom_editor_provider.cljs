@@ -25,7 +25,9 @@
    The only way for a user to clear the dirty state of an editor that does not support undo/redo is to either
    `save` or `revert` the file.
    
-   An editor should only ever fire `CustomDocumentEditEvent` events, or only ever fire `CustomDocumentContentChangeEvent` events."
+   An editor should only ever fire `CustomDocumentEditEvent` events, or only ever fire `CustomDocumentContentChangeEvent` events.
+   
+   **Returns:** `Event<CustomDocumentEditEvent<T>> | Event<CustomDocumentContentChangeEvent<T>>`"
   ^js [custom-editor-provider]
   (.-onDidChangeCustomDocument ^js custom-editor-provider))
 

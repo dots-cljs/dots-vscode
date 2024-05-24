@@ -7,36 +7,50 @@
 (defn index
   "The index of this cell in its {@link NotebookDocument.cellAt containing notebook}. The
    index is updated when a cell is moved within its notebook. The index is `-1`
-   when the cell has been removed from its notebook."
+   when the cell has been removed from its notebook.
+   
+   **Returns:** `number`"
   ^js [notebook-cell]
   (.-index ^js notebook-cell))
 
 (defn notebook
-  "The {@link NotebookDocument notebook} that contains this cell."
+  "The {@link NotebookDocument notebook} that contains this cell.
+   
+   **Returns:** `NotebookDocument`"
   ^js [notebook-cell]
   (.-notebook ^js notebook-cell))
 
 (defn kind
-  "The kind of this cell."
+  "The kind of this cell.
+   
+   **Returns:** `NotebookCellKind`"
   ^js [notebook-cell]
   (.-kind ^js notebook-cell))
 
 (defn document
-  "The {@link TextDocument text} of this cell, represented as text document."
+  "The {@link TextDocument text} of this cell, represented as text document.
+   
+   **Returns:** `TextDocument`"
   ^js [notebook-cell]
   (.-document ^js notebook-cell))
 
 (defn metadata
-  "The metadata of this cell. Can be anything but must be JSON-stringifyable."
+  "The metadata of this cell. Can be anything but must be JSON-stringifyable.
+   
+   **Returns:** `{ readonly [key: string]: any; }`"
   ^js [notebook-cell]
   (.-metadata ^js notebook-cell))
 
 (defn outputs
-  "The outputs of this cell."
+  "The outputs of this cell.
+   
+   **Returns:** `readonly NotebookCellOutput[]`"
   ^js [notebook-cell]
   (.-outputs ^js notebook-cell))
 
 (defn execution-summary
-  "The most recent {@link NotebookCellExecutionSummary execution summary} for this cell."
+  "The most recent {@link NotebookCellExecutionSummary execution summary} for this cell.
+   
+   **Returns:** `NotebookCellExecutionSummary | undefined`"
   ^js [notebook-cell]
   (.-executionSummary ^js notebook-cell))

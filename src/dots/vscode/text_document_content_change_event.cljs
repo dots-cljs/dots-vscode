@@ -3,21 +3,29 @@
   (:refer-clojure :exclude [range]))
 
 (defn range
-  "The range that got replaced."
+  "The range that got replaced.
+   
+   **Returns:** `Range`"
   ^js [text-document-content-change-event]
   (.-range ^js text-document-content-change-event))
 
 (defn range-offset
-  "The offset of the range that got replaced."
+  "The offset of the range that got replaced.
+   
+   **Returns:** `number`"
   ^js [text-document-content-change-event]
   (.-rangeOffset ^js text-document-content-change-event))
 
 (defn range-length
-  "The length of the range that got replaced."
+  "The length of the range that got replaced.
+   
+   **Returns:** `number`"
   ^js [text-document-content-change-event]
   (.-rangeLength ^js text-document-content-change-event))
 
 (defn text
-  "The new text for the range."
+  "The new text for the range.
+   
+   **Returns:** `string`"
   ^js [text-document-content-change-event]
   (.-text ^js text-document-content-change-event))

@@ -4,7 +4,9 @@
 
 (defn start
   "The zero-based start line of the range to fold. The folded area starts after the line's last character.
-   To be valid, the end must be zero or larger and smaller than the number of lines in the document."
+   To be valid, the end must be zero or larger and smaller than the number of lines in the document.
+   
+   **Returns:** `number`"
   ^js [folding-range]
   (.-start ^js folding-range))
 
@@ -16,7 +18,9 @@
 
 (defn end
   "The zero-based end line of the range to fold. The folded area ends with the line's last character.
-   To be valid, the end must be zero or larger and smaller than the number of lines in the document."
+   To be valid, the end must be zero or larger and smaller than the number of lines in the document.
+   
+   **Returns:** `number`"
   ^js [folding-range]
   (.-end ^js folding-range))
 
@@ -31,7 +35,9 @@
    {@link FoldingRangeKind.Region Region}. The kind is used to categorize folding ranges and used by commands
    like 'Fold all comments'. See
    {@link FoldingRangeKind } for an enumeration of all kinds.
-   If not set, the range is originated from a syntax element."
+   If not set, the range is originated from a syntax element.
+   
+   **Returns:** `FoldingRangeKind | undefined`"
   ^js [folding-range]
   (.-kind ^js folding-range))
 

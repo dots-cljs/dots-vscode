@@ -2,7 +2,9 @@
   "Label describing the {@link TreeItem Tree item}")
 
 (defn label
-  "A human-readable string describing the {@link TreeItem Tree item}."
+  "A human-readable string describing the {@link TreeItem Tree item}.
+   
+   **Returns:** `string`"
   ^js [tree-item-label]
   (.-label ^js tree-item-label))
 
@@ -13,7 +15,9 @@
 
 (defn highlights
   "Ranges in the label to highlight. A range is defined as a tuple of two number where the
-   first is the inclusive start index and the second the exclusive end index"
+   first is the inclusive start index and the second the exclusive end index
+   
+   **Returns:** `[number, number][] | undefined`"
   ^js [tree-item-label]
   (.-highlights ^js tree-item-label))
 

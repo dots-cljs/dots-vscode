@@ -7,6 +7,7 @@
   (:refer-clojure :exclude [name]))
 
 (defn name
+  "**Returns:** `string`"
   ^js [cancellation-error]
   (.-name ^js cancellation-error))
 
@@ -15,6 +16,7 @@
   (set! (.-name ^js cancellation-error) value))
 
 (defn message
+  "**Returns:** `string`"
   ^js [cancellation-error]
   (.-message ^js cancellation-error))
 
@@ -23,6 +25,7 @@
   (set! (.-message ^js cancellation-error) value))
 
 (defn stack
+  "**Returns:** `string | undefined`"
   ^js [cancellation-error]
   (.-stack ^js cancellation-error))
 

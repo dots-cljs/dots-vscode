@@ -2,7 +2,9 @@
   "Options to configure the behavior of the message.")
 
 (defn modal?
-  "Indicates that this message should be modal."
+  "Indicates that this message should be modal.
+   
+   **Returns:** `boolean | undefined`"
   ^js [message-options]
   (.-modal ^js message-options))
 
@@ -13,7 +15,9 @@
 
 (defn detail
   "Human-readable detail message that is rendered less prominent. _Note_ that detail
-   is only shown for {@link MessageOptions.modal modal} messages."
+   is only shown for {@link MessageOptions.modal modal} messages.
+   
+   **Returns:** `string | undefined`"
   ^js [message-options]
   (.-detail ^js message-options))
 
