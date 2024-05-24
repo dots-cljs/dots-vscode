@@ -1,3 +1,5 @@
 .cache/
 .cpcache/
 .portal/
+node_modules/
+target/
