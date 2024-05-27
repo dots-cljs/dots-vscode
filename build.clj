@@ -7,11 +7,11 @@
 (def class-dir "target/classes")
 (def jar-file (format "target/%s-%s.jar" (name lib) version))
 
-(def basis (delay (b/create-basis {:project "deps.edn"})))
+(def basis (delay (b/create-basis {:root nil})))
 
 (def pom-data
   [[:description "ClojureScript wrapper for the VS-Code API"]
-   [:url ""]
+   [:url "https://github.com/dots-cljs/dots-vscode"]
    [:licenses
     [:license
      [:name "MIT License"]
